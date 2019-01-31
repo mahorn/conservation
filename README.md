@@ -1,4 +1,4 @@
-# [Conservation](https://geo.gob.bo/geonetwork/srv/eng/catalog.search#/metadata/46bb6940-2f29-40bd-a330-64edd523a3e9).
+# [Conservation](https://geo.gob.bo/geonetwork/srv/eng/catalog.search#/metadata/46bb6940-2f29-40bd-a330-64edd523a3e9)
 
 ## Conservation Areas in Sudamerica
 
@@ -8,4 +8,4 @@ I am mapping the Conservation Areas in Sudamerica because I want to help create 
 
 ## Data
 
-The data was obtained from the catalogue GeoBolivia: [Mapa Área de Conservación Suramerica COSIPLAN, 2015]https://geo.gob.bo/geonetwork/srv/eng/catalog.search#/metadata/46bb6940-2f29-40bd-a330-64edd523a3e9
+The data was obtained from the catalogue GeoBolivia: [Mapa Área de Conservación Suramerica COSIPLAN, 2015](https://geo.gob.bo/geonetwork/srv/eng/catalog.search#/metadata/46bb6940-2f29-40bd-a330-64edd523a3e9)
