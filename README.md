@@ -13,6 +13,8 @@ The data was obtained from the catalogue GeoBolivia: [Mapa Área de Conservació
 
 [Las areas protegidas de America Latina: Situacion actual y perspectivas para el futuro](http://www.dhl.hegoa.ehu.es/ficheros/0000/0695/26.Unión_Internacional_para_la_Conservación_de_la_Naturaleza.pdf)
 
+[Protected Areas](https://protectedplanet.net)
+
 ## Project Goals
 
 1. Create a thematic map with conservation areas in Latin America.
