@@ -10,3 +10,11 @@ We included the 10 latin america countries and the two Independent Guayane Sates
 ## Data
 
 The data was obtained from the catalogue GeoBolivia: [Mapa Área de Conservación Suramerica COSIPLAN, 2015](https://geo.gob.bo/geonetwork/srv/eng/catalog.search#/metadata/46bb6940-2f29-40bd-a330-64edd523a3e9)
+
+## Visualization Ambitions
+
+[http://dumpark.com/#portfolio]
+
+[http://app.dumpark.com/seas-of-plastic-2/#]
+
+[http://arcticspills.wwf.ca/#home/]
