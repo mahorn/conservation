@@ -13,8 +13,8 @@ The data was obtained from the catalogue GeoBolivia: [Mapa Área de Conservació
 
 ## Visualization Ambitions
 
-[http://dumpark.com/#portfolio]
+[dumpark portfolio](http://dumpark.com/#portfolio)
 
-[http://app.dumpark.com/seas-of-plastic-2/#]
+[seas of plastic](http://app.dumpark.com/seas-of-plastic-2/#)
 
-[http://arcticspills.wwf.ca/#home/]
+[articspills](http://arcticspills.wwf.ca/#home/)
