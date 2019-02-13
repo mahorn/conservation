@@ -11,6 +11,8 @@ We included the 10 latin america countries and the two Independent Guayane Sates
 
 The data was obtained from the catalogue GeoBolivia: [Mapa Área de Conservación Suramerica COSIPLAN, 2015](https://geo.gob.bo/geonetwork/srv/eng/catalog.search#/metadata/46bb6940-2f29-40bd-a330-64edd523a3e9)
 
+[Las areas protegidas de America Latina: Situacion actual y perspectivas para el futuro](http://www.dhl.hegoa.ehu.es/ficheros/0000/0695/26.Unión_Internacional_para_la_Conservación_de_la_Naturaleza.pdf)
+
 ## Visualization Ambitions
 
 [dumpark portfolio](http://dumpark.com/#portfolio)
