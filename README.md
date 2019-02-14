@@ -9,7 +9,7 @@ We included the 10 Latin America Countries, the two Independent Guayane Sates: G
 
 Data conteins every latin america country and territory classified under the UN Environment Regions.The regions listed below are based upon UN Environment's Global Environment Outlook (GEO) process.
 
-[countries](pics/countries.png)
+![countries](pics/countries.png)
 
 ## Data
 
