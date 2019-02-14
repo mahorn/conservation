@@ -15,3 +15,6 @@ node_modules
 .cpg
 
 shapefiles-test
+
+# pics
+.png
