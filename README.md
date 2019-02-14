@@ -13,7 +13,7 @@ Data contains every latin america country and territory classified under the UN 
 
 ![manejo](pics/manejo.png)
 
-![international](pics/manejo.png)
+![international](pics/international.png)
 
 ## Data
 
