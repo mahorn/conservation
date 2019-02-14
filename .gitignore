@@ -1,0 +1,17 @@
+# node
+node_modules
+
+# geodatabase
+.gdb
+
+# zipped files
+.zip 
+
+# shapefile
+.shp 
+.prj
+.dbf
+.shx
+.cpg
+
+shapefiles-test
