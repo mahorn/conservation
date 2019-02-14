@@ -7,9 +7,13 @@ With the creation of these maps I want to emphasize the value and importance of 
 
 We included the 10 Latin America Countries, the two Independent Guayane Sates: Guyana and Surinam and, the French Guyana.
 
-Data conteins every latin america country and territory classified under the UN Environment Regions.The regions listed below are based upon UN Environment's Global Environment Outlook (GEO) process.
+Data contains every latin america country and territory classified under the UN Environment Regions. The regions listed below are based upon UN Environment's Global Environment Outlook (GEO) process.
 
 ![countries](pics/countries.png)
+
+![manejo](pics/manejo.png)
+
+![international](pics/manejo.png)
 
 ## Data
 
