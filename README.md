@@ -5,15 +5,19 @@ The protected areas of Latin America and the world are the most valuable places 
 
 With the creation of these maps I want to emphasize the value and importance of the protected areas for Latin America and the world.
 
-We included the 10 latin america countries and the two Independent Guayane Sates: Guyana and Surinam. 
+We included the 10 Latin America Countries, the two Independent Guayane Sates: Guyana and Surinam and, the French Guyana.
+
+Data conteins every latin america country and territory classified under the UN Environment Regions.The regions listed below are based upon UN Environment's Global Environment Outlook (GEO) process.
+
+[countries](pics/countries.png)
 
 ## Data
 
-The data was obtained from the catalogue GeoBolivia: [Mapa Área de Conservación Suramerica COSIPLAN, 2015](https://geo.gob.bo/geonetwork/srv/eng/catalog.search#/metadata/46bb6940-2f29-40bd-a330-64edd523a3e9)
+The data was obtained from the catalogue [Protected Planet](https://protectedplanet.net/c/unep-regions#Latin%20America%20&%20Caribbean)
+
+GeoBolivia: [Mapa Área de Conservación Suramerica COSIPLAN, 2015](https://geo.gob.bo/geonetwork/srv/eng/catalog.search#/metadata/46bb6940-2f29-40bd-a330-64edd523a3e9)
 
 [Las areas protegidas de America Latina: Situacion actual y perspectivas para el futuro](http://www.dhl.hegoa.ehu.es/ficheros/0000/0695/26.Unión_Internacional_para_la_Conservación_de_la_Naturaleza.pdf)
-
-[Protected Areas](https://protectedplanet.net)
 
 ## Project Goals
 
