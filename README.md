@@ -24,7 +24,7 @@ LINK TO THE LIBRARIES
 
 #### C. Application layout
 
-![mockup3](pics/application_layout_mockup.pdf)
+[mockup3](pics/application_layout_mockup.pdf)
 
 #### D. Thematic representation
 
