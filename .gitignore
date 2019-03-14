@@ -18,3 +18,8 @@ shapefiles-test
 
 # pics
 .png
+
+# pandas
+.ipynb_checkpoints
+__pycache__
+.env (using venv)
