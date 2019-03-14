@@ -4,8 +4,6 @@
 
 The protected areas of South America (and the world) are the most valuable places for in situ conservation (Elbers, J).  Accounting 34% of the world’s plant species and 27% of mammals it is one of the most world’s biodiversity ‘superpowers’ (worldbank.org). The preservation of these treasure lands are very important due to the evident menace of man and its economic activities in the XXI century (Elbers, J). The map should appeal to all of us since the gradual destruction of our ecosystems and natural habitats have caused an imbalance in the biodiversity. Therefore, with this map I want to help create awareness about nature conservation since it relies on us “humans” to prevent the damage caused to the world by other humans (Jacob, S).
 
-[possible mockup/wireframe here]
-
 ### II. Methodology
 
 The data for this project will be obtained from the World Database on Protected Areas (WDPA). The data will be processed using javascript, node, phython and/or other programming languages. The deliverable product will be a browser based interactive map. 
@@ -13,8 +11,11 @@ The data for this project will be obtained from the World Database on Protected 
 #### A. Data
 
 The data will be obtained from the World Database on Protected Areas (WDPA) (GET LINK ON WDPA). The data processing and visualization for this project will included some JavaScript libraries like D3js, CartoDB as well the use of Phython/Jupyter Notebooks and Pandas. 
-EXAMPLE OF CLEANED DATA.
 The data for this project will be transformed into GeoJSON files as the raw format currently are shapefiles. The structure of this project is a story map with information relevant to the conservation areas of each country. The map will also contain some pictures of its most representative species of wildlife, plants and/or landscapes.
+
+![mockup1](pics/pandas_data.png)
+
+![mockup2](pics/IUCN.png)
 
 #### B. Medium for delivery
 
@@ -23,7 +24,7 @@ LINK TO THE LIBRARIES
 
 #### C. Application layout
 
-MOCKUPS ONLY FOR DESKTOP LAYOUTS AND NOT DETAILED MOCKUPS
+![mockup3](pics/application_layout_mockup.pdf)
 
 #### D. Thematic representation
 
@@ -33,17 +34,11 @@ The data in this project will be visually represented by polygons and points. Th
 
 This map is based on user interface and visualization. It will have several UI elements like checkboxes, toggle and simple buttons, designed icons, tool tips, pop-up windows, bars, pan/zoom, hover and click on features to retrieve information. 
 
-You may want to include an example of a user persona/scenario here if it helps describe the intent of your map design (see MAP673 modules 05/06).
-MOCKUPS
+![mockup4](pics/user_interaction_mockup.jpg)
 
 #### F. Aesthetics and design considerations
 
-colors (what's the tone of the map?)
-dark vs light motif
-font choices
-modern or flat design? something more flamboyant or artsy?
-
-MOCKUPS
+![mockup5](pics/introduction_mockup.jpg)
 
 #### G. Conclusion
 
