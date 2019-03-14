@@ -15,10 +15,11 @@ The data will be obtained from the [World Database on Protected Areas](https://w
 The data for this project will be transformed into GeoJSON files as the raw format currently are shapefiles and CSV format. The structure of this project is a story map with information relevant to the conservation areas of each country. The map will also contain some pictures of its most representative species of wildlife, plants and/or landscapes.
 
 ![mockup1](pics/pandas_data.png)
-**Example of Data.** 
+*Example of Data*
 
 ![mockup2](pics/IUCN.png)
-**Data Categorization.** 
+
+*Data Categorization*
 
 #### B. Medium for delivery
 
@@ -37,12 +38,12 @@ The data in this project will be visually represented by polygons and points. Th
 This map is based on user interface and visualization. It will have different UI elements like checkboxes, toggle and simple buttons, designed icons, tool tips, pop-up windows, bars, pan/zoom, hover and click on features to retrieve information. 
 
 ![mockup4](pics/user_interaction_mockup.jpg)
-**User Interaction Mockup.**
+*User Interaction Mockup*
 
 #### F. Aesthetics and design considerations
 
 ![mockup5](pics/introduction_mockup.jpg)
-**Aesthetics and Design Mockup.**
+*Aesthetics and Design Mockup*
 
 #### G. Conclusion
 
