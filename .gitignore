@@ -8,6 +8,8 @@ node_modules
 .zip 
 
 # shapefile
+# data_processing
+data_processing
 .shp 
 .prj
 .dbf
