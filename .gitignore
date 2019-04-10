@@ -16,6 +16,9 @@ data_processing
 .shx
 .cpg
 
+# point
+point
+
 # pandas
 .ipynb_checkpoints
 __pycache__
