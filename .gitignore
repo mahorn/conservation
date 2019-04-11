@@ -9,17 +9,14 @@ node_modules
 
 # shapefile
 # data_processing
-# data
+# data_processing_shp
 data_processing
-data
+data_processing_shp
 .shp 
 .prj
 .dbf
 .shx
 .cpg
-
-# point
-point
 
 # pandas
 .ipynb_checkpoints
