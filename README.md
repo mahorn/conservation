@@ -28,12 +28,16 @@ South America contains 13 countries in its territory. The data contain in each c
 After merging the data I used mapshaper commands to simplify, convert the file into a json file, and filter-fields. Finally, in order to reduce the file sizes I used mapshaper.org to convert GeoJson files to Topojson files. 
 
 ![QGIS merge vector layers](pics/1.png)
+*QGIS Merge Vector Layers*
 
 ![mapshaper tool -info](pics/2.png)
+*Mapshaper tool -info*
 
 ![mapshaper tool -filter-fields](pics/3.png)
+*Mapshaper tool -filter-fields*
 
 ![mapshaper.org geojson to topojson](pics/4.png)
+*Mapshaper.org to convert file to topojson*
 
 #### B. Medium for delivery
 
