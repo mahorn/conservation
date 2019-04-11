@@ -1,4 +1,4 @@
-# [Conservation Areas in South America](https://geo.gob.bo/geonetwork/srv/eng/catalog.search#/metadata/46bb6940-2f29-40bd-a330-64edd523a3e9)
+# [Conservation Areas in South America](https://www.protectedplanet.net)
 
 ### I. Introduction
 
@@ -10,9 +10,9 @@ The data for this project will be obtained from the [World Database on Protected
 
 #### A. Data
 
-The data will be obtained from the [World Database on Protected Areas](https://www.protectedplanet.net) (WDPA). The data processing and visualization for this project will included some JavaScript libraries like [D3js](https://d3js.org), [CartoDB](https://carto.com) as well the use of [Phython/Jupyter Notebooks](https://pypi.org) and [Pandas](https://pandas.pydata.org). 
+The data will be obtained from the [World Database on Protected Areas](https://www.protectedplanet.net) (WDPA). The data processing and visualization for this project will included some JavaScript libraries like [D3js](https://d3js.org), [CartoDB](https://carto.com), [QGIS](https://qgis.org) as well the use of [Phython/Jupyter Notebooks](https://pypi.org) and [Pandas](https://pandas.pydata.org). 
 
-The data for this project will be transformed into GeoJSON files as the raw format currently are shapefiles and CSV format. The structure of this project is a story map with information relevant to the conservation areas of each country. The map will also contain some pictures of its most representative species of wildlife, plants and/or landscapes.
+The data for this project will be transformed into GeoJSON or Topojson files as the raw format currently are shapefiles and CSV format. The structure of this project is a story map with information relevant to the conservation areas of each country. The map will also contain some pictures of its most representative species of wildlife, plants and/or landscapes.
 
 ![mockup1](pics/pandas_data.png)
 *Example of Data*
@@ -20,6 +20,20 @@ The data for this project will be transformed into GeoJSON files as the raw form
 ![mockup2](pics/IUCN.png)
 
 *Data Categorization*
+
+#### A.1 Data Processing 
+
+South America contains 13 countries in its territory. The data contain in each country can be found in shapefiles of both polygons and points or just polygons. In order to combine multiple shapefiles into a single shapefile I used the QGIS 3 tool merge vector layers. This method produced one single shapefile containing polygons of 13 countries and one single shapefile containing points of 10 countries. 
+
+After merging the data I used mapshaper commands to simplify, convert the file into a json file, and filter-fields. Finally, in order to reduce the file sizes I used mapshaper.org to convert GeoJson files to Topojson files. 
+
+![QGIS merge vector layers](pics/1.png)
+
+![mapshaper tool -info](pics/2.png)
+
+![mapshaper tool -filter-fields](pics/3.png)
+
+![mapshaper.org geojson to topojson](pics/4.png)
 
 #### B. Medium for delivery
 
