@@ -9,7 +9,9 @@ node_modules
 
 # shapefile
 # data_processing
+# data
 data_processing
+data
 .shp 
 .prj
 .dbf
