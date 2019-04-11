@@ -7,11 +7,8 @@ node_modules
 # zipped files
 .zip 
 
-# shapefile
 # data_processing
-# data_processing_shp
 data_processing
-data_processing_shp
 .shp 
 .prj
 .dbf

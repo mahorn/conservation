@@ -56,14 +56,14 @@
         // add the geocoder to the map
         map.addControl(geoCoderControl)
         // use d3-fetch to request the topojson
-        d3.json('data/merge_files_sim.json')
+        d3.json('data/polygon.json')
             .then(function (data) {
                 // send data out of callback to a new function
                 drawMap(data);
             });
         function drawMap(data) {
             // convert the TopoJSON to GeoJSON
-            var geojson = topojson.feature(data, data.objects.merge_files_sim);
+            var geojson = topojson.feature(data, data.objects.polygon);
             // add to our map
             var counties = L.geoJson(geojson, {
                 style: function (feature, layer) {
