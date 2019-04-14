@@ -73,3 +73,13 @@ Protected areas are the single most important conservation strategy in the world
 2. The World Bank website.
 3. 5 Major Reasons for Conserving Nature. 2017. Jacob, S.
 4. Are Latin America's Protected Areas Effective at Conserving Nature? 2013. Leisher, C. 
+
+###  Bathymetry
+
+```
+(base) maria-renee-horns-macbook-pro:ne_10m_bathymetry_all mane$ mapshaper -i *.shp combine-files -merge-layers -simplify dp .25 -dissolve2 field=depth -o precision=.001 bathymetry.json
+[simplify] Repaired 0 intersections; 10,700 intersections could not be repaired
+[dissolve2] Dissolved 5,779 features into 12 features
+[o] Wrote bathymetry.json
+```
+
