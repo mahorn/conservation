@@ -111,7 +111,7 @@
                             10000, colorCodes[10000],
                             "#000000" // default for no match
                         ],
-                        "fill-opacity": 1
+                        "fill-opacity": 0.3
                     }
                 });
             }
@@ -135,7 +135,33 @@
                     },
                     'paint': {
                         "fill-color": "#b9d9c3",
-                        "fill-opacity": .75
+                        "fill-opacity": .75,
+                    }
+                });
+            }
+
+            d3.json('data/points.json')
+                .then(function (data) {
+                    console.log(data);
+                    pointsMap(data);
+                });
+
+            function pointsMap(data) {
+
+                map.addLayer({
+                    'id': 'points',
+                    'type': 'circle',
+                    'source': {
+                        'type': 'geojson',
+                        'data': data,// use the data as the data source
+                        'cluster': true,
+                        'clusterMaxZoom': 2, // Max zoom to cluster points on
+                        'clusterRadius': 10 // Radius of each cluster when clustering points (defaults to 50)
+                    },
+                    'paint': {
+                        "circle-color": '#fbcb7b',
+                        "circle-opacity": .75,
+                        "circle-radius": 3
                     }
                 });
             }
