@@ -27,9 +27,51 @@
             bottom: 20px;
         }
 
-       img {
+        img {
             margin-top: 16%;
             margin-left: 100%;
+        }
+
+        #nav {
+            position: absolute;
+            top: 20px;
+            right: -600px;
+        }
+
+        #fruit-nav {
+            position: absolute;
+            top: 60px;
+            right: -0px;
+        }
+
+        #frog-nav {
+            position: absolute;
+            top: 60px;
+            right: -0px;
+        }
+
+        #area-nav {
+            position: absolute;
+            top: 60px;
+            right: -0px;
+        }
+
+        #story{
+            position: absolute;
+            bottom: 140px;
+            left: -900px;
+        }
+
+        #gallery{
+            position: absolute;
+            bottom: -100px;
+            left: 0px;
+        }
+
+        #explore{
+            position: absolute;
+            bottom: -100px;
+            left: 0px;
         }
     </style>
 </head>
@@ -41,155 +83,177 @@
     <div id='map'></div>
 
     <div id="storymap" class="container-fluid">
-            <img src="/pics/introduction.png" alt="intro" height="400px" width="400px">
+        <img src="/pics/introduction.png" alt="intro" height="400px" width="400px">
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
-        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
-        <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
-        <script src="https://unpkg.com/topojson@3"></script>
+        <div id="nav" class="container-fluid">
+            <img src="/pics/landscape_nav.png" alt="navigation">
 
-        <!-- story map plugin
+           <div id="fruit-nav" class="container-fluid">
+            <img src="/pics/fruit_nav.png" alt="navigation">
+
+            <div id="frog-nav" class="container-fluid">
+                <img src="/pics/frog_nav.png" alt="navigation">
+
+            <div id="area-nav" class="container-fluid">
+             <img src="/pics/area_nav.png" alt="navigation">
+
+             <div id="story" class="container-fluid">
+                <img src="/pics/story.png" alt="pages" height="80px" width="80px">
+
+                <div id="gallery" class="container-fluid">
+                    <img src="/pics/gallery.png" alt="pages" height="80px" width="80px">
+
+                    <div id="explore" class="container-fluid">
+                        <img src="/pics/explore.png" alt="pages" height="80px" width="80px">
+    
+
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
+            <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
+            <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
+            <script src="https://unpkg.com/topojson@3"></script>
+
+            <!-- story map plugin
     <script src="../../dist/storymap.2.5.js"></script> -->
 
-        <script>
+            <script>
 
-            mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
+                mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
 
-            var map = new mapboxgl.Map({
-                container: 'map', // container id
-                style: 'mapbox://styles/mapbox/light-v9', // stylesheet location
-                center: [-65, -25], // starting position [lng, lat]
-                zoom: 2.2 // starting zoom
-            });
+                var map = new mapboxgl.Map({
+                    container: 'map', // container id
+                    style: 'mapbox://styles/mapbox/light-v9', // stylesheet location
+                    center: [-65, -25], // starting position [lng, lat]
+                    zoom: 2.2 // starting zoom
+                });
 
-            var oceanOptions = {
-                fillOpacity: 0,
-                color: '#040d18',
-                opacity: 1,
-                weight: 3
-            };
+                var oceanOptions = {
+                    fillOpacity: 0,
+                    color: '#040d18',
+                    opacity: 1,
+                    weight: 3
+                };
 
-            var colorCodes = {
+                var colorCodes = {
 
-                0: "#4d648d",
-                200: "#546d9a",
-                1000: "#5c76a6",
-                2000: "#6881ad",
-                3000: "#758bb4",
-                4000: "#8296bb",
-                5000: "#8ea1c1",
-                6000: "#9babc8",
-                7000: "#a8b6cf",
-                8000: "#b4c1d6",
-                9000: "#c1cbdd",
-                10000: "#ced6e4"
-            }
-
-            // when the map is done loading
-            map.on('load', function () {
-
-                // request our GEOJSON data
-                d3.json('data/ocean.json')
-                    .then(function (data) {
-                        console.log(data);
-                        oceanMap(data);
-                    });
-
-                function oceanMap(data) {
-                    var geojson = topojson.feature(data, data.objects.ocean);
-                    console.log(geojson);
-
-                    map.addLayer({
-                        'id': 'ocean',
-                        'type': 'fill',
-                        'source': {
-                            'type': 'geojson',
-                            'data': geojson// use the data as the data source
-                        },
-                        'paint': {
-                            "fill-color": [
-                                "match", // match the numbers below to the depth
-                                ["number", ["get", "depth"]],
-                                0, colorCodes[0],
-                                200, colorCodes[200],
-                                1000, colorCodes[1000],
-                                2000, colorCodes[2000],
-                                3000, colorCodes[3000],
-                                4000, colorCodes[4000],
-                                5000, colorCodes[5000],
-                                6000, colorCodes[6000],
-                                7000, colorCodes[7000],
-                                8000, colorCodes[8000],
-                                9000, colorCodes[9000],
-                                10000, colorCodes[10000],
-                                "#000000" // default for no match
-                            ],
-                            "fill-opacity": 0.18,
-                            "fill-outline-color": "hsla(180, 100%, 50%, 0.3)"
-                        }
-                    });
+                    0: "#4d648d",
+                    200: "#546d9a",
+                    1000: "#5c76a6",
+                    2000: "#6881ad",
+                    3000: "#758bb4",
+                    4000: "#8296bb",
+                    5000: "#8ea1c1",
+                    6000: "#9babc8",
+                    7000: "#a8b6cf",
+                    8000: "#b4c1d6",
+                    9000: "#c1cbdd",
+                    10000: "#ced6e4"
                 }
 
-                d3.json('data/polygons.json')
-                    .then(function (data) {
-                        console.log(data);
-                        polygonsMap(data);
-                    });
+                // when the map is done loading
+                map.on('load', function () {
 
-                function polygonsMap(data) {
-                    var geojson = topojson.feature(data, data.objects.merge_files_sim);
-                    console.log(geojson);
+                    // request our GEOJSON data
+                    d3.json('data/ocean.json')
+                        .then(function (data) {
+                            console.log(data);
+                            oceanMap(data);
+                        });
 
-                    map.addLayer({
-                        'id': 'polygon',
-                        'type': 'fill',
-                        'source': {
-                            'type': 'geojson',
-                            'data': geojson// use the data as the data source
-                        },
-                        'paint': {
-                            "fill-color": "#b9d9c3",
-                            "fill-opacity": .75,
-                        }
-                    });
-                }
+                    function oceanMap(data) {
+                        var geojson = topojson.feature(data, data.objects.ocean);
+                        console.log(geojson);
 
-                d3.json('data/points.json')
-                    .then(function (data) {
-                        console.log(data);
-                        pointsMap(data);
-                    });
+                        map.addLayer({
+                            'id': 'ocean',
+                            'type': 'fill',
+                            'source': {
+                                'type': 'geojson',
+                                'data': geojson// use the data as the data source
+                            },
+                            'paint': {
+                                "fill-color": [
+                                    "match", // match the numbers below to the depth
+                                    ["number", ["get", "depth"]],
+                                    0, colorCodes[0],
+                                    200, colorCodes[200],
+                                    1000, colorCodes[1000],
+                                    2000, colorCodes[2000],
+                                    3000, colorCodes[3000],
+                                    4000, colorCodes[4000],
+                                    5000, colorCodes[5000],
+                                    6000, colorCodes[6000],
+                                    7000, colorCodes[7000],
+                                    8000, colorCodes[8000],
+                                    9000, colorCodes[9000],
+                                    10000, colorCodes[10000],
+                                    "#000000" // default for no match
+                                ],
+                                "fill-opacity": 0.18,
+                                "fill-outline-color": "hsla(180, 100%, 50%, 0.3)"
+                            }
+                        });
+                    }
 
-                function pointsMap(data) {
+                    d3.json('data/polygons.json')
+                        .then(function (data) {
+                            console.log(data);
+                            polygonsMap(data);
+                        });
 
-                    map.addLayer({
-                        'id': 'points',
-                        'type': 'circle',
-                        'source': {
-                            'type': 'geojson',
-                            'data': data,// use the data as the data source
-                            'cluster': true,
-                            'clusterMaxZoom': 2, // Max zoom to cluster points on
-                            'clusterRadius': 10 // Radius of each cluster when clustering points (defaults to 50)
-                        },
-                        'paint': {
-                            "circle-color": '#fbcb7b',
-                            "circle-opacity": .75,
-                            "circle-radius": 3
-                        }
-                    });
-                }
-            });
+                    function polygonsMap(data) {
+                        var geojson = topojson.feature(data, data.objects.merge_files_sim);
+                        console.log(geojson);
 
-        </script>
+                        map.addLayer({
+                            'id': 'polygon',
+                            'type': 'fill',
+                            'source': {
+                                'type': 'geojson',
+                                'data': geojson// use the data as the data source
+                            },
+                            'paint': {
+                                "fill-color": "#b9d9c3",
+                                "fill-opacity": .75,
+                            }
+                        });
+                    }
+
+                    d3.json('data/points.json')
+                        .then(function (data) {
+                            console.log(data);
+                            pointsMap(data);
+                        });
+
+                    function pointsMap(data) {
+
+                        map.addLayer({
+                            'id': 'points',
+                            'type': 'circle',
+                            'source': {
+                                'type': 'geojson',
+                                'data': data,// use the data as the data source
+                                'cluster': true,
+                                'clusterMaxZoom': 2, // Max zoom to cluster points on
+                                'clusterRadius': 10 // Radius of each cluster when clustering points (defaults to 50)
+                            },
+                            'paint': {
+                                "circle-color": '#fbcb7b',
+                                "circle-opacity": .75,
+                                "circle-radius": 3
+                            }
+                        });
+                    }
+                });
+
+            </script>
 
 </body>
 
