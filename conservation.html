@@ -10,57 +10,51 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.css' rel='stylesheet' />
+
     <style>
-        a {
-            color: rgb(65, 225, 92);
-        }
-
         body {
-            margin: 0;
-            padding: 0;
-            background-color: rgba(0, 0, 0, .8);
-
+            padding-top: 0;
         }
 
         #map {
-            position: absolute;
-            top: 0;
-            bottom: 0;
+            padding: 0;
+            position: fixed;
             width: 100%;
+            height: 100%;
         }
 
-        body {
+        .navbar-header {
             padding-top: 0rem;
             width: 26rem;
         }
 
-        .navbar-header {
-            min-height: 60px;
-            z-index: 10000;
+        .overlay {
+            width: 7rem;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
         }
 
-        .navbar-chapters {
-            background-color: rgba(25, 25, 25, 0.493);
-            position: fixed;
-            min-height: 40rem;
-            width: 12%;
-            right: 0rem;
-            top: 0rem;
-            z-index: 10000;
+        .overlay-chapters {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            padding-left: 1rem;
         }
 
-        .navbar-nav-chapters {
-
-            background: red;
-            min-height: 40rem;
-            right: 10rem;
-            top: 10%;
+        .overlay-item {
+            padding-top: 2rem;
+        }
+       
+        a.img-hover:hover img {
+            opacity: 0.3;
         }
     </style>
 </head>
 
 <body>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -95,31 +89,47 @@
                     </li>
                 </ul>
             </div>
-    </div>
+    </div><!-- /.navbar-header -->
 
-    <div class="navbar-chapters">
-        <ul class="navbar-nav-chapters">
-            <li class="nav-chapters-item">
-                <img src="/pics/story.png" alt="pages" height="80px" width="80px">
-                <a class="nav-link" href="#">STORY</a>
+    <!-- <div class="container">
+        <div class="starter-template">
+            <h1>Bootstrap starter template</h1>
+            <p class="lead">Use this project.<br> All</p>
+        </div> 
+    </div>/.container -->
+
+    <div class="overlay">
+        <ul class="overlay-chapters">
+            <li class="overlay-item">
+                <a href="https://getbootstrap.com" class="img-hover">
+                    <img src="pics/story.png" alt="HTML tutorial" style="width:90px;height:90px;">
+                </a>
             </li>
-            <li class="nav-chapters-item">
-                <img src="/pics/gallery.png" alt="pages" height="80px" width="80px">
-                <a class="nav-link" href="#">GALLERY</a>
+            <li class="overlay-item">
+                <a href="https://getbootstrap.com" class="img-hover">
+                    <img src="pics/gallery.png" alt="HTML tutorial" style="width:90px;height:90px;">
+                </a>
             </li>
-            <li class="nav-chapters-item">
-                <img src="/pics/explore.png" alt="pages" height="80px" width="80px">
-                <a class="nav-link" href="#">EXPLORE</a>
+            <li class="overlay-item">
+                <a href="https://getbootstrap.com" class="img-hover">
+                    <img src="pics/explore.png" alt="HTML tutorial" style="width:90px;height:90px;">
+                </a>
             </li>
         </ul>
     </div>
 
     <script>
+
         L.mapbox.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
         var map = L.mapbox.map('map')
             .setView([-15, -65], 3.5)
             .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/light-v9'));
+
+
+
+
     </script>
+
 </body>
 
 </html>
