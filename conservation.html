@@ -57,6 +57,8 @@
         }
 
         #features {
+            padding-top: 10%;
+            padding-bottom: 25%;
             width: 30%;
             margin-left: 10%;
             font-family: sans-serif;
@@ -68,7 +70,7 @@
             padding: 20px 25px;
             line-height: 25px;
             border-bottom: 1px solid #ddd;
-            opacity: 0.25;
+            opacity: 0.5;
             font-size: 13px;
         }
 
@@ -145,64 +147,63 @@
     </div>
 
     <div id='features'>
-        <section id='baker' class='active'>
-            <h3>221b Baker St.</h3>
-            <p>November 1895. London is shrouded in fog and Sherlock Holmes and Watson pass time restlessly awaiting
-                a new case. "The London criminal is certainly a dull fellow," Sherlock bemoans. "There have been
-                numerous petty thefts," Watson offers in response. Just then a telegram arrives from Sherlock's
-                brother Mycroft with a mysterious case.</p>
+        <section id='introduction' class='active'>
+            <h3>Conservation Areas in South America</h3>
+            <p></p>
         </section>
-        <section id='aldgate'>
-            <h3>Aldgate Station</h3>
-            <p>Arthur Cadogan West was found dead, head crushed in on train tracks at Aldgate Station at 6AM Tuesday
-                morning. West worked at Woolwich Arsenal on the Bruce-Partington submarine, a secret military
-                project. Plans for the submarine had been stolen and seven of the ten missing papers were found in
-                West's possession. Mycroft implores Sherlock to take the case and recover the three missing papers.
-            </p>
+        <section id='argentina'>
+            <h3>Argentina</h3>
+            <p>Argentina</p>
         </section>
-        <section id='london-bridge'>
-            <h3>London Bridge</h3>
-            <p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered
-                elsewhere, then moved to Aldgate Station to create the illusion that he was crushed on the tracks by
-                a train. On their way to Woolwich Sherlock dispatches a telegram to Mycroft at London Bridge: "Send
-                list of all foreign spies known to be in England, with full address."</p>
+        <section id='bolivia'>
+            <h3>Bolivia</h3>
+            <p>Bolivia</p>
         </section>
-        <section id='woolwich'>
-            <h3>Woolwich Arsenal</h3>
-            <p>While investigating at Woolwich Arsenal Sherlock learns that West did not have the three
-                keys&mdash;door, office, and safe&mdash;necessary to steal the papers. The train station clerk
-                mentions seeing an agitated West boarding the 8:15 train to London Bridge. Sherlock suspects West of
-                following someone who had access to the Woolwich chief's keyring with all three keys.</p>
+        <section id='brasil'>
+            <h3>Brasil</h3>
+            <p>Brasil</p>
         </section>
-        <section id='gloucester'>
-            <h3>Gloucester Road</h3>
-            <p>Mycroft responds to Sherlock's telegram and mentions several spies. Hugo Oberstein of 13 Caulfield
-                Gardens catches Sherlock's eye. He heads to the nearby Gloucester Road station to investigate and
-                learns that the windows of Caulfield Gardens open over rail tracks where trains stop frequently.</p>
+        <section id='chile'>
+            <h3>Chile</h3>
+            <p>Chile</p>
         </section>
-        <section id='caulfield-gardens'>
-            <h3>13 Caulfield Gardens</h3>
-            <p>Holmes deduces that the murderer placed West atop a stopped train at Caulfield Gardens. The train
-                traveled to Aldgate Station before West's body finally toppled off. Backtracking to the criminal's
-                apartment, Holmes finds a series of classified ads from <em>The Daily Telegraph</em> stashed away.
-                All are under the name Pierrot: "Monday night after nine. Two taps. Only ourselves. Do not be so
-                suspicious. Payment in hard cash when goods delivered."</p>
+        <section id='colombia'>
+            <h3>Colombia</h3>
+            <p>Colombia</p>
         </section>
-        <section id='telegraph'>
-            <h3>The Daily Telegraph</h3>
-            <p>Holmes and Watson head to The Daily Telegraph and place an ad to draw out the criminal. It reads:
-                "To-night. Same hour. Same place. Two taps. Most vitally important. Your own safety at stake.
-                Pierrot." The trap works and Holmes catches the criminal: Colonel Valentine Walter, the brother of
-                Woolwich Arsenal's chief. He confesses to working for Hugo Oberstein to obtain the submarine plans
-                in order to pay off his debts.</p>
+        <section id='ecuador'>
+            <h3>Ecuador</h3>
+            <p>Ecuador</p>
         </section>
-        <section id='charing-cross'>
-            <h3>Charing Cross Hotel</h3>
-            <p>Walter writes to Oberstein and convinces him to meet in the smoking room of the Charing Cross Hotel
-                where he promises additional plans for the submarine in exchange for money. The plan works and
-                Holmes and Watson catch both criminals.</p>
-            <small id="citation">
-                Adapted from <a href='http://www.gutenberg.org/files/2346/2346-h/2346-h.htm'>Project Gutenberg</a>
+        <section id='french guiana'>
+                <h3>French Guiana</h3>
+                <p>French Guiana</p>
+            </section>
+        <section id='guyana'>
+            <h3>Guyana</h3>
+            <p>Guyana</p>
+        </section>
+        <section id='paraguay'>
+            <h3>Paraguay</h3>
+            <p>Paraguay</p>
+        </section>
+        <section id='peru'>
+            <h3>Peru</h3>
+            <p>Peru</p>
+        </section>
+        <section id='surinam'>
+            <h3>Surinam</h3>
+            <p>Surinam</p>
+        </section>
+        <section id='uruguay'>
+            <h3>Uruguay</h3>
+            <p>Uruguay</p>
+        </section>
+        <section id='venezuela'>
+            <h3>Venezuela</h3>
+            <p>Venezuela</p>
+            <small id="THANK YOU">
+                Tank you! <a href='http://www.gutenberg.org/files/2346/2346-h/2346-h.htm'>Project Gutenberg</a>
             </small>
         </section>
     </div>
@@ -211,14 +212,19 @@
 
         mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
 
+
+
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/light-v9',
             center: [-65, -15],
-            zoom: 3.2
+            zoom: 3.2,
+
         });
 
- // <!-- DATA TO LOAD OCEAN TOPOJSON FILE WITH D3 -->
+
+
+        // <!-- DATA TO LOAD OCEAN TOPOJSON FILE WITH D3 -->
 
         // var colorCodes = {
         //     0: "#60a3b4",
@@ -280,26 +286,24 @@
         //         });
         //     }
 
-
         map.on('load', function () {
-//  request our GEOJSON data
-             d3.json('data/ocean.json')
-                 .then(function (data) {
-                     console.log(data);
-                     oceanMap(data);
-                 });
+            //  request our GEOJSON data
+            d3.json('data/ocean.json')
+                .then(function (data) {
+                    console.log(data);
+                    oceanMap(data);
+                });
 
+            function oceanMap(data) {
 
-             function oceanMap(data) {
+                var geojson = topojson.feature(data, data.objects.ocean);
 
-                 var geojson = topojson.feature(data, data.objects.ocean);
-          
                 map.addLayer({
-                     'id': 'ocean',
-                     'type': 'fill',
-                     'source': {
+                    'id': 'ocean',
+                    'type': 'fill',
+                    'source': {
                         'type': 'geojson',
-                         'data': geojson// use the data as the data source
+                        'data': geojson// use the data as the data source
                     },
                     'paint': {
                         "fill-outline-color": "hsla(337, 82%, 62%, 0)",
@@ -310,11 +314,11 @@
                             ["get", "depth"],
                             0, "#f2f8fa",
                             9000, "#a7ccd2"
-                         ],
-                         "fill-opacity": 0.4
+                        ],
+                        "fill-opacity": 0.4
                     }
                 });
-             }
+            }
 
             d3.json('data/polygons.json')
                 .then(function (data) {
@@ -324,7 +328,6 @@
 
             function polygonsMap(data) {
                 var geojson = topojson.feature(data, data.objects.merge_files_sim);
-                console.log(geojson);
 
                 map.addLayer({
                     'id': 'polygon',
@@ -347,7 +350,6 @@
                 });
 
             function pointsMap(data) {
-
                 map.addLayer({
                     'id': 'points',
                     'type': 'circle',
@@ -368,37 +370,61 @@
         });
 
         var chapters = {
-            'baker': {
-                center: [-51.925300, -14.235000],
-                zoom: 4,
+            'introduction': {
+                center: [-65, -15],
+                zoom: 3.2,
             },
-            'aldgate': {
-                center: [-63.588700, -16.290200],
-                zoom: 6,
-            },
-            'london-bridge': {
+            'argentina': {
                 center: [-63.6167, -38.4161],
-                zoom: 5
+                zoom: 3.5,
             },
-            'woolwich': {
-                center: [-58.4438, -23.4425],
-                zoom: 4,
+            'bolivia': {
+                center: [-63.5887, -16.2902],
+                zoom: 5,
             },
-            'gloucester': {
-                center: [-71.5430, -35.6751],
-                zoom: 3
+            'brasil': {
+                center: [-55.9253, -12.2350],
+                zoom: 3.8,
             },
-            'caulfield-gardens': {
-                center: [-66.5897, -6.4238],
+            'chile': {
+                center: [-71.5430, -38.4161],
+                zoom: 4
+            },
+            'colombia': {
+                center: [-74.2973, 2.5709],
+                zoom: 5,
+            },
+            'ecuador': {
+                center: [-78.1834, -1.8312],
+                zoom: 6
+            },
+            'french guiana': {
+                center: [-53.1258, 3.9339],
                 zoom: 6,
             },
-            'telegraph': {
-                center: [-74.2973, -4.5709],
+            'guyana': {
+                center: [-58.9302, 2.5904],
+                zoom: 5.5,
+            },
+            'paraguay': {
+                center: [-58.4438, -23.4425],
+                zoom: 5.5,
+            },
+            'peru': {
+                center: [-75.0152, -9.1900],
                 zoom: 5,
             },
-            'charing-cross': {
-                center: [-74.2973, -4.5709],
-                zoom: 5,
+            'surinam': {
+                center: [-55.9302, 2.3904],
+                zoom: 6,
+            },
+            'uruguay': {
+                center: [-45.7658 -22.5228],
+                zoom: 3,
+            },
+            'venezuela': {
+                center: [-66.5897, -6.4238],
+                zoom: 4,
             }
         };
 
@@ -414,7 +440,7 @@
             }
         };
 
-        var activeChapterName = 'baker';
+        var activeChapterName = 'introduction';
         function setActiveChapter(chapterName) {
             if (chapterName === activeChapterName) return;
 
@@ -429,7 +455,7 @@
         function isElementOnScreen(id) {
             var element = document.getElementById(id);
             var bounds = element.getBoundingClientRect();
-            return bounds.top < window.innerHeight && bounds.top > 0;
+            return bounds.bottom < window.innerHeight && bounds.top > 0;
         }
 
 
