@@ -82,6 +82,24 @@
             border-bottom: none;
             margin-bottom: 200px;
         }
+
+        /* .marker {
+            background-image: url('pics/frog_icon.png');
+            background-size: cover;
+            width: 20px;
+            height: 20px;
+            border-radius: 5%;
+            cursor: pointer;
+        }
+
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+
+        .mapboxgl-popup-content {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+        } */
     </style>
 </head>
 
@@ -101,7 +119,12 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
     <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
-    <!--end of  libraries to see if ocean loads-->
+
+    <!--scrolling libraries-->
+    <script src="lib/d3.js"></script>
+    <script src="js/scroller.js"></script>
+    <script src="js/sections.js"></script>
+
     <div id='map'></div>
 
     <div class="navbar-header">
@@ -176,9 +199,9 @@
             <p>Ecuador</p>
         </section>
         <section id='french guiana'>
-                <h3>French Guiana</h3>
-                <p>French Guiana</p>
-            </section>
+            <h3>French Guiana</h3>
+            <p>French Guiana</p>
+        </section>
         <section id='guyana'>
             <h3>Guyana</h3>
             <p>Guyana</p>
@@ -212,8 +235,6 @@
 
         mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
 
-
-
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/light-v9',
@@ -221,8 +242,6 @@
             zoom: 3.2,
 
         });
-
-
 
         // <!-- DATA TO LOAD OCEAN TOPOJSON FILE WITH D3 -->
 
@@ -337,8 +356,21 @@
                         'data': geojson// use the data as the data source
                     },
                     'paint': {
-                        "fill-color": "#b9d9c3",
-                        "fill-opacity": .75,
+                        "fill-color": [
+                            'match',
+                            ['get', 'IUCN_CAT'],
+                            'Ia', '#505160',
+                            'Ib', '#68829e',
+                            'II', '#aebd38',
+                            'III', '#598234',
+                            'IV', '#003b46',
+                            'V', '#07575b',
+                            'VI', '#66a5ad',
+                            'Not Reported', '#c4dfe6',
+                            'Not Applicable', '#a2c523',
+                            '#ccc'
+                        ],
+                        "fill-opacity": .5,
                     }
                 });
             }
@@ -355,16 +387,47 @@
                     'type': 'circle',
                     'source': {
                         'type': 'geojson',
-                        'data': data,// use the data as the data source
-                        'cluster': true,
-                        'clusterMaxZoom': 2, // Max zoom to cluster points on
-                        'clusterRadius': 10 // Radius of each cluster when clustering points (defaults to 50)
+                        'data': data// use the data as the data source
+                        //  'cluster': true,
+                        //  'clusterMaxZoom': 1, // Max zoom to cluster points on
+                        //  'clusterRadius': 1 // Radius of each cluster when clustering points (defaults to 50)
                     },
                     'paint': {
-                        "circle-color": '#fbcb7b',
-                        "circle-opacity": .75,
-                        "circle-radius": 3
-                    }
+                        'circle-radius': {
+                            'base': 1,
+                            'stops': [[3, 1], [8, 12]]
+                        },
+                        'circle-color': [
+                            'match',
+                            ['get', 'IUCN_CAT'],
+                            'Ia', '#505160',
+                            'Ib', '#68829e',
+                            'II', '#aebd38',
+                            'III', '#598234',
+                            'IV', '#003b46',
+                            'V', '#07575b',
+                            'VI', '#66a5ad',
+                            'Not Reported', '#c4dfe6',
+                            'Not Applicable', '#a2c523',
+                            '#ccc'
+                        ]
+                    },
+                    'circle-opacity': .6
+                });
+
+                // add markers to map
+                data.features.forEach(function (marker) {
+
+                    // create a HTML element for each feature
+                    var el = document.createElement('div');
+                    el.className = 'marker';
+
+                    // make a marker for each feature and add to the map
+                    new mapboxgl.Marker(el)
+                        .setLngLat(marker.geometry.coordinates)
+                        .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                            .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
+                        .addTo(map);
                 });
             }
         });
@@ -419,8 +482,8 @@
                 zoom: 6,
             },
             'uruguay': {
-                center: [-45.7658 -22.5228],
-                zoom: 3,
+                center: [-55.8117 - 32.5583],
+                zoom: 5,
             },
             'venezuela': {
                 center: [-66.5897, -6.4238],
@@ -455,9 +518,8 @@
         function isElementOnScreen(id) {
             var element = document.getElementById(id);
             var bounds = element.getBoundingClientRect();
-            return bounds.bottom < window.innerHeight && bounds.top > 0;
+            return bounds.top < window.innerHeight && bounds.top > 0;
         }
-
 
     </script>
 
