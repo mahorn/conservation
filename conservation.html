@@ -255,8 +255,6 @@
           </aside> -->
 
 
-
-
     <div id='features'>
         <section id='introduction' class='active'>
             <h3>Conservation Areas in South America</h3>
@@ -400,7 +398,7 @@
         //         });
         //     }
 
-       
+
 
         map.on('load', function () {
             //  request our GEOJSON data
@@ -467,41 +465,33 @@
                             'Not Applicable', '#a2c523',
                             '#ccc'
                         ],
+                        "fill-opacity": 0.3,
                     },
-                    "fill-opacity": 0.5
+                    
                 });
 
-                var popup = new mapboxgl.Popup({
-                    closeButton: false,
-                    closeOnClick: false
-                });
+                // var popup = new mapboxgl.Popup({
+                //     closeButton: false,
+                //     closeOnClick: false
+                // });
 
                 map.on('mousemove', 'polygon', function (e) {
-                     var features = map.queryRenderedFeatures(e.lngLat);
-                     map.getCanvas().style.cursor = 'pointer';
-                     popup.setLngLat(e.lngLat)
-                         .setHTML("Name: " + String(e.features[0].properties.NAME).toLocaleString())
+                    var features = map.queryRenderedFeatures(e.lngLat);
+                    map.getCanvas().style.cursor = 'pointer';
+                    popup.setLngLat(e.lngLat)
+                        .setHTML("Name: " + String(e.features[0].properties.NAME).toLocaleString())
                         .addTo(map)
-                 });
-                 map.on('mouseleave', 'polygon', function () {
-                     map.getCanvas().style.cursor = '';
-                     popup.remove();
-                 });
-             
-    
+                });
+                map.on('mouseleave', 'polygon', function () {
+                    map.getCanvas().style.cursor = '';
+                    popup.remove();
+                });
 
-                // console.log(geojson);
+            } //end of polygonsMap function
 
-               } //end of polygonsMap function
-
-
-            
-
-            
 
             d3.json('data/points.json')
                 .then(function (data) {
-                    // console.log(data);
                     pointsMap(data);
                 });
 
@@ -531,9 +521,10 @@
                             'Not Applicable', '#a2c523',
                             '#ccc'
                         ],
-                        'circle-radius': 10,
+                        'circle-radius': 6,
+                        'circle-opacity': .6,
                     },
-                    'circle-opacity': .6
+                    
                 });
 
                 var popup = new mapboxgl.Popup({
@@ -542,16 +533,16 @@
                 });
 
                 map.on('mousemove', 'points', function (e) {
-                     var features = map.queryRenderedFeatures(e.lngLat);
-                     map.getCanvas().style.cursor = 'pointer';
-                     popup.setLngLat(e.lngLat)
-                         .setHTML("Name: " + String(e.features[0].properties.NAME).toLocaleString())
+                    var features = map.queryRenderedFeatures(e.lngLat);
+                    map.getCanvas().style.cursor = 'pointer';
+                    popup.setLngLat(e.lngLat)
+                        .setHTML("Name: " + String(e.features[0].properties.NAME).toLocaleString())
                         .addTo(map)
-                 });
-                 map.on('mouseleave', 'points', function () {
-                     map.getCanvas().style.cursor = '';
-                     popup.remove();
-                 });
+                });
+                map.on('mouseleave', 'points', function () {
+                    map.getCanvas().style.cursor = '';
+                    popup.remove();
+                });
 
                 // add markers to map
                 // data.features.forEach(function (marker) {
@@ -597,8 +588,6 @@
 
             //FLY TO BOUNDS WHEN MAP LOADS ENDS
 
-
-            
 
         }); //end of map.on('load')
 
@@ -690,8 +679,6 @@
             var bounds = element.getBoundingClientRect();
             return bounds.top < window.innerHeight && bounds.top > 0;
         }
-
-
 
     </script>
 
