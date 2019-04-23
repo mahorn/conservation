@@ -32,24 +32,23 @@
             position: fixed;
         }
 
-        .overlay {
+        aside {
             width: 7rem;
             position: fixed;
             top: 0;
             right: 0;
             bottom: 0;
             background-color: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
         }
 
-        .overlay-chapters {
+        .aside-chapters {
             padding-top: 1rem;
             padding-bottom: 1rem;
             padding-left: 1rem;
         }
 
-        .overlay-item {
-            padding-top: 2rem;
+        .aside-item {
+            padding-top: 1rem;
         }
 
         a.img-hover:hover img {
@@ -64,6 +63,7 @@
             font-family: sans-serif;
             overflow-y: scroll;
             background-color: #fafafa;
+            z-index: 1000;
         }
 
         section {
@@ -90,9 +90,9 @@
             height: 20px;
             border-radius: 5%;
             cursor: pointer;
-        }
+        }  */
 
-        .mapboxgl-popup {
+        /* .mapboxgl-popup {
             max-width: 200px;
         }
 
@@ -121,9 +121,10 @@
     <script src="https://unpkg.com/topojson@3"></script>
 
     <!--scrolling libraries-->
-    <script src="lib/d3.js"></script>
+    <!-- <script src="lib/d3.js"></script>
     <script src="js/scroller.js"></script>
-    <script src="js/sections.js"></script>
+    <script src="js/sections.js"></script> -->
+
 
     <div id='map'></div>
 
@@ -149,25 +150,112 @@
             </div>
     </div><!-- /.navbar-header -->
 
-    <div class="overlay">
-        <ul class="overlay-chapters">
-            <li class="overlay-item">
+    <aside class="aside">
+        <ul class="aside-chapters">
+            <li class="aside-item">
                 <a href="https://getbootstrap.com" class="img-hover">
-                    <img src="pics/story.png" alt="HTML tutorial" style="width:90px;height:90px;">
-                </a>
+                    <img src="pics/story.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
             </li>
-            <li class="overlay-item">
+            <li class="aside-item">
                 <a href="https://getbootstrap.com" class="img-hover">
-                    <img src="pics/gallery.png" alt="HTML tutorial" style="width:90px;height:90px;">
-                </a>
+                    <img src="pics/gallery.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
             </li>
-            <li class="overlay-item">
+            <li class="aside-item">
                 <a href="https://getbootstrap.com" class="img-hover">
-                    <img src="pics/explore.png" alt="HTML tutorial" style="width:90px;height:90px;">
-                </a>
+                    <img src="pics/explore.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
             </li>
         </ul>
-    </div>
+    </aside>
+
+
+    <!-- <aside class="hide-chapters">
+            <nav id="module-links" class="">
+              <ul class="nav">
+                <li>
+                  <a href="#" data-moduleid='story' class="reveal-on-hover module-link module-link-story" title="Story"> 
+                    <div class="hide-on-hover hide-on-active icon-wwf_story"></div>
+                    <div class="show-on-hover show-on-active icon-wwf_story-hover"></div>
+                    <span class="hidden-xs hidden-sm">Story</span>
+                  </a>
+                  <ul class="story-nav hidden-xs hidden-sm">
+                    
+                    <li>
+                      <a href="#" data-chapterid='1' class="icon-wwf_nav-circle module-link-chapter"> </a>
+                    </li>
+            
+                    
+                    <li>
+                      <a href="#" data-chapterid='2' class="icon-wwf_nav-circle module-link-chapter"> </a>
+                    </li>
+                    
+        
+                    <li>
+                      <a href="#" data-chapterid='3' class="icon-wwf_nav-circle module-link-chapter"> </a>
+                    </li>
+        
+                    
+                    <li>
+                      <a href="#" data-chapterid='4' class="icon-wwf_nav-circle module-link-chapter"> </a>
+                    </li>
+                    
+                    <li>
+                      <a href="#" data-chapterid='5' class="icon-wwf_nav-circle module-link-chapter"> </a>
+                    </li>
+                    
+
+                    <li>
+                      <a href="#" data-chapterid='6' class="icon-wwf_nav-circle module-link-chapter"> </a>
+                    </li>
+                   
+                    
+                    <li>
+                      <a href="#" data-chapterid='7' class="icon-wwf_nav-circle module-link-chapter"> </a>
+                    </li>
+                    
+    
+                    <li>
+                      <a href="#" data-chapterid='8' class="icon-wwf_nav-circle module-link-chapter"> </a>
+                    </li>
+                    
+   
+                    <li>
+                      <a href="#" data-chapterid='9' class="icon-wwf_nav-circle module-link-chapter"> </a>
+                    </li>
+                    
+     
+                    <li>
+                      <a href="#" data-chapterid='10' class="icon-wwf_nav-circle module-link-chapter"> </a>
+                    </li>
+                    
+           
+                    
+                    <li>
+                      <a href="#" data-chapterid='11' class="icon-wwf_nav-circle module-link-chapter"> </a>
+                    </li>
+                    
+                    
+                  </ul>
+                </li><li>
+                  <a href="#" data-moduleid='gallery' class="reveal-on-hover module-link module-link-gallery" title="Gallery">
+                    <div class="hide-on-hover hide-on-active icon-wwf_gallery"></div>
+                    <div class="show-on-hover show-on-active icon-wwf_gallery-hover"></div>          
+                    <span class="hidden-xs hidden-sm">Gallery</span>          
+                  </a>
+                </li><li>
+                  <a href="#" data-moduleid='layers' class="reveal-on-hover module-link module-link-layers" title="Explore">
+                    <div class="hide-on-hover hide-on-active icon-wwf_explore"></div>
+                    <div class="show-on-hover show-on-active icon-wwf_explore-hover"></div>            
+                    <span class="hidden-xs hidden-sm">Explore</span>          
+                  </a>
+                </li>
+              </ul>
+            </nav>
+            <div class="placeholder-map-key"></div>
+            <nav id="other-links" class=""></nav>
+          </aside> -->
+
+
+
 
     <div id='features'>
         <section id='introduction' class='active'>
@@ -235,9 +323,16 @@
 
         mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
 
+        var categoriesGlobal = {
+            layers: [{ "value": "wildlife", "icon": "wildlife", "color": "#02B3BC" }, { "value": "vegetation", "icon": "vegetation", "color": "#524484" }, { "value": "landscape", "icon": "landscape", "color": "#4B5C65" }, { "value": "protected", "icon": "protected", "color": "#46DB91" }],
+            gallery: [{ "value": "wildlife", "icon": "wildlife", "color": "#02B3BC" }, { "value": "vegetation", "icon": "vegetation", "color": "#524484" }, { "value": "landscape", "icon": "landscape", "color": "#46DB91" }]
+        }
+
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/light-v9',
+            //     center: [2.28, 11.77], // starting position [lng, lat]
+            // zoom: 1.2 
             center: [-65, -15],
             zoom: 3.2,
 
@@ -305,11 +400,13 @@
         //         });
         //     }
 
+       
+
         map.on('load', function () {
             //  request our GEOJSON data
             d3.json('data/ocean.json')
                 .then(function (data) {
-                    console.log(data);
+                    // console.log(data);
                     oceanMap(data);
                 });
 
@@ -337,11 +434,11 @@
                         "fill-opacity": 0.4
                     }
                 });
-            }
+            } //end of oceanMap function
 
             d3.json('data/polygons.json')
                 .then(function (data) {
-                    console.log(data);
+                    // console.log(data);
                     polygonsMap(data);
                 });
 
@@ -370,14 +467,41 @@
                             'Not Applicable', '#a2c523',
                             '#ccc'
                         ],
-                        "fill-opacity": .5,
-                    }
+                    },
+                    "fill-opacity": 0.5
                 });
-            }
+
+                var popup = new mapboxgl.Popup({
+                    closeButton: false,
+                    closeOnClick: false
+                });
+
+                map.on('mousemove', 'polygon', function (e) {
+                     var features = map.queryRenderedFeatures(e.lngLat);
+                     map.getCanvas().style.cursor = 'pointer';
+                     popup.setLngLat(e.lngLat)
+                         .setHTML("Name: " + String(e.features[0].properties.NAME).toLocaleString())
+                        .addTo(map)
+                 });
+                 map.on('mouseleave', 'polygon', function () {
+                     map.getCanvas().style.cursor = '';
+                     popup.remove();
+                 });
+             
+    
+
+                // console.log(geojson);
+
+               } //end of polygonsMap function
+
+
+            
+
+            
 
             d3.json('data/points.json')
                 .then(function (data) {
-                    console.log(data);
+                    // console.log(data);
                     pointsMap(data);
                 });
 
@@ -388,15 +512,11 @@
                     'source': {
                         'type': 'geojson',
                         'data': data// use the data as the data source
-                        //  'cluster': true,
-                        //  'clusterMaxZoom': 1, // Max zoom to cluster points on
-                        //  'clusterRadius': 1 // Radius of each cluster when clustering points (defaults to 50)
+                        //   'cluster': true,
+                        //   'clusterMaxZoom': 4, // Max zoom to cluster points on
+                        //  'clusterRadius': 2 // Radius of each cluster when clustering points (defaults to 50)
                     },
                     'paint': {
-                        'circle-radius': {
-                            'base': 1,
-                            'stops': [[3, 1], [8, 12]]
-                        },
                         'circle-color': [
                             'match',
                             ['get', 'IUCN_CAT'],
@@ -410,27 +530,77 @@
                             'Not Reported', '#c4dfe6',
                             'Not Applicable', '#a2c523',
                             '#ccc'
-                        ]
+                        ],
+                        'circle-radius': 10,
                     },
                     'circle-opacity': .6
                 });
 
-                // add markers to map
-                data.features.forEach(function (marker) {
-
-                    // create a HTML element for each feature
-                    var el = document.createElement('div');
-                    el.className = 'marker';
-
-                    // make a marker for each feature and add to the map
-                    new mapboxgl.Marker(el)
-                        .setLngLat(marker.geometry.coordinates)
-                        .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-                            .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
-                        .addTo(map);
+                var popup = new mapboxgl.Popup({
+                    closeButton: false,
+                    closeOnClick: false
                 });
-            }
-        });
+
+                map.on('mousemove', 'points', function (e) {
+                     var features = map.queryRenderedFeatures(e.lngLat);
+                     map.getCanvas().style.cursor = 'pointer';
+                     popup.setLngLat(e.lngLat)
+                         .setHTML("Name: " + String(e.features[0].properties.NAME).toLocaleString())
+                        .addTo(map)
+                 });
+                 map.on('mouseleave', 'points', function () {
+                     map.getCanvas().style.cursor = '';
+                     popup.remove();
+                 });
+
+                // add markers to map
+                // data.features.forEach(function (marker) {
+
+                //     // create a HTML element for each feature
+                //     var el = document.createElement('div');
+                //     el.className = 'marker';
+
+                //     // make a marker for each feature and add to the map
+                //     new mapboxgl.Marker(el)
+                //         .setLngLat(marker.geometry.coordinates)
+                //         .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                //             .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
+                //         .addTo(map);
+                // });
+
+            } //end of function pointsMap
+
+
+
+            //FLY TO BOUNDS WHEN MAP LOADS
+
+            // map will flyTo the bounds provided
+            // map.fitBounds([-80.07,-1.02,-65.74,-15.53], {
+            //     padding: {
+            //         top: 12, bottom: 18, left: 12, right: 220
+            //     }
+            // });
+
+            // var onZoomend = function() {
+            //     // set the max bounds
+            //     map.setMaxBounds(map.getBounds())
+
+            //     // display the legend
+            //     d3.select('#legend').classed('none', false);
+
+            //     // remove the listener
+            //     map.off('zoomend', onZoomend);
+            // };
+
+            // // when the map is done zooming
+            // map.on('zoomend', onZoomend);
+
+            //FLY TO BOUNDS WHEN MAP LOADS ENDS
+
+
+            
+
+        }); //end of map.on('load')
 
         var chapters = {
             'introduction': {
@@ -520,6 +690,8 @@
             var bounds = element.getBoundingClientRect();
             return bounds.top < window.innerHeight && bounds.top > 0;
         }
+
+
 
     </script>
 
