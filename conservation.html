@@ -65,7 +65,6 @@
             overflow-y: scroll;
             background-color: #fafafa;
             z-index: 4000;
-
         }
 
         section {
@@ -85,15 +84,6 @@
             margin-bottom: 200px;
         }
 
-        /* .marker {
-            background-image: url('pics/frog_icon.png');
-            background-size: cover;
-            width: 20px;
-            height: 20px;
-            border-radius: 5%;
-            cursor: pointer;
-        }  */
-
         .mapboxgl-popup {
             max-width: 200px;
         }
@@ -105,16 +95,57 @@
             color: white;
         }
 
-        .img {
+        #toggle-button-story {
+            position: absolute;
+            display: none;
+            z-index: 4000;
+            right: 10%;
+            top: 0;
+            width: 20%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        #toggle-button-gallery {
+            position: absolute;
+            display: none;
+            z-index: 4000;
+            right: 10%;
+            top: 0;
+            width: 20%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        #toggle-button-explore {
+            position: absolute;
+            display: none;
+            z-index: 4000;
+            right: 10%;
+            top: 0;
+            width: 20%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        /* .marker {
+            background-image: url('pics/frog_icon.png');
+            background-size: cover;
+            width: 20px;
+            height: 20px;
+            border-radius: 5%;
+            cursor: pointer;
+        }  */
+
+        /* .img {
             top: 30%;
             position: absolute;
             margin-left: 50%;
             font-family: sans-serif;
             z-index: 4000;
-        }
+        } */
     </style>
 </head>
-
 
 <body>
     <!-- Optional JavaScript -->
@@ -138,12 +169,19 @@
     <script src="js/scroller.js"></script>
     <script src="js/sections.js"></script> -->
 
-
     <div id='map'>
         <!-- <a href="https://getbootstrap.com" class="img">
                 <img src="pics/introduction.png" alt="HTML tutorial" style='width:300px;height:300px'></a> -->
+        <div id='toggle-button-story'>
+            <p>STORY</p>
+        </div>
+        <div id='toggle-button-gallery'>
+            <p>GALLERY</p>
+        </div>
+        <div id='toggle-button-explore'>
+            <p>EXPLORE</p>
+        </div>
     </div>
-
 
     <div class="navbar-header z2">
         <nav class="navbar navbar-expand-md navbar-dark navbar-fixed-top bg-dark">
@@ -154,127 +192,27 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Take Action</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Language</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Take Action</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Language</a></li>
                 </ul>
-            </div>
+        </nav>
     </div>
 
     <aside class="aside z3">
         <ul class="aside-chapters">
-            <li class="aside-item">
-                <a href="https://getbootstrap.com" class="img-hover">
-                    <img src="pics/story.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
-            </li>
-            <li class="aside-item">
-                <a href="https://getbootstrap.com" class="img-hover">
-                    <img src="pics/gallery.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
-            </li>
-            <li class="aside-item">
-                <a href="https://getbootstrap.com" class="img-hover">
-                    <img src="pics/explore.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
-            </li>
+            <li class="aside-item"><a class="img-hover" id='icon-story'><img src="pics/story.png" alt="HTML tutorial"
+                        style="width:90px;height:90px;"></a></li>
+            <li class="aside-item"><a class="img-hover" id='icon-gallery'><img src="pics/gallery.png"
+                        alt="HTML tutorial" style="width:90px;height:90px;"></a></li>
+            <li class="aside-item"><a class="img-hover" id='icon-explore'><img src="pics/explore.png"
+                        alt="HTML tutorial" style="width:90px;height:90px;"></a></li>
         </ul>
         <div id='legend' class='absolute mt12 color-green-faint'>
             <div class='inline-block mb12 txt-m align-center mx12'>Conservation Areas IUCN</div>
             <ul class='color-green-faint txt-xxs mx18 align-l py2'></ul>
         </div>
     </aside>
-    </div>
-
-
-    <!-- <aside class="hide-chapters">
-            <nav id="module-links" class="">
-              <ul class="nav">
-                <li>
-                  <a href="#" data-moduleid='story' class="reveal-on-hover module-link module-link-story" title="Story"> 
-                    <div class="hide-on-hover hide-on-active icon-wwf_story"></div>
-                    <div class="show-on-hover show-on-active icon-wwf_story-hover"></div>
-                    <span class="hidden-xs hidden-sm">Story</span>
-                  </a>
-                  <ul class="story-nav hidden-xs hidden-sm">
-                    
-                    <li>
-                      <a href="#" data-chapterid='1' class="icon-wwf_nav-circle module-link-chapter"> </a>
-                    </li>
-            
-                    
-                    <li>
-                      <a href="#" data-chapterid='2' class="icon-wwf_nav-circle module-link-chapter"> </a>
-                    </li>
-                    
-        
-                    <li>
-                      <a href="#" data-chapterid='3' class="icon-wwf_nav-circle module-link-chapter"> </a>
-                    </li>
-        
-                    
-                    <li>
-                      <a href="#" data-chapterid='4' class="icon-wwf_nav-circle module-link-chapter"> </a>
-                    </li>
-                    
-                    <li>
-                      <a href="#" data-chapterid='5' class="icon-wwf_nav-circle module-link-chapter"> </a>
-                    </li>
-                    
-
-                    <li>
-                      <a href="#" data-chapterid='6' class="icon-wwf_nav-circle module-link-chapter"> </a>
-                    </li>
-                   
-                    
-                    <li>
-                      <a href="#" data-chapterid='7' class="icon-wwf_nav-circle module-link-chapter"> </a>
-                    </li>
-                    
-    
-                    <li>
-                      <a href="#" data-chapterid='8' class="icon-wwf_nav-circle module-link-chapter"> </a>
-                    </li>
-                    
-   
-                    <li>
-                      <a href="#" data-chapterid='9' class="icon-wwf_nav-circle module-link-chapter"> </a>
-                    </li>
-                    
-     
-                    <li>
-                      <a href="#" data-chapterid='10' class="icon-wwf_nav-circle module-link-chapter"> </a>
-                    </li>
-                    
-           
-                    
-                    <li>
-                      <a href="#" data-chapterid='11' class="icon-wwf_nav-circle module-link-chapter"> </a>
-                    </li>
-                    
-                    
-                  </ul>
-                </li><li>
-                  <a href="#" data-moduleid='gallery' class="reveal-on-hover module-link module-link-gallery" title="Gallery">
-                    <div class="hide-on-hover hide-on-active icon-wwf_gallery"></div>
-                    <div class="show-on-hover show-on-active icon-wwf_gallery-hover"></div>          
-                    <span class="hidden-xs hidden-sm">Gallery</span>          
-                  </a>
-                </li><li>
-                  <a href="#" data-moduleid='layers' class="reveal-on-hover module-link module-link-layers" title="Explore">
-                    <div class="hide-on-hover hide-on-active icon-wwf_explore"></div>
-                    <div class="show-on-hover show-on-active icon-wwf_explore-hover"></div>            
-                    <span class="hidden-xs hidden-sm">Explore</span>          
-                  </a>
-                </li>
-              </ul>
-            </nav>
-            <div class="placeholder-map-key"></div>
-            <nav id="other-links" class=""></nav>
-          </aside> -->
 
     <div id='features'>
         <section id='introduction' class='active'>
@@ -447,35 +385,25 @@
 
 
             function addLegend(data) {
-                // build it an object for associated range value  
-                // with the solar cal descriptions from the data
                 var geojson = topojson.feature(data, data.objects.merge_files_sim);
-                console.log(geojson);
                 var labelCodes = {},
                     code;
-                // loop through all the features
 
                 geojson.features.forEach(function (feature) {
-                    // shortcut for the code
                     code = feature.properties.IUCN_CAT;
-                    // if it's not in our labelsCodes object yet
                     if (!labelCodes[code]) {
-                        // create it and assign the solar cal description
                         labelCodes[code] = feature.properties.IUCN_CAT;
                     }
                 })
-                // empty string for building our list items
                 var listItems = '';
-                // loop through all the colorCodes
                 for (var code in colorAreas) {
                     listItems += "<li class='li h-full txt-m'><span class='w24 h18 fl mr12' style='background:" +
                         colorAreas[code] + "'></span>" + labelCodes[code] + "</li>"
                 }
-                // select the legend ul element and insert the HTML list items
                 d3.select("#legend ul").html(listItems);
-                // add legend to map
                 d3.select('#legend').classed('none', false);
-            }
+
+            } //end of addLegend function
 
             d3.json('data/points.json')
                 .then(function (data) {
@@ -529,8 +457,8 @@
                     map.getCanvas().style.cursor = '';
                     popup.remove();
                 });
-            } //end of function pointsMap
 
+            } //end of function pointsMap
 
 
             // var onZoomend = function () {
@@ -554,7 +482,6 @@
             //             .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
             //         .addTo(map);
             // });
-
 
 
         }); //end of map.on('load')
@@ -619,7 +546,6 @@
             }
         };
 
-        // On every scroll event, check which element is on screen
         window.onscroll = function () {
             var chapterNames = Object.keys(chapters);
             for (var i = 0; i < chapterNames.length; i++) {
@@ -644,8 +570,18 @@
         function isElementOnScreen(id) {
             var element = document.getElementById(id);
             var bounds = element.getBoundingClientRect();
-            return bounds.top < window.innerHeight && bounds.top > 0;
+            return bounds.top < window.innerHeight && bounds.bottom > 0;
         }
+
+        $('#icon-story').click(function () {
+            $('#toggle-button-story').toggle();
+        });
+        $('#icon-gallery').click(function () {
+            $('#toggle-button-gallery').toggle();
+        });
+        $('#icon-explore').click(function () {
+            $('#toggle-button-explore').toggle();
+        });
 
     </script>
 
