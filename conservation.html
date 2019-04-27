@@ -40,6 +40,7 @@
             right: 0;
             bottom: 0;
             background-color: rgb(0, 0, 0);
+            overflow-y: scroll;
         }
 
         .aside-chapters {
@@ -128,7 +129,7 @@
             background: #F4FAF2;
         }
 
-         /* .marker { 
+        /* .marker { 
             background-image: url('pics/frog_icon.png');
             background-size: cover;
             width: 20px;
@@ -176,15 +177,16 @@
             <p>STORY</p>
         </div>
         <div id='toggle-button-gallery'>
-                <div class="col-md-8 px-12">
-                        <h1 class="h4 font-weight-bold inline-text align-center mt48 mb12">NATURE OF WONDER</h1>
-                        <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-                        <p class="lead mb-0"><a href="#" class="text-black font-weight-bold">Continue reading...</a></p>
-                       <a class="img"><img src="pics/frog_legend.png" alt="HTML tutorial"></a>
-                       <a class="img"><img src="pics/fruit_legend.png" alt="HTML tutorial"></a>
-                       <a class="img"><img src="pics/landscape_legend.png" alt="HTML tutorial"></a>
-                       <a class="img"><img src="pics/picture_legend.png" alt="HTML tutorial"></a>
-                      </div>
+            <div class="col-md-8 px-12">
+                <h1 class="h4 font-weight-bold inline-text align-center mt48 mb12">NATURE OF WONDER</h1>
+                <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and
+                    efficiently about what’s most interesting in this post’s contents.</p>
+                <p class="lead mb-0"><a href="#" class="text-black font-weight-bold">Continue reading...</a></p>
+                <a class="img"><img src="pics/frog_legend.png" alt="HTML tutorial"></a>
+                <a class="img"><img src="pics/fruit_legend.png" alt="HTML tutorial"></a>
+                <a class="img"><img src="pics/landscape_legend.png" alt="HTML tutorial"></a>
+                <a class="img"><img src="pics/picture_legend.png" alt="HTML tutorial"></a>
+            </div>
         </div>
         <div id='toggle-button-explore'>
             <p>EXPLORE</p>
@@ -586,10 +588,18 @@
         });
         $('#icon-gallery').click(function () {
             $('#toggle-button-gallery').toggle();
+            map.fitBounds([-100.07, -1.02, -80.74, 2.63], {
+                 zoom: 6,
+            });
         });
+
+
         $('#icon-explore').click(function () {
             $('#toggle-button-explore').toggle();
         });
+
+
+
 
     </script>
 
