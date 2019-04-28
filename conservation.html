@@ -102,7 +102,7 @@
             z-index: 4000;
             right: 10%;
             top: 0;
-            width: 25%;
+            width: 28%;
             height: 100%;
             background: #F4FAF2;
         }
@@ -113,7 +113,7 @@
             z-index: 4000;
             right: 10%;
             top: 0;
-            width: 25%;
+            width: 28%;
             height: 100%;
             background: #F4FAF2;
         }
@@ -124,7 +124,7 @@
             z-index: 4000;
             right: 10%;
             top: 0;
-            width: 25%;
+            width: 28%;
             height: 100%;
             background: #F4FAF2;
         }
@@ -177,15 +177,19 @@
             <p>STORY</p>
         </div>
         <div id='toggle-button-gallery'>
-            <div class="col-md-8 px-12">
-                <h1 class="h4 font-weight-bold inline-text align-center mt48 mb12">NATURE OF WONDER</h1>
-                <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and
-                    efficiently about what’s most interesting in this post’s contents.</p>
-                <p class="lead mb-0"><a href="#" class="text-black font-weight-bold">Continue reading...</a></p>
-                <a class="img"><img src="pics/frog_legend.png" alt="HTML tutorial"></a>
-                <a class="img"><img src="pics/fruit_legend.png" alt="HTML tutorial"></a>
-                <a class="img"><img src="pics/landscape_legend.png" alt="HTML tutorial"></a>
-                <a class="img"><img src="pics/picture_legend.png" alt="HTML tutorial"></a>
+            <div class="col-md-9 px-12 mt36 ml24 align-justify h20 inline-text">
+                <h1 class="h4 font-weight-bold inline-text align-center">A NATURE OF WONDER</h1>
+                <p class="lead my-3">All life, including our own, depends on a fully functional planet to survive and
+                    thrive. Biodiversity, the vast array of plants, animals, and ecosystems, is the life support system
+                    of our planet and underpins the healthy ecosystems that provides us food, clean air and water,
+                    stable climate, and medicines.
+                </p>
+                <p class="lead mb-0">Click on the map markers to view a specific photograph. You can also filter media
+                    items by category.</p>
+                <a class="img mt12"><img src="pics/frog_legend.png" alt="Wildlife icon"></a>
+                <a class="img"><img src="pics/fruit_legend.png" alt="Vegetation icon"></a>
+                <a class="img"><img src="pics/landscape_legend.png" alt="Lanscape icon"></a>
+                <a class="img"><img src="pics/picture_legend.png" alt="Photograph icon"></a>
             </div>
         </div>
         <div id='toggle-button-explore'>
@@ -589,7 +593,7 @@
         $('#icon-gallery').click(function () {
             $('#toggle-button-gallery').toggle();
             map.fitBounds([-100.07, -1.02, -80.74, 2.63], {
-                 zoom: 6,
+                zoom: 6,
             });
         });
 
