@@ -159,7 +159,14 @@
         .landscape-img-text {
             color: tomato;
             font-size: 12px;
-            margin-left: 18px;
+            margin-left: 34px;
+            margin-top: 24px;
+        }
+        
+        .bird-img-text {
+            color: tomato;
+            font-size: 12px;
+            margin-left: 30px;
             margin-top: 24px;
         }
         
@@ -204,21 +211,24 @@
             <p>STORY</p>
         </div>
         <div id='toggle-button-gallery'>
-            <div class="col-md-9 px-12 mt36 ml24">
+            <div class="col-md-9 px-12 mt30 ml24">
                 <h1 class="title-gallery h4 font-weight-bold mr24 color-green-faint align-center">A NATURE OF WONDER
                 </h1>
-                <p class="text-gallery lead mr24 my-4 align-center">Biodiversity, the vast array of plants, animals, and ecosystems, is the life support system of our planet and underpins the healthy ecosystems that provides us food, clean air and water, stable climate, and medicines.</p>
+                <p class="text-gallery lead mr24 my-3 align-center">Biodiversity, the vast array of plants, animals, and ecosystems, is the life support system of our planet and underpins the healthy ecosystems that provides us food, clean air and water, stable climate, and medicines.</p>
                 <p class="text-gallery-footer lead my-4 align-center mr24">Click on the map markers to view a specific photograph.
                 </p>
                 <ul class="images-hover">
-                    <a class="hover-icons lead my-2 frog-img mx-auto ml12 d-block"><img src="pics/frog_legend.png" alt="Wildlife icon">
-                        <p class="frog-img-text inline-block">Wildife</p>
+                    <a class="hover-icons frog-img mx-auto ml12 d-block"><img src="pics/amphibian.png" alt="Amphibian icon">
+                        <p class="frog-img-text inline-block">Amphibians</p>
                     </a>
-                    <a class="hover-icons mx-auto d-block ml12"><img src="pics/fruit_legend.png" alt="Vegetation icon">
-                        <p class="fruit-img-text inline-block">Vegetation</p>
+                    <a class="hover-icons mx-auto d-block ml12"><img src="pics/reptile.png" alt="Reptile icon">
+                        <p class="fruit-img-text inline-block">Reptiles</p>
                     </a>
-                    <a class="hover-icons mx-auto d-block my-2"><img src="pics/landscape_legend.png" alt="Lanscape icon">
-                        <p class="landscape-img-text inline-block">Landscape</p>
+                    <a class="hover-icons mx-auto d-block my-3 mx18"><img src="pics/mammal.png" alt="Mammal icon">
+                        <p class="landscape-img-text inline-block">Mammals</p>
+                    </a>
+                    <a class="hover-icons mx-auto d-block my-3 mx30"><img src="pics/bird.png" alt="Bird icon">
+                        <p class="bird-img-text inline-block">Birds</p>
                     </a>
                 </ul>
             </div>
@@ -472,12 +482,15 @@
                                 updateImportant = 'Ib'
                             }
 
+
                         });
 
-
-
                     }); // end of jquery selection icon-gallery
+
+                    return (updateMap);
+
                 } //end of updateMap function
+
 
                 d3.json('data/points.json')
                     .then(function(data) {
