@@ -48,15 +48,11 @@
             padding-left: 3rem;
         }
         
-        .aside-item {
+        .aside-icons {
             padding-top: 0.5rem;
         }
         
-        a.img-hover:hover img {
-            opacity: 0.6;
-        }
-        
-        a.hover-icons:hover img {
+        a.icon-hover:hover img {
             opacity: 0.6;
         }
         
@@ -99,7 +95,7 @@
             color: white;
         }
         
-        #toggle-button-story {
+        #aside-icon-story {
             position: absolute;
             display: none;
             z-index: 4000;
@@ -110,7 +106,7 @@
             background: #F4FAF2;
         }
         
-        #toggle-button-gallery {
+        #aside-icon-gallery {
             position: absolute;
             display: none;
             z-index: 4000;
@@ -121,7 +117,7 @@
             background: #F4FAF2;
         }
         
-        #toggle-button-explore {
+        #aside-icon-explore {
             position: absolute;
             display: none;
             z-index: 4000;
@@ -142,29 +138,29 @@
             font-size: 12px;
         }
         
-        .frog-img-text {
-            color: tomato;
+        .amphibian-img-text {
+            color: #344d90;
             font-size: 12px;
             margin-left: 24px;
             margin-top: 8px;
         }
         
-        .fruit-img-text {
-            color: tomato;
+        .reptile-img-text {
+            color: #e7552c;
             font-size: 12px;
             margin-left: 18px;
             margin-top: 20px;
         }
         
-        .landscape-img-text {
-            color: tomato;
+        .mammal-img-text {
+            color: #ffb745;
             font-size: 12px;
             margin-left: 34px;
             margin-top: 24px;
         }
         
         .bird-img-text {
-            color: tomato;
+            color: #5cc5ef;
             font-size: 12px;
             margin-left: 30px;
             margin-top: 24px;
@@ -207,33 +203,32 @@
     <div id='map'>
         <!-- <a href="https://getbootstrap.com" class="img">
                 <img src="pics/introduction.png" alt="HTML tutorial" style='width:300px;height:300px'></a> -->
-        <div id='toggle-button-story'>
+        <div id='aside-icon-story'>
             <p>STORY</p>
         </div>
-        <div id='toggle-button-gallery'>
+        <div id='aside-icon-gallery'>
             <div class="col-md-9 px-12 mt30 ml24">
-                <h1 class="title-gallery h4 font-weight-bold mr24 color-green-faint align-center">A NATURE OF WONDER
-                </h1>
+                <h1 class="title-gallery h4 font-weight-bold mr24 color-green-faint align-center">A NATURE OF WONDER</h1>
                 <p class="text-gallery lead mr24 my-3 align-center">Biodiversity, the vast array of plants, animals, and ecosystems, is the life support system of our planet and underpins the healthy ecosystems that provides us food, clean air and water, stable climate, and medicines.</p>
-                <p class="text-gallery-footer lead my-4 align-center mr24">Click on the map markers to view a specific photograph.
+                <p class="text-gallery-footer lead my-4 align-center mr24">Click icons to view critically endangered species.
                 </p>
                 <ul class="images-hover">
-                    <a class="hover-icons frog-img mx-auto ml12 d-block"><img src="pics/amphibian.png" alt="Amphibian icon">
-                        <p class="frog-img-text inline-block">Amphibians</p>
+                    <a class="icon-hover frog-img mx-auto ml12 d-block"><img src="pics/amphibian.png" alt="Amphibian icon" id="amphibian">
+                        <p class="amphibian-img-text inline-block">Amphibians</p>
                     </a>
-                    <a class="hover-icons mx-auto d-block ml12"><img src="pics/reptile.png" alt="Reptile icon">
-                        <p class="fruit-img-text inline-block">Reptiles</p>
+                    <a class="icon-hover mx-auto d-block ml12"><img src="pics/reptile.png" alt="Reptile icon" id="reptile">
+                        <p class="reptile-img-text inline-block">Reptiles</p>
                     </a>
-                    <a class="hover-icons mx-auto d-block my-3 mx18"><img src="pics/mammal.png" alt="Mammal icon">
-                        <p class="landscape-img-text inline-block">Mammals</p>
+                    <a class="icon-hover mx-auto d-block my-3 mx18"><img src="pics/mammal.png" alt="Mammal icon" id="mammal">
+                        <p class="mammal-img-text inline-block">Mammals</p>
                     </a>
-                    <a class="hover-icons mx-auto d-block my-3 mx30"><img src="pics/bird.png" alt="Bird icon">
+                    <a class="icon-hover mx-auto d-block my-3 mx30"><img src="pics/bird.png" alt="Bird icon" id="bird">
                         <p class="bird-img-text inline-block">Birds</p>
                     </a>
                 </ul>
             </div>
         </div>
-        <div id='toggle-button-explore'>
+        <div id='aside-icon-explore'>
             <p>EXPLORE</p>
         </div>
     </div>
@@ -255,14 +250,14 @@
 
         <aside class="aside z3">
             <ul class="aside-chapters">
-                <li class="aside-item">
-                    <a class="img-hover" id='icon-story'><img src="pics/story.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
+                <li class="aside-icons">
+                    <a class="icon-hover" id='icon-story'><img src="pics/story.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
                 </li>
-                <li class="aside-item">
-                    <a class="img-hover" id='icon-gallery'><img src="pics/gallery.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
+                <li class="aside-icons">
+                    <a class="icon-hover" id='icon-gallery'><img src="pics/gallery.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
                 </li>
-                <li class="aside-item">
-                    <a class="img-hover" id='icon-explore'><img src="pics/explore.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
+                <li class="aside-icons">
+                    <a class="icon-hover" id='icon-explore'><img src="pics/explore.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
                 </li>
             </ul>
             <div id='legend' class='absolute mt12 color-green-faint'>
@@ -343,6 +338,8 @@
                 zoom: 2.6,
             });
 
+            var allLayers = ['polygon', 'points', 'wildlife'];
+
             var colorAreas = {
                 'Ia': '#505160',
                 'Ib': '#68829e',
@@ -396,6 +393,7 @@
                     .then(function(data) {
                         polygonsMap(data);
                         addLegend(data);
+
                     });
 
                 function polygonsMap(data) {
@@ -468,7 +466,9 @@
 
                 } //end of addLegend function
 
-                d3.json('data/points.json')
+
+
+                var mapPoints = d3.json('data/points.json')
                     .then(function(data) {
                         pointsMap(data);
                     });
@@ -523,8 +523,6 @@
                 } //end of function pointsMap
 
 
-
-
                 d3.json('data/wildlife.json')
                     .then(function(data) {
                         wildlifeMap(data);
@@ -572,9 +570,6 @@
                     });
 
 
-
-
-
                 } //end of wildlifeMap function
 
 
@@ -603,9 +598,6 @@
                 //         .addTo(map);
                 // });
                 // var marker = new L.Marker(data.getBounds().getCenter()).addTo(map);
-
-
-
 
             }); //end of map.on('load')
 
@@ -696,20 +688,32 @@
                 return bounds.top < window.innerHeight && bounds.bottom > 0;
             }
 
+
+
             $('#icon-story').click(function() {
-                $('#toggle-button-story').toggle();
+                $('#aside-icon-story').toggle();
             });
 
 
             $('#icon-gallery').click(function() {
-                var updateImportant = $('#toggle-button-gallery').toggle().val();
+                $('#aside-icon-gallery').toggle();
                 map.fitBounds([-75, -10, -25, -15], {
                     zoom: 2.6,
                 });
+
             }); // end of jquery selection icon-gallery
 
+            $('#amphibian').click(function() {
+                $('#aside-icon-gallery').toggle();
+                map.fitBounds([-75, -10, -25, -15], {
+                    zoom: 6,
+                });
+
+            }); // end of jquery selection amphibian icon
+
+
             $('#icon-explore').click(function() {
-                $('#toggle-button-explore').toggle();
+                $('#aside-icon-explore').toggle();
             });
         </script>
 
