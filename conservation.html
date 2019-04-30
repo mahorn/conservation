@@ -355,6 +355,13 @@
                 'Not Applicable': '#a2c523'
             }
 
+            var colorWildlife = {
+                'amphibians-filtered': '#344d90',
+                'birds': '#5cc5ef',
+                'mammals-filterd': '#ffb745',
+                'reptiles-filtered': '#e7552c'
+            }
+
             map.on('load', function() {
                 d3.json('data/ocean.json')
                     .then(function(data) {
@@ -389,7 +396,6 @@
                     .then(function(data) {
                         polygonsMap(data);
                         addLegend(data);
-                        updateMap(data);
                     });
 
                 function polygonsMap(data) {
@@ -462,36 +468,6 @@
 
                 } //end of addLegend function
 
-                function updateMap(data) {
-                    var geojson = topojson.feature(data, data.objects.merge_files_sim);
-                    var code;
-
-                    $('#icon-gallery').click(function() {
-
-                        var updateImportant = $('#toggle-button-gallery').toggle().val();
-                        map.fitBounds([-75, -10, -25, -15], {
-                            zoom: 2.6,
-                        });
-
-                        geojson.features.forEach(function(feature) {
-                            code = feature.properties.IUCN_CAT;
-                            if (code === "Ia") {
-                                updateImportant = 'Ia'
-                            }
-                            if (code === "Ib") {
-                                updateImportant = 'Ib'
-                            }
-
-
-                        });
-
-                    }); // end of jquery selection icon-gallery
-
-                    return (updateMap);
-
-                } //end of updateMap function
-
-
                 d3.json('data/points.json')
                     .then(function(data) {
                         pointsMap(data);
@@ -544,13 +520,65 @@
                         popup.remove();
                     });
 
-
-
-
-
-
-
                 } //end of function pointsMap
+
+
+
+
+                d3.json('data/wildlife.json')
+                    .then(function(data) {
+                        wildlifeMap(data);
+                    });
+
+                function wildlifeMap(data) {
+                    map.addLayer({
+                        'id': 'wildlife',
+                        'type': 'fill',
+                        'source': {
+                            'type': 'geojson',
+                            'data': data
+                        },
+                        'paint': {
+                            "fill-color": [
+                                'match', ['get', 'layer'],
+                                'amphibians-filtered', '#344d90',
+                                'birds', '#5cc5ef',
+                                'mammals-filterd', '#ffb745',
+                                'reptiles-filtered', '#e7552c',
+                                '#ccc'
+                            ],
+                            "fill-opacity": 0.4,
+                        },
+                    });
+
+
+
+                    var popup = new mapboxgl.Popup({
+                        closeButton: false,
+                        closeOnClick: false
+                    });
+
+                    map.on('mousemove', 'wildlife', function(e) {
+                        var features = map.queryRenderedFeatures(e.lngLat);
+
+                        map.getCanvas().style.cursor = 'pointer';
+                        popup.setLngLat(e.lngLat)
+                            .setHTML(String(e.features[0].properties.binomial).toLocaleString())
+                            .addTo(map)
+                    });
+                    map.on('mouseleave', 'wildlife', function() {
+                        map.getCanvas().style.cursor = '';
+                        popup.remove();
+                    });
+
+
+
+
+
+                } //end of wildlifeMap function
+
+
+
 
 
                 // var onZoomend = function () {
@@ -574,6 +602,9 @@
                 //             .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
                 //         .addTo(map);
                 // });
+                // var marker = new L.Marker(data.getBounds().getCenter()).addTo(map);
+
+
 
 
             }); //end of map.on('load')
@@ -669,34 +700,13 @@
                 $('#toggle-button-story').toggle();
             });
 
-            // $('#icon-gallery').click(function() {
-            //     $('#toggle-button-gallery').toggle();
-            //     map.fitBounds([-75, -10, -25, -15], {
-            //         zoom: 2.6,
-            //     });
 
-
-
-
-
-
-            // data.features.forEach(function (marker) {
-            //             //     // create a HTML element for each feature
-            //             var el = document.createElement('div');
-            //             el.className = 'marker';
-            //             //     // make a marker for each feature and add to the map
-            //             new mapboxgl.Marker(el)
-            //                 .setLngLat(marker.geometry.coordinates)
-            //                 .setPopup(new mapboxgl.Popup({ offset: 25 })) // add popups
-            //                 .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>')
-            //                 .addTo(map);
-            //         });
-
-            // });
-
-
-            // }); //icon-gallery
-
+            $('#icon-gallery').click(function() {
+                var updateImportant = $('#toggle-button-gallery').toggle().val();
+                map.fitBounds([-75, -10, -25, -15], {
+                    zoom: 2.6,
+                });
+            }); // end of jquery selection icon-gallery
 
             $('#icon-explore').click(function() {
                 $('#toggle-button-explore').toggle();
