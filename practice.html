@@ -61,6 +61,7 @@
             padding-bottom: 25%;
             width: 20%;
             margin-left: 10%;
+            display: none;
             font-family: sans-serif;
             overflow-y: scroll;
             background-color: #fafafa;
@@ -93,17 +94,6 @@
             font-family: 'Open Sans', sans-serif;
             background: rgba(0, 0, 0, 0.6);
             color: white;
-        }
-        
-        #aside-icon-story {
-            position: absolute;
-            display: none;
-            z-index: 4000;
-            right: 10%;
-            top: 0;
-            width: 28%;
-            height: 100%;
-            background: #F4FAF2;
         }
         
         #aside-icon-gallery {
@@ -174,13 +164,6 @@
             border-radius: 5%;
             cursor: pointer;
         }
-        /* .img {
-            top: 30%;
-            position: absolute;
-            margin-left: 50%;
-            font-family: sans-serif;
-            z-index: 4000;
-        } */
         
         #icon a:active {
             background-color: #3887be;
@@ -188,27 +171,19 @@
         }
         
         #icon a:active :hover {
-            background-color: red;
+            background-color: #3887be;
             color: #ffffff;
         }
         
         #icon a:last-child {
             border: none;
         }
-        /* #icon {
-            position: absolute;
-            z-index: 4000;
-            right: 80%;
-            top: 10%;
-        } */
-        /* #icon1 {
-            position: absolute;
-            z-index: 4000;
-            right: 50%;
-            top: 50%;
-        } */
         
         .layer-icons {
+            color: #ffb745;
+        }
+        
+        span {
             color: #ffb745;
         }
     </style>
@@ -234,35 +209,7 @@
         <!-- <a href="https://getbootstrap.com" class="img">
                 <img src="pics/introduction.png" alt="HTML tutorial" style='width:300px;height:300px'></a> -->
 
-        <div id='aside-icon-story'>
-
-            <div class="col-md-9 px-12 mt30 ml24">
-                <h1 class="title-gallery h4 font-weight-bold mr24 color-green-faint align-center">A NATURE OF WONDER</h1>
-                <p class="text-gallery lead mr24 my-3 align-center">Biodiversity, the vast array of plants, animals, and ecosystems, is the life support system of our planet and underpins the healthy ecosystems that provides us food, clean air and water, stable climate, and medicines.</p>
-                <p class="text-gallery-footer lead my-4 align-center mr24">Click icons to view critically endangered species.
-                </p>
-                <ul class="images-hover">
-                    <a class="icon-hover mx-auto d-block ml12"><img src="pics/reptile.png" alt="Reptile icon" id="reptile">
-                        <p class="reptile-img-text inline-block">Reptiles</p>
-                    </a>
-                    <a class="icon-hover mx-auto d-block ml12"><img src="pics/reptile.png" alt="Reptile icon" id="reptile">
-                        <p class="reptile-img-text inline-block">Reptiles</p>
-                    </a>
-                    <a class="icon-hover mx-auto d-block my-3 mx18"><img src="pics/mammal.png" alt="Mammal icon" id="mammal">
-                        <p class="mammal-img-text inline-block">Mammals</p>
-                    </a>
-                    <a class="icon-hover mx-auto d-block my-3 mx30"><img src="pics/bird.png" alt="Bird icon" id="bird">
-                        <p class="bird-img-text inline-block">Birds</p>
-                    </a>
-                </ul>
-            </div>
-
-        </div>
-
-
-
         <div id='aside-icon-gallery'>
-
             <div class="col-md-9 px-12 mt30 ml24">
                 <h1 class="title-gallery h4 font-weight-bold mr24 color-green-faint align-center">A NATURE OF WONDER</h1>
                 <p class="text-gallery lead mr24 my-3 align-center">Biodiversity, the vast array of plants, animals, and ecosystems, is the life support system of our planet and underpins the healthy ecosystems that provides us food, clean air and water, stable climate, and medicines.</p>
@@ -288,20 +235,16 @@
         <div id='aside-icon-explore'>
             <div class="col-md-9 px-12 mt30 ml24">
                 <h1 class="title-gallery h4 font-weight-bold mr24 color-green-faint align-center">EXPLORE THE MAP</h1>
-
                 <ul class='layer-icons'>
                     <p class='layers text lead mr24 my-3 align-center'>Map Layers</p>
                     <div id='icon'>
-                        <p class="layer-icons-click mr24">Polygons</p>
                     </div>
                     <div id='icon1'>
-                        <p class="layer-icons-click mr24">Points</p>
                     </div>
                 </ul>
                 <p class="text-gallery-footer lead my-4 align-center mr24">Click icons to view critically endangered species & toggle map layers.
                 </p>
                 <ul class="images-hover">
-
                     <a class="icon-hover frog-img mx-auto ml12 d-block"><img src="pics/amphibian.png" alt="Amphibian icon" id="amphibian">
                         <p class="amphibian-img-text inline-block">Amphibians</p>
                     </a>
@@ -316,12 +259,7 @@
                     </a>
                 </ul>
             </div>
-
         </div>
-
-
-
-
 
     </div>
 
@@ -343,9 +281,7 @@
         <aside class="aside z3">
             <ul class="aside-chapters">
                 <li class="aside-icons">
-
                     <a class="icon-hover" id='icon-story'><img src="pics/story.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
-
                 </li>
                 <li class="aside-icons">
                     <a class="icon-hover" id='icon-gallery'><img src="pics/gallery.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
@@ -359,7 +295,6 @@
                 <ul class='color-green-faint txt-xxs mx18 align-l py2'></ul>
             </div>
         </aside>
-
 
         <div id='features'>
             <section id='introduction' class='active'>
@@ -418,8 +353,8 @@
                 <h3>Venezuela</h3>
                 <p>Venezuela</p>
                 <small id="THANK YOU">
-                Tank you! <a href='http://www.gutenberg.org/files/2346/2346-h/2346-h.htm'>Project Gutenberg</a>
-            </small>
+                                    Tank you! <a href='http://www.gutenberg.org/files/2346/2346-h/2346-h.htm'>Project Gutenberg</a>
+                                </small>
             </section>
         </div>
 
@@ -433,8 +368,6 @@
                 zoom: 2.6,
             });
 
-
-
             var colorAreas = {
                 'Ia': '#505160',
                 'Ib': '#68829e',
@@ -447,15 +380,11 @@
                 'Not Applicable': '#a2c523'
             }
 
-
-
             map.on('load', function() {
 
                 d3.json('data/polygons.json')
                     .then(function(data) {
                         polygonsMap(data);
-
-
                     });
 
                 function polygonsMap(data) {
@@ -484,10 +413,7 @@
                             "fill-opacity": 0.4,
                         },
                     });
-
-
                 } //end of polygonsMap function
-
 
                 d3.json('data/points.json')
                     .then(function(data) {
@@ -523,25 +449,127 @@
                             'circle-opacity': .6,
                         },
                     });
-
                 } //end of function pointsMap
             }); //end of map.on('load')
 
+            $('#icon-story').click(function() {
+                $('#features').toggle();
+                map.fitBounds([-75, -10, -25, -15], {
+                    zoom: 2.6
+                });
+            }); //end of Icon-story
+
+            var chapters = {
+                'introduction': {
+                    center: [-65, -15],
+                    zoom: 3.2,
+                },
+                'argentina': {
+                    center: [-63.6167, -38.4161],
+                    zoom: 3.5,
+                },
+                'bolivia': {
+                    center: [-63.5887, -16.2902],
+                    zoom: 5,
+                },
+                'brasil': {
+                    center: [-55.9253, -12.2350],
+                    zoom: 3.8,
+                },
+                'chile': {
+                    center: [-71.5430, -38.4161],
+                    zoom: 4
+                },
+                'colombia': {
+                    center: [-74.2973, 2.5709],
+                    zoom: 5,
+                },
+                'ecuador': {
+                    center: [-78.1834, -1.8312],
+                    zoom: 6
+                },
+                'french guiana': {
+                    center: [-53.1258, 3.9339],
+                    zoom: 6,
+                },
+                'guyana': {
+                    center: [-58.9302, 2.5904],
+                    zoom: 5.5,
+                },
+                'paraguay': {
+                    center: [-58.4438, -23.4425],
+                    zoom: 5.5,
+                },
+                'peru': {
+                    center: [-75.0152, -9.1900],
+                    zoom: 5,
+                },
+                'surinam': {
+                    center: [-55.9302, 2.3904],
+                    zoom: 6,
+                },
+                'uruguay': {
+                    center: [-55.8117 - 32.5583],
+                    zoom: 5,
+                },
+                'venezuela': {
+                    center: [-66.5897, -6.4238],
+                    zoom: 4,
+                }
+            };
+
+            window.onscroll = function() {
+                var chapterNames = Object.keys(chapters);
+                for (var i = 0; i < chapterNames.length; i++) {
+                    var chapterName = chapterNames[i];
+                    if (isElementOnScreen(chapterName)) {
+                        setActiveChapter(chapterName);
+                        break;
+                    }
+                }
+            };
+
+            var activeChapterName = 'introduction';
+
+            function setActiveChapter(chapterName) {
+                if (chapterName === activeChapterName) return;
+                map.flyTo(chapters[chapterName]);
+                document.getElementById(chapterName).setAttribute('class', 'active');
+                document.getElementById(activeChapterName).setAttribute('class', '');
+                activeChapterName = chapterName;
+            }
+
+            function isElementOnScreen(id) {
+                var element = document.getElementById(id);
+                var bounds = element.getBoundingClientRect();
+                return bounds.top < window.innerHeight && bounds.bottom > 0;
+            }
+
+            $('#icon-gallery').click(function() {
+                $('#aside-icon-gallery').toggle();
+                map.fitBounds([-75, -10, -25, -15], {
+                    zoom: 2.6
+                });
+            }); // end of jquery selection icon-gallery
+
+            $('#amphibian').click(function() {
+                $('#aside-icon-gallery').toggle();
+                map.fitBounds([-75, -10, -25, -15], {
+                    zoom: 6,
+                });
+            }); // end of jquery selection amphibian icon
+
 
             var toggleableLayerIds = ['polygon'];
-            var images = ['']
-
+            // var images = ['']
             for (var i = 0; i < toggleableLayerIds.length; i++) {
                 var id = toggleableLayerIds[i];
-
 
                 var img = document.createElement('img');
                 img.src = 'pics/landscape_nav.png'
                 img.className = 'active'
                 img.id = 'picture'
                 img.textContent = id
-
-
 
                 img.onclick = function(e) {
                     var clickedLayer = this.textContent;
@@ -563,8 +591,17 @@
                 layers.appendChild(img)
             }
 
+            $(icon).hover(
+                function() {
+                    $(this).append($("<span> polygon</span>"));
+                },
+                function() {
+                    $(this).find("span:last").remove();
+                }
+            );
+
             var toggleableLayerIds = ['points'];
-            var images = ['']
+            // var images = ['']
 
             for (var i = 0; i < toggleableLayerIds.length; i++) {
                 var id = toggleableLayerIds[i];
@@ -597,33 +634,18 @@
 
             var endClicked = $('#icon-explore').on('click', function() {
                 var endToggle = $('#aside-icon-explore').toggle()
-
-
             });
+
+            $(icon1).hover(
+                function() {
+                    $(this).append($("<span> points</span>"));
+                },
+                function() {
+                    $(this).find("span:last").remove();
+                }
+            );
 
             $('#icon-explore').off('click', endClicked);
-
-
-            $('#icon-gallery').click(function() {
-                $('#aside-icon-gallery').toggle();
-                map.fitBounds([-75, -10, -25, -15], {
-                    zoom: 2.6
-                });
-
-            }); // end of jquery selection icon-gallery
-
-            $('#amphibian').click(function() {
-                $('#aside-icon-gallery').toggle();
-                map.fitBounds([-75, -10, -25, -15], {
-                    zoom: 6,
-                });
-
-            }); // end of jquery selection amphibian icon
-
-
-            $('#icon-story').click(function() {
-                $('#aside-icon-story').toggle();
-            });
         </script>
 
 </body>

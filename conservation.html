@@ -61,6 +61,7 @@
             padding-bottom: 25%;
             width: 20%;
             margin-left: 10%;
+            display: none;
             font-family: sans-serif;
             overflow-y: scroll;
             background-color: #fafafa;
@@ -93,17 +94,6 @@
             font-family: 'Open Sans', sans-serif;
             background: rgba(0, 0, 0, 0.6);
             color: white;
-        }
-        
-        #aside-icon-story {
-            position: absolute;
-            display: none;
-            z-index: 4000;
-            right: 10%;
-            top: 0;
-            width: 28%;
-            height: 100%;
-            background: #F4FAF2;
         }
         
         #aside-icon-gallery {
@@ -174,13 +164,35 @@
             border-radius: 5%;
             cursor: pointer;
         }
+        
+        #icon a:active {
+            background-color: #3887be;
+            color: #ffffff;
+        }
+        
+        #icon a:active :hover {
+            background-color: #3887be;
+            color: #ffffff;
+        }
+        
+        #icon a:last-child {
+            border: none;
+        }
+        
+        .layer-icons {
+            color: #ffb745;
+        }
+        
+        span {
+            color: #ffb745;
+        }
         /* .img {
-            top: 30%;
-            position: absolute;
-            margin-left: 50%;
-            font-family: sans-serif;
-            z-index: 4000;
-        } */
+        top: 30%;
+        position: absolute;
+        margin-left: 50%;
+        font-family: sans-serif;
+        z-index: 4000;
+    } */
     </style>
 </head>
 
@@ -202,10 +214,8 @@
 
     <div id='map'>
         <!-- <a href="https://getbootstrap.com" class="img">
-                <img src="pics/introduction.png" alt="HTML tutorial" style='width:300px;height:300px'></a> -->
-        <div id='aside-icon-story'>
-            <p>STORY</p>
-        </div>
+                    <img src="pics/introduction.png" alt="HTML tutorial" style='width:300px;height:300px'></a> -->
+
         <div id='aside-icon-gallery'>
             <div class="col-md-9 px-12 mt30 ml24">
                 <h1 class="title-gallery h4 font-weight-bold mr24 color-green-faint align-center">A NATURE OF WONDER</h1>
@@ -228,11 +238,20 @@
                 </ul>
             </div>
         </div>
+
         <div id='aside-icon-explore'>
             <div class="col-md-9 px-12 mt30 ml24">
-                <h1 class="title-gallery h4 font-weight-bold mr24 color-green-faint align-center">A NATURE OF WONDER</h1>
-                <p class="text-gallery lead mr24 my-3 align-center">Biodiversity, the vast array of plants, animals, and ecosystems, is the life support system of our planet and underpins the healthy ecosystems that provides us food, clean air and water, stable climate, and medicines.</p>
-                <p class="text-gallery-footer lead my-4 align-center mr24">Click icons to view critically endangered species.
+                <h1 class="title-gallery h4 font-weight-bold mr24 color-green-faint align-center">EXPLORE THE MAP</h1>
+                <ul class='layer-icons'>
+                    <p class='layers text lead mr24 my-3 align-center'>Map Layers</p>
+                    <div id='icon'>
+                    </div>
+                    <div id='icon1'>
+                    </div>
+                    <div id='icon2'>
+                    </div>
+                </ul>
+                <p class="text-gallery-footer lead my-4 align-center mr24">Click icons to view critically endangered species & toggle map layers.
                 </p>
                 <ul class="images-hover">
                     <a class="icon-hover frog-img mx-auto ml12 d-block"><img src="pics/amphibian.png" alt="Amphibian icon" id="amphibian">
@@ -250,6 +269,7 @@
                 </ul>
             </div>
         </div>
+
     </div>
 
     <div class="navbar-header z2">
@@ -347,14 +367,6 @@
             </section>
         </div>
 
-
-
-
-
-
-
-
-
         <script>
             mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
 
@@ -364,8 +376,6 @@
                 center: [-65, -15],
                 zoom: 2.6,
             });
-
-            var allLayers = ['polygon', 'points', 'species'];
 
             var colorAreas = {
                 'Ia': '#505160',
@@ -387,6 +397,7 @@
             }
 
             map.on('load', function() {
+
                 d3.json('data/ocean.json')
                     .then(function(data) {
                         oceanMap(data);
@@ -394,6 +405,7 @@
 
                 function oceanMap(data) {
                     var geojson = topojson.feature(data, data.objects.ocean);
+
                     map.addLayer({
                         'id': 'ocean',
                         'type': 'fill',
@@ -420,11 +432,11 @@
                     .then(function(data) {
                         polygonsMap(data);
                         addLegend(data);
-
                     });
 
                 function polygonsMap(data) {
                     var geojson = topojson.feature(data, data.objects.merge_files_sim);
+
                     map.addLayer({
                         'id': 'polygon',
                         'type': 'fill',
@@ -471,7 +483,6 @@
 
                 } //end of polygonsMap function
 
-
                 function addLegend(data) {
                     var geojson = topojson.feature(data, data.objects.merge_files_sim);
                     var labelCodes = {},
@@ -493,14 +504,13 @@
 
                 } //end of addLegend function
 
-
-
                 d3.json('data/points.json')
                     .then(function(data) {
                         pointsMap(data);
                     });
 
                 function pointsMap(data) {
+
                     map.addLayer({
                         'id': 'points',
                         'type': 'circle',
@@ -549,13 +559,13 @@
 
                 } //end of function pointsMap
 
-
                 d3.json('data/species.json')
                     .then(function(data) {
                         speciesMap(data);
                     });
 
                 function speciesMap(data) {
+
                     map.addLayer({
                         'id': 'species',
                         'type': 'fill',
@@ -577,8 +587,6 @@
                         // 'layout': none,
                     });
 
-
-
                     var popup = new mapboxgl.Popup({
                         closeButton: false,
                         closeOnClick: false
@@ -597,12 +605,7 @@
                         popup.remove();
                     });
 
-
                 } //end of speciesMap function
-
-
-
-
 
 
 
@@ -630,8 +633,16 @@
                 // });
                 // var marker = new L.Marker(data.getBounds().getCenter()).addTo(map);
 
+
+
             }); //end of map.on('load')
 
+            $('#icon-story').click(function() {
+                $('#features').toggle();
+                map.fitBounds([-75, -10, -25, -15], {
+                    zoom: 2.6
+                });
+            }); //end of Icon-story
 
             var chapters = {
                 'introduction': {
@@ -719,22 +730,11 @@
                 return bounds.top < window.innerHeight && bounds.bottom > 0;
             }
 
-
-
-
-
-
-            $('#icon-story').click(function() {
-                $('#aside-icon-story').toggle();
-            });
-
-
             $('#icon-gallery').click(function() {
                 $('#aside-icon-gallery').toggle();
                 map.fitBounds([-75, -10, -25, -15], {
-                    zoom: 2.6,
+                    zoom: 2.6
                 });
-
             }); // end of jquery selection icon-gallery
 
             $('#amphibian').click(function() {
@@ -742,13 +742,139 @@
                 map.fitBounds([-75, -10, -25, -15], {
                     zoom: 6,
                 });
-
             }); // end of jquery selection amphibian icon
 
 
-            $('#icon-explore').click(function() {
-                $('#aside-icon-explore').toggle();
+
+            var toggleableLayerIds = ['polygon'];
+            // var images = ['']
+            for (var i = 0; i < toggleableLayerIds.length; i++) {
+                var id = toggleableLayerIds[i];
+
+                var img = document.createElement('img');
+                img.src = 'pics/landscape_nav.png'
+                img.className = 'active'
+                img.id = 'picture'
+                img.textContent = id
+
+                img.onclick = function(e) {
+                    var clickedLayer = this.textContent;
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+                    if (visibility === 'visible') {
+                        map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+                        this.className = '';
+                    } else {
+                        this.className = 'active';
+                        map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                    }
+                };
+
+                var layers = document.getElementById('icon');
+                layers.appendChild(img)
+            }
+
+            $(icon).hover(
+                function() {
+                    $(this).append($("<span> polygon</span>"));
+                },
+                function() {
+                    $(this).find("span:last").remove();
+                }
+            );
+
+            var toggleableLayerIds = ['points'];
+            // var images = ['']
+
+            for (var i = 0; i < toggleableLayerIds.length; i++) {
+                var id = toggleableLayerIds[i];
+
+                var img = document.createElement('img');
+                img.src = 'pics/protected_nav.png'
+                img.className = 'active'
+                img.id = 'picture'
+                img.textContent = id
+
+                img.onclick = function(e) {
+                    var clickedLayer = this.textContent;
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+                    if (visibility === 'visible') {
+                        map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+                        this.className = '';
+                    } else {
+                        this.className = 'active';
+                        map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                    }
+                };
+
+                var layers = document.getElementById('icon1');
+                layers.appendChild(img)
+            }
+
+            $(icon1).hover(
+                function() {
+                    $(this).append($("<span> points</span>"));
+                },
+                function() {
+                    $(this).find("span:last").remove();
+                }
+            );
+
+            var toggleableLayerIds = ['species'];
+            // var images = ['']
+            for (var i = 0; i < toggleableLayerIds.length; i++) {
+                var id = toggleableLayerIds[i];
+
+                var img = document.createElement('img');
+                img.src = 'pics/wildlife_nav.png'
+                img.className = 'active'
+                img.id = 'picture'
+                img.textContent = id
+
+                img.onclick = function(e) {
+                    var clickedLayer = this.textContent;
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+                    if (visibility === 'visible') {
+                        map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+                        this.className = '';
+                    } else {
+                        this.className = 'active';
+                        map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                    }
+                };
+
+                var layers = document.getElementById('icon2');
+                layers.appendChild(img)
+            }
+
+            $(icon2).hover(
+                function() {
+                    $(this).append($("<span> species</span>"));
+                },
+                function() {
+                    $(this).find("span:last").remove();
+                }
+            );
+
+            var endClicked = $('#icon-explore').on('click', function() {
+                var endToggle = $('#aside-icon-explore').toggle()
+                map.fitBounds([-75, -10, -25, -15], {
+                    zoom: 2.6
+                });
             });
+
+            $('#icon-explore').off('click', endClicked);
         </script>
 
 </body>
