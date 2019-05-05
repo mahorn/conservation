@@ -10,103 +10,103 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.3.0/MarkerCluster.Default.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.3.0/MarkerCluster.css" />
     <link href='https://fonts.googleapis.com/css?family=Antic' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
     <style>
-        body {
-            font-family: 'Antic';
-            font-size: 23px;
+        /* body {
             margin: 0;
             padding: 0;
-            color: darkslategrey;
+            font-family: 'PT Sans', sans-serif;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #fff;
+        } */
+        
+        #first {
+            background-color: #4B4D65;
+            width: 10%;
         }
         
-        #map {
+        .section {
+            padding: 1%;
+            padding-left: 5%;
+        }
+        
+        .section input[type="radio"] {
+            display: none;
+        }
+        
+        .container {
+            margin-bottom: 10px;
+        }
+        
+        .container label {
+            position: relative;
+        }
+        /* Base styles for spans */
+        
+        .container span::before,
+        .container span::after {
+            content: '';
             position: absolute;
-            width: 100%;
             top: 0;
             bottom: 0;
-            margin: 0;
-            padding: 0;
-            background: rgba(0, 0, 0, .75);
+            margin: auto;
+        }
+        /* Radio buttons */
+        
+        .container span.radio:hover {
+            cursor: pointer;
         }
         
-        h1 {
-            position: absolute;
-            z-index: 650;
-            left: 30px;
-            top: 10px;
-            padding: 8px 15px;
-            margin: 0;
-            font-family: 'Antic';
-            font-size: 2em;
-            font-weight: 300;
-            background: rgba(235, 235, 235, 0.82);
-            border-radius: 5px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        .container span.radio::before {
+            left: -52px;
+            width: 45px;
+            height: 25px;
+            background-color: #A8AAC1;
+            border-radius: 50px;
         }
         
-        h4 {
-            line-height: 0.3em;
+        .container span.radio::after {
+            left: -49px;
+            width: 17px;
+            height: 17px;
+            border-radius: 10px;
+            background-color: #6C788A;
+            transition: left .25s, background-color .25s;
         }
         
-        #ui {
-            position: absolute;
-            z-index: 650;
-            bottom: 20px;
-            left: 30px;
-            padding: 8px 25px 8px 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-            background: rgba(235, 235, 235, 0.82);
+        input[type="radio"]:checked+label span.radio::after {
+            left: -27px;
+            background-color: #EBFF43;
+        }
+        /* Check-boxes */
+        
+        .container span.checkbox::before {
+            width: 27px;
+            height: 27px;
+            background-color: #fff;
+            left: -35px;
+            box-sizing: border-box;
+            border: 3px solid transparent;
+            transition: border-color .2s;
         }
         
-        #ui ul {
-            list-style-type: none;
-            padding: 0;
-            font-size: 16px;
-            margin: 12px 4px 0;
+        .container span.checkbox:hover::before {
+            border: 3px solid #F0FF76;
         }
         
-        #ui li {
-            height: 24px;
+        .container span.checkbox::after {
+            content: '\f00c';
+            font-family: 'FontAwesome';
+            left: -31px;
+            top: 2px;
+            color: transparent;
+            transition: color .2s;
         }
         
-        #ui a {
-            text-decoration: none;
-        }
-        
-        #ui a:hover {
-            font-weight: bold;
-        }
-        
-        .highlight {
-            font-weight: bold;
-            font-size: 22px;
-        }
-        
-        .tooltip {
-            z-index: 650;
-            font-family: 'Antic';
-            font-weight: bold;
-            padding: 5px 5px 5px 5px;
-            border: 0;
-            fill-opacity: 0;
-            background: rgba(235, 235, 235, 0.82);
-        }
-        
-        .footer {
-            z-index: 650;
-            position: absolute;
-            font-size: 0.6em;
-            font-family: 'Antic';
-            font-weight: bold;
-            color: darkslategrey;
-            text-align: left;
-            padding: 8px 8px 8px 8px;
-            right: 10px;
-            bottom: 20px;
-            background-color: rgba(235, 235, 235, 0.82);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
+        input[type="checkbox"]:checked+label span.checkbox::after {
+            color: #62AFFF;
         }
     </style>
 </head>
@@ -116,20 +116,39 @@
     <h1>Wake Public Schools</h1>
 
     <div id="map"></div>
-    <div id="ui">
-        <h4>Schools by District:</h4>
-        <ul id="legend-list"></ul>
-    </div>
-    <div class="footer">
-        <p class="ex2">Data Sources:
-            <a class='link' href='https://data-ral.opendata.arcgis.com'>Raleigh Open Data</a>,
-            <br>Map Authored by: Maria Renee Horn & Joe Blankenship</p>
-    </div>
-
+    <section id="first" class="section">
+        <div class="container">
+            <input type="radio" name="group1" id="radio-1">
+            <label for="radio-1"><span class="radio">Coffee</span></label>
+        </div>
+        <div class="container">
+            <input type="radio" name="group1" id="radio-2">
+            <label for="radio-2"><span class="radio">Tea</span></label>
+        </div>
+        <div class="container">
+            <input type="radio" name="group1" id="radio-3">
+            <label for="radio-3"><span class="radio">Cappuccino</span></label>
+        </div>
+    </section>
+    <section id="second" class="section">
+        <div class="container">
+            <input type="checkbox" name="group2" id="checkbox-1">
+            <label for="checkbox-1"><span class="checkbox">Oranges</span></label>
+        </div>
+        <div class="container">
+            <input type="checkbox" name="group2" id="checkbox-2">
+            <label for="checkbox-2"><span class="checkbox">Apples</span></label>
+        </div>
+        <div class="container">
+            <input type="checkbox" name="group2" id="checkbox-3">
+            <label for="checkbox-3"><span class="checkbox">Avocados</span></label>
+        </div>
+    </section>
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.3.0/leaflet.markercluster.js"></script>
-
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
     <script>
         // map options
         var options = {
@@ -309,4 +328,4 @@
     </script>
 </body>
 
-</html>
+</htm
