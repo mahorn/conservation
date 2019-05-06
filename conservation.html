@@ -105,7 +105,7 @@
             z-index: 4000;
             right: 10%;
             top: 0;
-            width: 35%;
+            width: 40%;
             height: 100%;
             background: #F4FAF2;
             overflow-y: scroll;
@@ -215,8 +215,8 @@
             position: absolute;
             display: none;
             z-index: 5000;
-            right: 18%;
-            top: 30%;
+            right: 26%;
+            top: 24%;
             width: 40%;
             height: 40%;
             background: transparent;
@@ -226,8 +226,8 @@
             position: absolute;
             display: none;
             z-index: 5000;
-            right: 18%;
-            top: 30%;
+            right: 26%;
+            top: 24%;
             width: 40%;
             height: 40%;
             background: transparent;
@@ -237,8 +237,8 @@
             position: absolute;
             display: none;
             z-index: 5000;
-            right: 18%;
-            top: 30%;
+            right: 26%;
+            top: 24%;
             width: 40%;
             height: 40%;
             background: transparent;
@@ -248,8 +248,8 @@
             position: absolute;
             display: none;
             z-index: 5000;
-            right: 18%;
-            top: 30%;
+            right: 26%;
+            top: 24%;
             width: 40%;
             height: 40%;
             background: transparent;
@@ -370,7 +370,7 @@
 
 
             <div id='REp'>
-                <overlay id="first" class="section ">
+                <overlay id="second" class="section ">
                     <div class="container">
                         <input type="radio" name="group2" id="radio-REp-1">
                         <label for="radio-REp-1"><span class="radio"></span><span class="category">Extant (resident)</span></span>
@@ -404,7 +404,7 @@
             </div>
 
             <div id='MAm'>
-                <overlay id="first" class="section ">
+                <overlay id="thirth" class="section ">
                     <div class="container">
                         <input type="radio" name="group3" id="radio-MAm-1">
                         <label for="radio-MAm-1"><span class="radio"></span><span class="category">Extant (resident)</span></span>
@@ -423,7 +423,7 @@
             </div>
 
             <div id='BIr'>
-                <overlay id="first" class="section ">
+                <overlay id="fourth" class="section ">
                     <div class="container">
                         <input type="radio" name="group4" id="radio-BIr-1">
                         <label for="radio-BIr-1"><span class="radio"></span><span class="category">Extant (breeding)</span></span>
@@ -475,13 +475,15 @@
                     <a class="icon-hover mx-auto d-block my-2"><img src="pics/bird_color.png" alt="Bird icon" id="bi">
                     </a>
                 </ul>
-                <!-- <p class="text-gallery-footer lead my-4 align-center mr24">Click icons to deselect layers.
-                </p>
-                <div id="amphibian"></div>
-                <div id="reptile"></div>
-                <div id="mammal"></div>
-                <div id="bird"></div> -->
+                <p class="text-gallery-footer lead my-4 align-center mr24">Click icons to deselect layers. </p>
 
+                <div class="row">
+                    <div id="amphibian" class="col align-center"></div>
+                    <div id="reptile" class="col align-center"></div>
+                    <div class="w-100"></div>
+                    <div id="mammal" class="col align-center"></div>
+                    <div id="bird" class="col align-center"></div>
+                </div>
             </div>
         </div>
 
@@ -614,11 +616,6 @@
         </div>
 
 
-
-
-
-
-
         <script>
             mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
 
@@ -654,6 +651,7 @@
                 'Possible Extinct': '#283655',
                 'Presence Uncertain': '#D0EQF9'
             }
+
 
             var colorReptiles = {
                 'Extant (resident)': '#324851',
@@ -892,11 +890,13 @@
 
                 } //end of speciesMap function
 
-
                 d3.json('data/amphibians-filtered.json')
                     .then(function(data) {
                         amphibianMap(data);
+                        amphibianMapToggle(data);
                     });
+
+
 
                 function amphibianMap(data) {
 
@@ -910,14 +910,16 @@
                         'paint': {
                             "fill-color": [
                                 'match', ['get', 'legend'],
-                                'Extinct', '#aebd38',
-                                'Possible Extinct', '#598234',
-                                'Extant (resident)', '#68829e',
+                                'Extant (resident)', '#4D648D',
+                                'Extinct', '#1E1F26',
+                                'Possible Extinct', '#283655',
+                                'Presence Uncertain', '#D0EQF9',
                                 '#000000'
                             ],
                             "fill-opacity": 0.4,
+
                         },
-                        // 'layout': none'
+
                     });
 
                     var popup = new mapboxgl.Popup({
@@ -938,7 +940,88 @@
                         popup.remove();
                     });
 
+                    $('#am').click(function() {
+                        $('#AMp').toggle();
+                        $('#title').html("<strong>AMPHIBIANS</strong");
+                    });
+
+
                 } //end of amphibianMap function
+
+
+                function amphibianMapToggle(data) {
+
+                    var filterGroup = [
+                        "all", ["in", "MAp", 'radio-AMp-1', 'radio-AMp-2', 'radio-AMp-3', 'radio-AMp-4'],
+                        ["in", "legend", 'Extant (resident)', 'Extinct', 'Possible Extinct', 'Presence Uncertain']
+                    ]
+                    var filter = map.setFilter('amphibian', filterGroup);
+                    console.log(filter);
+
+
+                    //     data.features.forEach(function(feature) {
+                    //         var legend = feature.properties['legend'];
+                    //         var layerID = id + legend;
+                    //         console.log(layerID);
+                    // console.log(layerID);
+
+                    // });
+
+
+
+                    //     two.className = '';
+                    //     this.className = 'active';
+                    //     map.markerLayer.setFilter(function(f) {
+                    //         return f.properties['legend'] === 'Extinct';
+                    //     });
+                    //     one.onclick = function(legend) {    return true;
+
+                    // };
+
+                    // two.onclick = function() {
+                    //     one.className = '';
+                    //     this.className = 'category';
+                    //     map.markerLayer.setFilter(function(f) {
+                    //         return true;
+                    //     });
+                    //     return false;
+                    // }
+
+                    //     var toggleablefilterGroupIds = ['radio-AMp-1', 'radio-AMp-2', 'radio-AMp-3', 'radio-AMp-4'];
+                    //     for (var i = 0; i < toggleablefilterGroupIds.length; i++) {
+                    //         var id = toggleablefilterGroupIds[i];
+
+                    //         data.features.forEach(function(feature) {
+                    //             var legend = feature.properties.legend;
+                    //             console.log(legend);
+                    //         });
+
+
+                    //                         id.onclick = function (e) {
+                    // var clickedLayer = this.textContent;
+                    // e.preventDefault();
+                    // e.stopPropagation();
+
+                    //                         }
+
+
+                    // }
+
+                    //     filterGroup.addEventListener('change', function(e) {
+                    //         map.setLayoutProperty(layerID, 'visibility',
+                    //             e.target.checked ? 'visible' : 'none');
+                    //     });
+
+                    //     $('#am').click(function() {
+                    //         $('#AMp').toggle();
+                    //         $('#title').html("<strong>AMPHIBIANS</strong");
+                    //     });
+
+                } //end of amphibianMapToggle function
+
+
+
+
 
 
                 d3.json('data/reptiles-filtered.json')
@@ -1044,7 +1127,7 @@
 
 
 
-                d3.json('data/birds.json')
+                var birds = d3.json('data/birds.json')
                     .then(function(data) {
                         birdMap(data);
                     });
@@ -1230,10 +1313,10 @@
             $('#icon-gallery').off('click', endClicked); // end of jquery selection icon-gallery
 
 
-            $('#am').click(function() {
-                $('#AMp').toggle();
-                $('#title').html("<strong>AMPHIBIANS</strong");
-            });
+            // $('#am').click(function() {
+            //     $('#AMp').toggle();
+            //     $('#title').html("<strong>AMPHIBIANS</strong");
+            // });
 
             $('#re').click(function() {
                 $('#REp').toggle();
