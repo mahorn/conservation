@@ -276,21 +276,11 @@
         }
         /* about icon*/
         
-        .btn {
-            background: #2b616d;
-        }
-        
-        .btn:hover,
-        .btn.selected {
-            background: #b2dbd5;
-            -webkit-text-fill-color: #2b616d;
-        }
-        
-        #about-trigger.btn {
+        #about-trigger {
             padding: 0;
         }
         
-        #about-global.btn {
+        #about-global {
             padding: 0;
         }
         
@@ -323,6 +313,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!--adding libraries to see if ocean loads-->
+    <script async defer src="https://api.mapbox.com/mapbox-assembly/v0.21.2/assembly.js"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
@@ -515,18 +506,27 @@
 
     <div class="navbar-header z2">
         <nav class="navbar navbar-expand-md navbar-dark navbar-fixed-top bg-dark">
+            <button id='about-icon' class='icon-hover' data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">          
             <a class="navbar-brand" href="#">Conservation</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+
+                    <div id='about-trigger'>
+
+                        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    </div>
                     <li class="nav-item"><a class="nav-link" href="#">Take Action</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Language</a></li>
                 </ul>
         </nav>
         </div>
+
+
+
+
+
+
 
         <aside class="aside z3">
             <ul class="aside-chapters">
@@ -609,13 +609,44 @@
         </div>
 
 
-        <div class='absolute left top mr12 mb12 color-green-faint z2 round px24 py24 align-r z11'>
-            <button id='about-icon' class='btn'>
-                <svg class='icon link color-lighten50 txt-l'>
-                    <use xlink:href='#icon-refresh'></use>
-                </svg>
-            </button>
-        </div>
+
+
+        <!-- 
+        <div class='absolute left bottom mr24 mb60 color-green-faint z2 align-r'>
+            <button id='about-trigger' class='btn'>
+                    <svg class='icon link color-lighten50 txt-xl'>
+                        <use xlink:href='#icon-question'></use>
+                    </svg>
+                </button>
+            <div class='txt-s'>Map Authors: Maria Renee &amp; Ian Horn</div>
+            <div class='txt-s'>Data:
+                <a class='link' href='https://hub.arcgis.com/datasets/HiStateGIS::solar-insolation-ranges' class='link link--white'>Solar Insolation Ranges</a>
+            </div>
+        </div> -->
+
+
+
+        <div id='about-modal' class='absolute top right bottom left scroll-auto z3 none animation--speed-1'>
+            <div class='flex-child border border-gray-dark bg-gray-dark color-white round relative w600 mx-auto mt120'>
+                <button id='modal-close' class='btn absolute top right mr6 mt6 px0 py0'>
+                        <svg class='icon link color-lighten50 txt-xl'>
+                            <use xlink:href='#icon-close'></use>
+                        </svg>
+                    </button>
+                <div class='px24 py24'>
+                    <div class='txt-l mb12'>About this map</div>
+                    <div class='txt-m'>
+                        Nearly all the energy available on Earth is derived from solar radiation. These days, solar energy has become one of the most important sources of alternative energy for generating electricity and heat water. Whether it’s for rooftop photovoltaic and
+                        hot water systems or centralize solar power generation plants, knowledge of the patterns and variability of solar radiation is essential.
+                        <h4>
+                            <a target="_blank" href="http://www.geography.hawaii.edu/">Geography Department</a> -
+                            <a target="_blank" href="http://www.manoa.hawaii.edu/">University of Hawai&#699;i at M&#257;noa
+                                    <a/>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
         <script>
@@ -714,7 +745,17 @@
                     });
                 } //end of oceanMap function
 
-
+                function addAboutModalUI() {
+            var trigger = document.getElementById('about-trigger'),
+                modal = document.getElementById('about-modal'),
+                close = document.getElementById('modal-close');
+            trigger.addEventListener('click', function () {
+                modal.classList.remove('none');
+            });
+            close.addEventListener('click', function () {
+                modal.classList.add('none');
+            });
+        }
 
 
 
@@ -1633,6 +1674,28 @@
             });
 
             $('#icon-gallery').off('click', endClicked);
+
+
+//reset to initial latlng
+
+            document.getElementById('about-icon').addEventListener('click', function () {
+            map.flyTo({
+                center: [-65, -15],
+                zoom: 2.6,
+                bearing: 0,
+                pitch: 0,
+                speed: 0.4,
+                curve: 2,
+                easing: function (t) {
+                    return t;
+                }
+            });
+            var currentSelected = document.querySelector('.selected');
+            if (currentSelected) {
+                currentSelected.classList.remove('selected');
+            }
+        });
+
         </script>
 
 </body>
