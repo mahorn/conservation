@@ -321,6 +321,29 @@
             color: rgb(205, 156, 50);
             font-size: 14px;
         }
+        
+        .btn {
+            background: #2b616d;
+        }
+        
+        .btn:hover,
+        .btn.selected {
+            background: #b2dbd5;
+            -webkit-text-fill-color: #2b616d;
+        }
+        
+        #about-trigger.btn {
+            padding: 0;
+        }
+        
+        #about-global.btn {
+            padding: 0;
+        }
+        
+        #about-modal {
+            background: rgba(48, 48, 48, 0.50);
+            -webkit-text-fill-color: #b2dbd5;
+        }
     </style>
 </head>
 
@@ -616,6 +639,15 @@
         </div>
 
 
+        <div class='absolute left top mr12 mb12 color-green-faint z2 round px24 py24 align-r z11'>
+            <button id='about-icon' class='btn'>
+                <svg class='icon link color-lighten50 txt-l'>
+                    <use xlink:href='#icon-refresh'></use>
+                </svg>
+            </button>
+        </div>
+
+
         <script>
             mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
 
@@ -684,6 +716,7 @@
                 d3.json('data/ocean.json')
                     .then(function(data) {
                         oceanMap(data);
+                        addAboutModalUI();
                     });
 
                 function oceanMap(data) {
@@ -710,6 +743,10 @@
                         }
                     });
                 } //end of oceanMap function
+
+
+
+
 
                 d3.json('data/polygons.json')
                     .then(function(data) {
@@ -940,23 +977,15 @@
                         popup.remove();
                     });
 
-                    $('#am').click(function() {
-                        $('#AMp').toggle();
-                        $('#title').html("<strong>AMPHIBIANS</strong");
-                    });
-
-
                 } //end of amphibianMap function
 
 
                 function amphibianMapToggle(data) {
 
-                    var filterGroup = [
-                        "all", ["in", "MAp", 'radio-AMp-1', 'radio-AMp-2', 'radio-AMp-3', 'radio-AMp-4'],
-                        ["in", "legend", 'Extant (resident)', 'Extinct', 'Possible Extinct', 'Presence Uncertain']
-                    ]
-                    var filter = map.setFilter('amphibian', filterGroup);
-                    console.log(filter);
+                    $('#am').click(function() {
+                        $('#AMp').toggle();
+                        $('#title').html("<strong>AMPHIBIANS</strong");
+                    });
 
 
                     //     data.features.forEach(function(feature) {
@@ -1016,6 +1045,8 @@
                     //         $('#AMp').toggle();
                     //         $('#title').html("<strong>AMPHIBIANS</strong");
                     //     });
+
+
 
                 } //end of amphibianMapToggle function
 
@@ -1502,9 +1533,6 @@
                     $(this).find("span:last").remove();
                 }
             );
-
-
-
 
 
 
