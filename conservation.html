@@ -31,7 +31,7 @@
         
         .navbar-header {
             padding-top: 0rem;
-            width: 26rem;
+            width: 27rem;
             position: fixed;
         }
         /* hosts the 3 main icons on the side */
@@ -63,32 +63,48 @@
         /* hosts countries on click story icon*/
         
         #features {
-            padding-top: 10%;
+            padding-top: 4%;
             padding-bottom: 25%;
-            width: 20%;
-            margin-left: 10%;
+            width: 35.8%;
             display: none;
             font-family: sans-serif;
             overflow-y: scroll;
-            background-color: #fafafa;
             z-index: 4000;
         }
         
         section {
             padding: 20px 25px;
+            padding-top: 15px;
             line-height: 25px;
             border-bottom: 1px solid #ddd;
-            opacity: 0.5;
+            opacity: 0.8;
             font-size: 13px;
+            background-color: black;
         }
         
         section.active {
-            opacity: 1;
+            opacity: 0.5;
+            background-color: black;
+        }
+        
+        section.active p {
+            color: white;
+            font-size: 12px;
+            text-align: justify;
         }
         
         section:last-child {
             border-bottom: none;
             margin-bottom: 200px;
+        }
+        
+        h2 {
+            color: paleturquoise;
+            font-size: 28px;
+            text-align: center;
+            font-weight: bold;
+            padding-bottom: 10px;
+            padding-top: 10px;
         }
         /* popup for all features */
         
@@ -127,12 +143,12 @@
             color: purple;
             font-size: 12px;
         }
-        /* hosts color of name layer when hover - toggleableLayerIds' of 4 type of species in Gallery */
+        /* hosts color of name layer when hover - toggleableLayerIds' of 4 type of species in Explore */
         
         span {
             color: #ffb745;
         }
-        /* hosts transparent background of amphibian classification in Gallery */
+        /* hosts transparent background of amphibian classification in Explore */
         
         #AMp {
             position: absolute;
@@ -144,7 +160,7 @@
             height: 40%;
             background: transparent;
         }
-        /* hosts transparent background of reptile classification in Gallery */
+        /* hosts transparent background of reptile classification in Explore */
         
         #REp {
             position: absolute;
@@ -156,7 +172,7 @@
             height: 40%;
             background: transparent;
         }
-        /* hosts transparent background of mammal classification in Gallery */
+        /* hosts transparent background of mammal classification in Explore */
         
         #MAm {
             position: absolute;
@@ -168,7 +184,7 @@
             height: 40%;
             background: transparent;
         }
-        /* hosts transparent background of bird classification in Gallery */
+        /* hosts transparent background of bird classification in Explore */
         
         #BIr {
             position: absolute;
@@ -180,7 +196,7 @@
             height: 40%;
             background: transparent;
         }
-        /* RADIO BUTTONS in Gallery */
+        /* RADIO BUTTONS in Explore */
         
         .section {
             padding: 4%;
@@ -287,6 +303,19 @@
         #about-modal {
             background: rgba(48, 48, 48, 0.50);
             -webkit-text-fill-color: #b2dbd5;
+        }
+        
+        h3 {
+            color: purple;
+            font-size: 18px;
+            text-align: center;
+            padding-bottom: 10px;
+        }
+        
+        p {
+            color: white;
+            font-size: 12px;
+            text-align: justify;
         }
         /* .marker {
             background-image: url('pics/wildlife_icon.png');
@@ -516,7 +545,7 @@
 
                         <li class="nav-item"><a class="nav-link" href="#">About</a></li>
                     </div>
-                    <li class="nav-item"><a class="nav-link" href="#">Take Action</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">IUCN Red List</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Language</a></li>
                 </ul>
         </nav>
@@ -548,12 +577,16 @@
 
         <div id='features'>
             <section id='introduction' class='active'>
-                <h3>Conservation Areas in South America</h3>
-                <p></p>
+                <h2>Conservation Areas in South America</h2>
+                <p>Protected and conserved areas have long been a successful management tool to conserve biodiversity, and without them, the global loss of biodiversity would likely be even greater.
+                    <br>The benefits that protected areas provide are critical to address environmental and societal challenges like: <br> Poverty, hunger, good health and well being <br> quality education, gender equality, clean water and sanitation,
+                    etc.
+                </p>
             </section>
             <section id='argentina'>
-                <h3>Argentina</h3>
-                <p>Argentina</p>
+                <h3>ARGENTINA</h3>
+
+                <p>Number of Pretected Areas: 452<br> IUCN Management Categories: </p>
             </section>
             <section id='bolivia'>
                 <h3>Bolivia</h3>
@@ -649,13 +682,16 @@
             </div>
 
 
+
+
+
         <script>
             mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
 
             var map = new mapboxgl.Map({
                 container: 'map',
                 style: 'mapbox://styles/mapbox/light-v9',
-                center: [-65, -15],
+                center: [-65, -20],
                 zoom: 2.6,
             });
 
@@ -749,11 +785,11 @@
             var trigger = document.getElementById('about-trigger'),
                 modal = document.getElementById('about-modal'),
                 close = document.getElementById('modal-close');
-            trigger.addEventListener('click', function () {
+                trigger.addEventListener('click', function () {
                 modal.classList.remove('none');
             });
             close.addEventListener('click', function () {
-                modal.classList.add('none');
+                modal.classList.add('none'); 
             });
         }
 
@@ -1251,15 +1287,23 @@
 
             $('#icon-story').click(function() {
                 $('#features').toggle();
-                map.fitBounds([-75, -10, -25, -15], {
-                    zoom: 2.6
-                });
+                map.flyTo({
+                center: [-80, -20],
+                zoom: 2.6,
+                bearing: 0,
+                pitch: 0,
+                speed: 0.4,
+                curve: 2,
+                easing: function (t) {
+                    return t;
+                }
+            });
             }); //end of Icon-story
 
             var chapters = {
                 'introduction': {
-                    center: [-65, -15],
-                    zoom: 3.2,
+                     center: [-75, -18],
+                     zoom: 2.7,
                 },
                 'argentina': {
                     center: [-63.6167, -38.4161],
@@ -1339,7 +1383,7 @@
             function isElementOnScreen(id) {
                 var element = document.getElementById(id);
                 var bounds = element.getBoundingClientRect();
-                return bounds.top < window.innerHeight && bounds.bottom > 0;
+                return bounds.top < window.innerHeight && bounds.top > 0;
             }
 
 
@@ -1374,7 +1418,6 @@
                 $('#BIr').toggle();
                 $('#title').html("<strong>BIRDS</strong");
             });
-
 
 
 
@@ -1700,4 +1743,4 @@
 
 </body>
 
-</html>
+</html>Con
