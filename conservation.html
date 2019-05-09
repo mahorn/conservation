@@ -97,6 +97,7 @@
             border-bottom: none;
             margin-bottom: 200px;
         }
+        /* hosts text on click story icon*/
         
         h2 {
             color: paleturquoise;
@@ -105,6 +106,19 @@
             font-weight: bold;
             padding-bottom: 10px;
             padding-top: 10px;
+        }
+        
+        h3 {
+            color: purple;
+            font-size: 18px;
+            text-align: center;
+            padding-bottom: 10px;
+        }
+        
+        p {
+            color: white;
+            font-size: 12px;
+            text-align: justify;
         }
         /* popup for all features */
         
@@ -281,7 +295,7 @@
         }
         /* sub-title color */
         
-        .subtitle-gallery {
+        .subtitle-gallery p {
             color: #ffb745;
         }
         /* second sub-title color */
@@ -303,19 +317,6 @@
         #about-modal {
             background: rgba(48, 48, 48, 0.50);
             -webkit-text-fill-color: #b2dbd5;
-        }
-        
-        h3 {
-            color: purple;
-            font-size: 18px;
-            text-align: center;
-            padding-bottom: 10px;
-        }
-        
-        p {
-            color: white;
-            font-size: 12px;
-            text-align: justify;
         }
         /* .marker {
             background-image: url('pics/wildlife_icon.png');
@@ -387,20 +388,20 @@
             <div id='AMp'>
                 <overlay id="first" class="section ">
                     <div class="container">
-                        <input type="radio" name="group1" id="radio-AMp-1">
+                        <input type="radio" name="group1" value="Extinct" id="radio-AMp-1">
                         <label for="radio-AMp-1"><span class="radio"></span><span class="category">Extinct</span></span>
                         </label>
                     </div>
                     <div class="container">
-                        <input type="radio" name="group1" id="radio-AMp-2">
+                        <input type="radio" name="group1" value="Probably Extinct" id="radio-AMp-2">
                         <label for="radio-AMp-2"><span class="radio"></span><span class="category">Probably Extinct</span></span></label>
                     </div>
                     <div class="container">
-                        <input type="radio" name="group1" id="radio-AMp-3">
+                        <input type="radio" name="group1" value="Extant (resident)" id="radio-AMp-3">
                         <label for="radio-AMp-3"><span class="radio"></span><span class="category">Extant (resident)</span></span></label>
                     </div>
                     <div class="container">
-                        <input type="radio" name="group1" id="radio-AMp-4">
+                        <input type="radio" name="group1" value="Presence Uncertain" id="radio-AMp-4">
                         <label for="radio-AMp-4"><span class="radio"></span><span class="category">Presence Uncertain</span></span></label>
                     </div>
                 </overlay>
@@ -410,86 +411,86 @@
             <div id='REp'>
                 <overlay id="second" class="section ">
                     <div class="container">
-                        <input type="radio" name="group2" id="radio-REp-1">
+                        <input type="radio" name="group2" value="Extant (resident)" id="radio-REp-1">
                         <label for="radio-REp-1"><span class="radio"></span><span class="category">Extant (resident)</span></span>
                         </label>
                     </div>
                     <div class="container">
-                        <input type="radio" name="group2" id="radio-REp-2">
+                        <input type="radio" name="group2" value="Extant & Origin Uncertain (resident)" id="radio-REp-2">
                         <label for="radio-REp-2"><span class="radio"></span><span class="category">Extant & Origin Uncertain (resident)</span></span></label>
                     </div>
                     <div class="container">
-                        <input type="radio" name="group2" id="radio-REp-3">
+                        <input type="radio" name="group2" value="Extant & Reintroduced (resident)" id="radio-REp-3">
                         <label for="radio-REp-3"><span class="radio"></span><span class="category">Extant & Reintroduced (resident)</span></span></label>
                     </div>
                     <div class="container">
-                        <input type="radio" name="group2" id="radio-REp-4">
+                        <input type="radio" name="group2" value="Extant & Vagrant (resident)" id="radio-REp-4">
                         <label for="radio-REp-4"><span class="radio"></span><span class="category">Extant & Vagrant (resident)</span></span></label>
                     </div>
                     <div class="container">
-                        <input type="radio" name="group2" id="radio-REp-5">
+                        <input type="radio" name="group2" value="Extinct" id="radio-REp-5">
                         <label for="radio-REp-5"><span class="radio"></span><span class="category">Extinct</span></span></label>
                     </div>
                     <div class="container">
-                        <input type="radio" name="group2" id="radio-REp-6">
-                        <label for="radio-REp-6"><span class="radio"></span><span class="category">Possible Extant (resident)</span></span></label>
+                        <input type="radio" name="group2" value="Possible Extant (resident) id=" radio-REp-6 ">
+                        <label for="radio-REp-6 "><span class="radio "></span><span class="category ">Possible Extant (resident)</span></span></label>
                     </div>
-                    <div class="container">
-                        <input type="radio" name="group2" id="radio-REp-7">
-                        <label for="radio-REp-7"><span class="radio"></span><span class="category">Possible Extinct</span></span></label>
+                    <div class="container ">
+                        <input type="radio " name="group2 " value="Possible Extinct " id="radio-REp-7 ">
+                        <label for="radio-REp-7 "><span class="radio "></span><span class="category ">Possible Extinct</span></span></label>
                     </div>
                 </overlay>
             </div>
 
             <div id='MAm'>
-                <overlay id="thirth" class="section ">
-                    <div class="container">
-                        <input type="radio" name="group3" id="radio-MAm-1">
-                        <label for="radio-MAm-1"><span class="radio"></span><span class="category">Extant (resident)</span></span>
+                <overlay id="thirth " class="section ">
+                    <div class="container ">
+                        <input type="radio " name="group3 " value="Extant (resident) " id="radio-MAm-1 ">
+                        <label for="radio-MAm-1 "><span class="radio "></span><span class="category ">Extant (resident)</span></span>
                         </label>
                     </div>
-                    <div class="container">
-                        <input type="radio" name="group3" id="radio-MAm-2">
-                        <label for="radio-MAm-2"><span class="radio"></span><span class="category">Possible Extinct</span></span></label>
+                    <div class="container ">
+                        <input type="radio " name="group3 " value="Possible Extinct " id="radio-MAm-2 ">
+                        <label for="radio-MAm-2 "><span class="radio "></span><span class="category ">Possible Extinct</span></span></label>
                     </div>
-                    <div class="container">
-                        <input type="radio" name="group3" id="radio-MAm-3">
-                        <label for="radio-MAm-3"><span class="radio"></span><span class="category">Probably Extant (resident)</span></span></label>
+                    <div class="container ">
+                        <input type="radio " name="group3 " value="Probably Extant (resident) " id="radio-MAm-3 ">
+                        <label for="radio-MAm-3 "><span class="radio "></span><span class="category ">Probably Extant (resident)</span></span></label>
                     </div>
 
                 </overlay>
             </div>
 
             <div id='BIr'>
-                <overlay id="fourth" class="section ">
-                    <div class="container">
-                        <input type="radio" name="group4" id="radio-BIr-1">
-                        <label for="radio-BIr-1"><span class="radio"></span><span class="category">Extant (breeding)</span></span>
+                <overlay id="fourth " class="section ">
+                    <div class="container ">
+                        <input type="radio " name="group4 " value="Extant (breeding) " id="radio-BIr-1 ">
+                        <label for="radio-BIr-1 "><span class="radio "></span><span class="category ">Extant (breeding)</span></span>
                         </label>
                     </div>
-                    <div class="container">
-                        <input type="radio" name="group4" id="radio-BIr-2">
-                        <label for="radio-BIr-2"><span class="radio"></span><span class="category">Extant (non-breeding)</span></span></label>
+                    <div class="container ">
+                        <input type="radio " name="group4 " value="Extant (non-breeding) " id="radio-BIr-2 ">
+                        <label for="radio-BIr-2 "><span class="radio "></span><span class="category ">Extant (non-breeding)</span></span></label>
                     </div>
-                    <div class="container">
-                        <input type="radio" name="group4" id="radio-BIr-3">
-                        <label for="radio-BIr-3"><span class="radio"></span><span class="category">Extant (passage)</span></span></label>
+                    <div class="container ">
+                        <input type="radio " name="group4 " value="Extant (passage) " id="radio-BIr-3 ">
+                        <label for="radio-BIr-3 "><span class="radio "></span><span class="category ">Extant (passage)</span></span></label>
                     </div>
-                    <div class="container">
-                        <input type="radio" name="group4" id="radio-BIr-4">
-                        <label for="radio-BIr-4"><span class="radio"></span><span class="category">Extant (resident)</span></span></label>
+                    <div class="container ">
+                        <input type="radio " name="group4 " value="Extant (resident) " id="radio-BIr-4 ">
+                        <label for="radio-BIr-4 "><span class="radio "></span><span class="category ">Extant (resident)</span></span></label>
                     </div>
-                    <div class="container">
-                        <input type="radio" name="group4" id="radio-BIr-5">
-                        <label for="radio-BIr-5"><span class="radio"></span><span class="category">Extinct</span></span></label>
+                    <div class="container ">
+                        <input type="radio " name="group4 " value="Extinct " id="radio-BIr-5 ">
+                        <label for="radio-BIr-5 "><span class="radio "></span><span class="category ">Extinct</span></span></label>
                     </div>
-                    <div class="container">
-                        <input type="radio" name="group4" id="radio-BIr-6">
-                        <label for="radio-BIr-6"><span class="radio"></span><span class="category">Possible Extant (resident)</span></span></label>
+                    <div class="container ">
+                        <input type="radio " name="group4 " value="Possible Extant (resident) " id="radio-BIr-6 ">
+                        <label for="radio-BIr-6 "><span class="radio "></span><span class="category ">Possible Extant (resident)</span></span></label>
                     </div>
-                    <div class="container">
-                        <input type="radio" name="group4" id="radio-BIr-7">
-                        <label for="radio-BIr-7"><span class="radio"></span><span class="category">Possible Extinct</span></span></label>
+                    <div class="container ">
+                        <input type="radio " name="group4 " value="Possible Extinct " id="radio-BIr-7 ">
+                        <label for="radio-BIr-7 "><span class="radio "></span><span class="category ">Possible Extinct</span></span></label>
                     </div>
                 </overlay>
 
@@ -501,8 +502,8 @@
         </div>
 
         <div id='aside-icon-gallery'>
-            <div class="col-md-9 px-12 mt30 ml24">
-                <h1 class="title-gallery h4 font-weight-bold mr24 color-green-faint align-center">EXPLORE THE MAP</h1>
+            <div class="col-md-9 px12 mt30 ml24 ">
+                <h1 class="title-gallery h5 font-weight-bold mr24 color-green-faint align-center ">THE ART OF NATURE</h1>
                 <ul class='subtitle-gallery'>
                     <p class='layers text lead mr24 my-3 align-center'>Map Layers</p>
                     <div id='icon'>
@@ -512,19 +513,19 @@
                     <div id='icon2'>
                     </div>
                 </ul>
-                <p class="text-gallery-footer lead my-4 align-center mr24">Click icons to view critically endangered species & toggle map layers.
+                <p class="text-gallery-footer lead my-4 align-center mr24 ">Click icons to view critically endangered species & toggle map layers.
                 </p>
-                <ul class="images-hover">
-                    <a class="icon-hover frog-img mx-auto ml12 d-block"><img src="pics/amphibian.png" alt="Amphibian icon" id="amphibian">
+                <ul class="images-hover ">
+                    <a class="icon-hover frog-img mx-auto ml12 d-block "><img src="pics/amphibian.png " alt="Amphibian icon " id="amphibian ">
 
                     </a>
-                    <a class="icon-hover mx-auto d-block ml12"><img src="pics/reptile.png" alt="Reptile icon" id="reptile">
+                    <a class="icon-hover mx-auto d-block ml12 "><img src="pics/reptile.png " alt="Reptile icon " id="reptile ">
 
                     </a>
-                    <a class="icon-hover mx-auto d-block my-3 mx18"><img src="pics/mammal.png" alt="Mammal icon" id="mammal">
+                    <a class="icon-hover mx-auto d-block my-3 mx18 "><img src="pics/mammal.png " alt="Mammal icon " id="mammal ">
 
                     </a>
-                    <a class="icon-hover mx-auto d-block my-3 mx30"><img src="pics/bird.png" alt="Bird icon" id="bird">
+                    <a class="icon-hover mx-auto d-block my-3 mx30 "><img src="pics/bird.png " alt="Bird icon " id="bird ">
 
                     </a>
                 </ul>
@@ -533,40 +534,35 @@
 
     </div>
 
-    <div class="navbar-header z2">
-        <nav class="navbar navbar-expand-md navbar-dark navbar-fixed-top bg-dark">
-            <button id='about-icon' class='icon-hover' data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">          
-            <a class="navbar-brand" href="#">Conservation</a>
+    <div class="navbar-header z2 ">
+        <nav class="navbar navbar-expand-md navbar-dark navbar-fixed-top bg-dark ">
+            <button id='about-icon' class='icon-hover' data-toggle="collapse " data-target="#navbarCollapse " aria-controls="navbarCollapse " aria-expanded="false " aria-label="Toggle navigation ">          
+            <a class="navbar-brand " href="# ">Conservation</a>
         </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse " id="navbarCollapse ">
+                <ul class="navbar-nav mr-auto ">
 
                     <div id='about-trigger'>
 
-                        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                        <li class="nav-item "><a class="nav-link " href="# ">About</a></li>
                     </div>
-                    <li class="nav-item"><a class="nav-link" href="#">IUCN Red List</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Language</a></li>
+                    <li class="nav-item "><a class="nav-link " href="# ">IUCN Red List</a></li>
+                    <li class="nav-item "><a class="nav-link " href="# ">Language</a></li>
                 </ul>
         </nav>
         </div>
 
 
-
-
-
-
-
-        <aside class="aside z3">
-            <ul class="aside-chapters">
-                <li class="aside-icons">
-                    <a class="icon-hover" id='icon-story'><img src="pics/story.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
+        <aside class="aside z3 ">
+            <ul class="aside-chapters ">
+                <li class="aside-icons ">
+                    <a class="icon-hover " id='icon-story'><img src="pics/story.png " alt="HTML tutorial " style="width:90px;height:90px; "></a>
                 </li>
-                <li class="aside-icons">
-                    <a class="icon-hover" id='icon-gallery'><img src="pics/gallery.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
+                <li class="aside-icons ">
+                    <a class="icon-hover " id='icon-gallery'><img src="pics/gallery.png " alt="HTML tutorial " style="width:90px;height:90px; "></a>
                 </li>
-                <li class="aside-icons">
-                    <a class="icon-hover" id='icon-explore'><img src="pics/explore.png" alt="HTML tutorial" style="width:90px;height:90px;"></a>
+                <li class="aside-icons ">
+                    <a class="icon-hover " id='icon-explore'><img src="pics/explore.png " alt="HTML tutorial " style="width:90px;height:90px; "></a>
                 </li>
             </ul>
             <div id='legend' class='absolute mt12 color-green-faint'>
@@ -635,13 +631,11 @@
             <section id='venezuela'>
                 <h3>Venezuela</h3>
                 <p>Venezuela</p>
-                <small id="THANK YOU">
+                <small id="THANK YOU ">
                 Tank you! <a href='http://www.gutenberg.org/files/2346/2346-h/2346-h.htm'>Project Gutenberg</a>
             </small>
             </section>
         </div>
-
-
 
 
         <!-- 
@@ -658,7 +652,6 @@
         </div> -->
 
 
-
         <div id='about-modal' class='absolute top right bottom left scroll-auto z3 none animation--speed-1'>
             <div class='flex-child border border-gray-dark bg-gray-dark color-white round relative w600 mx-auto mt120'>
                 <button id='modal-close' class='btn absolute top right mr6 mt6 px0 py0'>
@@ -672,16 +665,14 @@
                         Nearly all the energy available on Earth is derived from solar radiation. These days, solar energy has become one of the most important sources of alternative energy for generating electricity and heat water. Whether it’s for rooftop photovoltaic and
                         hot water systems or centralize solar power generation plants, knowledge of the patterns and variability of solar radiation is essential.
                         <h4>
-                            <a target="_blank" href="http://www.geography.hawaii.edu/">Geography Department</a> -
-                            <a target="_blank" href="http://www.manoa.hawaii.edu/">University of Hawai&#699;i at M&#257;noa
+                            <a target="_blank " href="http://www.geography.hawaii.edu/ ">Geography Department</a> -
+                            <a target="_blank " href="http://www.manoa.hawaii.edu/ ">University of Hawai&#699;i at M&#257;noa
                                     <a/>
                             </h4>
                         </div>
                     </div>
                 </div>
             </div>
-
-
 
 
 
@@ -767,16 +758,16 @@
                             'data': geojson
                         },
                         'paint': {
-                            "fill-outline-color": "hsla(337, 82%, 62%, 0)",
-                            "fill-color": ["interpolate", ["cubic-bezier",
+                            "fill-outline-color ": "hsla(337, 82%, 62%, 0) ",
+                            "fill-color ": ["interpolate ", ["cubic-bezier ",
                                     0, 0.5,
                                     1, 0.5
                                 ],
-                                ["get", "depth"],
-                                0, "#f2f8fa",
-                                9000, "#a7ccd2"
+                                ["get ", "depth "],
+                                0, "#f2f8fa ",
+                                9000, "#a7ccd2 "
                             ],
-                            "fill-opacity": 0.4
+                            "fill-opacity ": 0.4
                         }
                     });
                 } //end of oceanMap function
@@ -792,9 +783,7 @@
                 modal.classList.add('none'); 
             });
         }
-
-
-
+                //get polygons data
                 d3.json('data/polygons.json')
                     .then(function(data) {
                         polygonsMap(data);
@@ -812,7 +801,7 @@
                             'data': geojson
                         },
                         'paint': {
-                            "fill-color": [
+                            "fill-color ": [
                                 'match', ['get', 'IUCN_CAT'],
                                 'Ia', '#505160',
                                 'Ib', '#68829e',
@@ -825,7 +814,7 @@
                                 'Not Applicable', '#a2c523',
                                 '#ccc'
                             ],
-                            "fill-opacity": 0.4,
+                            "fill-opacity ": 0.4,
                         },
                     });
 
@@ -864,247 +853,41 @@
                     var listItems = '';
                     for (var code in colorAreas) {
                         listItems += "<li class='li h-full txt-m'><span class='w24 h18 fl mr12' style='background:" +
-                            colorAreas[code] + "'></span>" + labelCodes[code] + "</li>"
-                    }
-                    d3.select("#legend ul").html(listItems);
-                    d3.select('#legend').classed('none', false);
-
-                } //end of addLegend function
-
-                d3.json('data/points.json')
-                    .then(function(data) {
-                        pointsMap(data);
+                            colorAreas[code] + "'></span>" + labelCodes[code] + "</li>" } d3.select("#legend ul").html(listItems); d3.select('#legend').classed('none', false); } //end of addLegend function //get points data d3.json('data/points.json')
+                        .then(function(data) { pointsMap(data); }); function pointsMap(data) { map.addLayer({ 'id': 'points', 'type': 'circle', 'source': { 'type': 'geojson', 'data': data // 'cluster': true, // 'clusterMaxZoom': 4, // Max zoom to cluster
+                        points on // 'clusterRadius': 2 // Radius of each cluster when clustering points (defaults to 50) }, 'paint': { 'circle-color': [ 'match', ['get', 'IUCN_CAT'], 'Ia', '#505160', 'Ib', '#68829e', 'II', '#aebd38', 'III', '#598234',
+                        'IV', '#003b46', 'V', '#07575b', 'VI', '#66a5ad', 'Not Reported', '#c4dfe6', 'Not Applicable', '#a2c523', '#ccc' ], 'circle-radius': 4, 'circle-opacity': .6, }, }); var popup = new mapboxgl.Popup({ closeButton: false, closeOnClick:
+                        false }); map.on('mousemove', 'points', function(e) { var features = map.queryRenderedFeatures(e.lngLat); map.getCanvas().style.cursor = 'pointer'; popup.setLngLat(e.lngLat) .setHTML(String(e.features[0].properties.NAME).toLocaleString())
+                        .addTo(map) }); map.on('mouseleave', 'points', function() { map.getCanvas().style.cursor = ''; popup.remove(); }); } //end of function pointsMap //get species data d3.json('data/species.json') .then(function(data) { speciesMap(data);
+                        }); function speciesMap(data) { console.log(data); // var geojson = topojson.feature(data, data.objects.merge_files_sim); map.addLayer({ 'id': 'species', 'type': 'fill', 'source': { 'type': 'geojson', 'data': data }, 'paint': {
+                        "fill-color": [ 'match', ['get', 'layer'], 'amphibians-filtered', '#acd0c0', 'birds', '#75b1a9', 'mammals-filtered', '#d9b44a', 'reptiles-filtered', '#4f6457', '#ccc' ], "fill-opacity": 0.6, }, // 'layout': none' }); var popup
+                        = new mapboxgl.Popup({ closeButton: false, closeOnClick: false }); map.on('mousemove', 'species', function(e) { var features = map.queryRenderedFeatures(e.lngLat); map.getCanvas().style.cursor = 'pointer'; popup.setLngLat(e.lngLat)
+                        .setHTML(String(e.features[0].properties.binomial).toLocaleString()) .addTo(map) }); map.on('mouseleave', 'species', function() { map.getCanvas().style.cursor = ''; popup.remove(); }); } //end of speciesMap function // get amphibians
+                        data d3.json('data/amphibians-filtered.json') .then(function(data) { amphibianMap(data); amphibianMapToggle(data); }); function amphibianMap(data) { map.addLayer({ 'id': 'amphibian', 'type': 'fill', 'source': { 'type': 'geojson',
+                        'data': data }, 'paint': { "fill-color": [ 'match', ['get', 'legend'], 'Extant (resident)', '#4D648D', 'Extinct', '#1E1F26', 'Possible Extinct', '#283655', 'Presence Uncertain', '#D0EQF9', '#000000' ], "fill-opacity": 0.4, }, });
+                        var popup = new mapboxgl.Popup({ closeButton: false, closeOnClick: false }); map.on('mousemove', 'amphibian', function(e) { var features = map.queryRenderedFeatures(e.lngLat); map.getCanvas().style.cursor = 'pointer'; popup.setLngLat(e.lngLat)
+                        .setHTML(String(e.features[0].properties.legend + e.features[0].properties.binomial).toLocaleString()) .addTo(map) }); map.on('mouseleave', 'amphibian', function() { map.getCanvas().style.cursor = ''; popup.remove(); }); } //end
+                        of amphibianMap function function amphibianMapToggle(data) { $('#am').click(function() { $('#AMp').toggle(); $('#title').html("
+                        <strong>AMPHIBIANS</strong");
                     });
 
-                function pointsMap(data) {
-
-                    map.addLayer({
-                        'id': 'points',
-                        'type': 'circle',
-                        'source': {
-                            'type': 'geojson',
-                            'data': data
-                                //   'cluster': true,
-                                //   'clusterMaxZoom': 4, // Max zoom to cluster points on
-                                //  'clusterRadius': 2 // Radius of each cluster when clustering points (defaults to 50)
-                        },
-                        'paint': {
-                            'circle-color': [
-                                'match', ['get', 'IUCN_CAT'],
-                                'Ia', '#505160',
-                                'Ib', '#68829e',
-                                'II', '#aebd38',
-                                'III', '#598234',
-                                'IV', '#003b46',
-                                'V', '#07575b',
-                                'VI', '#66a5ad',
-                                'Not Reported', '#c4dfe6',
-                                'Not Applicable', '#a2c523',
-                                '#ccc'
-                            ],
-                            'circle-radius': 4,
-                            'circle-opacity': .6,
-                        },
+                     d3.selectAll('#aside-icon-explore input').on('change', function () {
+                         // console.log(this.value) // Extinct, Probably Extinct, etc
+                     map.setPaintProperty('amphibian', 'fill-opacity', [
+                          'match', ['get', 'legend'],
+                             this.value, 1, // set the selected one to full opacity
+                             0 // the rest should be set to zero opacity
+                         ]);
                     });
-
-                    var popup = new mapboxgl.Popup({
-                        closeButton: false,
-                        closeOnClick: false
-                    });
-
-                    map.on('mousemove', 'points', function(e) {
-                        var features = map.queryRenderedFeatures(e.lngLat);
-                        map.getCanvas().style.cursor = 'pointer';
-                        popup.setLngLat(e.lngLat)
-                            .setHTML(String(e.features[0].properties.NAME).toLocaleString())
-                            .addTo(map)
-                    });
-                    map.on('mouseleave', 'points', function() {
-                        map.getCanvas().style.cursor = '';
-                        popup.remove();
-                    });
-
-                } //end of function pointsMap
-
-                d3.json('data/species.json')
-                    .then(function(data) {
-                        speciesMap(data);
-                    });
-
-                function speciesMap(data) {
-
-                    map.addLayer({
-                        'id': 'species',
-                        'type': 'fill',
-                        'source': {
-                            'type': 'geojson',
-                            'data': data
-                        },
-                        'paint': {
-                            "fill-color": [
-                                'match', ['get', 'layer'],
-                                'amphibians-filtered', '#acd0c0',
-                                'birds', '#75b1a9',
-                                'mammals-filtered', '#d9b44a',
-                                'reptiles-filtered', '#4f6457',
-                                '#ccc'
-                            ],
-                            "fill-opacity": 0.6,
-                        },
-                        // 'layout': none'
-                    });
-
-                    var popup = new mapboxgl.Popup({
-                        closeButton: false,
-                        closeOnClick: false
-                    });
-
-                    map.on('mousemove', 'species', function(e) {
-                        var features = map.queryRenderedFeatures(e.lngLat);
-
-                        map.getCanvas().style.cursor = 'pointer';
-                        popup.setLngLat(e.lngLat)
-                            .setHTML(String(e.features[0].properties.binomial).toLocaleString())
-                            .addTo(map)
-                    });
-                    map.on('mouseleave', 'species', function() {
-                        map.getCanvas().style.cursor = '';
-                        popup.remove();
-                    });
-
-                } //end of speciesMap function
-
-                d3.json('data/amphibians-filtered.json')
-                    .then(function(data) {
-                        amphibianMap(data);
-                        amphibianMapToggle(data);
-                    });
-
-
-
-                function amphibianMap(data) {
-
-                    map.addLayer({
-                        'id': 'amphibian',
-                        'type': 'fill',
-                        'source': {
-                            'type': 'geojson',
-                            'data': data
-                        },
-                        'paint': {
-                            "fill-color": [
-                                'match', ['get', 'legend'],
-                                'Extant (resident)', '#4D648D',
-                                'Extinct', '#1E1F26',
-                                'Possible Extinct', '#283655',
-                                'Presence Uncertain', '#D0EQF9',
-                                '#000000'
-                            ],
-                            "fill-opacity": 0.4,
-
-                        },
-
-                    });
-
-                    var popup = new mapboxgl.Popup({
-                        closeButton: false,
-                        closeOnClick: false
-                    });
-
-                    map.on('mousemove', 'amphibian', function(e) {
-                        var features = map.queryRenderedFeatures(e.lngLat);
-
-                        map.getCanvas().style.cursor = 'pointer';
-                        popup.setLngLat(e.lngLat)
-                            .setHTML(String(e.features[0].properties.legend + e.features[0].properties.binomial).toLocaleString())
-                            .addTo(map)
-                    });
-                    map.on('mouseleave', 'amphibian', function() {
-                        map.getCanvas().style.cursor = '';
-                        popup.remove();
-                    });
-
-                } //end of amphibianMap function
-
-
-                function amphibianMapToggle(data) {
-
-                    $('#am').click(function() {
-                        $('#AMp').toggle();
-                        $('#title').html("<strong>AMPHIBIANS</strong");
-                    });
-
-
-                    //     data.features.forEach(function(feature) {
-                    //         var legend = feature.properties['legend'];
-                    //         var layerID = id + legend;
-                    //         console.log(layerID);
-                    // console.log(layerID);
-
-                    // });
-
-
-
-                    //     two.className = '';
-                    //     this.className = 'active';
-                    //     map.markerLayer.setFilter(function(f) {
-                    //         return f.properties['legend'] === 'Extinct';
-                    //     });
-                    //     one.onclick = function(legend) {    return true;
-
-                    // };
-
-                    // two.onclick = function() {
-                    //     one.className = '';
-                    //     this.className = 'category';
-                    //     map.markerLayer.setFilter(function(f) {
-                    //         return true;
-                    //     });
-                    //     return false;
-                    // }
-
-                    //     var toggleablefilterGroupIds = ['radio-AMp-1', 'radio-AMp-2', 'radio-AMp-3', 'radio-AMp-4'];
-                    //     for (var i = 0; i < toggleablefilterGroupIds.length; i++) {
-                    //         var id = toggleablefilterGroupIds[i];
-
-                    //         data.features.forEach(function(feature) {
-                    //             var legend = feature.properties.legend;
-                    //             console.log(legend);
-                    //         });
-
-
-                    //                         id.onclick = function (e) {
-                    // var clickedLayer = this.textContent;
-                    // e.preventDefault();
-                    // e.stopPropagation();
-
-                    //                         }
-
-
-                    // }
-
-                    //     filterGroup.addEventListener('change', function(e) {
-                    //         map.setLayoutProperty(layerID, 'visibility',
-                    //             e.target.checked ? 'visible' : 'none');
-                    //     });
-
-                    //     $('#am').click(function() {
-                    //         $('#AMp').toggle();
-                    //         $('#title').html("<strong>AMPHIBIANS</strong");
-                    //     });
-
-
-
+      
                 } //end of amphibianMapToggle function
 
 
-
-
-
-
+                // get reptiles data
                 d3.json('data/reptiles-filtered.json')
                     .then(function(data) {
                         reptileMap(data);
+                        reptileMapToggle(data);
                     });
 
                 function reptileMap(data) {
@@ -1154,10 +937,30 @@
 
                 } //end of reptileMap function
 
+                function reptileMapToggle(data) {
+                    $('#re').click(function() {
+                $('#REp').toggle();
+                $('#title').html("<strong>REPTILES</strong");
+            });
 
+           
+
+ d3.selectAll('#aside-icon-explore input').on('change', function () {
+     // console.log(this.value) // Extinct, Probably Extinct, etc
+ map.setPaintProperty('reptile', 'fill-opacity', [
+      'match', ['get', 'legend'],
+         this.value, 1, // set the selected one to full opacity
+         0 // the rest should be set to zero opacity
+     ]);
+});
+
+} //end of reptileMapToggle function
+
+                //get mammals data
                 d3.json('data/mammals-filtered.json')
                     .then(function(data) {
                         mammalMap(data);
+                        mammalMapToggle(data);
                     });
 
                 function mammalMap(data) {
@@ -1203,11 +1006,29 @@
 
                 } //end of mammalMap function
 
+               
+                function mammalMapToggle(data) {
+                    $('#ma').click(function() {
+                $('#MAm').toggle();
+                $('#title').html("<strong>MAMMALS</strong");
+                 });
 
+                 d3.selectAll('#aside-icon-explore input').on('change', function () {
+                         // console.log(this.value) // Extinct, Probably Extinct, etc
+                     map.setPaintProperty('mammal', 'fill-opacity', [
+                          'match', ['get', 'legend'],
+                             this.value, 1, // set the selected one to full opacity
+                             0 // the rest should be set to zero opacity
+                         ]);
+                    });
 
-                var birds = d3.json('data/birds.json')
+                } //end of MammalMapToggle function
+
+                //get birds data
+                d3.json('data/birds.json')
                     .then(function(data) {
                         birdMap(data);
+                        birdMapToggle(data);
                     });
 
                 function birdMap(data) {
@@ -1257,6 +1078,22 @@
 
                 } //end of birdMap function
 
+                function birdMapToggle(data) {
+                    $('#bi').click(function() {
+                $('#BIr').toggle();
+                $('#title').html("<strong>BIRDS</strong");
+            });
+
+            d3.selectAll('#aside-icon-explore input').on('change', function () {
+                         // console.log(this.value) // Extinct, Probably Extinct, etc
+                     map.setPaintProperty('bird', 'fill-opacity', [
+                          'match', ['get', 'legend'],
+                             this.value, 1, // set the selected one to full opacity
+                             0 // the rest should be set to zero opacity
+                         ]);
+                    });
+        } //end of birdMapToggle function
+
 
                 // var onZoomend = function () {
                 //     map.setMaxBounds(map.getBounds())
@@ -1285,7 +1122,9 @@
 
             }); //end of map.on('load')
 
-            $('#icon-story').click(function() {
+
+       //on click icon-story
+        $('#icon-story').on('click', function() {
                 $('#features').toggle();
                 map.flyTo({
                 center: [-80, -20],
@@ -1298,8 +1137,15 @@
                     return t;
                 }
             });
-            }); //end of Icon-story
-
+        });
+        
+        $('#icon-story').off('click', function(){
+        map.fitBounds([-75, -10, -25, -15], {
+                        zoom: 6.6
+                        })
+        }); //end of endCLick story 
+              
+            //scroll countries
             var chapters = {
                 'introduction': {
                      center: [-75, -18],
@@ -1386,8 +1232,140 @@
                 return bounds.top < window.innerHeight && bounds.top > 0;
             }
 
+            //on click icon-gallery
+            var endClicked = $('#icon-gallery').on('click', function() {
+            $('#aside-icon-gallery').toggle()
+                map.fitBounds([-75, -10, -25, -15], {
+                zoom: 2.6
+                });
+            });
+
+            $('#icon-gallery').off('click', endClicked); //end of endCLick gallery
+
+            //select and toggle layer polygon
+            var toggleableLayerIds = ['polygon'];
+
+            for (var i = 0; i < toggleableLayerIds.length; i++) {
+            var id = toggleableLayerIds[i];
+
+             var img = document.createElement('img');
+              img.src = 'pics/landscape_nav.png'
+             img.className = 'active'
+            img.id = 'species'
+            img.textContent = id
+
+            img.onclick = function(e) {
+             var clickedLayer = this.textContent;
+                e.preventDefault();
+                 e.stopPropagation();
+
+             var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+        if (visibility === 'visible') {
+            map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+            this.className = '';
+        } else {
+            this.className = 'active';
+            map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+        }
+    };
+
+    var layers = document.getElementById('icon');
+    layers.appendChild(img)
+}
+        //get name of layer on hover
+        $(icon).hover(
+    function() {
+        $(this).append($("<span> polygon</span>"));
+    },
+    function() {
+        $(this).find("span:last").remove();
+    }
+);
 
 
+ //select and toggle layer points
+var toggleableLayerIds = ['points'];
+
+for (var i = 0; i < toggleableLayerIds.length; i++) {
+    var id = toggleableLayerIds[i];
+
+    var img = document.createElement('img');
+    img.src = 'pics/protected_nav.png'
+    img.className = 'active'
+    img.id = 'picture'
+    img.textContent = id
+
+    img.onclick = function(e) {
+        var clickedLayer = this.textContent;
+        e.preventDefault();
+        e.stopPropagation();
+
+        var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+        if (visibility === 'visible') {
+            map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+            this.className = '';
+        } else {
+            this.className = 'active';
+            map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+        }
+    };
+
+    var layers = document.getElementById('icon1');
+    layers.appendChild(img)
+}
+ //get name of layer on hover
+$(icon1).hover(
+    function() {
+        $(this).append($("<span> points</span>"));
+    },
+    function() {
+        $(this).find("span:last").remove();
+    }
+);
+
+ //select and toggle layer species
+var toggleableLayerIds = ['species'];
+for (var i = 0; i < toggleableLayerIds.length; i++) {
+    var id = toggleableLayerIds[i];
+
+    var img = document.createElement('img');
+    img.src = 'pics/wildlife_nav.png'
+    img.className = 'active'
+    img.id = 'picture'
+    img.textContent = id
+
+    img.onclick = function(e) {
+        var clickedLayer = this.textContent;
+        e.preventDefault();
+        e.stopPropagation();
+
+        var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+        if (visibility === 'visible') {
+            map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+            this.className = '';
+        } else {
+            this.className = 'active';
+            map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+        }
+    };
+
+    var layers = document.getElementById('icon2');
+    layers.appendChild(img)
+}
+ //get name of layer on hover
+$(icon2).hover(
+    function() {
+        $(this).append($("<span> species</span>"));
+    },
+    function() {
+        $(this).find("span:last").remove();
+    }
+);
+
+            //click on icon-explore
             var endClicked = $('#icon-explore').on('click', function() {
                 $('#aside-icon-explore').toggle(
                     map.fitBounds([-75, -10, -25, -15], {
@@ -1395,32 +1373,9 @@
                     })
                 );
             });
+            $('#icon-explore').off('click', endClicked); // end of jquery selection icon-explore
 
-            $('#icon-explore').off('click', endClicked); // end of jquery selection icon-gallery
-
-
-            // $('#am').click(function() {
-            //     $('#AMp').toggle();
-            //     $('#title').html("<strong>AMPHIBIANS</strong");
-            // });
-
-            $('#re').click(function() {
-                $('#REp').toggle();
-                $('#title').html("<strong>REPTILES</strong");
-            });
-
-            $('#ma').click(function() {
-                $('#MAm').toggle();
-                $('#title').html("<strong>MAMMALS</strong");
-            });
-
-            $('#bi').click(function() {
-                $('#BIr').toggle();
-                $('#title').html("<strong>BIRDS</strong");
-            });
-
-
-
+            //select and toggle layer amphibian
             var toggleableLayerIds = ['amphibian'];
 
             for (var i = 0; i < toggleableLayerIds.length; i++) {
@@ -1452,7 +1407,7 @@
                 var layers = document.getElementById('amphibian');
                 layers.appendChild(img)
             }
-
+            //gets layer name
             $(amphibian).hover(
                 function() {
                     $(this).append($("<span> amphibian</span>"));
@@ -1462,7 +1417,7 @@
                 }
             );
 
-
+ //select and toggle layer reptile
             var toggleableLayerIds = ['reptile'];
 
             for (var i = 0; i < toggleableLayerIds.length; i++) {
@@ -1494,7 +1449,7 @@
                 var layers = document.getElementById('reptile');
                 layers.appendChild(img)
             }
-
+  //gets layer name
             $(reptile).hover(
                 function() {
                     $(this).append($("<span> reptile</span>"));
@@ -1504,7 +1459,7 @@
                 }
             );
 
-
+ //select and toggle layer mammal
             var toggleableLayerIds = ['mammal'];
 
             for (var i = 0; i < toggleableLayerIds.length; i++) {
@@ -1536,17 +1491,18 @@
                 var layers = document.getElementById('mammal');
                 layers.appendChild(img)
             }
-
+  //gets layer name
             $(mammal).hover(
                 function() {
-                    $(this).append($("<span> mammals</span>"));
+                    $(this).append($("<span> mammal</span>"));
                 },
                 function() {
                     $(this).find("span:last").remove();
                 }
             );
+          
 
-
+ //select and toggle layer bird
             var toggleableLayerIds = ['bird'];
 
             for (var i = 0; i < toggleableLayerIds.length; i++) {
@@ -1578,148 +1534,17 @@
                 var layers = document.getElementById('bird');
                 layers.appendChild(img)
             }
-
+  //gets layer name
             $(bird).hover(
                 function() {
-                    $(this).append($("<span> birds</span>"));
+                    $(this).append($("<span> bird</span>"));
                 },
                 function() {
                     $(this).find("span:last").remove();
                 }
             );
 
-
-
-            var toggleableLayerIds = ['polygon'];
-
-            for (var i = 0; i < toggleableLayerIds.length; i++) {
-                var id = toggleableLayerIds[i];
-
-                var img = document.createElement('img');
-                img.src = 'pics/landscape_nav.png'
-                img.className = 'active'
-                img.id = 'species'
-                img.textContent = id
-
-                img.onclick = function(e) {
-                    var clickedLayer = this.textContent;
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
-
-                    if (visibility === 'visible') {
-                        map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-                        this.className = '';
-                    } else {
-                        this.className = 'active';
-                        map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-                    }
-                };
-
-                var layers = document.getElementById('icon');
-                layers.appendChild(img)
-            }
-
-            $(icon).hover(
-                function() {
-                    $(this).append($("<span> polygon</span>"));
-                },
-                function() {
-                    $(this).find("span:last").remove();
-                }
-            );
-
-            var toggleableLayerIds = ['points'];
-
-            for (var i = 0; i < toggleableLayerIds.length; i++) {
-                var id = toggleableLayerIds[i];
-
-                var img = document.createElement('img');
-                img.src = 'pics/protected_nav.png'
-                img.className = 'active'
-                img.id = 'picture'
-                img.textContent = id
-
-                img.onclick = function(e) {
-                    var clickedLayer = this.textContent;
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
-
-                    if (visibility === 'visible') {
-                        map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-                        this.className = '';
-                    } else {
-                        this.className = 'active';
-                        map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-                    }
-                };
-
-                var layers = document.getElementById('icon1');
-                layers.appendChild(img)
-            }
-
-            $(icon1).hover(
-                function() {
-                    $(this).append($("<span> points</span>"));
-                },
-                function() {
-                    $(this).find("span:last").remove();
-                }
-            );
-
-            var toggleableLayerIds = ['species'];
-            for (var i = 0; i < toggleableLayerIds.length; i++) {
-                var id = toggleableLayerIds[i];
-
-                var img = document.createElement('img');
-                img.src = 'pics/wildlife_nav.png'
-                img.className = 'active'
-                img.id = 'picture'
-                img.textContent = id
-
-                img.onclick = function(e) {
-                    var clickedLayer = this.textContent;
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
-
-                    if (visibility === 'visible') {
-                        map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-                        this.className = '';
-                    } else {
-                        this.className = 'active';
-                        map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-                    }
-                };
-
-                var layers = document.getElementById('icon2');
-                layers.appendChild(img)
-            }
-
-            $(icon2).hover(
-                function() {
-                    $(this).append($("<span> species</span>"));
-                },
-                function() {
-                    $(this).find("span:last").remove();
-                }
-            );
-
-            var endClicked = $('#icon-gallery').on('click', function() {
-                var endToggle = $('#aside-icon-gallery').toggle()
-                map.fitBounds([-75, -10, -25, -15], {
-                    zoom: 2.6
-                });
-            });
-
-            $('#icon-gallery').off('click', endClicked);
-
-
-//reset to initial latlng
+//reset to initial latlng when click on Navigation button / Conservation
 
             document.getElementById('about-icon').addEventListener('click', function () {
             map.flyTo({
@@ -1743,4 +1568,4 @@
 
 </body>
 
-</html>Con
+</html>
