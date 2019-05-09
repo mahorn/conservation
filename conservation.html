@@ -852,24 +852,22 @@
                     })
                     var listItems = '';
                     for (var code in colorAreas) {
-                        listItems += "<li class='li h-full txt-m'><span class='w24 h18 fl mr12' style='background:" +
-                            colorAreas[code] + "'></span>" + labelCodes[code] + "</li>" } d3.select("#legend ul").html(listItems); d3.select('#legend').classed('none', false); } //end of addLegend function //get points data d3.json('data/points.json')
-                        .then(function(data) { pointsMap(data); }); function pointsMap(data) { map.addLayer({ 'id': 'points', 'type': 'circle', 'source': { 'type': 'geojson', 'data': data // 'cluster': true, // 'clusterMaxZoom': 4, // Max zoom to cluster
-                        points on // 'clusterRadius': 2 // Radius of each cluster when clustering points (defaults to 50) }, 'paint': { 'circle-color': [ 'match', ['get', 'IUCN_CAT'], 'Ia', '#505160', 'Ib', '#68829e', 'II', '#aebd38', 'III', '#598234',
-                        'IV', '#003b46', 'V', '#07575b', 'VI', '#66a5ad', 'Not Reported', '#c4dfe6', 'Not Applicable', '#a2c523', '#ccc' ], 'circle-radius': 4, 'circle-opacity': .6, }, }); var popup = new mapboxgl.Popup({ closeButton: false, closeOnClick:
-                        false }); map.on('mousemove', 'points', function(e) { var features = map.queryRenderedFeatures(e.lngLat); map.getCanvas().style.cursor = 'pointer'; popup.setLngLat(e.lngLat) .setHTML(String(e.features[0].properties.NAME).toLocaleString())
-                        .addTo(map) }); map.on('mouseleave', 'points', function() { map.getCanvas().style.cursor = ''; popup.remove(); }); } //end of function pointsMap //get species data d3.json('data/species.json') .then(function(data) { speciesMap(data);
-                        }); function speciesMap(data) { console.log(data); // var geojson = topojson.feature(data, data.objects.merge_files_sim); map.addLayer({ 'id': 'species', 'type': 'fill', 'source': { 'type': 'geojson', 'data': data }, 'paint': {
-                        "fill-color": [ 'match', ['get', 'layer'], 'amphibians-filtered', '#acd0c0', 'birds', '#75b1a9', 'mammals-filtered', '#d9b44a', 'reptiles-filtered', '#4f6457', '#ccc' ], "fill-opacity": 0.6, }, // 'layout': none' }); var popup
-                        = new mapboxgl.Popup({ closeButton: false, closeOnClick: false }); map.on('mousemove', 'species', function(e) { var features = map.queryRenderedFeatures(e.lngLat); map.getCanvas().style.cursor = 'pointer'; popup.setLngLat(e.lngLat)
-                        .setHTML(String(e.features[0].properties.binomial).toLocaleString()) .addTo(map) }); map.on('mouseleave', 'species', function() { map.getCanvas().style.cursor = ''; popup.remove(); }); } //end of speciesMap function // get amphibians
-                        data d3.json('data/amphibians-filtered.json') .then(function(data) { amphibianMap(data); amphibianMapToggle(data); }); function amphibianMap(data) { map.addLayer({ 'id': 'amphibian', 'type': 'fill', 'source': { 'type': 'geojson',
-                        'data': data }, 'paint': { "fill-color": [ 'match', ['get', 'legend'], 'Extant (resident)', '#4D648D', 'Extinct', '#1E1F26', 'Possible Extinct', '#283655', 'Presence Uncertain', '#D0EQF9', '#000000' ], "fill-opacity": 0.4, }, });
-                        var popup = new mapboxgl.Popup({ closeButton: false, closeOnClick: false }); map.on('mousemove', 'amphibian', function(e) { var features = map.queryRenderedFeatures(e.lngLat); map.getCanvas().style.cursor = 'pointer'; popup.setLngLat(e.lngLat)
-                        .setHTML(String(e.features[0].properties.legend + e.features[0].properties.binomial).toLocaleString()) .addTo(map) }); map.on('mouseleave', 'amphibian', function() { map.getCanvas().style.cursor = ''; popup.remove(); }); } //end
-                        of amphibianMap function function amphibianMapToggle(data) { $('#am').click(function() { $('#AMp').toggle(); $('#title').html("
-                        <strong>AMPHIBIANS</strong");
-                    });
+                        listItems += "<li class='li h-full txt-m'><span class='w24 h18 fl mr12' style='background:" + colorAreas[code] + "'></span>" + labelCodes[code] + "</li>" } d3.select("#legend ul").html(listItems); d3.select('#legend').classed('none',
+                        false); } //end of addLegend function //get points data d3.json('data/points.json') .then(function(data) { pointsMap(data); }); function pointsMap(data) { map.addLayer({ 'id': 'points', 'type': 'circle', 'source': { 'type': 'geojson',
+                        'data': data, }, // 'cluster': true, // 'clusterMaxZoom': 4, // Max zoom to cluster points on // 'clusterRadius': 2 // Radius of each cluster when clustering points (defaults to 50) }, 'paint': { 'circle-color': [ 'match', ['get',
+                        'IUCN_CAT'], 'Ia', '#505160', 'Ib', '#68829e', 'II', '#aebd38', 'III', '#598234', 'IV', '#003b46', 'V', '#07575b', 'VI', '#66a5ad', 'Not Reported', '#c4dfe6', 'Not Applicable', '#a2c523', '#ccc' ], 'circle-radius': 4, 'circle-opacity':
+                        .6, }, }); var popup = new mapboxgl.Popup({ closeButton: false, closeOnClick: false }); map.on('mousemove', 'points', function(e) { var features = map.queryRenderedFeatures(e.lngLat); map.getCanvas().style.cursor = 'pointer'; popup.setLngLat(e.lngLat)
+                        .setHTML(String(e.features[0].properties.NAME).toLocaleString()) .addTo(map) }); map.on('mouseleave', 'points', function() { map.getCanvas().style.cursor = ''; popup.remove(); }); } //end of function pointsMap //get species data
+                        d3.json('data/species.json') .then(function(data) { speciesMap(data); }); function speciesMap(data) { console.log(data); // var geojson = topojson.feature(data, data.objects.merge_files_sim); map.addLayer({ 'id': 'species', 'type':
+                        'fill', 'source': { 'type': 'geojson', 'data': data }, 'paint': { "fill-color": [ 'match', ['get', 'layer'], 'amphibians-filtered', '#acd0c0', 'birds', '#75b1a9', 'mammals-filtered', '#d9b44a', 'reptiles-filtered', '#4f6457', '#ccc'
+                        ], "fill-opacity": 0.6, }, // 'layout': none' }); var popup = new mapboxgl.Popup({ closeButton: false, closeOnClick: false }); map.on('mousemove', 'species', function(e) { var features = map.queryRenderedFeatures(e.lngLat); map.getCanvas().style.cursor
+                        = 'pointer'; popup.setLngLat(e.lngLat) .setHTML(String(e.features[0].properties.binomial).toLocaleString()) .addTo(map) }); map.on('mouseleave', 'species', function() { map.getCanvas().style.cursor = ''; popup.remove(); }); } //end
+                        of speciesMap function // get amphibians data d3.json('data/amphibians-filtered.json') .then(function(data) { amphibianMap(data); amphibianMapToggle(data); }); function amphibianMap(data) { map.addLayer({ 'id': 'amphibian', 'type':
+                        'fill', 'source': { 'type': 'geojson', 'data': data }, 'paint': { "fill-color": [ 'match', ['get', 'legend'], 'Extant (resident)', '#4D648D', 'Extinct', '#1E1F26', 'Possible Extinct', '#283655', 'Presence Uncertain', '#D0EQF9',
+                        '#000000' ], "fill-opacity": 0.4, }, }); var popup = new mapboxgl.Popup({ closeButton: false, closeOnClick: false }); map.on('mousemove', 'amphibian', function(e) { var features = map.queryRenderedFeatures(e.lngLat); map.getCanvas().style.cursor
+                        = 'pointer'; popup.setLngLat(e.lngLat) .setHTML(String(e.features[0].properties.legend + e.features[0].properties.binomial).toLocaleString()) .addTo(map) }); map.on('mouseleave', 'amphibian', function() { map.getCanvas().style.cursor
+                        = ''; popup.remove(); }); } //end of amphibianMap function function amphibianMapToggle(data) { $('#am').click(function() { $('#AMp').toggle(); $('#title').html("<strong>AMPHIBIANS</strong");
+                         });
 
                      d3.selectAll('#aside-icon-explore input').on('change', function () {
                          // console.log(this.value) // Extinct, Probably Extinct, etc
