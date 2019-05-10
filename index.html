@@ -5,139 +5,408 @@
     <meta charset=utf-8 />
     <title>Conservation Areas in South America</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <script src='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.js'></script> -->
-    <!-- added mapbox-gl-js to see if ocean loads -->
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
-    <!-- end of mapbox-gl-js to see if ocean loads -->
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://api.mapbox.com/mapbox-assembly/v0.21.2/assembly.min.css" rel="stylesheet">
     <link href='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.css' rel='stylesheet' />
 
     <style>
-        body {
-            padding-top: 0;
+        body {padding-top: 0;}
+        
+        #map {padding: 0;position: fixed;width: 100%;height: 100%;}
+        
+        /* navigation */
+        .navbar {padding-top: 1rem;width: 26rem;position: fixed;margin-left: 1%;}
+        .navbar-brand:hover,
+        .nav-link:hover {opacity: 0.6;} 
+
+        /* aside */
+        aside{top: 0;right: 0;bottom: 0;width: 11rem;overflow-y: scroll;background-color: #021c1e;}
+        .aside-chapters {padding-top: 1rem;padding-bottom: 1rem;padding-left: 3rem;}
+        .aside-icons {padding-top: 0.5rem;}
+
+        /* icon hover for all icons */
+        a.icon-hover:hover img {opacity: 0.6;} 
+        /* hosts countries on click story icon */
+        
+        #features {
+            padding-top: 4%;
+            padding-bottom: 25%;
+            width: 35.8%;
+            display: none;
+            font-family: sans-serif;
+            overflow-y: scroll;
+            z-index: 4000;
         }
         
-        #map {
-            padding: 0;
-            position: fixed;
-            width: 100%;
-            height: 100%;
+        section {
+            padding: 20px 25px;
+            padding-top: 15px;
+            line-height: 25px;
+            border-bottom: 1px solid #ddd;
+            opacity: 0.8;
+            font-size: 13px;
+            background-color: black;
         }
         
-        .marker {
+        section.active {
+            opacity: 0.5;
+            background-color: black;
+        }
+        
+        section.active p {
+            color: white;
+            font-size: 12px;
+            text-align: justify;
+        }
+        
+        section:last-child {
+            border-bottom: none;
+            margin-bottom: 200px;
+        }
+        
+        h2 {
+            color: paleturquoise;
+            font-size: 28px;
+            text-align: center;
+            font-weight: bold;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+        
+        /* .marker {
             background-image: url('pics/wildlife_icon.png');
             background-size: cover;
             width: 20px;
             height: 20px;
             border-radius: 5%;
             cursor: pointer;
-        }
+        } */
     </style>
 </head>
 
 <body>
-    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <!--adding libraries to see if ocean loads-->
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
 
-    <!--scrolling libraries-->
-    <!-- <script src="lib/d3.js"></script>
-    <script src="js/scroller.js"></script>
-    <script src="js/sections.js"></script> -->
-
     <div id='map'>
 
-        <script>
-            mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
+    <!-- navigation -->
+        <div class='navbar h6 z2'>
+            <nav class='navbar navbar-expand-lg fixed-top'>
+                <button id='about-icon' class='icon-hover'> 
+                <a class='navbar-brand color-green-faint' href='#'>CONSERVATION</a></button>
+                    <ul class='navbar-nav mr-auto'>
+                    <div id='about-trigger'><li class='nav-item'><a class='nav-link color-green-faint' href="#">About</a></li></div>
+                    <li class='nav-item'><a class='nav-link color-green-faint' href="#">IUCN</a></li>
+                    <li class='nav-item'><a class='nav-link color-green-faint' href="#">Language</a></li></ul>
+            </nav>
+        </div>
+    
+    <!-- aside chapters -->
+        <aside class='aside z3 fixed'>
+            <ul class='aside-chapters'>
+                <li class='aside-icons'><a class='icon-hover' id='icon-story'><img src='pics/story.png' alt='story icon' style="width:90px;height:90px;"></a></li> 
+                <li class='aside-icons'><a class="icon-hover" id='icon-gallery'><img src='pics/gallery.png' alt='gallery icon' style="width:90px;height:90px;"></a></li>
+                <li class='aside-icons'><a class="icon-hover" id='icon-explore'><img src='pics/explore.png' alt='explore icon' style="width:90px;height:90px;"></a></li></ul>
+            <div id='legend' class='absolute mt12 color-green-faint'>
+                <div class='inline-block mb12 txt-m align-center mx12'>Conservation Areas IUCN</div>
+                    <ul class='color-green-faint txt-xxs mx18 align-l py2'></ul></div>
+        </aside>
 
-            var map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/mapbox/light-v9',
-                center: [-65, -15],
+    </div>  
+ <!-- end of map -->
+
+        <div id='features'>
+            <section id='introduction' class='active'>
+                <h2>Conservation Areas in South America</h2>
+                <p>Protected and conserved areas have long been a successful management tool to conserve biodiversity, and without them, the global loss of biodiversity would likely be even greater.
+                <br>The benefits that protected areas provide are critical to address environmental and societal challenges like: <br> Poverty, hunger, good health and well being <br> quality education, gender equality, clean water and sanitation,
+                    etc.</p></section>
+            <section id='argentina'>
+                <h3>ARGENTINA</h3>
+                <p>Number of Pretected Areas: 452<br> IUCN Management Categories: </p></section>
+            <section id='bolivia'>
+                <h3>Bolivia</h3>
+                <p>Bolivia</p></section>
+            <section id='brasil'>
+                <h3>Brasil</h3>
+                <p>Brasil</p></section>
+            <section id='chile'>
+                <h3>Chile</h3>
+                <p>Chile</p></section>
+            <section id='colombia'>
+                <h3>Colombia</h3>
+                <p>Colombia</p></section>
+            <section id='ecuador'>
+                <h3>Ecuador</h3>
+                <p>Ecuador</p></section>
+            <section id='french guiana'>
+                <h3>French Guiana</h3>
+                <p>French Guiana</p></section>
+            <section id='guyana'>
+                <h3>Guyana</h3>
+                <p>Guyana</p></section>
+            <section id='paraguay'>
+                <h3>Paraguay</h3>
+                <p>Paraguay</p></section>
+            <section id='peru'>
+                <h3>Peru</h3>
+                <p>Peru</p></section>
+            <section id='surinam'>
+                <h3>Surinam</h3>
+                <p>Surinam</p></section>
+            <section id='uruguay'>
+                <h3>Uruguay</h3>
+                <p>Uruguay</p></section>
+            <section id='venezuela'>
+                <h3>Venezuela</h3>
+                <p>Venezuela</p>
+                <small id="THANK YOU">
+                Tank you! <a href='http://www.gutenberg.org/files/2346/2346-h/2346-h.htm'>Project Gutenberg</a>
+            </small></section>
+        </div>
+
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
+
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mahorn/cjvhdsr2b0ga81cmke0w0ef0p',
+            center: [-65, -20],
+            zoom: 2.6,
+        });
+
+        map.on('load', function() {
+
+            d3.json('data/polygons.json')
+                .then(function(data) {
+                    polygonsMap(data);
+                    addLegend(data);
+                    addaboutModalUI();
+                });
+
+            function polygonsMap(data) {
+                var geojson = topojson.feature(data, data.objects.merge_files_sim);
+
+                map.addLayer({
+                    'id': 'polygon',
+                    'type': 'fill',
+                    'source': {
+                        'type': 'geojson',
+                        'data': geojson
+                    },
+                    'paint': {
+                        'fill-color': [
+                            'match', ['get', 'IUCN_CAT'],
+                            'Ia', '#505160',
+                            'Ib', '#68829e',
+                            'II', '#aebd38',
+                            'III', '#598234',
+                            'IV', '#003b46',
+                            'V', '#07575b',
+                            'VI', '#66a5ad',
+                            'Not Reported', '#c4dfe6',
+                            'Not Applicable', '#a2c523',
+                            '#ccc'
+                        ],
+                        'fill-opacity': 0.4,
+                    },
+                });
+            }
+
+
+
+            d3.json('data/points.json')
+                .then(function(data) {
+                    pointsMap(data);
+
+                });
+
+            function pointsMap(data) {
+                map.addLayer({
+                    'id': 'points',
+                    'type': 'circle',
+                    'source': {
+                        'type': 'geojson',
+                        'data': data
+                            //   'cluster': true,
+                            //   'clusterMaxZoom': 4, // Max zoom to cluster points on
+                            //  'clusterRadius': 2 // Radius of each cluster when clustering points (defaults to 50)
+                    },
+                    'paint': {
+                        'circle-color': [
+                            'match', ['get', 'IUCN_CAT'],
+                            'Ia', '#505160',
+                            'Ib', '#68829e',
+                            'II', '#aebd38',
+                            'III', '#598234',
+                            'IV', '#003b46',
+                            'V', '#07575b',
+                            'VI', '#66a5ad',
+                            'Not Reported', '#c4dfe6',
+                            'Not Applicable', '#a2c523',
+                            '#ccc'
+                        ],
+                        'circle-radius': 4,
+                        'circle-opacity': .6,
+                    },
+                });
+
+                var popup = new mapboxgl.Popup({
+                    closeButton: false,
+                    closeOnClick: false
+                });
+
+                map.on('mousemove', 'points', function(e) {
+                    var features = map.queryRenderedFeatures(e.lngLat);
+                    map.getCanvas().style.cursor = 'pointer';
+                    popup.setLngLat(e.lngLat)
+                        .setHTML(String(e.features[0].properties.NAME).toLocaleString())
+                        .addTo(map)
+                });
+                map.on('mouseleave', 'points', function() {
+                    map.getCanvas().style.cursor = '';
+                    popup.remove();
+                });
+
+
+                data.features.forEach(function(marker) {
+                    //     // create a HTML element for each feature
+                    var el = document.createElement('div');
+                    el.className = 'marker';
+                    //     // make a marker for each feature and add to the map
+                    new mapboxgl.Marker(el)
+                        .setLngLat(marker.geometry.coordinates)
+                        .setPopup(new mapboxgl.Popup({
+                                offset: 25
+                            }) // add popups
+                            .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
+                        .addTo(map);
+                });
+
+            } //end of function pointsMap
+
+
+        }); //end of map.on('load')
+
+        // icon-story //
+        $('#icon-story').click(function() {
+                $('#features').toggle();
+                map.flyTo({
+                center: [-80, -20],
+                zoom: 2.6,
+                bearing: 0,
+                pitch: 0,
+                speed: 0.4,
+                curve: 2,
+                easing: function (t) {
+                    return t;
+                }
+            });
+            }); //end of Icon-story
+            var chapters = {
+                'introduction': {
+                     center: [-75, -18],
+                     zoom: 2.7,
+                },
+                'argentina': {
+                    center: [-63.6167, -38.4161],
+                    zoom: 3.5,
+                },
+                'bolivia': {
+                    center: [-63.5887, -16.2902],
+                    zoom: 5,
+                },
+                'brasil': {
+                    center: [-55.9253, -12.2350],
+                    zoom: 3.8,
+                },
+                'chile': {
+                    center: [-71.5430, -38.4161],
+                    zoom: 4
+                },
+                'colombia': {
+                    center: [-74.2973, 2.5709],
+                    zoom: 5,
+                },
+                'ecuador': {
+                    center: [-78.1834, -1.8312],
+                    zoom: 6
+                },
+                'french guiana': {
+                    center: [-53.1258, 3.9339],
+                    zoom: 6,
+                },
+                'guyana': {
+                    center: [-58.9302, 2.5904],
+                    zoom: 5.5,
+                },
+                'paraguay': {
+                    center: [-58.4438, -23.4425],
+                    zoom: 5.5,
+                },
+                'peru': {
+                    center: [-75.0152, -9.1900],
+                    zoom: 5,
+                },
+                'surinam': {
+                    center: [-55.9302, 2.3904],
+                    zoom: 6,
+                },
+                'uruguay': {
+                    center: [-55.8117 - 32.5583],
+                    zoom: 5,
+                },
+                'venezuela': {
+                    center: [-66.5897, -6.4238],
+                    zoom: 4,
+                }
+            };
+            window.onscroll = function() {
+                var chapterNames = Object.keys(chapters);
+                for (var i = 0; i < chapterNames.length; i++) {
+                    var chapterName = chapterNames[i];
+                    if (isElementOnScreen(chapterName)) {
+                        setActiveChapter(chapterName);
+                        break;
+                    }
+                }
+            };
+            var activeChapterName = 'introduction';
+            function setActiveChapter(chapterName) {
+                if (chapterName === activeChapterName) return;
+                map.flyTo(chapters[chapterName]);
+                document.getElementById(chapterName).setAttribute('class', 'active');
+                document.getElementById(activeChapterName).setAttribute('class', '');
+                activeChapterName = chapterName;
+            }
+            function isElementOnScreen(id) {
+                var element = document.getElementById(id);
+                var bounds = element.getBoundingClientRect();
+                return bounds.top < window.innerHeight && bounds.top > 0;
+            }
+
+        // resets map to initial latlng when click on CONSERVATION //
+        document.getElementById('about-icon').addEventListener('click', function() {
+            map.flyTo({
+                center: [-65, -20],
                 zoom: 2.6,
             });
-
-            map.on('load', function() {
-
-                d3.json('data/points.json')
-                    .then(function(data) {
-                        pointsMap(data);
-                    });
-
-                function pointsMap(data) {
-                    map.addLayer({
-                        'id': 'points',
-                        'type': 'circle',
-                        'source': {
-                            'type': 'geojson',
-                            'data': data
-                                //   'cluster': true,
-                                //   'clusterMaxZoom': 4, // Max zoom to cluster points on
-                                //  'clusterRadius': 2 // Radius of each cluster when clustering points (defaults to 50)
-                        },
-                        'paint': {
-                            'circle-color': [
-                                'match', ['get', 'IUCN_CAT'],
-                                'Ia', '#505160',
-                                'Ib', '#68829e',
-                                'II', '#aebd38',
-                                'III', '#598234',
-                                'IV', '#003b46',
-                                'V', '#07575b',
-                                'VI', '#66a5ad',
-                                'Not Reported', '#c4dfe6',
-                                'Not Applicable', '#a2c523',
-                                '#ccc'
-                            ],
-                            'circle-radius': 4,
-                            'circle-opacity': .6,
-                        },
-                    });
-
-                    var popup = new mapboxgl.Popup({
-                        closeButton: false,
-                        closeOnClick: false
-                    });
-
-                    map.on('mousemove', 'points', function(e) {
-                        var features = map.queryRenderedFeatures(e.lngLat);
-                        map.getCanvas().style.cursor = 'pointer';
-                        popup.setLngLat(e.lngLat)
-                            .setHTML(String(e.features[0].properties.NAME).toLocaleString())
-                            .addTo(map)
-                    });
-                    map.on('mouseleave', 'points', function() {
-                        map.getCanvas().style.cursor = '';
-                        popup.remove();
-                    });
-
-
-                    data.features.forEach(function(marker) {
-                        //     // create a HTML element for each feature
-                        var el = document.createElement('div');
-                        el.className = 'marker';
-                        //     // make a marker for each feature and add to the map
-                        new mapboxgl.Marker(el)
-                            .setLngLat(marker.geometry.coordinates)
-                            .setPopup(new mapboxgl.Popup({
-                                    offset: 25
-                                }) // add popups
-                                .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
-                            .addTo(map);
-                    });
-
-                } //end of function pointsMap
-            }); //end of map.on('load')
-        </script>
+            var currentSelected = document.querySelector('.selected');
+            if (currentSelected) {
+                currentSelected.classList.remove('selected');
+            }
+        });
+    </script>
 
 </body>
 
-</html>
+</html
