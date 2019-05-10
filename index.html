@@ -62,7 +62,7 @@
             opacity: 0.6;
         }
 
-        /* about icon*/
+        /* about button - modal*/
         #about-trigger {
             padding: 0;
         }
@@ -75,19 +75,6 @@
             background: rgba(48, 48, 48, 0.50);
             -webkit-text-fill-color: #b2dbd5;
         }
-
-        h3 {
-            color: purple;
-            font-size: 18px;
-            text-align: center;
-            padding-bottom: 10px;
-        }
-
-        /* p {
-            color: white;
-            font-size: 12px;
-            text-align: justify;
-        } */
 
         /* hosts countries on click story icon */
         #features {
@@ -135,6 +122,31 @@
             padding-top: 10px;
         }
 
+        /* hosts layers on click gallery icon */
+        #gallery {
+            position: absolute;
+            display: none;
+            z-index: 4000;
+            right: 10%;
+            top: 0;
+            width: 28%;
+            height: 100%;
+            background: #F4FAF2;
+        }
+
+        /* sub-title color */
+
+        .subtitle-gallery {
+            color: #ffb745;
+        }
+
+        /* second sub-title color */
+
+        .text-gallery-footer {
+            color: purple;
+            font-size: 12px;
+        }
+
         /* .marker {
             background-image: url('pics/wildlife_icon.png');
             background-size: cover;
@@ -162,8 +174,7 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
 
-    <div id='map'></div>
-    <!-- end of map -->
+   
 
     <!-- navigation -->
     <div class='navbar h6 z2'>
@@ -222,7 +233,9 @@
     <div id='features'>
         <section id='introduction' class='active'>
             <h2><strong>SOUTH AMERICA</strong></h2>
-            <p>Protected and conserved areas have long been a successful management tool to conserve biodiversity, and
+            <p>South America is one of the richest sub-continents in terms of cultural and biological diversity;
+                including indigenous peoples with strong historical ties to the region's ecosystems. <br>Protected and
+                conserved areas have long been a successful management tool to conserve biodiversity, and
                 without them, the global loss of biodiversity would likely be even greater.</p>
         </section>
         <section id='argentina'>
@@ -282,6 +295,42 @@
             </small></section> -->
     </div>
 
+    <!-- map -->
+    <div id='map'>
+    
+    <!-- chapter gallery -->
+    <div id='gallery'>
+        <div class="col-md-9 px-12 mt30 ml24">
+            <h1 class="title-gallery h4 font-weight-bold mr24 color-green-faint align-center">NATURE OF BEAUTY</h1>
+            <ul class='subtitle-gallery'>
+                <p class='layers text lead mr24 my-3 align-center'>Map Layers</p>
+                <div id='icon'>
+                </div>
+                <div id='icon1'>
+                </div>
+                <div id='icon2'>
+                </div>
+            </ul>
+            <p class="text-gallery-footer lead my-4 align-center mr24">Click icons to view critically endangered species
+                & toggle map layers.
+            </p>
+            <ul class="images-hover">
+                <a class="icon-hover frog-img mx-auto ml12 d-block"><img src="pics/amphibian.png" alt="Amphibian icon"
+                        id="amphibian">
+                </a>
+                <a class="icon-hover mx-auto d-block ml12"><img src="pics/reptile.png" alt="Reptile icon" id="reptile">
+                </a>
+                <a class="icon-hover mx-auto d-block my-3 mx18"><img src="pics/mammal.png" alt="Mammal icon"
+                        id="mammal">
+                </a>
+                <a class="icon-hover mx-auto d-block my-3 mx30"><img src="pics/bird.png" alt="Bird icon" id="bird">
+                </a>
+            </ul>
+        </div>
+    </div>
+
+</div> 
+<!-- end of map -->
 
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
@@ -298,8 +347,8 @@
             d3.json('data/polygons.json')
                 .then(function (data) {
                     polygonsMap(data);
-                    // addLegend(data);
                     addAboutModalUI();
+                    // addLegend(data);
                 });
 
             function polygonsMap(data) {
@@ -525,6 +574,16 @@
                 currentSelected.classList.remove('selected');
             }
         });
+
+        // icon gallery
+        var endClicked = $('#icon-gallery').on('click', function () {
+            $('#gallery').toggle(
+                map.fitBounds([-75, -10, -25, -15], {
+                    zoom: 2.6
+                })
+            );
+        });
+        $('#icon-gallery').off('click', endClicked);
 
     </script>
 
