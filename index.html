@@ -124,27 +124,24 @@
 
         /* hosts layers on click gallery icon */
         #gallery {
-            position: absolute;
+            position: fixed;
             display: none;
-            z-index: 4000;
-            right: 10%;
+            right: 14%;
             top: 0;
-            width: 28%;
+            width: 24%;
             height: 100%;
-            background: #F4FAF2;
+            background: #c9d1c8;
+            color: #2c4a52;
         }
 
-        /* sub-title color */
-
-        .subtitle-gallery {
-            color: #ffb745;
+        .text-gallery {
+            color: #537072;
         }
-
-        /* second sub-title color */
 
         .text-gallery-footer {
-            color: purple;
-            font-size: 12px;
+            color: #2c4a52;
+            font-size: 10px;
+            font-weight: bold;
         }
 
         /* .marker {
@@ -174,7 +171,9 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
 
-   
+
+    <div id='map'></div>
+    <!-- end of map -->
 
     <!-- navigation -->
     <div class='navbar h6 z2'>
@@ -295,42 +294,34 @@
             </small></section> -->
     </div>
 
-    <!-- map -->
-    <div id='map'>
-    
     <!-- chapter gallery -->
     <div id='gallery'>
-        <div class="col-md-9 px-12 mt30 ml24">
-            <h1 class="title-gallery h4 font-weight-bold mr24 color-green-faint align-center">NATURE OF BEAUTY</h1>
-            <ul class='subtitle-gallery'>
-                <p class='layers text lead mr24 my-3 align-center'>Map Layers</p>
-                <div id='icon'>
-                </div>
-                <div id='icon1'>
-                </div>
-                <div id='icon2'>
-                </div>
-            </ul>
-            <p class="text-gallery-footer lead my-4 align-center mr24">Click icons to view critically endangered species
-                & toggle map layers.
-            </p>
-            <ul class="images-hover">
-                <a class="icon-hover frog-img mx-auto ml12 d-block"><img src="pics/amphibian.png" alt="Amphibian icon"
+       
+        <div class='row'>
+        <div class='col-md-12 mt30'>
+            <p class='title-gallery h5 font-weight-bold text-center mr24'>NATURE OF BEAUTY</p>
+            <div class='text-gallery small text-justify mr24 ml10 mt24 px24 py2'>
+                <p>IUCN defines a protected area as a clearly defined geographical space, recognised, dedicated and
+                    managed, through legal or other effective means, to achieve the long-term conservation of nature
+                    with associated ecosytem services and cultural values.</p>
+            </div>
+            <p class='text-gallery-footer lead my-4 text-center mr24'>Click on the map markers to view<br>a specific photograph.</p>
+           
+                <a class='icon-hover d-block lead my-2 ml24'><img src="pics/1.png" alt="scenic"
                         id="amphibian">
                 </a>
-                <a class="icon-hover mx-auto d-block ml12"><img src="pics/reptile.png" alt="Reptile icon" id="reptile">
+                <a class='icon-hover d-block lead my-2 ml24'><img src="pics/2.png" alt="indigenous" id="reptile">
                 </a>
-                <a class="icon-hover mx-auto d-block my-3 mx18"><img src="pics/mammal.png" alt="Mammal icon"
+                <a class='icon-hover d-block lead my-2 ml24'><img src="pics/3.png" alt="species"
                         id="mammal">
                 </a>
-                <a class="icon-hover mx-auto d-block my-3 mx30"><img src="pics/bird.png" alt="Bird icon" id="bird">
-                </a>
-            </ul>
+                
         </div>
     </div>
 
-</div> 
-<!-- end of map -->
+</div>
+
+
 
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
@@ -537,6 +528,7 @@
                 zoom: 4,
             }
         };
+
         window.onscroll = function () {
             var chapterNames = Object.keys(chapters);
             for (var i = 0; i < chapterNames.length; i++) {
@@ -563,6 +555,16 @@
             return bounds.top < window.innerHeight && bounds.top > 0;
         }
 
+        // icon gallery //
+        var endClicked = $('#icon-gallery').on('click', function () {
+            $('#gallery').toggle(
+                map.fitBounds([-75, -5, -5, -20], {
+                    zoom: 2.6
+                })
+            );
+        });
+        $('#icon-gallery').off('click', endClicked);
+
         // resets map to initial latlng when click on CONSERVATION //
         document.getElementById('about-icon').addEventListener('click', function () {
             map.flyTo({
@@ -574,16 +576,6 @@
                 currentSelected.classList.remove('selected');
             }
         });
-
-        // icon gallery
-        var endClicked = $('#icon-gallery').on('click', function () {
-            $('#gallery').toggle(
-                map.fitBounds([-75, -10, -25, -15], {
-                    zoom: 2.6
-                })
-            );
-        });
-        $('#icon-gallery').off('click', endClicked);
 
     </script>
 
