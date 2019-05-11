@@ -132,6 +132,7 @@
             height: 100%;
             background: #c9d1c8;
             color: #2c4a52;
+            overflow-y: scroll;
         }
 
         .text-gallery {
@@ -142,6 +143,45 @@
             color: #2c4a52;
             font-size: 10px;
             font-weight: bold;
+        }
+
+        /* popup for all features */
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+
+        .mapboxgl-popup-content {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+        }
+
+        /* hosts layers on click explore icon */
+        #explore {
+            position: fixed;
+            display: none;
+            right: 14%;
+            top: 0;
+            width: 24%;
+            height: 100%;
+            background: #c9d1c8;
+            color: #2c4a52;
+            overflow-y: scroll;
+        }
+
+        .text-explore {
+            color: #537072;
+        }
+
+        .text-explore-footer {
+            color: #2c4a52;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        span {
+            color: #2c4a52;
         }
 
         /* .marker {
@@ -222,7 +262,7 @@
             <li class='aside-icons'><a class="icon-hover" id='icon-explore'><img src='pics/explore.png'
                         alt='explore icon' style="width:90px;height:90px;"></a></li>
         </ul>
-        <div id='legend' class='absolute mt12 color-green-faint'>
+        <div id='legend' class='absolute mt12 color-green-faint z5'>
             <div class='inline-block mb12 txt-m align-center mx12'>Conservation Areas IUCN</div>
             <ul class='color-green-faint txt-xxs mx18 align-l py2'></ul>
         </div>
@@ -296,31 +336,41 @@
 
     <!-- chapter gallery -->
     <div id='gallery'>
-       
         <div class='row'>
-        <div class='col-md-12 mt30'>
-            <p class='title-gallery h5 font-weight-bold text-center mr24'>NATURE OF BEAUTY</p>
-            <div class='text-gallery small text-justify mr24 ml10 mt24 px24 py2'>
-                <p>IUCN defines a protected area as a clearly defined geographical space, recognised, dedicated and
-                    managed, through legal or other effective means, to achieve the long-term conservation of nature
-                    with associated ecosytem services and cultural values.</p>
+            <div class='col-md-12 mt30'>
+                <p class='title-gallery h5 font-weight-bold text-center mr24'>NATURE OF BEAUTY</p>
+                <div class='text-gallery small text-justify mr24 ml10 mt24 px24 py2'>
+                    <p>IUCN defines a protected area as a clearly defined geographical space, recognised, dedicated and
+                        managed, through legal or other effective means, to achieve the long-term conservation of nature
+                        with associated ecosytem services and cultural values.</p>
+                </div>
+
+                <p class='text-gallery-footer lead my-5 text-center mr24'>Click on the map markers to view<br>a specific
+                    photograph.</p>
+
             </div>
-            <p class='text-gallery-footer lead my-4 text-center mr24'>Click on the map markers to view<br>a specific photograph.</p>
-           
-                <a class='icon-hover d-block lead my-2 ml24'><img src="pics/1.png" alt="scenic"
-                        id="amphibian">
-                </a>
-                <a class='icon-hover d-block lead my-2 ml24'><img src="pics/2.png" alt="indigenous" id="reptile">
-                </a>
-                <a class='icon-hover d-block lead my-2 ml24'><img src="pics/3.png" alt="species"
-                        id="mammal">
-                </a>
-                
         </div>
     </div>
 
-</div>
-
+    <!-- chapter explore -->
+    <div id='explore'>
+        <div class='row'>
+            <div class='col-md-12 mt30'>
+                <p class='title-explore h5 font-weight-bold text-center mr24'>EXPLORE THE MAP</p>
+                <div class='text-explore small text-justify mr24 ml10 mt24 px24 py2'>
+                    <p>IUCN defines a protected area as a clearly defined geographical space, recognised, dedicated and
+                        managed, through legal or other effective means, to achieve the long-term conservation of nature
+                        with associated ecosytem services and cultural values.</p>
+                </div>
+                <p class='text-explore-footer lead my-5 text-center mr24'>Click on icons to
+                    deselect layers.</p>
+            </div>
+        </div>
+        <div class='ml24'>
+            <div id='polygon'></div>
+            <div id='point'></div>
+        </div>
+    </div>
 
 
     <script>
@@ -333,13 +383,26 @@
             zoom: 2.6,
         });
 
+        var colorAreas = {
+            'Ia': '#505160',
+            'Ib': '#68829e',
+            'II': '#aebd38',
+            'III': '#598234',
+            'IV': '#003b46',
+            'V': '#07575b',
+            'VI': '#66a5ad',
+            'Not Reported': '#c4dfe6',
+            'Not Applicable': '#a2c523'
+        }
+
         map.on('load', function () {
 
             d3.json('data/polygons.json')
                 .then(function (data) {
                     polygonsMap(data);
                     addAboutModalUI();
-                    // addLegend(data);
+                    addLegend(data);
+                    updateMap(data);
                 });
 
             function polygonsMap(data) {
@@ -366,8 +429,24 @@
                             'Not Applicable', '#a2c523',
                             '#ccc'
                         ],
-                        'fill-opacity': 0.4,
+                        'fill-opacity': 0.2,
                     },
+                });
+                var popup = new mapboxgl.Popup({
+                    closeButton: false,
+                    closeOnClick: false
+                });
+                map.on('mousemove', 'polygon', function (e) {
+                    var features = map.queryRenderedFeatures(e.lngLat);
+                    map.getCanvas().style.cursor = 'pointer';
+                    // map.flyTo({center: e.lngLat, zoom: 6});
+                    popup.setLngLat(e.lngLat)
+                        .setHTML(String(e.features[0].properties.NAME).toLocaleString())
+                        .addTo(map)
+                });
+                map.on('mouseleave', 'polygon', function () {
+                    map.getCanvas().style.cursor = '';
+                    popup.remove();
                 });
             }
 
@@ -382,6 +461,49 @@
                     modal.classList.add('none');
                 });
             }
+
+            function addLegend(data) {
+                var geojson = topojson.feature(data, data.objects.merge_files_sim);
+                var labelCodes = {},
+                    code;
+                geojson.features.forEach(function (feature) {
+                    code = feature.properties.IUCN_CAT;
+                    if (!labelCodes[code]) {
+                        labelCodes[code] = feature.properties.IUCN_CAT;
+                    }
+                })
+                var listItems = '';
+                for (var code in colorAreas) {
+                    listItems += "<li class='li h-full txt-m'><span class='w24 h18 fl mr12' style='background:" +
+                        colorAreas[code] + "'></span>" + labelCodes[code] + "</li>"
+                }
+                d3.select("#legend ul").html(listItems);
+                d3.select('#legend').classed('none', false);
+            } //end of addLegend function
+
+            function updateMap(data) {
+                var geojson = topojson.feature(data, data.objects.merge_files_sim);
+                geojson.features.forEach(function (feature) {
+                    var code = feature.properties.DESIG_ENG;
+                    if (code == 'World Heritage Site (natural or mixed)') {
+                        var heritage = code;
+                    }
+                    if (code == 'UNESCO-MAB Biosphere Reserve') {
+                        var biosphere = code;
+                    }
+                    if (code == 'Strict Nature Reserve') {
+                        var species = code;
+                    }
+                });
+
+                map.setPaintProperty('polygon', 'fill-opacity', [
+                    'match', ['get', 'DESIG_ENG'],
+                    heritage, 1,
+                    biosphere, 1,
+                    species, 1,
+                    0
+                ]);
+            }//end function updateMap
 
             d3.json('data/points.json')
                 .then(function (data) {
@@ -435,26 +557,22 @@
                     popup.remove();
                 });
 
-
                 data.features.forEach(function (marker) {
-                    //     // create a HTML element for each feature
                     var el = document.createElement('div');
                     el.className = 'marker';
-                    //     // make a marker for each feature and add to the map
                     new mapboxgl.Marker(el)
                         .setLngLat(marker.geometry.coordinates)
                         .setPopup(new mapboxgl.Popup({
                             offset: 25
-                        }) // add popups
+                        })
                             .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
                         .addTo(map);
                 });
-
             } //end of function pointsMap
 
         }); //end of map.on('load')
 
-        // icon-story //
+        // STORY CHAPTER //
         var currentSelected = $('#icon-story').click(function () {
             $('#features').toggle();
             map.flyTo({
@@ -555,7 +673,7 @@
             return bounds.top < window.innerHeight && bounds.top > 0;
         }
 
-        // icon gallery //
+        // GALLERY CHAPTER //
         var endClicked = $('#icon-gallery').on('click', function () {
             $('#gallery').toggle(
                 map.fitBounds([-75, -5, -5, -20], {
@@ -564,6 +682,82 @@
             );
         });
         $('#icon-gallery').off('click', endClicked);
+
+        // EXPLORE CHAPTER //
+        var endClicked = $('#icon-explore').on('click', function () {
+            $('#explore').toggle(
+                map.fitBounds([-75, -10, -25, -15], {
+                    zoom: 2.6
+                })
+            );
+        });
+        $('#icon-explore').off('click', endClicked);
+
+        var toggleableLayerIds = ['polygon'];
+        for (var i = 0; i < toggleableLayerIds.length; i++) {
+            var id = toggleableLayerIds[i];
+            var img = document.createElement('img');
+            img.src = 'pics/polygon.png'
+            img.className = 'active'
+            img.id = 'picture'
+            img.textContent = id
+            img.onclick = function (e) {
+                var clickedLayer = this.textContent;
+                e.preventDefault();
+                e.stopPropagation();
+                var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+                if (visibility === 'visible') {
+                    map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+                    this.className = '';
+                } else {
+                    this.className = 'active';
+                    map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                }
+            };
+            var layers = document.getElementById('polygon');
+            layers.appendChild(img)
+        }
+        $(polygon).hover(
+            function () {
+                $(this).append($("<span> Polygons Layer</span>"));
+            },
+            function () {
+                $(this).find("span:last").remove();
+            }
+        );
+
+        var toggleableLayerIds = ['points'];
+        for (var i = 0; i < toggleableLayerIds.length; i++) {
+            var id = toggleableLayerIds[i];
+            var img = document.createElement('img');
+            img.src = 'pics/point.png'
+            img.className = 'active'
+            img.id = 'picture'
+            img.textContent = id
+            img.onclick = function (e) {
+                var clickedLayer = this.textContent;
+                e.preventDefault();
+                e.stopPropagation();
+                var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+                if (visibility === 'visible') {
+                    map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+                    this.className = '';
+                } else {
+                    this.className = 'active';
+                    map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                }
+            };
+            var layers = document.getElementById('point');
+            layers.appendChild(img)
+        }
+        $(point).hover(
+            function () {
+                $(this).append($("<span> Points Layer</span>"));
+            },
+            function () {
+                $(this).find("span:last").remove();
+            }
+        );
 
         // resets map to initial latlng when click on CONSERVATION //
         document.getElementById('about-icon').addEventListener('click', function () {
