@@ -11,10 +11,12 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://api.mapbox.com/mapbox-assembly/v0.21.2/assembly.min.css" rel="stylesheet">
     <link href='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.css' rel='stylesheet' />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet" />
 
     <style>
         body {
             padding-top: 0;
+            font-family: 'Roboto', sans-serif;
         }
 
         #map {
@@ -181,9 +183,14 @@
         }
 
         span {
-            color: #2c4a52;
+            color: whitesmoke;
         }
 
+        h3 {
+            text-align:
+            center;
+            }
+           
         /* .marker {
             background-image: url('pics/wildlife_icon.png');
             background-size: cover;
@@ -279,55 +286,68 @@
         </section>
         <section id='argentina'>
             <h2>ARGENTINA</h2>
-            <p>Number of Pretected Areas: 452<br> IUCN Management Categories: </p>
+            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
+        <p><li class='aside-icons text-center'><a class='text' id='arg-sta'><img src='pics/arg.png' alt='argentina statistics'></a></li></p>
         </section>
         <section id='bolivia'>
             <h2>BOLIVIA</h2>
-            <p>Bolivia</p>
+            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
+            <li class='aside-icons text-center'><a class='text' id='bol-sta'><img src='pics/bol.png' alt='bolivia statistics'></a></li>
         </section>
-        <section id='brasil'>
-            <h2>BRASIL</h2>
-            <p>Brasil</p>
+        <section id='brazil'>
+            <h2>BRAZIL</h2>
+            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
+            <li class='aside-icons text-center'><a class='text' id='brz-sta'><img src='pics/brz.png' alt='brazil statistics'></a></li>
         </section>
         <section id='chile'>
             <h2>CHILE</h2>
-            <p>Chile</p>
+            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
+            <li class='aside-icons text-center'><a class='text' id='chi-sta'><img src='pics/chi.png' alt='chile statistics'></a></li>
         </section>
         <section id='colombia'>
             <h2>COLOMBIA</h2>
-            <p>Colombia</p>
+            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
+            <li class='aside-icons text-center'><a class='text' id='col-sta'><img src='pics/col.png' alt='colombia statistics'></a></li>
         </section>
         <section id='ecuador'>
             <h2>ECUADOR</h2>
-            <p>Ecuador</p>
+            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
+            <li class='aside-icons text-center'><a class='text' id='ecu-sta'><img src='pics/ecu.png' alt='ecuador statistics'></a></li>
         </section>
         <section id='french guiana'>
             <h2>FRENCH GUIANA</h2>
-            <p>French Guiana</p>
+            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
+            <li class='aside-icons text-center'><a class='text' id='fgy-sta'><img src='pics/fgy.png' alt='french guyana statistics'></a></li>
         </section>
         <section id='guyana'>
             <h2>GUYANA</h2>
-            <p>Guyana</p>
+            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
+            <li class='aside-icons text-center'><a class='text' id='guy-sta'><img src='pics/guy.png' alt='guyana statistics'></a></li>
         </section>
         <section id='paraguay'>
             <h2>PARAGUAY</h2>
-            <p>Paraguay</p>
+            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
+            <li class='aside-icons text-center'><a class='text' id='par-sta'><img src='pics/par.png' alt='paraguay statistics'></a></li>
         </section>
         <section id='peru'>
             <h2>PERU</h2>
-            <p>Peru</p>
+            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
+            <li class='aside-icons text-center'><a class='text' id='per-sta'><img src='pics/per.png' alt='peru statistics'></a></li>
         </section>
-        <section id='surinam'>
+        <section id='suriname'>
             <h2>SURINAME</h2>
-            <p>Surinam</p>
+            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
+            <li class='aside-icons text-center'><a class='text' id='sur-sta'><img src='pics/sur.png' alt='suriname statistics'></a></li>
         </section>
         <section id='uruguay'>
             <h2>URUGUAY</h2>
-            <p>Uruguay</p>
+            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
+            <li class='aside-icons text-center'><a class='text' id='uru-sta'><img src='pics/uru.png' alt='uruguay statistics'></a></li>
         </section>
         <section id='venezuela'>
             <h2>VENEZUELA</h2>
-            <p>Venezuela</p>
+            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
+            <li class='aside-icons text-center'><a class='text' id='vnz-sta'><img src='pics/vnz.png' alt='venezuela statistics'></a></li>
         </section>
         <!-- <small id="THANK YOU">
                 Tank you! <a href='http://www.gutenberg.org/files/2346/2346-h/2346-h.htm'>Project Gutenberg</a>
@@ -484,6 +504,9 @@
             function updateMap(data) {
                 var geojson = topojson.feature(data, data.objects.merge_files_sim);
                 geojson.features.forEach(function (feature) {
+                   
+
+                    
                     var code = feature.properties.DESIG_ENG;
                     if (code == 'World Heritage Site (natural or mixed)') {
                         var heritage = code;
@@ -494,7 +517,10 @@
                     if (code == 'Strict Nature Reserve') {
                         var species = code;
                     }
+
                 });
+                
+            
 
                 map.setPaintProperty('polygon', 'fill-opacity', [
                     'match', ['get', 'DESIG_ENG'],
@@ -511,6 +537,7 @@
                 });
 
             function pointsMap(data) {
+                console.log(data);
                 map.addLayer({
                     'id': 'points',
                     'type': 'circle',
@@ -568,7 +595,12 @@
                             .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
                         .addTo(map);
                 });
+
+                 
+
             } //end of function pointsMap
+
+            
 
         }); //end of map.on('load')
 
@@ -601,7 +633,7 @@
                 center: [-66.5887, -16.2902],
                 zoom: 4.8,
             },
-            'brasil': {
+            'brazil': {
                 center: [-61.0253, -12.2350],
                 zoom: 3.5,
             },
@@ -633,17 +665,17 @@
                 center: [-77.0152, -9.1900],
                 zoom: 4.5,
             },
-            'surinam': {
+            'suriname': {
                 center: [-56.9302, 3.8904],
                 zoom: 6.2,
             },
             'uruguay': {
-                center: [-55.8117 - 32.5583],
-                zoom: 5,
+                center: [-57.2167, -32.4161],
+                zoom: 6,
             },
             'venezuela': {
-                center: [-66.5897, -6.4238],
-                zoom: 4,
+                center: [-68.5897, 6.4238],
+                zoom: 5,
             }
         };
 
