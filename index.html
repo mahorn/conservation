@@ -26,7 +26,7 @@
             height: 100%;
         }
 
-        /* navigation */
+        /* NAVIGATION BAR */
         .navbar {
             padding-top: 1rem;
             width: 26rem;
@@ -39,7 +39,7 @@
             opacity: 0.6;
         }
 
-        /* aside */
+        /* ASIDE BAR */
         aside {
             top: 0;
             right: 0;
@@ -59,12 +59,24 @@
             padding-top: 0.5rem;
         }
 
-        /* icon hover for all icons */
+        /* ICON HOVER */
         a.icon-hover:hover img {
             opacity: 0.6;
         }
 
-        /* about button - modal*/
+        /* POPUPS */
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+
+        .mapboxgl-popup-content {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+        }
+
+        /* ABOUT BUTTON - MODAL */
         #about-trigger {
             padding: 0;
         }
@@ -74,11 +86,11 @@
         }
 
         #about-modal {
-            background: rgba(48, 48, 48, 0.50);
+            background: rgba(0, 0, 0, 0.25);
             -webkit-text-fill-color: #b2dbd5;
         }
 
-        /* hosts countries on click story icon */
+        /* STORY CHAPTER */
         #features {
             padding-top: 15%;
             padding-left: 3%;
@@ -92,7 +104,7 @@
             padding-right: 0px;
             padding-left: 20px;
             padding-top: 20px;
-            padding-bottom: 20px;
+            padding-bottom: 30px;
             line-height: 25px;
             border-bottom: 1px solid #ddd;
             opacity: 0.8;
@@ -106,7 +118,7 @@
         }
 
         section.active p {
-            color: #b9d9c3;
+            color: #d4dde1;
             font-size: 14px;
             text-align: justify;
         }
@@ -116,25 +128,41 @@
             margin-bottom: 200px;
         }
 
-        h2 {
-            font-size: 20px;
+        h1 {
+            font-size: 28px;
             text-align: center;
-            color: #b9d9c3;
+            color: #d4dde1;
             padding-bottom: 20px;
             padding-top: 10px;
         }
 
-        /* hosts layers on click gallery icon */
+        h2 {
+            font-size: 24px;
+            text-align: center;
+            color: #d4dde1;
+            padding-bottom: 20px;
+            padding-top: 10px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #d4dde1;
+        }
+
+        span {
+            color: #2c4a52;
+        }
+
+        /* GALLERY CHAPTER */
         #gallery {
             position: fixed;
             display: none;
             right: 14%;
             top: 0;
-            width: 24%;
+            width: 22%;
             height: 100%;
             background: #c9d1c8;
             color: #2c4a52;
-            overflow-y: scroll;
         }
 
         .text-gallery {
@@ -147,29 +175,16 @@
             font-weight: bold;
         }
 
-        /* popup for all features */
-        .mapboxgl-popup {
-            max-width: 200px;
-        }
-
-        .mapboxgl-popup-content {
-            text-align: center;
-            font-family: 'Open Sans', sans-serif;
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-        }
-
-        /* hosts layers on click explore icon */
+        /* EXPLORE CHAPTER */
         #explore {
             position: fixed;
             display: none;
             right: 14%;
             top: 0;
-            width: 24%;
+            width: 22%;
             height: 100%;
             background: #c9d1c8;
             color: #2c4a52;
-            overflow-y: scroll;
         }
 
         .text-explore {
@@ -182,15 +197,6 @@
             font-weight: bold;
         }
 
-        span {
-            color: whitesmoke;
-        }
-
-        h3 {
-            text-align:
-            center;
-            }
-           
         /* .marker {
             background-image: url('pics/wildlife_icon.png');
             background-size: cover;
@@ -239,21 +245,29 @@
 
     <!-- about-modal -->
     <div id='about-modal' class='absolute top right bottom left scroll-auto z3 none animation--speed-1'>
-        <div class='flex-child border border-gray-dark bg-gray-dark color-white round relative w600 mx-auto mt120'>
-            <button id='modal-close' class='btn absolute top right mr6 mt6 px0 py0'>
-                <svg class='icon link color-lighten50 txt-xl'>
+        <div
+            class='flex-child border border-gray-dark bg-gray-dark color-green-faint round relative w600 mx-auto mt120'>
+            <button id='modal-close' class='btn btn-gray-dark absolute top right mr6 mt6 px0 py0'>
+                <svg class='icon btn-info link color-lighten50 txt-xl'>
                     <use xlink:href='#icon-close'></use>
                 </svg>
             </button>
             <div class='px24 py24'>
-                <div class='txt-l mb12'>About this map</div>
-                <div class='txt-m'>
-                    Nearly essential.
-                    <h4>
-                        <a target="_blank" href="http://www.geography.hawaii.edu/">Geography Department</a> -
-                        <a target="_blank" href="http://www.manoa.hawaii.edu/">University of Hawai&#699;i at M&#257;noa
-                            <a />
-                    </h4>
+                <div class='txt-m mb12 align-center'>CONSERVATION AREAS IN SOUTH AMERICA</div>
+                <div class='txt-s text-justify'>
+                    For centuries, protected areas of many kinds have played a fundamental role within the world's
+                    landscapes and seascapes. They are essential for the conservation of species and ecosystems, and
+                    also provide benefits for people. However, protected areas are not isolates entities, their
+                    ability to deliver positive outcomes is affected by their surroundings, and they can only work if they are
+                    governed and managed as part of the wider landscape, integrated into development strategies and considered across
+                    all sectors of society.<br><br>The World Database on Protected Areas (WDPA), a joint effort between the
+                    International Union for Conservation of Nature (IUCN) and the United Nations Environment Programme (UNEP), is the only
+                    globally authoritative database on marine and terrestrial protected areas of the world. It is
+                    compiled and managed by UNEP-WCMC in collaboration with IUCN.<br><br>
+                    <p class='text-right color-green-faint'>Map Author:Maria Renee Horn</a><br>Data:
+                        <a target="_blank" href="https://www.protectedplanet.net">World Database on Protected Areas</a> -
+                        <a target="_blank" href="https://www.iucn.org/theme/protected-areas/about/protected-area-categories">IUCN Protected Area Categories</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -269,8 +283,8 @@
             <li class='aside-icons'><a class="icon-hover" id='icon-explore'><img src='pics/explore.png'
                         alt='explore icon' style="width:90px;height:90px;"></a></li>
         </ul>
-        <div id='legend' class='absolute mt12 color-green-faint z5'>
-            <div class='inline-block mb12 txt-m align-center mx12'>Conservation Areas IUCN</div>
+        <div id='legend' class='absolute mt8 color-green-faint z5'>
+            <div class='inline-block mb12 txt-m align-center mx12'>IUCN Protected Area Categories</div>
             <ul class='color-green-faint txt-xxs mx18 align-l py2'></ul>
         </div>
     </aside>
@@ -278,76 +292,115 @@
     <!-- chapter story -->
     <div id='features'>
         <section id='introduction' class='active'>
-            <h2><strong>SOUTH AMERICA</strong></h2>
+            <h1>SOUTH AMERICA</h1>
             <p>South America is one of the richest sub-continents in terms of cultural and biological diversity;
-                including indigenous peoples with strong historical ties to the region's ecosystems. <br>Protected and
+                including indigenous peoples with strong historical ties to the region's ecosystems.<br>Protected and
                 conserved areas have long been a successful management tool to conserve biodiversity, and
                 without them, the global loss of biodiversity would likely be even greater.</p>
         </section>
         <section id='argentina'>
             <h2>ARGENTINA</h2>
-            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
-        <p><li class='aside-icons text-center'><a class='text' id='arg-sta'><img src='pics/arg.png' alt='argentina statistics'></a></li></p>
+            <span>
+                <h3>IUCN MANAGEMENT CATEGORIES:</h3>
+            </span><br>
+            <li class='aside-icons text-center'><a class='text' id='arg-sta'><img src='pics/arg.png'
+                        alt='argentina statistics'></a></li>
         </section>
         <section id='bolivia'>
             <h2>BOLIVIA</h2>
-            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
-            <li class='aside-icons text-center'><a class='text' id='bol-sta'><img src='pics/bol.png' alt='bolivia statistics'></a></li>
+            <span>
+                <h3>IUCN MANAGEMENT CATEGORIES:</h3>
+            </span><br>
+            <li class='aside-icons text-center'><a class='text' id='bol-sta'><img src='pics/bol.png'
+                        alt='bolivia statistics'></a></li>
         </section>
         <section id='brazil'>
             <h2>BRAZIL</h2>
-            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
-            <li class='aside-icons text-center'><a class='text' id='brz-sta'><img src='pics/brz.png' alt='brazil statistics'></a></li>
+            <span>
+                <h3>IUCN MANAGEMENT CATEGORIES:</h3>
+            </span><br>
+            <li class='aside-icons text-center'><a class='text' id='brz-sta'><img src='pics/brz.png'
+                        alt='brazil statistics'></a></li>
         </section>
         <section id='chile'>
             <h2>CHILE</h2>
-            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
-            <li class='aside-icons text-center'><a class='text' id='chi-sta'><img src='pics/chi.png' alt='chile statistics'></a></li>
+            <span>
+                <h3>IUCN MANAGEMENT CATEGORIES:</h3>
+            </span><br>
+            <li class='aside-icons text-center'><a class='text' id='chi-sta'><img src='pics/chi.png'
+                        alt='chile statistics'></a></li>
         </section>
         <section id='colombia'>
             <h2>COLOMBIA</h2>
-            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
-            <li class='aside-icons text-center'><a class='text' id='col-sta'><img src='pics/col.png' alt='colombia statistics'></a></li>
+            <span>
+                <h3>IUCN MANAGEMENT CATEGORIES:</h3>
+            </span><br>
+            <li class='aside-icons text-center'><a class='text' id='col-sta'><img src='pics/col.png'
+                        alt='colombia statistics'></a></li>
         </section>
         <section id='ecuador'>
             <h2>ECUADOR</h2>
-            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
-            <li class='aside-icons text-center'><a class='text' id='ecu-sta'><img src='pics/ecu.png' alt='ecuador statistics'></a></li>
+            <span>
+                <h3>IUCN MANAGEMENT CATEGORIES:</h3>
+            </span><br>
+            <li class='aside-icons text-center'><a class='text' id='ecu-sta'><img src='pics/ecu.png'
+                        alt='ecuador statistics'></a></li>
         </section>
         <section id='french guiana'>
             <h2>FRENCH GUIANA</h2>
-            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
-            <li class='aside-icons text-center'><a class='text' id='fgy-sta'><img src='pics/fgy.png' alt='french guyana statistics'></a></li>
+            <span>
+                <h3>IUCN MANAGEMENT CATEGORIES:</h3>
+            </span><br>
+            <li class='aside-icons text-center'><a class='text' id='fgy-sta'><img src='pics/fgy.png'
+                        alt='french guyana statistics'></a></li>
         </section>
         <section id='guyana'>
             <h2>GUYANA</h2>
-            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
-            <li class='aside-icons text-center'><a class='text' id='guy-sta'><img src='pics/guy.png' alt='guyana statistics'></a></li>
+            <span>
+                <h3>IUCN MANAGEMENT CATEGORIES:</h3>
+            </span><br>
+            <li class='aside-icons text-center'><a class='text' id='guy-sta'><img src='pics/guy.png'
+                        alt='guyana statistics'></a></li>
         </section>
         <section id='paraguay'>
             <h2>PARAGUAY</h2>
-            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
-            <li class='aside-icons text-center'><a class='text' id='par-sta'><img src='pics/par.png' alt='paraguay statistics'></a></li>
+            <span>
+                <h3>IUCN MANAGEMENT CATEGORIES:</h3>
+            </span><br>
+            <li class='aside-icons text-center'><a class='text' id='par-sta'><img src='pics/par.png'
+                        alt='paraguay statistics'></a></li>
         </section>
         <section id='peru'>
             <h2>PERU</h2>
-            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
-            <li class='aside-icons text-center'><a class='text' id='per-sta'><img src='pics/per.png' alt='peru statistics'></a></li>
+            <span>
+                <h3>IUCN MANAGEMENT CATEGORIES:</h3>
+            </span><br>
+            <li class='aside-icons text-center'><a class='text' id='per-sta'><img src='pics/per.png'
+                        alt='peru statistics'></a></li>
         </section>
         <section id='suriname'>
             <h2>SURINAME</h2>
-            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
-            <li class='aside-icons text-center'><a class='text' id='sur-sta'><img src='pics/sur.png' alt='suriname statistics'></a></li>
+            <span>
+                <h3>IUCN MANAGEMENT CATEGORIES:</h3>
+            </span><br>
+            <li class='aside-icons text-center'><a class='text' id='sur-sta'><img src='pics/sur.png'
+                        alt='suriname statistics'></a></li>
         </section>
         <section id='uruguay'>
             <h2>URUGUAY</h2>
-            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
-            <li class='aside-icons text-center'><a class='text' id='uru-sta'><img src='pics/uru.png' alt='uruguay statistics'></a></li>
+            <span>
+                <h3>IUCN MANAGEMENT CATEGORIES:</h3>
+            </span><br>
+            <li class='aside-icons text-center'><a class='text' id='uru-sta'><img src='pics/uru.png'
+                        alt='uruguay statistics'></a></li>
         </section>
         <section id='venezuela'>
             <h2>VENEZUELA</h2>
-            <span><h3>IUCN MANAGEMENT CATEGORIES:</h3></span><br>
-            <li class='aside-icons text-center'><a class='text' id='vnz-sta'><img src='pics/vnz.png' alt='venezuela statistics'></a></li>
+            <span>
+                <h3>IUCN MANAGEMENT CATEGORIES:</h3>
+            </span><br>
+            <li class='aside-icons text-center'><a class='text' id='vnz-sta'><img src='pics/vnz.png'
+                        alt='venezuela statistics'></a></li>
         </section>
         <!-- <small id="THANK YOU">
                 Tank you! <a href='http://www.gutenberg.org/files/2346/2346-h/2346-h.htm'>Project Gutenberg</a>
@@ -358,7 +411,7 @@
     <div id='gallery'>
         <div class='row'>
             <div class='col-md-12 mt30'>
-                <p class='title-gallery h5 font-weight-bold text-center mr24'>NATURE OF BEAUTY</p>
+                <p class='title-gallery h5 font-weight-bold text-center mr24'>DISCOVER</p>
                 <div class='text-gallery small text-justify mr24 ml10 mt24 px24 py2'>
                     <p>IUCN defines a protected area as a clearly defined geographical space, recognised, dedicated and
                         managed, through legal or other effective means, to achieve the long-term conservation of nature
@@ -376,7 +429,7 @@
     <div id='explore'>
         <div class='row'>
             <div class='col-md-12 mt30'>
-                <p class='title-explore h5 font-weight-bold text-center mr24'>EXPLORE THE MAP</p>
+                <p class='title-explore h5 font-weight-bold text-center mr24'>EXPLORE</p>
                 <div class='text-explore small text-justify mr24 ml10 mt24 px24 py2'>
                     <p>IUCN defines a protected area as a clearly defined geographical space, recognised, dedicated and
                         managed, through legal or other effective means, to achieve the long-term conservation of nature
@@ -504,9 +557,7 @@
             function updateMap(data) {
                 var geojson = topojson.feature(data, data.objects.merge_files_sim);
                 geojson.features.forEach(function (feature) {
-                   
 
-                    
                     var code = feature.properties.DESIG_ENG;
                     if (code == 'World Heritage Site (natural or mixed)') {
                         var heritage = code;
@@ -519,8 +570,6 @@
                     }
 
                 });
-                
-            
 
                 map.setPaintProperty('polygon', 'fill-opacity', [
                     'match', ['get', 'DESIG_ENG'],
@@ -596,11 +645,7 @@
                         .addTo(map);
                 });
 
-                 
-
             } //end of function pointsMap
-
-            
 
         }); //end of map.on('load')
 
@@ -751,7 +796,7 @@
         }
         $(polygon).hover(
             function () {
-                $(this).append($("<span> Polygons Layer</span>"));
+                $(this).append($("<span>Polygons Layer</span>"));
             },
             function () {
                 $(this).find("span:last").remove();
@@ -784,7 +829,7 @@
         }
         $(point).hover(
             function () {
-                $(this).append($("<span> Points Layer</span>"));
+                $(this).append($("<span>Points Layer</span>"));
             },
             function () {
                 $(this).find("span:last").remove();
