@@ -29,7 +29,7 @@
         /* NAVIGATION BAR */
         .navbar {
             padding-top: 1rem;
-            width: 26rem;
+            width: 28rem;
             position: fixed;
             background-color: #021c1e;
         }
@@ -86,6 +86,20 @@
         }
 
         #about-modal {
+            background: rgba(0, 0, 0, 0.25);
+            -webkit-text-fill-color: #b2dbd5;
+        }
+
+        /* IUCN BUTTON - MODAL */
+        #about-iucn {
+            padding: 0;
+        }
+
+        #about-global {
+            padding: 0;
+        }
+
+        #iucn-modal {
             background: rgba(0, 0, 0, 0.25);
             -webkit-text-fill-color: #b2dbd5;
         }
@@ -229,7 +243,7 @@
     <!-- end of map -->
 
     <!-- navigation -->
-    <div class='navbar h6 z2'>
+    <div class='navbar h6 z1'>
         <nav class='navbar navbar-expand-lg fixed-top'>
             <button id='about-icon' class='icon-hover'>
                 <a class='navbar-brand color-green-faint' href='#'>CONSERVATION</a></button>
@@ -237,14 +251,17 @@
                 <div id='about-trigger'>
                     <li class='nav-item'><a class='nav-link color-green-faint' href="#">About</a></li>
                 </div>
-                <li class='nav-item'><a class='nav-link color-green-faint' href="#">IUCN</a></li>
+                <li class='nav-item'><a class='nav-link color-green-faint' href="#">WDPA</a></li>
+                <div id='about-iucn'>
+                    <li class='nav-item'><a class='nav-link color-green-faint' href="#">IUCN</a></li>
+                </div>
                 <li class='nav-item'><a class='nav-link color-green-faint' href="#">Language</a></li>
             </ul>
         </nav>
     </div>
 
     <!-- about-modal -->
-    <div id='about-modal' class='absolute top right bottom left scroll-auto z3 none animation--speed-1'>
+    <div id='about-modal' class='absolute top right bottom left scroll-auto z2 none animation--speed-1'>
         <div
             class='flex-child border border-gray-dark bg-gray-dark color-green-faint round relative w600 mx-auto mt120'>
             <button id='modal-close' class='btn btn-gray-dark absolute top right mr6 mt6 px0 py0'>
@@ -258,15 +275,17 @@
                     For centuries, protected areas of many kinds have played a fundamental role within the world's
                     landscapes and seascapes. They are essential for the conservation of species and ecosystems, and
                     also provide benefits for people. However, protected areas are not isolates entities, their
-                    ability to deliver positive outcomes is affected by their surroundings, and they can only work if they are
-                    governed and managed as part of the wider landscape, integrated into development strategies and considered across
-                    all sectors of society.<br><br>The World Database on Protected Areas (WDPA), a joint effort between the
-                    International Union for Conservation of Nature (IUCN) and the United Nations Environment Programme (UNEP), is the only
-                    globally authoritative database on marine and terrestrial protected areas of the world. It is
-                    compiled and managed by UNEP-WCMC in collaboration with IUCN.<br><br>
+                    ability to deliver positive outcomes is affected by their surroundings, and they can only work if
+                    they are governed and managed as part of the wider landscape, integrated into development strategies
+                    and considered across all sectors of society.<br><br>The World Database on Protected Areas (WDPA), a
+                    joint effort between the International Union for Conservation of Nature (IUCN) and the United Nations Environment
+                    Programme (UNEP), is the only globally authoritative database on marine and terrestrial protected areas of the
+                    world. It is compiled and managed by UNEP-WCMC in collaboration with IUCN.<br><br>
                     <p class='text-right color-green-faint'>Map Author:Maria Renee Horn</a><br>Data:
-                        <a target="_blank" href="https://www.protectedplanet.net">World Database on Protected Areas</a> -
-                        <a target="_blank" href="https://www.iucn.org/theme/protected-areas/about/protected-area-categories">IUCN Protected Area Categories</a>
+                        <a target="_blank" href="https://www.protectedplanet.net">World Database on Protected Areas</a>-
+                        <a target="_blank"
+                            href="https://www.iucn.org/theme/protected-areas/about/protected-area-categories">IUCN
+                            Protected Area Categories</a>
                     </p>
                 </div>
             </div>
@@ -274,7 +293,7 @@
     </div>
 
     <!-- aside chapters -->
-    <aside class='aside z4 fixed'>
+    <aside class='aside z3 fixed'>
         <ul class='aside-chapters'>
             <li class='aside-icons'><a class='icon-hover' id='icon-story'><img src='pics/story.png' alt='story icon'
                         style="width:90px;height:90px;"></a></li>
@@ -283,7 +302,7 @@
             <li class='aside-icons'><a class="icon-hover" id='icon-explore'><img src='pics/explore.png'
                         alt='explore icon' style="width:90px;height:90px;"></a></li>
         </ul>
-        <div id='legend' class='absolute mt8 color-green-faint z5'>
+        <div id='legend' class='absolute mt8 color-green-faint z4'>
             <div class='inline-block mb12 txt-m align-center mx12'>IUCN Protected Area Categories</div>
             <ul class='color-green-faint txt-xxs mx18 align-l py2'></ul>
         </div>
@@ -402,9 +421,6 @@
             <li class='aside-icons text-center'><a class='text' id='vnz-sta'><img src='pics/vnz.png'
                         alt='venezuela statistics'></a></li>
         </section>
-        <!-- <small id="THANK YOU">
-                Tank you! <a href='http://www.gutenberg.org/files/2346/2346-h/2346-h.htm'>Project Gutenberg</a>
-            </small></section> -->
     </div>
 
     <!-- chapter gallery -->
@@ -417,10 +433,8 @@
                         managed, through legal or other effective means, to achieve the long-term conservation of nature
                         with associated ecosytem services and cultural values.</p>
                 </div>
-
                 <p class='text-gallery-footer lead my-5 text-center mr24'>Click on the map markers to view<br>a specific
                     photograph.</p>
-
             </div>
         </div>
     </div>
@@ -445,6 +459,40 @@
         </div>
     </div>
 
+    <!-- IUCN-modal -->
+    <div id='iucn-modal' class='absolute top right bottom left scroll-auto z2 none animation--speed-1'>
+        <div
+            class='flex-child border border-gray-dark bg-gray-dark color-green-faint round relative w600 mx-auto mt120'>
+            <button id='modal-closed' class='btn btn-gray-dark absolute top right mr6 mt6 px0 py0'>
+                <svg class='icon btn-info link color-lighten50 txt-xl'>
+                    <use xlink:href='#icon-close'></use>
+                </svg>
+            </button>
+            <div class='px24 py24'>
+                <div class='txt-m mb12 align-center'>PROTECTED AREA CATEGORIES</div>
+                <div class='txt-s text-justify'>
+                    IUCN protected area management categories classify protected areas according to their management
+                    objectives.<br><br><strong>Ia - Strict Nature Reserve:</strong> Strictly protected areas set aside
+                    to protect biodiversity and also geological/geomorphical features.<br><strong>Ib - Wilderness
+                    Area:</strong> Large protected areas that have retained their natural character without permanent or significant human
+                    habitation.<br><strong>II - National Park:</strong> Large natural or near natural areas set aside to protect large-scale ecological
+                    processes, species and ecosystems characteristic of the area.<br><strong>III - National Monument
+                    or Feature:</strong> Protected areas set aside to protect a specific natural monument, landform,
+                    sea mount, submarine cavern, geological or living features.<br><strong>IV - Habitat/Species Management Area:</strong> Aim to protect
+                    particular species or habitats.<br><strong>V - Protected Landscape/Seascape:</strong> A protected
+                    area where the interaction of people and nature over time has produced an area of distinct character
+                    with significant, ecological, biological, cultural and scenic value.<br><strong>VI - Protected Area
+                    With Sustainable Use Of Natural Resources:</strong> Conserve ecosystems and habitats together with associated 
+                    cultural values and traditional natural resource management systems.
+                    <p class='text-right color-green-faint'>Data:</a>
+                        <a target="_blank"
+                            href="https://www.iucn.org/theme/protected-areas/about/protected-area-categories">IUCN
+                            Protected Area Categories</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
@@ -474,6 +522,7 @@
                 .then(function (data) {
                     polygonsMap(data);
                     addAboutModalUI();
+                    addIucnModalUI();
                     addLegend(data);
                     updateMap(data);
                 });
@@ -527,6 +576,18 @@
                 var trigger = document.getElementById('about-trigger'),
                     modal = document.getElementById('about-modal'),
                     close = document.getElementById('modal-close');
+                trigger.addEventListener('click', function () {
+                    modal.classList.remove('none');
+                });
+                close.addEventListener('click', function () {
+                    modal.classList.add('none');
+                });
+            }
+
+            function addIucnModalUI() {
+                var trigger = document.getElementById('about-iucn'),
+                    modal = document.getElementById('iucn-modal'),
+                    close = document.getElementById('modal-closed');
                 trigger.addEventListener('click', function () {
                     modal.classList.remove('none');
                 });
@@ -641,7 +702,7 @@
                         .setPopup(new mapboxgl.Popup({
                             offset: 25
                         })
-                            .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
+                        .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
                         .addTo(map);
                 });
 
