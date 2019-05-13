@@ -104,6 +104,20 @@
             -webkit-text-fill-color: #b2dbd5;
         }
 
+        /* WDPA BUTTON - MODAL */
+        #about-wdpa {
+            padding: 0;
+        }
+
+        #about-global {
+            padding: 0;
+        }
+
+        #wdpa-modal {
+            background: rgba(0, 0, 0, 0.25);
+            -webkit-text-fill-color: #b2dbd5;
+        }
+
         /* STORY CHAPTER */
         #features {
             padding-top: 15%;
@@ -262,7 +276,9 @@
                 <div id='about-trigger'>
                     <li class='nav-item'><a class='nav-link color-green-faint' href="#">About</a></li>
                 </div>
-                <li class='nav-item'><a class='nav-link color-green-faint' href="#">WDPA</a></li>
+                <div id='about-wdpa'>
+                    <li class='nav-item'><a class='nav-link color-green-faint' href="#">WDPA</a></li>
+                </div>
                 <div id='about-iucn'>
                     <li class='nav-item'><a class='nav-link color-green-faint' href="#">IUCN</a></li>
                 </div>
@@ -289,8 +305,10 @@
                     ability to deliver positive outcomes is affected by their surroundings, and they can only work if
                     they are governed and managed as part of the wider landscape, integrated into development strategies
                     and considered across all sectors of society.<br><br>The World Database on Protected Areas (WDPA), a
-                    joint effort between the International Union for Conservation of Nature (IUCN) and the United Nations Environment
-                    Programme (UNEP), is the only globally authoritative database on marine and terrestrial protected areas of the
+                    joint effort between the International Union for Conservation of Nature (IUCN) and the United
+                    Nations Environment
+                    Programme (UNEP), is the only globally authoritative database on marine and terrestrial protected
+                    areas of the
                     world. It is compiled and managed by UNEP-WCMC in collaboration with IUCN.<br><br>
                     <p class='text-right color-green-faint'>Map Author:Maria Renee Horn</a><br>Data:
                         <a target="_blank" href="https://www.protectedplanet.net">World Database on Protected Areas</a>-
@@ -327,7 +345,7 @@
                 including indigenous peoples with strong historical ties to the region's ecosystems.<br>Protected and
                 conserved areas have long been a successful management tool to conserve biodiversity, and
                 without them, the global loss of biodiversity would likely be even greater.</p>
-                <small class='scroll quiet'>SCROLL &#x25BE;</small>
+            <small class='scroll quiet'>SCROLL &#x25BE;</small>
         </section>
         <section id='argentina'>
             <h2>ARGENTINA</h2>
@@ -483,18 +501,23 @@
             <div class='px24 py24'>
                 <div class='txt-m mb12 align-center'>PROTECTED AREA CATEGORIES</div>
                 <div class='txt-s text-justify'>
-                    IUCN protected area management categories classify protected areas according to their<strong> management objectives.</strong>
+                    IUCN protected area management categories classify protected areas according to their<strong>
+                        management objectives.</strong>
                     <br><br><strong>Ia - Strict Nature Reserve:</strong> Strictly protected areas set aside
                     to protect biodiversity and also geological/geomorphical features.<br><strong>Ib - Wilderness
-                    Area:</strong> Large protected areas that have retained their natural character without permanent or significant human
-                    habitation.<br><strong>II - National Park:</strong> Large natural or near natural areas set aside to protect large-scale ecological
+                        Area:</strong> Large protected areas that have retained their natural character without
+                    permanent or significant human
+                    habitation.<br><strong>II - National Park:</strong> Large natural or near natural areas set aside to
+                    protect large-scale ecological
                     processes, species and ecosystems characteristic of the area.<br><strong>III - National Monument
-                    or Feature:</strong> Protected areas set aside to protect a specific natural monument, landform,
-                    sea mount, submarine cavern, geological or living features.<br><strong>IV - Habitat/Species Management Area:</strong> Aim to protect
+                        or Feature:</strong> Protected areas set aside to protect a specific natural monument, landform,
+                    sea mount, submarine cavern, geological or living features.<br><strong>IV - Habitat/Species
+                        Management Area:</strong> Aim to protect
                     particular species or habitats.<br><strong>V - Protected Landscape/Seascape:</strong> A protected
                     area where the interaction of people and nature over time has produced an area of distinct character
                     with significant, ecological, biological, cultural and scenic value.<br><strong>VI - Protected Area
-                    With Sustainable Use Of Natural Resources:</strong> Conserve ecosystems and habitats together with associated 
+                        With Sustainable Use Of Natural Resources:</strong> Conserve ecosystems and habitats together
+                    with associated
                     cultural values and traditional natural resource management systems.
                     <p class='text-right color-green-faint'>Data:</a>
                         <a target="_blank"
@@ -505,6 +528,46 @@
             </div>
         </div>
     </div>
+
+    <!-- WDPA-modal -->
+    <div id='wdpa-modal' class='absolute top right bottom left scroll-auto z2 none animation--speed-1'>
+        <div
+            class='flex-child border border-gray-dark bg-gray-dark color-green-faint round relative w600 mx-auto mt120'>
+            <button id='modal-clos' class='btn btn-gray-dark absolute top right mr6 mt6 px0 py0'>
+                <svg class='icon btn-info link color-lighten50 txt-xl'>
+                    <use xlink:href='#icon-close'></use>
+                </svg>
+            </button>
+            <div class='px24 py24'>
+                <div class='txt-m mb12 align-center'>World Database on Protected Areas</div>
+                <div class='txt-s text-justify'>
+                    Protected area spatial data is collected in the form of boundary (polygon) wherever it is available,
+                    or as a single latitude and longitude coordinate (point) data where boundary data is not available.
+                    Boundary data for an individual protected area may be unavailable for a number of reasons such as
+                    lack of capacity to map protected areas or confidentiality issues preventing public dissemination of
+                    data.<br><br>It is important that both data types are used in the analysis as far as possible, point
+                    datasets
+                    accounted for 9% of all the records in the WDPA in January 2016, excluding them for any analysis
+                    will likely underestimate the extent of protected areas globally.<br><br>The WDPA stores the IUCN
+                    Protected Area Management Categories for each of the protected areas where
+                    these categories are reported. The IUCN category is provided to the WDPA as part of the dataset, and
+                    is not assigned by the WDPA Team. There are many sites (both polygons and points) for which an IUCN
+                    mangement category have not been reported, have not been assigned, or are not applicable. Assigning
+                    IUCN management categories to protected areas is not a mandatory requierement for countries when
+                    submitting data. Because the IUCN management objectives, does not relate to a given designation
+                    (e.g. National Park), but to its management objectives, and therefore categories have not been
+                    reported may only mean that the country has not conducted a formal process to assign the categories
+                    to their protected area network, not that these protected areas are not well managed or don’t have
+                    management objectives in place.
+                    <p class='text-right color-green-faint'>Data:</a>
+                        <a target="_blank"
+                            href="http://pp-import-production.s3.amazonaws.com/WDPA_Manual_1_5.pdf">World Database on Protected Areas User Manual</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
@@ -656,6 +719,7 @@
             d3.json('data/points.json')
                 .then(function (data) {
                     pointsMap(data);
+                    addWdpaModalUI();
                 });
 
             function pointsMap(data) {
@@ -665,10 +729,10 @@
                     'type': 'circle',
                     'source': {
                         'type': 'geojson',
-                        'data': data
-                        //   'cluster': true,
-                        //   'clusterMaxZoom': 4, // Max zoom to cluster points on
-                        //  'clusterRadius': 2 // Radius of each cluster when clustering points (defaults to 50)
+                        'data': data,
+                        'cluster': true,
+                        'clusterMaxZoom': 4, // Max zoom to cluster points on
+                        'clusterRadius': 2 // Radius of each cluster when clustering points (defaults to 50)
                     },
                     'paint': {
                         'circle-color': [
@@ -714,11 +778,23 @@
                         .setPopup(new mapboxgl.Popup({
                             offset: 25
                         })
-                        .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
+                            .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
                         .addTo(map);
                 });
 
             } //end of function pointsMap
+
+            function addWdpaModalUI() {
+                var trigger = document.getElementById('about-wdpa'),
+                    modal = document.getElementById('wdpa-modal'),
+                    close = document.getElementById('modal-clos');
+                trigger.addEventListener('click', function () {
+                    modal.classList.remove('none');
+                });
+                close.addEventListener('click', function () {
+                    modal.classList.add('none');
+                });
+            }
 
         }); //end of map.on('load')
 
