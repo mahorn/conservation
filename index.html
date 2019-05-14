@@ -202,6 +202,7 @@
             height: 100%;
             background: #c9d1c8;
             color: #2c4a52;
+            overflow-y: scroll;
         }
 
         .text-gallery {
@@ -465,6 +466,9 @@
                 </div>
                 <p class='text-gallery-footer lead my-5 text-center mr24'>Click on the map markers to view<br>a specific
                     photograph.</p>
+                <div class='ml24'>
+
+                </div>
             </div>
         </div>
     </div>
@@ -560,8 +564,8 @@
                     to their protected area network, not that these protected areas are not well managed or don’t have
                     management objectives in place.
                     <p class='text-right color-green-faint'>Data:</a>
-                        <a target="_blank"
-                            href="http://pp-import-production.s3.amazonaws.com/WDPA_Manual_1_5.pdf">World Database on Protected Areas User Manual</a>
+                        <a target="_blank" href="http://pp-import-production.s3.amazonaws.com/WDPA_Manual_1_5.pdf">World
+                            Database on Protected Areas User Manual</a>
                     </p>
                 </div>
             </div>
@@ -589,6 +593,12 @@
             'VI': '#66a5ad',
             'Not Reported': '#c4dfe6',
             'Not Applicable': '#a2c523'
+        }
+
+        var code = {
+            'World Heritage Site (natural or mixed)': '1',
+            'UNESCO-MAB Biosphere Reserve': '1',
+            'World Heritage Site (natural or mixed)': '1'
         }
 
         map.on('load', function () {
@@ -645,6 +655,7 @@
                     map.getCanvas().style.cursor = '';
                     popup.remove();
                 });
+
             }
 
             function addAboutModalUI() {
@@ -690,32 +701,6 @@
                 d3.select('#legend').classed('none', false);
             } //end of addLegend function
 
-            function updateMap(data) {
-                var geojson = topojson.feature(data, data.objects.merge_files_sim);
-                geojson.features.forEach(function (feature) {
-
-                    var code = feature.properties.DESIG_ENG;
-                    if (code == 'World Heritage Site (natural or mixed)') {
-                        var heritage = code;
-                    }
-                    if (code == 'UNESCO-MAB Biosphere Reserve') {
-                        var biosphere = code;
-                    }
-                    if (code == 'Strict Nature Reserve') {
-                        var species = code;
-                    }
-
-                });
-
-                map.setPaintProperty('polygon', 'fill-opacity', [
-                    'match', ['get', 'DESIG_ENG'],
-                    heritage, 1,
-                    biosphere, 1,
-                    species, 1,
-                    0
-                ]);
-            }//end function updateMap
-
             d3.json('data/points.json')
                 .then(function (data) {
                     pointsMap(data);
@@ -723,7 +708,7 @@
                 });
 
             function pointsMap(data) {
-                console.log(data);
+                // console.log(data);
                 map.addLayer({
                     'id': 'points',
                     'type': 'circle',
@@ -794,7 +779,7 @@
                 close.addEventListener('click', function () {
                     modal.classList.add('none');
                 });
-            }
+            } //end of function addWdpaModalUI
 
         }); //end of map.on('load')
 
@@ -908,6 +893,41 @@
             );
         });
         $('#icon-gallery').off('click', endClicked);
+
+        function updateMap(code) {
+            $('#am').on('click', function (code) {
+                map.setPaintProperty('polygon', 'fill-opacity', [
+                    'match', ['get', 'DESIG_ENG'],
+                    code, 1,
+                    0
+                ])
+            });
+        }//end function updateMap
+
+
+        //     if (code === 'World Heritage Site (natural or mixed)') {
+        //         map.setPaintProperty('polygon', 'fill-opacity', [
+        //             'match', ['get', 'DESIG_ENG'],
+        //             'World Heritage Site (natural or mixed)', 1,
+        //             0
+        //         ]);
+        //     } else if (code === 'UNESCO-MAB Biosphere Reserve') {
+        //         map.setPaintProperty('polygon', 'fill-opacity', [
+        //             'match', ['get', 'DESIG_ENG'],
+        //             'UNESCO-MAB Biosphere Reserve', 1,
+        //             0
+        //         ]);
+        //     } else if (code === 'Strict Nature Reserve') {
+        //         map.setPaintProperty('polygon', 'fill-opacity', [
+        //             'match', ['get', 'DESIG_ENG'],
+        //             'Strict Nature Reserve', 1,
+        //             0
+        //         ]);
+        //     }
+        // });
+
+        // }//end function updateMap
+
 
         // EXPLORE CHAPTER //
         var endClicked = $('#icon-explore').on('click', function () {
