@@ -245,6 +245,8 @@
             border-radius: 5%;
             cursor: pointer;
         } */
+
+
     </style>
 </head>
 
@@ -467,7 +469,22 @@
                 <p class='text-gallery-footer lead my-5 text-center mr24'>Click on the map markers to view<br>a specific
                     photograph.</p>
                 <div class='ml24'>
-
+        
+                    <div class="container">
+                        <input type="radio" name="world" value='World Heritage Site (natural or mixed)' id='heritage'>
+                        <label for="heritage"><span  class="category">Heritage</span></span>
+                        </label>
+                    </div>
+                    <div class="container">
+                        <input type="radio" name="unesco" value='UNESCO-MAB Biosphere Reserve' id='unesco'>
+                        <label for="unesco"><span class="category">Unesco</span></span>
+                        </label>
+                    </div>
+                        <div class="container">
+                        <input type="radio" name='strict' value='Strict Nature Reserve' id='strict'>
+                        <label for="strict"><span class="category">Strict</span></span>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -598,7 +615,7 @@
         var code = {
             'World Heritage Site (natural or mixed)': '1',
             'UNESCO-MAB Biosphere Reserve': '1',
-            'World Heritage Site (natural or mixed)': '1'
+            'Strict Nature Reserve': '1'
         }
 
         map.on('load', function () {
@@ -895,39 +912,35 @@
         $('#icon-gallery').off('click', endClicked);
 
         function updateMap(code) {
-            $('#am').on('click', function (code) {
-                map.setPaintProperty('polygon', 'fill-opacity', [
-                    'match', ['get', 'DESIG_ENG'],
-                    code, 1,
-                    0
-                ])
+            var geojson = topojson.feature(code, code.objects.merge_files_sim);
+            geojson.features.forEach(function (feature) {
+                var code = feature.properties.DESIG_ENG;
+                d3.selectAll('#gallery input').on('change', function() {
+                  
+                    if (code === 'World Heritage Site (natural or mixed)') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'DESIG_ENG'],
+                            'World Heritage Site (natural or mixed)', 1,
+                            0
+                        ]);
+                       
+                    } else if (code === 'UNESCO-MAB Biosphere Reserve') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'DESIG_ENG'],
+                            'UNESCO-MAB Biosphere Reserve', 1,
+                            0
+                        ]);
+                       
+                    } else if (code === 'Strict Nature Reserve') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'DESIG_ENG'],
+                            'Strict Nature Reserve', 1,
+                            0
+                        ]);
+                    }
+                });
             });
         }//end function updateMap
-
-
-        //     if (code === 'World Heritage Site (natural or mixed)') {
-        //         map.setPaintProperty('polygon', 'fill-opacity', [
-        //             'match', ['get', 'DESIG_ENG'],
-        //             'World Heritage Site (natural or mixed)', 1,
-        //             0
-        //         ]);
-        //     } else if (code === 'UNESCO-MAB Biosphere Reserve') {
-        //         map.setPaintProperty('polygon', 'fill-opacity', [
-        //             'match', ['get', 'DESIG_ENG'],
-        //             'UNESCO-MAB Biosphere Reserve', 1,
-        //             0
-        //         ]);
-        //     } else if (code === 'Strict Nature Reserve') {
-        //         map.setPaintProperty('polygon', 'fill-opacity', [
-        //             'match', ['get', 'DESIG_ENG'],
-        //             'Strict Nature Reserve', 1,
-        //             0
-        //         ]);
-        //     }
-        // });
-
-        // }//end function updateMap
-
 
         // EXPLORE CHAPTER //
         var endClicked = $('#icon-explore').on('click', function () {
