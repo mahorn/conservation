@@ -246,7 +246,69 @@
             cursor: pointer;
         } */
 
+        /* RADIO BUTTONS in Explore */
 
+        .section {
+            padding: 4%;
+        }
+
+        .section input[type="radio"] {
+            display: none;
+        }
+
+        .container {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 30px;
+        }
+
+        .container label {
+            position: relative;
+        }
+
+        /* Base styles for spans */
+
+        .container span::before,
+        .container span::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        /* Radio buttons specifics*/
+
+        .container span.radio:hover {
+            cursor: pointer;
+        }
+
+        .container span.radio::before {
+            left: -52px;
+            width: 45px;
+            height: 25px;
+            border-radius: 50px;
+        }
+
+        .container span.radio::after {
+            left: -49px;
+            width: 17px;
+            height: 17px;
+            border-radius: 10px;
+            background-color: #6C788A;
+            transition: left .25s, background-color .25s;
+        }
+
+        input[type="radio"]:checked+label span.radio::after {
+            left: -27px;
+            background-color: #EBFF43;
+        }
+
+        /* color of radio button */
+
+        .radio {
+            color: transparent;
+        }
     </style>
 </head>
 
@@ -469,22 +531,78 @@
                 <p class='text-gallery-footer lead my-5 text-center mr24'>Click on the map markers to view<br>a specific
                     photograph.</p>
                 <div class='ml24'>
-        
-                    <div class="container">
-                        <input type="radio" name="world" value='World Heritage Site (natural or mixed)' id='heritage'>
-                        <label for="heritage"><span  class="category">Heritage</span></span>
-                        </label>
-                    </div>
-                    <div class="container">
-                        <input type="radio" name="unesco" value='UNESCO-MAB Biosphere Reserve' id='unesco'>
-                        <label for="unesco"><span class="category">Unesco</span></span>
-                        </label>
-                    </div>
+
+
+                    <!-- <overlay id='first' class='section'>
                         <div class="container">
-                        <input type="radio" name='strict' value='Strict Nature Reserve' id='strict'>
-                        <label for="strict"><span class="category">Strict</span></span>
-                        </label>
-                    </div>
+                            <input type="radio" name="heritage" value="World Heritage Site (natural or mixed)"
+                                id="heritage">
+                            <label for="heritage"><span class="radio"></span><span
+                                    class="category">Heritage</span></span>
+                            </label>
+                        </div>
+                        <div class="container">
+                            <input type="radio" name="heritage" value="UNESCO-MAB Biosphere Reserve" id="unesco">
+                            <label for="unesco"><span class="radio"></span><span class="category">Unesco</span></span>
+                            </label>
+                        </div>
+                        <div class="container">
+                            <input type="radio" name='heritage' value="Strict Nature Reserve" id='strict'>
+                            <label for="strict"><span class="radio"></span><span class="category">Strict</span></span>
+                            </label>
+                        </div>
+                    </overlay> -->
+
+
+                    <overlay id='first' class='section'>
+                            <div class="container">
+                                <input type="radio" name="heritage" value="Ia" id="Ia">
+                                <label for="Ia"><span class="radio"></span><span class="category">Ia</span></span>
+                                </label>
+                            </div>
+                            <div class="container">
+                                <input type="radio" name="heritage" value="Ib" id="Ib">
+                                <label for="Ib"><span class="radio"></span><span class="category">Ib</span></span>
+                                </label>
+                            </div>
+                            <div class="container">
+                                <input type="radio" name='heritage' value="III" id='III'>
+                                <label for="III"><span class="radio"></span><span class="category">III</span></span>
+                                </label>
+                            </div>
+                            <div class="container">
+                                    <input type="radio" name="heritage" value="IV" id="IV">
+                                    <label for="IV"><span class="radio"></span><span class="category">IV</span></span>
+                                    </label>
+                                </div>
+                                <div class="container">
+                                    <input type="radio" name="heritage" value="V" id="V">
+                                    <label for="V"><span class="radio"></span><span class="category">V</span></span>
+                                    </label>
+                                </div>
+                                <div class="container">
+                                    <input type="radio" name='heritage' value="VI" id='VI'>
+                                    <label for="VI"><span class="radio"></span><span class="category">VI</span></span>
+                                    </label>
+                                </div>
+                                <div class="container">
+                                        <input type="radio" name="heritage" value="Not Reported" id="Reported">
+                                        <label for="Reported"><span class="radio"></span><span class="category">Not Reported</span></span>
+                                        </label>
+                                    </div>
+                                    <div class="container">
+                                        <input type="radio" name="heritage" value="Not Applicable" id="Applicable">
+                                        <label for="Applicable"><span class="radio"></span><span class="category">Not Applicable</span></span>
+                                        </label>
+                                    </div>
+                                    <div class="container">
+                                        <input type="radio" name='heritage' value="Not Assigned" id='Assigned'>
+                                        <label for="Assigned"><span class="radio"></span><span class="category">Not Assigned</span></span>
+                                        </label>
+                                    </div>
+                        </overlay>
+
+
                 </div>
             </div>
         </div>
@@ -610,12 +728,6 @@
             'VI': '#66a5ad',
             'Not Reported': '#c4dfe6',
             'Not Applicable': '#a2c523'
-        }
-
-        var code = {
-            'World Heritage Site (natural or mixed)': '1',
-            'UNESCO-MAB Biosphere Reserve': '1',
-            'Strict Nature Reserve': '1'
         }
 
         map.on('load', function () {
@@ -914,30 +1026,92 @@
         function updateMap(code) {
             var geojson = topojson.feature(code, code.objects.merge_files_sim);
             geojson.features.forEach(function (feature) {
-                var code = feature.properties.DESIG_ENG;
-                d3.selectAll('#gallery input').on('change', function() {
-                  
-                    if (code === 'World Heritage Site (natural or mixed)') {
-                        map.setPaintProperty('polygon', 'fill-opacity', [
-                            'match', ['get', 'DESIG_ENG'],
-                            'World Heritage Site (natural or mixed)', 1,
+                d3.selectAll('#gallery input').on('change', function () {
+
+                //     if (this.value === 'World Heritage Site (natural or mixed)') {
+                //        map.setPaintProperty('polygon', 'fill-opacity', [
+                //             'match', ['get', 'DESIG_ENG'],
+                //             'World Heritage Site (natural or mixed)', 1,
+                //             0
+                //         ]);
+                //     } else if (this.value === 'UNESCO-MAB Biosphere Reserve') {
+                //         map.setPaintProperty('polygon', 'fill-opacity', [
+                //             'match', ['get', 'DESIG_ENG'],
+                //             'UNESCO-MAB Biosphere Reserve', 1,
+                //             0
+                //         ]);
+                //     } else if (this.value === 'Strict Nature Reserve') {
+                //         map.setPaintProperty('polygon', 'fill-opacity', [
+                //             'match', ['get', 'DESIG_ENG'],
+                //             'Strict Nature Reserve', 1,
+                //             0
+                //         ]);
+                //     }
+                
+                if (this.value === 'Ia') {
+                       map.setPaintProperty('polygon', 'fill-opacity', [
+                             'match', ['get', 'IUCN_CAT'],
+                             'Ia', 1,
+                             0
+                         ]);
+                        } else if (this.value === 'Ib') {
+                         map.setPaintProperty('polygon', 'fill-opacity', [
+                             'match', ['get', 'IUCN_CAT'],
+                             'Ib', 1,
                             0
                         ]);
-                       
-                    } else if (code === 'UNESCO-MAB Biosphere Reserve') {
+                        } else if (this.value === 'II') {
                         map.setPaintProperty('polygon', 'fill-opacity', [
-                            'match', ['get', 'DESIG_ENG'],
-                            'UNESCO-MAB Biosphere Reserve', 1,
-                            0
-                        ]);
-                       
-                    } else if (code === 'Strict Nature Reserve') {
+                             'match', ['get', 'IUCN_CAT'],
+                         'II', 1,
+                             0
+                         ]);
+                        } else if (this.value === 'III') {
                         map.setPaintProperty('polygon', 'fill-opacity', [
-                            'match', ['get', 'DESIG_ENG'],
-                            'Strict Nature Reserve', 1,
-                            0
-                        ]);
-                    }
+                             'match', ['get', 'IUCN_CAT'],
+                         'III', 1,
+                             0
+                         ]);
+                        } else if (this.value === 'IV') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                             'match', ['get', 'IUCN_CAT'],
+                         'IV', 1,
+                             0
+                         ]);
+                        } else if (this.value === 'V') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                             'match', ['get', 'IUCN_CAT'],
+                         'V', 1,
+                             0
+                         ]);
+                        } else if (this.value === 'VI') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                             'match', ['get', 'IUCN_CAT'],
+                         'VI', 1,
+                             0
+                         ]);
+                        } else if (this.value === 'Not Reported') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                             'match', ['get', 'IUCN_CAT'],
+                         'Not Reported', 1,
+                             0
+                         ]);
+                        } else if (this.value === 'Not Applicable') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                             'match', ['get', 'IUCN_CAT'],
+                         'Not Applicable', 1,
+                             0
+                         ]);
+                        } else if (this.value === 'Not Assigned') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                             'match', ['get', 'IUCN_CAT'],
+                         'Not Assigned', 1,
+                             0
+                         ]);
+                        }
+
+                        
+
                 });
             });
         }//end function updateMap
