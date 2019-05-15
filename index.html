@@ -202,7 +202,6 @@
             height: 100%;
             background: #c9d1c8;
             color: #2c4a52;
-            overflow-y: scroll;
         }
 
         .text-gallery {
@@ -246,68 +245,51 @@
             cursor: pointer;
         } */
 
-        /* RADIO BUTTONS in Explore */
-
-        .section {
-            padding: 4%;
-        }
-
-        .section input[type="radio"] {
-            display: none;
-        }
-
-        .container {
-            margin-top: 5px;
-            margin-bottom: 5px;
-            margin-left: 30px;
-        }
-
-        .container label {
-            position: relative;
-        }
-
-        /* Base styles for spans */
-
-        .container span::before,
-        .container span::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            margin: auto;
-        }
-
-        /* Radio buttons specifics*/
-
-        .container span.radio:hover {
+        /* RADIO BUTTONS */
+        input {
+            -webkit-appearance: none;
+            /* remove default */
+            width: 14px;
+            height: 14px;
+            border-radius: 12px;
             cursor: pointer;
+            box-shadow: hsla(0, 0%, 100%, .15) 0 1px 1px, inset #2c4a52 0 0 0 1px;
+            background-color: #c9d1c8;
+            background-image: -webkit-radial-gradient(hsla(200, 100%, 90%, 1) 0%, #2c4a52 15%, #2c4a52 28%, hsla(200, 100%, 30%, 0) 70%);
+            background-repeat: no-repeat;
+            -webkit-transition: background-position .15s cubic-bezier(.8, 0, 1, 1),
+                -webkit-transform .25s cubic-bezier(.8, 0, 1, 1);
+            outline: none;
         }
 
-        .container span.radio::before {
-            left: -52px;
-            width: 45px;
-            height: 25px;
-            border-radius: 50px;
+        input:checked {
+            -webkit-transition: background-position .2s .15s cubic-bezier(0, 0, .2, 1),
+                -webkit-transform .25s cubic-bezier(0, 0, .2, 1);
         }
 
-        .container span.radio::after {
-            left: -49px;
-            width: 17px;
-            height: 17px;
-            border-radius: 10px;
-            background-color: #6C788A;
-            transition: left .25s, background-color .25s;
+        input:active {
+            -webkit-transform: scale(1.5);
+            -webkit-transition: -webkit-transform .1s cubic-bezier(0, 0, .2, 1);
         }
 
-        input[type="radio"]:checked+label span.radio::after {
-            left: -27px;
-            background-color: #EBFF43;
+        /* The up/down direction logic */
+
+        input,
+        input:active {
+            background-position: 0 24px;
         }
 
-        /* color of radio button */
+        input:checked {
+            background-position: 0 0;
+        }
 
-        .radio {
-            color: transparent;
+        input:checked~input,
+        input:checked~input:active {
+            background-position: 0 -24px;
+        }
+
+        .category {
+            font-size: 10px;
         }
     </style>
 </head>
@@ -530,10 +512,77 @@
                 </div>
                 <p class='text-gallery-footer lead my-5 text-center mr24'>Click on the map markers to view<br>a specific
                     photograph.</p>
+                <div class='ml24'></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- chapter explore -->
+    <div id='explore'>
+        <div class='row'>
+            <div class='col-md-12 mt30'>
+                <p class='title-explore h5 font-weight-bold text-center mr24'>EXPLORE</p>
+                <p class='text-explore-footer my-3 text-center mr24'>Click on radio buttons to
+                    deselect categories:</p>
                 <div class='ml24'>
-
-
-                    <!-- <overlay id='first' class='section'>
+                    <overlay id='first' class='section'>
+                        <div class="container">
+                            <input type="radio" name="heritage" value="Ia" id="Ia">
+                            <label for="Ia"><span class="category">Ia - Strict Nature Reserve</span></span>
+                            </label>
+                        </div>
+                        <div class="container">
+                            <input type="radio" name="heritage" value="Ib" id="Ib">
+                            <label for="Ib"><span class="category">Ib - Wilderness Area</span></span>
+                            </label>
+                        </div>
+                        <div class="container">
+                            <input type="radio" name='heritage' value="II" id='II'>
+                            <label for="II"><span class="category">II - National Park</span></span>
+                            </label>
+                        </div>
+                        <div class="container">
+                            <input type="radio" name='heritage' value="III" id='III'>
+                            <label for="III"><span class="category">III - National Monument or Feature</span></span>
+                            </label>
+                        </div>
+                        <div class="container">
+                            <input type="radio" name="heritage" value="IV" id="IV">
+                            <label for="IV"><span class="category">IV - Habitat/Species Management Area</span></span>
+                            </label>
+                        </div>
+                        <div class="container">
+                            <input type="radio" name="heritage" value="V" id="V">
+                            <label for="V"><span class="category">V - Protected Landscape/Seascape</span></span>
+                            </label>
+                        </div>
+                        <div class="container">
+                            <input type="radio" name='heritage' value="VI" id='VI'>
+                            <label for="VI"><span class="category">VI - Protected Area w/ Sustainable Use</span></span>
+                            </label>
+                        </div>
+                        <div class="container">
+                            <input type="radio" name="heritage" value="Not Reported" id="Reported">
+                            <label for="Reported"><span class="category">Not Reported</span></span>
+                            </label>
+                        </div>
+                        <div class="container">
+                            <input type="radio" name="heritage" value="Not Applicable" id="Applicable">
+                            <label for="Applicable"><span class="category">Not Applicable</span></span>
+                            </label>
+                        </div>
+                        <div class="container">
+                            <input type="radio" name='heritage' value="Not Assigned" id='Assigned'>
+                            <label for="Assigned"><span class="category">Not
+                                    Assigned</span></span>
+                            </label>
+                        </div>
+                    </overlay>
+                </div>
+                <div class='col-md-12 mt30'>
+                    <p class='text-explore-footer text-center mr24'>Click on icons to deselect layers.</p>
+                    <div class='ml24'>
+                        <!-- <overlay id='first' class='section'>
                         <div class="container">
                             <input type="radio" name="heritage" value="World Heritage Site (natural or mixed)"
                                 id="heritage">
@@ -552,119 +601,13 @@
                             </label>
                         </div>
                     </overlay> -->
-
-
-                    <overlay id='first' class='section'>
-                            <div class="container">
-                                <input type="radio" name="heritage" value="Ia" id="Ia">
-                                <label for="Ia"><span class="radio"></span><span class="category">Ia</span></span>
-                                </label>
-                            </div>
-                            <div class="container">
-                                <input type="radio" name="heritage" value="Ib" id="Ib">
-                                <label for="Ib"><span class="radio"></span><span class="category">Ib</span></span>
-                                </label>
-                            </div>
-                            <div class="container">
-                                <input type="radio" name='heritage' value="III" id='III'>
-                                <label for="III"><span class="radio"></span><span class="category">III</span></span>
-                                </label>
-                            </div>
-                            <div class="container">
-                                    <input type="radio" name="heritage" value="IV" id="IV">
-                                    <label for="IV"><span class="radio"></span><span class="category">IV</span></span>
-                                    </label>
-                                </div>
-                                <div class="container">
-                                    <input type="radio" name="heritage" value="V" id="V">
-                                    <label for="V"><span class="radio"></span><span class="category">V</span></span>
-                                    </label>
-                                </div>
-                                <div class="container">
-                                    <input type="radio" name='heritage' value="VI" id='VI'>
-                                    <label for="VI"><span class="radio"></span><span class="category">VI</span></span>
-                                    </label>
-                                </div>
-                                <div class="container">
-                                        <input type="radio" name="heritage" value="Not Reported" id="Reported">
-                                        <label for="Reported"><span class="radio"></span><span class="category">Not Reported</span></span>
-                                        </label>
-                                    </div>
-                                    <div class="container">
-                                        <input type="radio" name="heritage" value="Not Applicable" id="Applicable">
-                                        <label for="Applicable"><span class="radio"></span><span class="category">Not Applicable</span></span>
-                                        </label>
-                                    </div>
-                                    <div class="container">
-                                        <input type="radio" name='heritage' value="Not Assigned" id='Assigned'>
-                                        <label for="Assigned"><span class="radio"></span><span class="category">Not Assigned</span></span>
-                                        </label>
-                                    </div>
-                        </overlay>
-
-
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- chapter explore -->
-    <div id='explore'>
-        <div class='row'>
-            <div class='col-md-12 mt30'>
-                <p class='title-explore h5 font-weight-bold text-center mr24'>EXPLORE</p>
-                <div class='text-explore small text-justify mr24 ml10 mt24 px24 py2'>
-                    <p>IUCN defines a protected area as a clearly defined geographical space, recognised, dedicated and
-                        managed, through legal or other effective means, to achieve the long-term conservation of nature
-                        with associated ecosytem services and cultural values.</p>
-                </div>
-                <p class='text-explore-footer lead my-5 text-center mr24'>Click on icons to
-                    deselect layers.</p>
-            </div>
-        </div>
-        <div class='ml24'>
+        <div class='ml24 mt30'>
             <div id='polygon'></div>
             <div id='point'></div>
-        </div>
-    </div>
-
-    <!-- IUCN-modal -->
-    <div id='iucn-modal' class='absolute top right bottom left scroll-auto z2 none animation--speed-1'>
-        <div
-            class='flex-child border border-gray-dark bg-gray-dark color-green-faint round relative w600 mx-auto mt120'>
-            <button id='modal-closed' class='btn btn-gray-dark absolute top right mr6 mt6 px0 py0'>
-                <svg class='icon btn-info link color-lighten50 txt-xl'>
-                    <use xlink:href='#icon-close'></use>
-                </svg>
-            </button>
-            <div class='px24 py24'>
-                <div class='txt-m mb12 align-center'>PROTECTED AREA CATEGORIES</div>
-                <div class='txt-s text-justify'>
-                    IUCN protected area management categories classify protected areas according to their<strong>
-                        management objectives.</strong>
-                    <br><br><strong>Ia - Strict Nature Reserve:</strong> Strictly protected areas set aside
-                    to protect biodiversity and also geological/geomorphical features.<br><strong>Ib - Wilderness
-                        Area:</strong> Large protected areas that have retained their natural character without
-                    permanent or significant human
-                    habitation.<br><strong>II - National Park:</strong> Large natural or near natural areas set aside to
-                    protect large-scale ecological
-                    processes, species and ecosystems characteristic of the area.<br><strong>III - National Monument
-                        or Feature:</strong> Protected areas set aside to protect a specific natural monument, landform,
-                    sea mount, submarine cavern, geological or living features.<br><strong>IV - Habitat/Species
-                        Management Area:</strong> Aim to protect
-                    particular species or habitats.<br><strong>V - Protected Landscape/Seascape:</strong> A protected
-                    area where the interaction of people and nature over time has produced an area of distinct character
-                    with significant, ecological, biological, cultural and scenic value.<br><strong>VI - Protected Area
-                        With Sustainable Use Of Natural Resources:</strong> Conserve ecosystems and habitats together
-                    with associated
-                    cultural values and traditional natural resource management systems.
-                    <p class='text-right color-green-faint'>Data:</a>
-                        <a target="_blank"
-                            href="https://www.iucn.org/theme/protected-areas/about/protected-area-categories">IUCN
-                            Protected Area Categories</a>
-                    </p>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -680,23 +623,38 @@
             <div class='px24 py24'>
                 <div class='txt-m mb12 align-center'>World Database on Protected Areas</div>
                 <div class='txt-s text-justify'>
-                    Protected area spatial data is collected in the form of boundary (polygon) wherever it is available,
-                    or as a single latitude and longitude coordinate (point) data where boundary data is not available.
-                    Boundary data for an individual protected area may be unavailable for a number of reasons such as
-                    lack of capacity to map protected areas or confidentiality issues preventing public dissemination of
-                    data.<br><br>It is important that both data types are used in the analysis as far as possible, point
+                    Protected area spatial data is collected in the form of boundary (polygon) wherever it
+                    is available,
+                    or as a single latitude and longitude coordinate (point) data where boundary data is not
+                    available.
+                    Boundary data for an individual protected area may be unavailable for a number of
+                    reasons such as
+                    lack of capacity to map protected areas or confidentiality issues preventing public
+                    dissemination of
+                    data.<br><br>It is important that both data types are used in the analysis as far as
+                    possible, point
                     datasets
-                    accounted for 9% of all the records in the WDPA in January 2016, excluding them for any analysis
-                    will likely underestimate the extent of protected areas globally.<br><br>The WDPA stores the IUCN
+                    accounted for 9% of all the records in the WDPA in January 2016, excluding them for any
+                    analysis
+                    will likely underestimate the extent of protected areas globally.<br><br>The WDPA stores
+                    the IUCN
                     Protected Area Management Categories for each of the protected areas where
-                    these categories are reported. The IUCN category is provided to the WDPA as part of the dataset, and
-                    is not assigned by the WDPA Team. There are many sites (both polygons and points) for which an IUCN
-                    mangement category have not been reported, have not been assigned, or are not applicable. Assigning
-                    IUCN management categories to protected areas is not a mandatory requierement for countries when
-                    submitting data. Because the IUCN management objectives, does not relate to a given designation
-                    (e.g. National Park), but to its management objectives, and therefore categories have not been
-                    reported may only mean that the country has not conducted a formal process to assign the categories
-                    to their protected area network, not that these protected areas are not well managed or don’t have
+                    these categories are reported. The IUCN category is provided to the WDPA as part of the
+                    dataset, and
+                    is not assigned by the WDPA Team. There are many sites (both polygons and points) for
+                    which an IUCN
+                    mangement category have not been reported, have not been assigned, or are not
+                    applicable. Assigning
+                    IUCN management categories to protected areas is not a mandatory requierement for
+                    countries when
+                    submitting data. Because the IUCN management objectives, does not relate to a given
+                    designation
+                    (e.g. National Park), but to its management objectives, and therefore categories have
+                    not been
+                    reported may only mean that the country has not conducted a formal process to assign the
+                    categories
+                    to their protected area network, not that these protected areas are not well managed or
+                    don’t have
                     management objectives in place.
                     <p class='text-right color-green-faint'>Data:</a>
                         <a target="_blank" href="http://pp-import-production.s3.amazonaws.com/WDPA_Manual_1_5.pdf">World
@@ -706,6 +664,38 @@
             </div>
         </div>
     </div>
+
+    <!-- IUCN-modal -->
+    <div id='iucn-modal' class='absolute top right bottom left scroll-auto z2 none animation--speed-1'>
+        <div class='flex-child border border-gray-dark bg-gray-dark color-green-faint round relative w600 mx-auto mt120'>
+            <button id='modal-closed' class='btn btn-gray-dark absolute top right mr6 mt6 px0 py0'>
+                <svg class='icon btn-info link color-lighten50 txt-xl'>
+                    <use xlink:href='#icon-close'></use>
+                </svg>
+            </button>
+            <div class='px24 py24'>
+                <div class='txt-m mb12 align-center'>PROTECTED AREA CATEGORIES</div>
+                <div class='txt-s text-justify'>
+                    IUCN protected area management categories classify protected areas according to
+                    their<strong> management objectives:</strong><br><br><strong>Ia</strong> - Strict Nature
+                    Reserve<br><strong>Ib</strong> - Wilderness Area<br><strong>II</strong> - National
+                    Park<br><strong>III</strong> - National Monument or Feature<br><strong>IV</strong> -
+                    Habitat/Species
+                    Management Area<br><strong>V</strong> - Protected
+                    Landscape/Seascape<br><strong>VI</strong> -
+                    Protected Area With Sustainable Use Of Natural Resources<br><strong>Not
+                        Reported<br><strong>Not
+                            Applicable</strong><br>Not Assigned
+                        <p class='text-right color-green-faint'>Data:</a>
+                            <a target="_blank"
+                                href="https://www.iucn.org/theme/protected-areas/about/protected-area-categories">IUCN
+                                Protected Area Categories</a>
+                        </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
     <script>
@@ -723,11 +713,12 @@
             'Ib': '#68829e',
             'II': '#aebd38',
             'III': '#598234',
-            'IV': '#003b46',
-            'V': '#07575b',
-            'VI': '#66a5ad',
-            'Not Reported': '#c4dfe6',
-            'Not Applicable': '#a2c523'
+            'IV': '#7da3a1',
+            'V': '#34675c',
+            'VI': '#86ac41',
+            'Not Reported': '#324851',
+            'Not Applicable': '#b3c100',
+            'Not Assigned': '#68aabc',
         }
 
         map.on('load', function () {
@@ -758,14 +749,15 @@
                             'Ib', '#68829e',
                             'II', '#aebd38',
                             'III', '#598234',
-                            'IV', '#003b46',
-                            'V', '#07575b',
-                            'VI', '#66a5ad',
-                            'Not Reported', '#c4dfe6',
-                            'Not Applicable', '#a2c523',
+                            'IV', '#7da3a1',
+                            'V', '#34675c',
+                            'VI', '#86ac41',
+                            'Not Reported', '#324851',
+                            'Not Applicable', '#b3c100',
+                            'Not Assigned', '#68aabc',
                             '#ccc'
                         ],
-                        'fill-opacity': 0.2,
+                        'fill-opacity': 0.6,
                     },
                 });
                 var popup = new mapboxgl.Popup({
@@ -855,11 +847,12 @@
                             'Ib', '#68829e',
                             'II', '#aebd38',
                             'III', '#598234',
-                            'IV', '#003b46',
-                            'V', '#07575b',
-                            'VI', '#66a5ad',
-                            'Not Reported', '#c4dfe6',
-                            'Not Applicable', '#a2c523',
+                            'IV', '#7da3a1',
+                            'V', '#34675c',
+                            'VI', '#86ac41',
+                            'Not Reported', '#324851',
+                            'Not Applicable', '#b3c100',
+                            'Not Assigned', '#68aabc',
                             '#ccc'
                         ],
                         'circle-radius': 4,
@@ -1023,99 +1016,6 @@
         });
         $('#icon-gallery').off('click', endClicked);
 
-        function updateMap(code) {
-            var geojson = topojson.feature(code, code.objects.merge_files_sim);
-            geojson.features.forEach(function (feature) {
-                d3.selectAll('#gallery input').on('change', function () {
-
-                //     if (this.value === 'World Heritage Site (natural or mixed)') {
-                //        map.setPaintProperty('polygon', 'fill-opacity', [
-                //             'match', ['get', 'DESIG_ENG'],
-                //             'World Heritage Site (natural or mixed)', 1,
-                //             0
-                //         ]);
-                //     } else if (this.value === 'UNESCO-MAB Biosphere Reserve') {
-                //         map.setPaintProperty('polygon', 'fill-opacity', [
-                //             'match', ['get', 'DESIG_ENG'],
-                //             'UNESCO-MAB Biosphere Reserve', 1,
-                //             0
-                //         ]);
-                //     } else if (this.value === 'Strict Nature Reserve') {
-                //         map.setPaintProperty('polygon', 'fill-opacity', [
-                //             'match', ['get', 'DESIG_ENG'],
-                //             'Strict Nature Reserve', 1,
-                //             0
-                //         ]);
-                //     }
-                
-                if (this.value === 'Ia') {
-                       map.setPaintProperty('polygon', 'fill-opacity', [
-                             'match', ['get', 'IUCN_CAT'],
-                             'Ia', 1,
-                             0
-                         ]);
-                        } else if (this.value === 'Ib') {
-                         map.setPaintProperty('polygon', 'fill-opacity', [
-                             'match', ['get', 'IUCN_CAT'],
-                             'Ib', 1,
-                            0
-                        ]);
-                        } else if (this.value === 'II') {
-                        map.setPaintProperty('polygon', 'fill-opacity', [
-                             'match', ['get', 'IUCN_CAT'],
-                         'II', 1,
-                             0
-                         ]);
-                        } else if (this.value === 'III') {
-                        map.setPaintProperty('polygon', 'fill-opacity', [
-                             'match', ['get', 'IUCN_CAT'],
-                         'III', 1,
-                             0
-                         ]);
-                        } else if (this.value === 'IV') {
-                        map.setPaintProperty('polygon', 'fill-opacity', [
-                             'match', ['get', 'IUCN_CAT'],
-                         'IV', 1,
-                             0
-                         ]);
-                        } else if (this.value === 'V') {
-                        map.setPaintProperty('polygon', 'fill-opacity', [
-                             'match', ['get', 'IUCN_CAT'],
-                         'V', 1,
-                             0
-                         ]);
-                        } else if (this.value === 'VI') {
-                        map.setPaintProperty('polygon', 'fill-opacity', [
-                             'match', ['get', 'IUCN_CAT'],
-                         'VI', 1,
-                             0
-                         ]);
-                        } else if (this.value === 'Not Reported') {
-                        map.setPaintProperty('polygon', 'fill-opacity', [
-                             'match', ['get', 'IUCN_CAT'],
-                         'Not Reported', 1,
-                             0
-                         ]);
-                        } else if (this.value === 'Not Applicable') {
-                        map.setPaintProperty('polygon', 'fill-opacity', [
-                             'match', ['get', 'IUCN_CAT'],
-                         'Not Applicable', 1,
-                             0
-                         ]);
-                        } else if (this.value === 'Not Assigned') {
-                        map.setPaintProperty('polygon', 'fill-opacity', [
-                             'match', ['get', 'IUCN_CAT'],
-                         'Not Assigned', 1,
-                             0
-                         ]);
-                        }
-
-                        
-
-                });
-            });
-        }//end function updateMap
-
         // EXPLORE CHAPTER //
         var endClicked = $('#icon-explore').on('click', function () {
             $('#explore').toggle(
@@ -1125,6 +1025,96 @@
             );
         });
         $('#icon-explore').off('click', endClicked);
+
+        function updateMap(code) {
+            var geojson = topojson.feature(code, code.objects.merge_files_sim);
+            geojson.features.forEach(function (feature) {
+                d3.selectAll('#explore input').on('change', function () {
+
+                    //     if (this.value === 'World Heritage Site (natural or mixed)') {
+                    //        map.setPaintProperty('polygon', 'fill-opacity', [
+                    //             'match', ['get', 'DESIG_ENG'],
+                    //             'World Heritage Site (natural or mixed)', 1,
+                    //             0
+                    //         ]);
+                    //     } else if (this.value === 'UNESCO-MAB Biosphere Reserve') {
+                    //         map.setPaintProperty('polygon', 'fill-opacity', [
+                    //             'match', ['get', 'DESIG_ENG'],
+                    //             'UNESCO-MAB Biosphere Reserve', 1,
+                    //             0
+                    //         ]);
+                    //     } else if (this.value === 'Strict Nature Reserve') {
+                    //         map.setPaintProperty('polygon', 'fill-opacity', [
+                    //             'match', ['get', 'DESIG_ENG'],
+                    //             'Strict Nature Reserve', 1,
+                    //             0
+                    //         ]);
+                    //     }
+
+                    if (this.value === 'Ia') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'IUCN_CAT'],
+                            'Ia', .8,
+                            0
+                        ]);
+                    } else if (this.value === 'Ib') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'IUCN_CAT'],
+                            'Ib', .8,
+                            0
+                        ]);
+                    } else if (this.value === 'II') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'IUCN_CAT'],
+                            'II', .8,
+                            0
+                        ]);
+                    } else if (this.value === 'III') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'IUCN_CAT'],
+                            'III', .8,
+                            0
+                        ]);
+                    } else if (this.value === 'IV') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'IUCN_CAT'],
+                            'IV', .8,
+                            0
+                        ]);
+                    } else if (this.value === 'V') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'IUCN_CAT'],
+                            'V', .8,
+                            0
+                        ]);
+                    } else if (this.value === 'VI') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'IUCN_CAT'],
+                            'VI', .8,
+                            0
+                        ]);
+                    } else if (this.value === 'Not Reported') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'IUCN_CAT'],
+                            'Not Reported', .8,
+                            0
+                        ]);
+                    } else if (this.value === 'Not Applicable') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'IUCN_CAT'],
+                            'Not Applicable', .8,
+                            0
+                        ]);
+                    } else if (this.value === 'Not Assigned') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'IUCN_CAT'],
+                            'Not Assigned', .8,
+                            0
+                        ]);
+                    }
+                });
+            });
+        }//end function updateMap
 
         var toggleableLayerIds = ['polygon'];
         for (var i = 0; i < toggleableLayerIds.length; i++) {
