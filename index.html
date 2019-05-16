@@ -12,8 +12,6 @@
     <link href="https://api.mapbox.com/mapbox-assembly/v0.21.2/assembly.min.css" rel="stylesheet">
     <link href='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.css' rel='stylesheet' />
     <link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet" />
-    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.css' rel='stylesheet' />
-    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.Default.css' rel='stylesheet' />
 
     <style>
         body {
@@ -68,14 +66,15 @@
 
         /* POPUPS */
         .mapboxgl-popup {
-            max-width: 200px;
+            max-width: 500px;
         }
 
         .mapboxgl-popup-content {
-            text-align: center;
-            font-family: 'Open Sans', sans-serif;
+            font-size: 11px;
+            font-weight: bold;
+            text-align: left;
+            color: #b2dbd5;
             background: rgba(0, 0, 0, 0.6);
-            color: white;
         }
 
         /* ABOUT BUTTON - MODAL */
@@ -122,8 +121,8 @@
 
         /* STORY CHAPTER */
         #features {
-            padding-top: 15%;
-            padding-left: 3%;
+            padding-top: 4%;
+            padding-left: 5%;
             padding-bottom: 25%;
             width: 31%;
             display: none;
@@ -192,6 +191,10 @@
             text-align: center;
             padding-top: 20px;
             font-size: 14px;
+        }
+        .tortoise {
+            display: block;
+            margin-bottom: 3%;
         }
 
         /* GALLERY CHAPTER */
@@ -312,7 +315,6 @@
     <script async defer src="https://api.mapbox.com/mapbox-assembly/v0.21.2/assembly.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
-    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js'></script>
 
     <div id='map'></div>
     <!-- end of map -->
@@ -390,8 +392,10 @@
     <div id='features'>
         <section id='introduction' class='active'>
             <h1>SOUTH AMERICA</h1>
+            <a class='tortoise' id='tortoise'><img src='pics/tortoise.png' alt='tortoise picture'></a>
+            <p class='align-center mb18'><strong><small>Galápagos tortoise <i>(Chelonoidis nigra)</i></small></strong></p>
             <p>South America is one of the richest sub-continents in terms of cultural and biological diversity;
-                including indigenous peoples with strong historical ties to the region's ecosystems.<br>Protected and
+                including indigenous people with strong historical ties to the region's ecosystems. Protected and
                 conserved areas have long been a successful management tool to conserve biodiversity, and
                 without them, the global loss of biodiversity would likely be even greater.</p>
             <small class='scroll quiet'>SCROLL &#x25BE;</small>
@@ -524,8 +528,8 @@
         <div class='row'>
             <div class='col-md-12 mt30'>
                 <p class='title-explore h5 font-weight-bold text-center mr24'>EXPLORE</p>
-                <p class='subtitle-explore my-3 text-center mr6'>Click on radio buttons to
-                    deselect categories:</p>
+                <p class='subtitle-explore my-4 text-center mr6'>Click on radio buttons to
+                    select on/off categories:</p>
                 <div class='ml24'>
                     <overlay id='first' class='section'>
                         <div class="container">
@@ -580,7 +584,7 @@
                         </div>
                     </overlay>
                 </div>
-                <p class='subtitle-explore my-3 text-center mr6'>Click on icons to deselect layers:</p>
+                <p class='subtitle-explore my-4 text-center mr6'>Click on icons to select on/off layers:</p>
 
                 <!-- <overlay id='first' class='section'>
                         <div class="container">
@@ -602,7 +606,7 @@
                         </div>
                     </overlay> -->
 
-                <div class='ml30 mt30'>
+                <div class='ml36 mt30'>
                     <div id='polygon'></div>
                     <div id='point'></div>
                 </div>
@@ -714,6 +718,7 @@
 
             function polygonsMap(data) {
                 var geojson = topojson.feature(data, data.objects.merge_files_sim);
+                console.log(geojson);
 
                 map.addLayer({
                     'id': 'polygon',
@@ -749,7 +754,7 @@
                     map.getCanvas().style.cursor = 'pointer';
                     // map.flyTo({center: e.lngLat, zoom: 6});
                     popup.setLngLat(e.lngLat)
-                        .setHTML(String(e.features[0].properties.NAME).toLocaleString())
+                        .setHTML(String('Name: ' + e.features[0].properties.NAME + '<br>' + 'IUCN Category: ' + e.features[0].properties.UICN_CAT + '<br>' + 'Designation: ' + e.features[0].properties.DESIG_ENG).toLocaleString())
                         .addTo(map)
                 });
                 map.on('mouseleave', 'polygon', function () {
@@ -816,7 +821,7 @@
                         'type': 'geojson',
                         'data': data,
                         'cluster': true,
-                        'clusterMaxZoom': 6, // Max zoom to cluster points on
+                        'clusterMaxZoom': 3, // Max zoom to cluster points on
                         'clusterRadius': 30 // Radius of each cluster when clustering points (defaults to 50)
                     },
                     'paint': {
@@ -838,27 +843,6 @@
                         'circle-opacity': .6,
                     },
                 });
-
-
-                map.addLayer({
-                    'id': 'cluster-points',
-                    'type': 'circle',
-                    'source': {
-                        'type': 'geojson',
-                        'data': data,
-                    },
-                    'filter': ['has', 'IUCN_CAT'],
-                    'layout': {
-                        'text-field': 'IUCN_CAT',
-                        "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
-                        "text-size": 10 
-                    }
-                });
-
-
-
-           
-
 
                 var popup = new mapboxgl.Popup({
                     closeButton: false,
