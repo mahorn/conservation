@@ -12,6 +12,8 @@
     <link href="https://api.mapbox.com/mapbox-assembly/v0.21.2/assembly.min.css" rel="stylesheet">
     <link href='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.css' rel='stylesheet' />
     <link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet" />
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.Default.css' rel='stylesheet' />
 
     <style>
         body {
@@ -210,8 +212,7 @@
 
         .text-gallery-footer {
             color: #2c4a52;
-            font-size: 10px;
-            font-weight: bold;
+            font-size: 14px;
         }
 
         /* EXPLORE CHAPTER */
@@ -230,10 +231,14 @@
             color: #537072;
         }
 
+        .subtitle-explore {
+            color: #2c4a52;
+            font-size: 14px;
+        }
+
         .text-explore-footer {
             color: #2c4a52;
-            font-size: 10px;
-            font-weight: bold;
+            font-size: 14px;
         }
 
         /* .marker {
@@ -248,7 +253,6 @@
         /* RADIO BUTTONS */
         input {
             -webkit-appearance: none;
-            /* remove default */
             width: 14px;
             height: 14px;
             border-radius: 12px;
@@ -273,7 +277,6 @@
         }
 
         /* The up/down direction logic */
-
         input,
         input:active {
             background-position: 0 24px;
@@ -309,7 +312,7 @@
     <script async defer src="https://api.mapbox.com/mapbox-assembly/v0.21.2/assembly.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
-
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js'></script>
 
     <div id='map'></div>
     <!-- end of map -->
@@ -353,10 +356,9 @@
                     they are governed and managed as part of the wider landscape, integrated into development strategies
                     and considered across all sectors of society.<br><br>The World Database on Protected Areas (WDPA), a
                     joint effort between the International Union for Conservation of Nature (IUCN) and the United
-                    Nations Environment
-                    Programme (UNEP), is the only globally authoritative database on marine and terrestrial protected
-                    areas of the
-                    world. It is compiled and managed by UNEP-WCMC in collaboration with IUCN.<br><br>
+                    Nations Environment Programme (UNEP), is the only globally authoritative database on marine and
+                    terrestrial protected areas of the world. It is compiled and managed by UNEP-WCMC in collaboration
+                    with IUCN.<br><br>
                     <p class='text-right color-green-faint'>Map Author:Maria Renee Horn</a><br>Data:
                         <a target="_blank" href="https://www.protectedplanet.net">World Database on Protected Areas</a>-
                         <a target="_blank"
@@ -522,7 +524,7 @@
         <div class='row'>
             <div class='col-md-12 mt30'>
                 <p class='title-explore h5 font-weight-bold text-center mr24'>EXPLORE</p>
-                <p class='text-explore-footer my-3 text-center mr24'>Click on radio buttons to
+                <p class='subtitle-explore my-3 text-center mr6'>Click on radio buttons to
                     deselect categories:</p>
                 <div class='ml24'>
                     <overlay id='first' class='section'>
@@ -573,16 +575,14 @@
                         </div>
                         <div class="container">
                             <input type="radio" name='heritage' value="Not Assigned" id='Assigned'>
-                            <label for="Assigned"><span class="category">Not
-                                    Assigned</span></span>
+                            <label for="Assigned"><span class="category">Not Assigned</span></span>
                             </label>
                         </div>
                     </overlay>
                 </div>
-                <div class='col-md-12 mt30'>
-                    <p class='text-explore-footer text-center mr24'>Click on icons to deselect layers.</p>
-                    <div class='ml24'>
-                        <!-- <overlay id='first' class='section'>
+                <p class='subtitle-explore my-3 text-center mr6'>Click on icons to deselect layers:</p>
+
+                <!-- <overlay id='first' class='section'>
                         <div class="container">
                             <input type="radio" name="heritage" value="World Heritage Site (natural or mixed)"
                                 id="heritage">
@@ -601,13 +601,12 @@
                             </label>
                         </div>
                     </overlay> -->
-                    </div>
+
+                <div class='ml30 mt30'>
+                    <div id='polygon'></div>
+                    <div id='point'></div>
                 </div>
             </div>
-        </div>
-        <div class='ml24 mt30'>
-            <div id='polygon'></div>
-            <div id='point'></div>
         </div>
     </div>
 
@@ -623,38 +622,22 @@
             <div class='px24 py24'>
                 <div class='txt-m mb12 align-center'>World Database on Protected Areas</div>
                 <div class='txt-s text-justify'>
-                    Protected area spatial data is collected in the form of boundary (polygon) wherever it
-                    is available,
-                    or as a single latitude and longitude coordinate (point) data where boundary data is not
-                    available.
-                    Boundary data for an individual protected area may be unavailable for a number of
-                    reasons such as
-                    lack of capacity to map protected areas or confidentiality issues preventing public
-                    dissemination of
-                    data.<br><br>It is important that both data types are used in the analysis as far as
-                    possible, point
-                    datasets
-                    accounted for 9% of all the records in the WDPA in January 2016, excluding them for any
-                    analysis
-                    will likely underestimate the extent of protected areas globally.<br><br>The WDPA stores
-                    the IUCN
-                    Protected Area Management Categories for each of the protected areas where
-                    these categories are reported. The IUCN category is provided to the WDPA as part of the
-                    dataset, and
-                    is not assigned by the WDPA Team. There are many sites (both polygons and points) for
-                    which an IUCN
-                    mangement category have not been reported, have not been assigned, or are not
-                    applicable. Assigning
-                    IUCN management categories to protected areas is not a mandatory requierement for
-                    countries when
-                    submitting data. Because the IUCN management objectives, does not relate to a given
-                    designation
-                    (e.g. National Park), but to its management objectives, and therefore categories have
-                    not been
-                    reported may only mean that the country has not conducted a formal process to assign the
-                    categories
-                    to their protected area network, not that these protected areas are not well managed or
-                    don’t have
+                    Protected area spatial data is collected in the form of boundary (polygon) wherever it is available,
+                    or as a single latitude and longitude coordinate (point) data where boundary data is not available.
+                    Boundary data for an individual protected area may be unavailable for a number of reasons such as
+                    lack of capacity to map protected areas or confidentiality issues preventing public dissemination of
+                    data.<br><br>It is important that both data types are used in the analysis as far as possible, point
+                    datasets accounted for 9% of all the records in the WDPA in January 2016, excluding them for any
+                    analysis will likely underestimate the extent of protected areas globally.<br><br>The WDPA stores
+                    the IUCN Protected Area Management Categories for each of the protected areas where these categories
+                    are reported. The IUCN category is provided to the WDPA as part of the dataset, and is not assigned
+                    by the WDPA Team. There are many sites (both polygons and points) for which an IUCN mangement
+                    category have not been reported, have not been assigned, or are not applicable. Assigning IUCN
+                    management categories to protected areas is not a mandatory requierement for countries when
+                    submitting data. Because the IUCN management objectives, does not relate to a given designation
+                    (e.g. National Park), but to its management objectives, and therefore categories have not been
+                    reported may only mean that the country has not conducted a formal process to assign the categories
+                    to their protected area network, not that these protected areas are not well managed or don’t have
                     management objectives in place.
                     <p class='text-right color-green-faint'>Data:</a>
                         <a target="_blank" href="http://pp-import-production.s3.amazonaws.com/WDPA_Manual_1_5.pdf">World
@@ -667,7 +650,8 @@
 
     <!-- IUCN-modal -->
     <div id='iucn-modal' class='absolute top right bottom left scroll-auto z2 none animation--speed-1'>
-        <div class='flex-child border border-gray-dark bg-gray-dark color-green-faint round relative w600 mx-auto mt120'>
+        <div
+            class='flex-child border border-gray-dark bg-gray-dark color-green-faint round relative w600 mx-auto mt120'>
             <button id='modal-closed' class='btn btn-gray-dark absolute top right mr6 mt6 px0 py0'>
                 <svg class='icon btn-info link color-lighten50 txt-xl'>
                     <use xlink:href='#icon-close'></use>
@@ -680,12 +664,9 @@
                     their<strong> management objectives:</strong><br><br><strong>Ia</strong> - Strict Nature
                     Reserve<br><strong>Ib</strong> - Wilderness Area<br><strong>II</strong> - National
                     Park<br><strong>III</strong> - National Monument or Feature<br><strong>IV</strong> -
-                    Habitat/Species
-                    Management Area<br><strong>V</strong> - Protected
-                    Landscape/Seascape<br><strong>VI</strong> -
-                    Protected Area With Sustainable Use Of Natural Resources<br><strong>Not
-                        Reported<br><strong>Not
-                            Applicable</strong><br>Not Assigned
+                    Habitat/Species Management Area<br><strong>V</strong> - Protected Landscape/Seascape<br><strong>VI</strong> -
+                    Protected Area With Sustainable Use Of Natural Resources<br><strong>Not Reported<br><strong>Not
+                    Applicable</strong><br>Not Assigned
                         <p class='text-right color-green-faint'>Data:</a>
                             <a target="_blank"
                                 href="https://www.iucn.org/theme/protected-areas/about/protected-area-categories">IUCN
@@ -695,7 +676,6 @@
             </div>
         </div>
     </div>
-
 
 
     <script>
@@ -829,7 +809,6 @@
                 });
 
             function pointsMap(data) {
-                // console.log(data);
                 map.addLayer({
                     'id': 'points',
                     'type': 'circle',
@@ -837,8 +816,8 @@
                         'type': 'geojson',
                         'data': data,
                         'cluster': true,
-                        'clusterMaxZoom': 4, // Max zoom to cluster points on
-                        'clusterRadius': 2 // Radius of each cluster when clustering points (defaults to 50)
+                        'clusterMaxZoom': 6, // Max zoom to cluster points on
+                        'clusterRadius': 30 // Radius of each cluster when clustering points (defaults to 50)
                     },
                     'paint': {
                         'circle-color': [
@@ -859,6 +838,27 @@
                         'circle-opacity': .6,
                     },
                 });
+
+
+                map.addLayer({
+                    'id': 'cluster-points',
+                    'type': 'circle',
+                    'source': {
+                        'type': 'geojson',
+                        'data': data,
+                    },
+                    'filter': ['has', 'IUCN_CAT'],
+                    'layout': {
+                        'text-field': 'IUCN_CAT',
+                        "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
+                        "text-size": 10 
+                    }
+                });
+
+
+
+           
+
 
                 var popup = new mapboxgl.Popup({
                     closeButton: false,
@@ -888,7 +888,6 @@
                             .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
                         .addTo(map);
                 });
-
             } //end of function pointsMap
 
             function addWdpaModalUI() {
