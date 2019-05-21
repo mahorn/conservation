@@ -355,8 +355,8 @@
                     Por siglos, las áreas protegidas han jugado un rol fundamental en la conservación de los ecosistemas
                     terrestres y maritimos del mundo. Las áreas protegidas son esenciales para la conservación de las
                     especies y ecosistemas al igual que su contribución al beneficio de la humanidad. Sin embargo, las
-                    áreas
-                    protegidas no son entidades aisladas, su habilidad de lograr resultados positivos es afectada por
+                    áreas protegidas no son entidades aisladas, su habilidad de lograr resultados positivos es afectada
+                    por
                     sus alrededores, y solo pueden funcionar si son governadas y manejadas como parte de una escala
                     mayor de conservación, que integra estrategias de desarrollo y considera a todos los sectores de la
                     sociedad.<br><br>La Base de Datos Mundial sobre Áreas Protegidas (WDPA, por sus siglas en inglés),
@@ -397,8 +397,9 @@
         <section id='introduction' class='active'>
             <h1>AMÉRICA DEL SUR</h1>
             <a class='tortoise' id='tortoise'><img src='pics/tortoise.png' alt='tortoise picture'></a>
-            <p class='align-center mb18'><strong><small>Tortuga de las Galápagos<i> (Chelonoidis nigra)</i></small></strong></p>
-            <p>América del Sur es un los los sub-continentes más ricos en biodiversidad biológica y cultural; incluyendo
+            <p class='align-center mb18'><strong><small>Tortuga de las Galápagos<i> (Chelonoidis
+                            nigra)</i></small></strong></p>
+            <p>América del Sur es un de los sub-continentes más ricos en biodiversidad biológica y cultural; incluyendo
                 pueblos indígenas con una fuerte relación histórica con los ecosistemas de la región. Las áreas
                 protegidas han sido un sistema exitoso para conservar la biodiversidad; sin ellas la pérdida de
                 biodiversidad sería mucho mayor.</p>
@@ -471,7 +472,7 @@
         <section id='paraguay'>
             <h2>PARAGUAY</h2>
             <span>
-                <h3>CATEGORÍAS DE MANEJO DE LA IUCN:</h3>
+                <h3>CATEGORÍAS DE MANEJO DE LA UICN:</h3>
             </span><br>
             <li class='aside-icons text-center'><a class='text' id='par-sta'><img src='pics/par.png'
                         alt='paraguay statistics'></a></li>
@@ -518,9 +519,22 @@
                 <div class='text-gallery small text-justify mr24 ml10 mt24 px24 py2'>
                     <p></p>
                 </div>
-                <p class='text-gallery-footer lead my-5 text-center mr24'>Haz click en los puntos del mapa<br>para ver una
-                    fotografía específica.</p>
+                <p class='text-gallery-footer lead my-5 text-center mr24'>Haz click en los puntos del mapa<br>para ver
+                    una fotografía específica.</p>
                 <div class='ml24'></div>
+                <overlay id='first' class='section'>
+                    <div class="container">
+                        <input type="radio" name="heritage" value="World Heritage Site (natural or mixed)"
+                            id="heritage">
+                        <label for="heritage"><span class="category">World Heritage Site</span></span>
+                        </label>
+                    </div>
+                    <div class="container">
+                        <input type="radio" name="heritage" value="UNESCO-MAB Biosphere Reserve" id="unesco">
+                        <label for="unesco"><span class="category">UNESCO-MAB Biosphere Reserve</span></span>
+                        </label>
+                    </div>
+                </overlay>
             </div>
         </div>
     </div>
@@ -530,7 +544,8 @@
         <div class='row'>
             <div class='col-md-12 mt30'>
                 <p class='title-explore h5 font-weight-bold text-center mr24'>EXPLORA</p>
-                <p class='subtitle-explore my-4 text-center mr6'>Haz click en los radio botones para seleccionar categorías:</p>
+                <p class='subtitle-explore my-4 text-center mr6'>Haz click en los radio botones para seleccionar
+                    categorías:</p>
                 <div class='ml24'>
                     <overlay id='first' class='section'>
                         <div class="container">
@@ -585,28 +600,8 @@
                         </div>
                     </overlay>
                 </div>
-                <p class='subtitle-explore my-4 text-center mr6'>Haz click en los radio botones para seleccionar categorías:</p>
-
-                <!-- <overlay id='first' class='section'>
-                        <div class="container">
-                            <input type="radio" name="heritage" value="World Heritage Site (natural or mixed)"
-                                id="heritage">
-                            <label for="heritage"><span class="radio"></span><span
-                                    class="category">Heritage</span></span>
-                            </label>
-                        </div>
-                        <div class="container">
-                            <input type="radio" name="heritage" value="UNESCO-MAB Biosphere Reserve" id="unesco">
-                            <label for="unesco"><span class="radio"></span><span class="category">Unesco</span></span>
-                            </label>
-                        </div>
-                        <div class="container">
-                            <input type="radio" name='heritage' value="Strict Nature Reserve" id='strict'>
-                            <label for="strict"><span class="radio"></span><span class="category">Strict</span></span>
-                            </label>
-                        </div>
-                    </overlay> -->
-
+                <p class='subtitle-explore my-4 text-center mr6'>Haz click en los radio botones para seleccionar
+                    categorías:</p>
                 <div class='ml36 mt30'>
                     <div id='polygon'></div>
                     <div id='point'></div>
@@ -627,25 +622,27 @@
             <div class='px24 py24'>
                 <div class='txt-m mb12 align-center'>Base Mundial de Datos sobre Áreas Protegidas</div>
                 <div class='txt-s text-justify'>
-                    Los datos espaciales de las áreas protegidas es adquirida en la forma de polígonos cuando se encuentra disponible, o en puntos de coordenadas de latitud o longitud donde los poligonos no están disponibles. Los polígonos para un área protegida pueden no estar disponibles por muchas razones,
-                    como la falta de capacidad de poder delinearlas o para poder prevenir problemas de confidencialidad como la diseminación pública de los datos.<br><br>Es importante que los dos tipos de datos sean utilizados para cualquier tipo de análisis,
-                    ya que los datos en puntos son cerca del 9% de toda la base de datos en el WDPA, y excluirlos causaría
-                    una desestimación de las áreas protegidas globalmente.<br><br>El WDPA
-                    almacena las áreas protegidas de manejo de la IUCN para cada área protegida donde esta categoría
-                    está reportada. La categoría de IUCN es proveeía a la WDPA como parte de la base de datos, y no es
-                    asignada
-                    por el equipo del WDPA. Existen muchos sitios (puntos y polígonos) por la cual la
-                    categoría de manejo de la IUCN no ha sido reportada, asignada o no es aplicable. La asignación
-                    de categorías de manejo IUCN para las áreas protegidas no es un requerimiento mandatorio cuando los países
-                    
-                    submiten los datos. Por que los objectivos de manejo de la IUCN no se relacionan con una designación
-                    como por ejemplo (e.g. Parques Nacionales), sinó con los objectivos de su manejo, las
-                    categorías que no han sido reportadas quizás solo signifique que el país no ha conducido el proceso formal para asignar las
-                    categorías a su sistema de áreas protegidas y no a que estas áreas no están bien manejadas o que no tienen
-                    objetivos de manejo.
+                    Los datos espaciales de las áreas protegidas es adquirida en la forma de polígonos cuando se
+                    encuentra disponible, o en puntos de coordenadas de latitud o longitud donde los poligonos no están
+                    disponibles. Los polígonos para un área protegida pueden no estar disponibles por muchas razones,
+                    como la falta de capacidad de poder delinearlas o para poder prevenir problemas de confidencialidad
+                    como la diseminación pública de los datos.<br><br>Es importante que los dos tipos de datos sean
+                    utilizados para cualquier tipo de análisis, ya que los datos en puntos son cerca del 9% de toda la
+                    base de datos en el WDPA, y excluirlos causaría una desestimación de las áreas protegidas
+                    globalmente.<br><br>El WDPA almacena las áreas protegidas de manejo de la IUCN para cada área
+                    protegida donde esta categoría está reportada. La categoría de IUCN es proveeía a la WDPA como parte
+                    de la base de datos, y no es asignada por el equipo del WDPA. Existen muchos sitios (puntos y
+                    polígonos) por la cual la categoría de manejo de la IUCN no ha sido reportada, asignada o no es
+                    aplicable. La asignación de categorías de manejo IUCN para las áreas protegidas no es un
+                    requerimiento mandatorio cuando los países submiten los datos. Por que los objectivos de manejo de
+                    la IUCN no se relacionan con una designación como por ejemplo (e.g. Parques Nacionales), sinó con
+                    los objectivos de su manejo, las categorías que no han sido reportadas quizás solo signifique que el
+                    país no ha conducido el proceso formal para asignar las categorías a su sistema de áreas protegidas
+                    y no a que estas áreas no están bien manejadas o que no tienen objetivos de manejo.
                     <p class='text-right color-green-faint'>Datos:</a>
                         <a target="_blank"
-                            href="http://pp-import-production.s3.amazonaws.com/WDPA_Manual_1_5.pdf">Manual de Áreas Protegidas del Mundo</a>
+                            href="http://pp-import-production.s3.amazonaws.com/WDPA_Manual_1_5.pdf">Manual de Áreas
+                            Protegidas del Mundo</a>
                     </p>
                 </div>
             </div>
@@ -665,11 +662,11 @@
                 <div class='txt-m mb12 align-center'>CATEGORÍAS DE LAS ÁREAS PROTEGIDAS</div>
                 <div class='txt-s text-justify'>
                     Las áreas protegidas de la IUCN clasifica las áreas protegidas de acuerdo a sus <strong>objetivos de
-                    manejo:</strong><br><br><strong>Ia</strong> -
-                    Reserva de Naturaleza Estricta<br><strong>Ib</strong> - Área Natural Silvestre<br><strong>II</strong> -
-                    Parque Nacional<br><strong>III</strong> - Monumento National<br><strong>IV</strong> -
-                    Área de Manejo de Hábitat/Especie<br><strong>V</strong> - Paisaje Terrestre y Marino Protegido<br><strong>VI</strong> -
-                    Áreas Protegidas con Recursos Naturales Sostenibles<br><strong>No Reportada<br><strong>No
+                    manejo:</strong><br><br><strong>Ia</strong> - Reserva de Naturaleza
+                    Estricta<br><strong>Ib</strong> - Área Natural Silvestre<br><strong>II</strong> - Parque
+                    Nacional<br><strong>III</strong> - Monumento Nacional<br><strong>IV</strong> - Área de Manejo de
+                    Hábitat/Especie<br><strong>V</strong> - Paisaje Terrestre y Marino Protegido<br><strong>VI</strong>
+                    - Áreas Protegidas con Recursos Naturales Sostenibles<br><strong>No Reportada<br><strong>No
                             Aplicable</strong><br>No Asignada
                         <p class='text-right color-green-faint'>Datos:</a>
                             <a target="_blank"
@@ -714,11 +711,14 @@
                     addIucnModalUI();
                     addLegend(data);
                     updateMap(data);
+                    designationMap(data);
                 });
 
             function polygonsMap(data) {
                 var geojson = topojson.feature(data, data.objects.merge_files_sim);
-                console.log(geojson);
+                geojson.features.forEach(function (feature) {
+                    var designation = feature.properties.DESIG_ENG;     
+                });
 
                 map.addLayer({
                     'id': 'polygon',
@@ -745,6 +745,7 @@
                         'fill-opacity': 0.6,
                     },
                 });
+
                 var popup = new mapboxgl.Popup({
                     closeButton: false,
                     closeOnClick: false
@@ -1004,6 +1005,27 @@
             });
         });
 
+        function designationMap(designation) {
+            var geojson = topojson.feature(designation, designation.objects.merge_files_sim);
+            geojson.features.forEach(function (feature) {
+                d3.selectAll('#gallery input').on('change', function () {
+                    if (this.value === 'World Heritage Site (natural or mixed)') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'DESIG_ENG'],
+                            'World Heritage Site (natural or mixed)', 1,
+                            0
+                        ]);
+                    } else if (this.value === 'UNESCO-MAB Biosphere Reserve') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'DESIG_ENG'],
+                            'UNESCO-MAB Biosphere Reserve', 1,
+                            0
+                        ]);
+                    }
+                });
+            });
+        }//end function designationMap
+
         // EXPLORE CHAPTER //
         var endClicked = $('#icon-explore').on('click', function () {
             $('#explore').toggle(
@@ -1018,27 +1040,6 @@
             var geojson = topojson.feature(code, code.objects.merge_files_sim);
             geojson.features.forEach(function (feature) {
                 d3.selectAll('#explore input').on('change', function () {
-
-                    //     if (this.value === 'World Heritage Site (natural or mixed)') {
-                    //        map.setPaintProperty('polygon', 'fill-opacity', [
-                    //             'match', ['get', 'DESIG_ENG'],
-                    //             'World Heritage Site (natural or mixed)', 1,
-                    //             0
-                    //         ]);
-                    //     } else if (this.value === 'UNESCO-MAB Biosphere Reserve') {
-                    //         map.setPaintProperty('polygon', 'fill-opacity', [
-                    //             'match', ['get', 'DESIG_ENG'],
-                    //             'UNESCO-MAB Biosphere Reserve', 1,
-                    //             0
-                    //         ]);
-                    //     } else if (this.value === 'Strict Nature Reserve') {
-                    //         map.setPaintProperty('polygon', 'fill-opacity', [
-                    //             'match', ['get', 'DESIG_ENG'],
-                    //             'Strict Nature Reserve', 1,
-                    //             0
-                    //         ]);
-                    //     }
-
                     if (this.value === 'Ia') {
                         map.setPaintProperty('polygon', 'fill-opacity', [
                             'match', ['get', 'IUCN_CAT'],
@@ -1130,7 +1131,7 @@
         }
         $(polygon).hover(
             function () {
-                $(this).append($("<span>Polygons Layer</span>"));
+                $(this).append($("<span>Capa de polígonos</span>"));
             },
             function () {
                 $(this).find("span:last").remove();
@@ -1163,7 +1164,7 @@
         }
         $(point).hover(
             function () {
-                $(this).append($("<span>Points Layer</span>"));
+                $(this).append($("<span>Capa de Puntos</span>"));
             },
             function () {
                 $(this).find("span:last").remove();
@@ -1182,10 +1183,10 @@
             }
         });
 
-        document.getElementbyId('language').addEventListener('click', function (event) {
-            var language = event.target.id.substr('language-'.length);
-            map.setLayoutProperty('polygon', 'IUCN_CAT', ['get', 'name_' + language]);
-        });
+        // document.getElementbyId('language').addEventListener('click', function (event) {
+        //     var language = event.target.id.substr('language-'.length);
+        //     map.setLayoutProperty('polygon', 'IUCN_CAT', ['get', 'name_' + language]);
+        // });
 
     </script>
 

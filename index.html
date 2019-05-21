@@ -192,6 +192,7 @@
             padding-top: 20px;
             font-size: 14px;
         }
+
         .tortoise {
             display: block;
             margin-bottom: 3%;
@@ -251,7 +252,7 @@
             height: 20px;
             border-radius: 5%;
             cursor: pointer;
-        } */
+        }  */
 
         /* RADIO BUTTONS */
         input {
@@ -393,7 +394,8 @@
         <section id='introduction' class='active'>
             <h1>SOUTH AMERICA</h1>
             <a class='tortoise' id='tortoise'><img src='pics/tortoise.png' alt='tortoise picture'></a>
-            <p class='align-center mb18'><strong><small>Galápagos tortoise <i>(Chelonoidis nigra)</i></small></strong></p>
+            <p class='align-center mb18'><strong><small>Galápagos tortoise <i>(Chelonoidis nigra)</i></small></strong>
+            </p>
             <p>South America is one of the richest sub-continents in terms of cultural and biological diversity;
                 including indigenous people with strong historical ties to the region's ecosystems. Protected and
                 conserved areas have long been a successful management tool to conserve biodiversity, and
@@ -510,15 +512,26 @@
     <div id='gallery'>
         <div class='row'>
             <div class='col-md-12 mt30'>
-                <p class='title-gallery h5 font-weight-bold text-center mr24'>DISCOVER</p>
+                <p class='title-gallery h5 font-weight-bold text-center mr24'>GALERÍA</p>
                 <div class='text-gallery small text-justify mr24 ml10 mt24 px24 py2'>
-                    <p>IUCN defines a protected area as a clearly defined geographical space, recognised, dedicated and
-                        managed, through legal or other effective means, to achieve the long-term conservation of nature
-                        with associated ecosytem services and cultural values.</p>
+                    <p></p>
                 </div>
-                <p class='text-gallery-footer lead my-5 text-center mr24'>Click on the map markers to view<br>a specific
-                    photograph.</p>
+                <p class='text-gallery-footer lead my-5 text-center mr24'>Haz click en los puntos del mapa<br>para ver
+                    una fotografía específica.</p>
                 <div class='ml24'></div>
+                <overlay id='first' class='section'>
+                    <div class="container">
+                        <input type="radio" name="heritage" value="World Heritage Site (natural or mixed)"
+                            id="heritage">
+                        <label for="heritage"><span class="category">World Heritage Site (natural or mixed)</span></span>
+                        </label>
+                    </div>
+                    <div class="container">
+                        <input type="radio" name="heritage" value="UNESCO-MAB Biosphere Reserve" id="unesco">
+                        <label for="unesco"><span class="category">UNESCO-MAB Biosphere Reserve</span></span>
+                        </label>
+                    </div>
+                </overlay>
             </div>
         </div>
     </div>
@@ -585,27 +598,6 @@
                     </overlay>
                 </div>
                 <p class='subtitle-explore my-4 text-center mr6'>Click on icons to select on/off layers:</p>
-
-                <!-- <overlay id='first' class='section'>
-                        <div class="container">
-                            <input type="radio" name="heritage" value="World Heritage Site (natural or mixed)"
-                                id="heritage">
-                            <label for="heritage"><span class="radio"></span><span
-                                    class="category">Heritage</span></span>
-                            </label>
-                        </div>
-                        <div class="container">
-                            <input type="radio" name="heritage" value="UNESCO-MAB Biosphere Reserve" id="unesco">
-                            <label for="unesco"><span class="radio"></span><span class="category">Unesco</span></span>
-                            </label>
-                        </div>
-                        <div class="container">
-                            <input type="radio" name='heritage' value="Strict Nature Reserve" id='strict'>
-                            <label for="strict"><span class="radio"></span><span class="category">Strict</span></span>
-                            </label>
-                        </div>
-                    </overlay> -->
-
                 <div class='ml36 mt30'>
                     <div id='polygon'></div>
                     <div id='point'></div>
@@ -668,7 +660,8 @@
                     their<strong> management objectives:</strong><br><br><strong>Ia</strong> - Strict Nature
                     Reserve<br><strong>Ib</strong> - Wilderness Area<br><strong>II</strong> - National
                     Park<br><strong>III</strong> - National Monument or Feature<br><strong>IV</strong> -
-                    Habitat/Species Management Area<br><strong>V</strong> - Protected Landscape/Seascape<br><strong>VI</strong> -
+                    Habitat/Species Management Area<br><strong>V</strong> - Protected
+                    Landscape/Seascape<br><strong>VI</strong> -
                     Protected Area With Sustainable Use Of Natural Resources<br><strong>Not Reported<br><strong>Not
                     Applicable</strong><br>Not Assigned
                         <p class='text-right color-green-faint'>Data:</a>
@@ -714,11 +707,14 @@
                     addIucnModalUI();
                     addLegend(data);
                     updateMap(data);
+                    designationMap(data);
                 });
 
             function polygonsMap(data) {
                 var geojson = topojson.feature(data, data.objects.merge_files_sim);
-                console.log(geojson);
+                geojson.features.forEach(function (feature) {
+                    var designation = feature.properties.DESIG_ENG;
+                });
 
                 map.addLayer({
                     'id': 'polygon',
@@ -748,7 +744,8 @@
                 var popup = new mapboxgl.Popup({
                     closeButton: false,
                     closeOnClick: false
-                });
+                })
+                
                 map.on('mousemove', 'polygon', function (e) {
                     var features = map.queryRenderedFeatures(e.lngLat);
                     map.getCanvas().style.cursor = 'pointer';
@@ -852,9 +849,10 @@
                     var features = map.queryRenderedFeatures(e.lngLat);
                     map.getCanvas().style.cursor = 'pointer';
                     popup.setLngLat(e.lngLat)
-                    .setHTML(String('Name: ' + e.features[0].properties.NAME + '<br>' + 'IUCN Category: ' + e.features[0].properties.UICN_CAT + '<br>' + 'Designation: ' + e.features[0].properties.DESIG_ENG).toLocaleString())
+                        .setHTML(String('Name: ' + e.features[0].properties.NAME + '<br>' + 'IUCN Category: ' + e.features[0].properties.UICN_CAT + '<br>' + 'Designation: ' + e.features[0].properties.DESIG_ENG).toLocaleString())
                         .addTo(map)
                 });
+
                 map.on('mouseleave', 'points', function () {
                     map.getCanvas().style.cursor = '';
                     popup.remove();
@@ -987,11 +985,11 @@
             var bounds = element.getBoundingClientRect();
             return bounds.top < window.innerHeight && bounds.top > 0;
         }
-    
+
         // GALLERY CHAPTER //
         var currentSelected = $('#icon-gallery').click(function () {
             $('#gallery').toggle();
-                map.flyTo({
+            map.flyTo({
                 center: [-40, -15],
                 zoom: 2.6,
                 bearing: 0,
@@ -1003,7 +1001,29 @@
                 }
             });
         });
-       
+
+        function designationMap(designation) {
+            var geojson = topojson.feature(designation, designation.objects.merge_files_sim);
+            geojson.features.forEach(function (feature) {
+                d3.selectAll('#gallery input').on('change', function () {
+                    if (this.value === 'World Heritage Site (natural or mixed)') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'DESIG_ENG'],
+                            'World Heritage Site (natural or mixed)', 1,
+                            0
+                        ]);
+                        
+                    } else if (this.value === 'UNESCO-MAB Biosphere Reserve') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'DESIG_ENG'],
+                            'UNESCO-MAB Biosphere Reserve', 1,
+                            0
+                        ]);
+                    }
+                });
+            });
+        }//end function designationMap
+
         // EXPLORE CHAPTER //
         var endClicked = $('#icon-explore').on('click', function () {
             $('#explore').toggle(
@@ -1017,27 +1037,7 @@
         function updateMap(code) {
             var geojson = topojson.feature(code, code.objects.merge_files_sim);
             geojson.features.forEach(function (feature) {
-                 d3.selectAll('#explore input').on('change', function () {
-                 
-                    //     if (this.value === 'World Heritage Site (natural or mixed)') {
-                    //        map.setPaintProperty('polygon', 'fill-opacity', [
-                    //             'match', ['get', 'DESIG_ENG'],
-                    //             'World Heritage Site (natural or mixed)', 1,
-                    //             0
-                    //         ]);
-                    //     } else if (this.value === 'UNESCO-MAB Biosphere Reserve') {
-                    //         map.setPaintProperty('polygon', 'fill-opacity', [
-                    //             'match', ['get', 'DESIG_ENG'],
-                    //             'UNESCO-MAB Biosphere Reserve', 1,
-                    //             0
-                    //         ]);
-                    //     } else if (this.value === 'Strict Nature Reserve') {
-                    //         map.setPaintProperty('polygon', 'fill-opacity', [
-                    //             'match', ['get', 'DESIG_ENG'],
-                    //             'Strict Nature Reserve', 1,
-                    //             0
-                    //         ]);
-                    //     }
+                d3.selectAll('#explore input').on('change', function () {
 
                     if (this.value === 'Ia') {
                         map.setPaintProperty('polygon', 'fill-opacity', [
