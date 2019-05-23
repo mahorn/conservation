@@ -245,14 +245,14 @@
             font-size: 14px;
         }
 
-        /* .marker {
-            background-image: url('pics/wildlife_icon.png');
+        .marker {
+            background-image: url('pics/unesco.png');
             background-size: cover;
-            width: 20px;
-            height: 20px;
-            border-radius: 5%;
+            width: 30px;
+            height: 30px;
+            border-radius: 6%;
             cursor: pointer;
-        }  */
+        }
 
         /* RADIO BUTTONS */
         input {
@@ -521,14 +521,13 @@
                 <div class='ml24'></div>
                 <overlay id='first' class='section'>
                     <div class="container">
-                        <input type="radio" name="heritage" value="World Heritage Site (natural or mixed)"
-                            id="heritage">
-                        <label for="heritage"><span class="category">World Heritage Site (natural or mixed)</span></span>
+                        <input type="radio" name="heritage" value="ARG" id="unesco">
+                        <label for="unesco"><span class="category">ARG</span></span>
                         </label>
                     </div>
                     <div class="container">
-                        <input type="radio" name="heritage" value="UNESCO-MAB Biosphere Reserve" id="unesco">
-                        <label for="unesco"><span class="category">UNESCO-MAB Biosphere Reserve</span></span>
+                        <input type="radio" name="heritage" value="BOL" id="bol">
+                        <label for='bol'><span class="category">BOL</span></span>
                         </label>
                     </div>
                 </overlay>
@@ -663,7 +662,7 @@
                     Habitat/Species Management Area<br><strong>V</strong> - Protected
                     Landscape/Seascape<br><strong>VI</strong> -
                     Protected Area With Sustainable Use Of Natural Resources<br><strong>Not Reported<br><strong>Not
-                    Applicable</strong><br>Not Assigned
+                            Applicable</strong><br>Not Assigned
                         <p class='text-right color-green-faint'>Data:</a>
                             <a target="_blank"
                                 href="https://www.iucn.org/theme/protected-areas/about/protected-area-categories">IUCN
@@ -698,8 +697,12 @@
             'Not Assigned': '#68aabc',
         }
 
-        map.on('load', function () {
+        var unesco = {
+            'UNESCO-MAB Biosphere Reserve': '#505160'
+        }
 
+
+        map.on('load', function () {
             d3.json('data/polygons.json')
                 .then(function (data) {
                     polygonsMap(data);
@@ -707,13 +710,13 @@
                     addIucnModalUI();
                     addLegend(data);
                     updateMap(data);
-                    designationMap(data);
+                    // designationMap(data);
                 });
 
             function polygonsMap(data) {
                 var geojson = topojson.feature(data, data.objects.merge_files_sim);
                 geojson.features.forEach(function (feature) {
-                    var designation = feature.properties.DESIG_ENG;
+                    // var designation = feature.properties.DESIG_ENG;
                 });
 
                 map.addLayer({
@@ -745,13 +748,13 @@
                     closeButton: false,
                     closeOnClick: false
                 })
-                
+
                 map.on('mousemove', 'polygon', function (e) {
                     var features = map.queryRenderedFeatures(e.lngLat);
                     map.getCanvas().style.cursor = 'pointer';
                     // map.flyTo({center: e.lngLat, zoom: 6});
                     popup.setLngLat(e.lngLat)
-                        .setHTML(String('Name: ' + e.features[0].properties.NAME + '<br>' + 'IUCN Category: ' + e.features[0].properties.UICN_CAT + '<br>' + 'Designation: ' + e.features[0].properties.DESIG_ENG).toLocaleString())
+                        .setHTML(String('Name: ' + e.features[0].properties.NAME + '<br>' + 'IUCN Category: ' + e.features[0].properties.IUCN_CAT + '<br>' + 'Designation: ' + e.features[0].properties.DESIG_ENG).toLocaleString())
                         .addTo(map)
                 });
                 map.on('mouseleave', 'polygon', function () {
@@ -849,7 +852,7 @@
                     var features = map.queryRenderedFeatures(e.lngLat);
                     map.getCanvas().style.cursor = 'pointer';
                     popup.setLngLat(e.lngLat)
-                        .setHTML(String('Name: ' + e.features[0].properties.NAME + '<br>' + 'IUCN Category: ' + e.features[0].properties.UICN_CAT + '<br>' + 'Designation: ' + e.features[0].properties.DESIG_ENG).toLocaleString())
+                        .setHTML(String('Name: ' + e.features[0].properties.NAME + '<br>' + 'IUCN Category: ' + e.features[0].properties.IUCN_CAT + '<br>' + 'Designation: ' + e.features[0].properties.DESIG_ENG).toLocaleString())
                         .addTo(map)
                 });
 
@@ -858,17 +861,17 @@
                     popup.remove();
                 });
 
-                data.features.forEach(function (marker) {
-                    var el = document.createElement('div');
-                    el.className = 'marker';
-                    new mapboxgl.Marker(el)
-                        .setLngLat(marker.geometry.coordinates)
-                        .setPopup(new mapboxgl.Popup({
-                            offset: 25
-                        })
-                            .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
-                        .addTo(map);
-                });
+                // data.features.forEach(function (marker) {
+                //     var el = document.createElement('div');
+                //     el.className = 'marker';
+                //     new mapboxgl.Marker(el)
+                //         .setLngLat(marker.geometry.coordinates)
+                //         .setPopup(new mapboxgl.Popup({
+                //             offset: 25
+                //         })
+                //             .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
+                //         .addTo(map);
+                // });
             } //end of function pointsMap
 
             function addWdpaModalUI() {
@@ -882,6 +885,449 @@
                     modal.classList.add('none');
                 });
             } //end of function addWdpaModalUI
+
+            d3.json('data/unesco.json')
+                .then(function (data) {
+                    galleryMap(data);
+                    // designationMap(data);
+                }); //gallery map 
+
+            function galleryMap(data) {
+                data.features.forEach(function (feature) {
+
+                    var coordinates = feature.geometry.coordinates;
+                    console.log(coordinates);
+                });
+                map.addLayer({
+                    'id': 'centroids',
+                    'type': 'circle',
+                    'source': {
+                        'type': 'geojson',
+                        'data': {
+                            'type': 'FeatureCollection',
+                            'features': [{
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-69.26649821726008, -29.23805445056377]
+                                },
+                                'properties': {
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-69.57972697405327, -29.15190868518151]
+                                },
+                                'properties': {
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-71.52821572725932, -41.42980870291554]
+                                },
+                                'properties': {
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-57.332250969989744, -37.607852996086244]
+                                },
+                                'properties': {
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-57.2638535066454, -35.33967314388254]
+                                },
+                                'properties': {
+                                   
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-58.55443296080529, -34.139298884789376]
+                                },
+                                'properties': {
+                                   
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-58.233030186090055, -26.32356351826899]
+                                },
+                                'properties': {
+                                    
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-69.57972697405327, -29.15190868518151]
+                                },
+                                'properties': {
+                                   
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-66.87883918495218, -26.39776388647195]
+                                },
+                                'properties': {
+                                 
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-67.77343616416113, -33.73269412746008]
+                                },
+                                'properties': {
+                                  
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-58.09947196715154, -34.81832940999505]
+                                },
+                                'properties': {
+                                   
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-61.63437767069397, -24.25008180559061]
+                                },
+                                'properties': {
+                                    
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-64.39693742983697, -42.62491504444084]
+                                },
+                                'properties': {
+                                  
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-53.957431028746804, -26.90876931390863]
+                                },
+                                'properties': {
+                                   
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-64.79301330536715, -23.142771269489]
+                                },
+                                'properties': {
+                                 
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-65.76825789278057, -44.75989805933394]
+                                },
+                                'properties': {
+                                 
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-66.0496982513025, -22.36660656844193]
+                                },
+                                'properties': {
+                                   
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-65.99830554046842, -22.34750177938921]
+                                },
+                                'properties': {
+                                   
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-67.35913089010181, -14.966705310072284]
+                                },
+                                'properties': {
+                                   
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-66.3060223314419, -14.64488840225704]
+                                },
+                                'properties': {
+                                  
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-71.66612020946104, -30.673987007587687]
+                                },
+                                'properties': {
+                                 
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-71.4789486978377, -33.16538603253771]
+                                },
+                                'properties': {
+                                  
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-73.09059538210924, -51.0331805138639]
+                                },
+                                'properties': {
+                               
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-73.93028612518835, -46.933959719477855]
+                                },
+                                'properties': {
+                                  
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-69.35419029659364, -18.24484399887003]
+                                },
+                                'properties': {
+                                
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-69.16816644948418, -55.17147033156983]
+                                },
+                                'properties': {
+                                 
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-78.85362995438845, -33.631443890098645]
+                                },
+                                'properties': {
+                                 
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-72.23935227321023, -40.522033815702855]
+                                },
+                                'properties': {
+                                   
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-71.58385800126015, -38.77200466106946]
+                                },
+                                'properties': {
+                                   
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-68.47230750638984, 5.255816027039414]
+                                },
+                                'properties': {
+                                
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-90.776337022008, -0.080710795512696]
+                                },
+                                'properties': {
+                                  
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-79.8681103519422, -2.966936234686965]
+                                },
+                                'properties': {
+                                 
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-79.95622033741418, -4.28415944102404]
+                                },
+                                'properties': {
+                                  
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-76.0551078657633, -1.122025276721751]
+                                },
+                                'properties': {
+                                  
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-79.00667753883191, -4.274199552730142]
+                                },
+                                'properties': {
+                                 
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-77.55593661150782, -0.402193357844912]
+                                },
+                                'properties': {
+                                   
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-55.357354294947015, -24.245735442504017]
+                                },
+                                'properties': {
+                                   
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-60.40549783358635, -20.06380007125203]
+                                },
+                                'properties': {
+                                  
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-53.84549886482568, -33.75515177030806]
+                                },
+                                'properties': {
+                                   
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [-55.843712946847965, -31.144101639267454]
+                                },
+                                'properties': {
+                                  
+                                    'images':
+                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/point.png'+'&previewImage=true'</img></a>",
+                                },
+
+                            }]
+                        }
+                    }
+                    //  'layout': none,
+                });
+
+                var popup = new mapboxgl.Popup({
+                    closeButton: false,
+                    closeOnClick: false,
+                });
+
+                map.on('click', 'centroids', function (e) {
+                    var coordinates = e.features[0].geometry.coordinates.slice();
+                    console.log(coordinates);
+
+                    var images = e.features[0].properties.images;
+
+                    new mapboxgl.Popup()
+                        .setLngLat(coordinates)
+                        .setHTML(images)
+
+                        .addTo(map);
+                });
+
+            }
 
         }); //end of map.on('load')
 
@@ -1002,27 +1448,13 @@
             });
         });
 
-        function designationMap(designation) {
-            var geojson = topojson.feature(designation, designation.objects.merge_files_sim);
-            geojson.features.forEach(function (feature) {
-                d3.selectAll('#gallery input').on('change', function () {
-                    if (this.value === 'World Heritage Site (natural or mixed)') {
-                        map.setPaintProperty('polygon', 'fill-opacity', [
-                            'match', ['get', 'DESIG_ENG'],
-                            'World Heritage Site (natural or mixed)', 1,
-                            0
-                        ]);
-                        
-                    } else if (this.value === 'UNESCO-MAB Biosphere Reserve') {
-                        map.setPaintProperty('polygon', 'fill-opacity', [
-                            'match', ['get', 'DESIG_ENG'],
-                            'UNESCO-MAB Biosphere Reserve', 1,
-                            0
-                        ]);
-                    }
-                });
-            });
-        }//end function designationMap
+
+
+
+
+        d3.selectAll('#gallery input').on('change', function () {
+
+        });
 
         // EXPLORE CHAPTER //
         var endClicked = $('#icon-explore').on('click', function () {
