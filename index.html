@@ -218,6 +218,7 @@
             color: #2c4a52;
             font-size: 14px;
         }
+
         /* picture in popups */
         .center {
             display: block;
@@ -225,6 +226,16 @@
             margin-right: auto;
             /* width: 100%; */
         }
+
+        .marker {
+            background-image: url('pics/unesco.png');
+            background-size: cover;
+            width: 20px;
+            height: 20px;
+            border-radius: 10%;
+            cursor: pointer;
+        }
+
         /* EXPLORE CHAPTER */
         #explore {
             position: fixed;
@@ -250,15 +261,6 @@
             color: #2c4a52;
             font-size: 14px;
         }
-
-        /* .marker {
-            background-image: url('pics/unesco.png');
-            background-size: cover;
-            width: 30px;
-            height: 30px;
-            border-radius: 6%;
-            cursor: pointer;
-        } */
 
         /* RADIO BUTTONS */
         input {
@@ -304,7 +306,6 @@
         .category {
             font-size: 10px;
         }
-
     </style>
 </head>
 
@@ -519,12 +520,11 @@
     <div id='gallery'>
         <div class='row'>
             <div class='col-md-12 mt30'>
-                <p class='title-gallery h5 font-weight-bold text-center mr24'>GALERÍA</p>
+                <p class='title-gallery h5 font-weight-bold text-center mr24'>UNESCO-MAB<br>Biosphere Reserves</p>
                 <div class='text-gallery small text-justify mr24 ml10 mt24 px24 py2'>
-                    <p></p>
+                    <p>Biosphere reserves are areas comprising terrestrial, marine and coastal ecosystems. Each reserve promotes solutions reconciling the conservation of biodiversity with its sustainable use.</p>
                 </div>
-                <p class='text-gallery-footer lead my-5 text-center mr24'>Haz click en los puntos del mapa<br>para ver
-                    una fotografía específica.</p>
+                <p class='text-gallery-footer lead my-4 text-center mr24'>Click on the map markers<br>to view photographs</p>
                 <div class='ml24'></div>
                 <overlay id='first' class='section'>
                     <div class="container">
@@ -896,15 +896,15 @@
             d3.json('data/unesco.json')
                 .then(function (data) {
                     galleryMap(data);
-                    // designationMap(data);
-                }); //gallery map 
-
-            function galleryMap(data) {
-                data.features.forEach(function (feature) {
-                    var coordinates = feature.geometry.coordinates;
-                    console.log(coordinates);
                 });
 
+            function galleryMap(data) {
+                data.features.forEach(function (marker) {
+                    var el = document.createElement('div');
+                    el.className = 'marker';
+                    new mapboxgl.Marker(el)
+                        .setLngLat(marker.geometry.coordinates).addTo(map);
+                });
 
                 map.addLayer({
                     'id': 'centroids',
@@ -1346,6 +1346,7 @@
                                     'coordinates': [-55.843712946847965, -31.144101639267454]
                                 },
                                 'properties': {
+
                                     'message': 'Bioma Pampa-Quebradas del Norte<br><h5>The region function as a biological corridor for tropical species entering into Uruguayan territory. Rare species of amphibians and reptiles in the area include <i>Hyla uruguaya</i> (the Uruguayan frog), <i>Melanophryniscus devinceszii</i> (the Toad of Devincenzi) and <i>Crotalus durissus terrificus</i> (the South American rattlesnake).</h5><br>',
                                     'images':
                                         "<a href='" + "' target=\"_blank\">" + "<img src='pics/bioma_pampa.png' class='center' +'&previewImage=true' />",
@@ -1354,23 +1355,19 @@
                             }]
                         }
                     }
-                    //  'layout': none,
                 });
 
                 map.on('click', 'centroids', function (e) {
                     var coordinates = e.features[0].geometry.coordinates.slice();
                     map.flyTo({ center: e.lngLat, zoom: 6 });
-                    // console.log(coordinates);
                     var images = e.features[0].properties.images;
                     var message = e.features[0].properties.message;
-                     window.alert('Biosphere Reserves in South America')
-
+                    //  window.alert('Biosphere Reserves in South America')
                     new mapboxgl.Popup()
                         .setLngLat(coordinates)
                         .setHTML('<h2>' + message + '</h2>' + images)
                         .addTo(map)
                 });
-
             }
 
         }); //end of map.on('load')
