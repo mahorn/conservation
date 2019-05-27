@@ -227,15 +227,6 @@
             /* width: 100%; */
         }
 
-        .marker {
-            background-image: url('pics/unesco.png');
-            background-size: cover;
-            width: 20px;
-            height: 20px;
-            border-radius: 10%;
-            cursor: pointer;
-        }
-
         /* EXPLORE CHAPTER */
         #explore {
             position: fixed;
@@ -866,17 +857,6 @@
                     popup.remove();
                 });
 
-                // data.features.forEach(function (marker) {
-                //     var el = document.createElement('div');
-                //     el.className = 'marker';
-                //     new mapboxgl.Marker(el)
-                //         .setLngLat(marker.geometry.coordinates)
-                //         .setPopup(new mapboxgl.Popup({
-                //             offset: 25
-                //         })
-                //             .setHTML('<h3>' + marker.properties.NAME + '</h3><p>' + marker.properties.DESIG_ENG + '</p><p>' + marker.properties.IUCN_CAT + '</p>'))
-                //         .addTo(map);
-                // });
             } //end of function pointsMap
 
             function addWdpaModalUI() {
@@ -897,461 +877,458 @@
                 });
 
             function galleryMap(data) {
-console.log(data);
-                data.features.forEach(function (marker) {
-                   
-                    var el = document.createElement('div');
-                    el.className = 'marker';
-                    new mapboxgl.Marker(el)
-                        .setLngLat(marker.geometry.coordinates).addTo(map);
-                });
+                map.loadImage('pics/unesco.png', function (error, image) {
+                    if (error) throw error;
+                    map.addImage('unesco', image);
 
-                map.addLayer({
-                    'id': 'centroids',
-                    'type': 'circle',
-                    'source': {
-                        'type': 'geojson',
-                        'data': {
-                            'type': 'FeatureCollection',
-                            'features': [{
-                                'type': 'Feature',
-                                'properties': {
-                                    'message': 'San Guillermo<br><h5>San Guillermo Biosphere Reserve in the northwest of San Juan province represents the mixed mountain and highland systems in the foothills and mountains of the Andes occupying the west sector of Catamarca, La Rioja, San Juan and Mendoza Provinces. The Biosphere Reserve constitutes two phytogeographical regions: the Chaco and the Andean region.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/guillermo.png'+'&previewImage=true' />",
-                                },
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-69.26649821726008, -29.23805445056377]
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-71.52821572725932, -41.42980870291554]
-                                },
-                                'properties': {
-                                    'message': 'Andino Norpatagonica<br><h5>The landscape is typically mountainous with important influences from the last glaciations, dominated by the Andes Mountains in the western areas and Sub-Andean plains and plateaus eastward. In the mountain area the presence of large bodies of water is highlighted such as the lakes: Nahuel Huapi, Lácar, Traful, Mascardi, Gutierrez, Rivadavia, Puelo, Futalaufquen, among others, and a network of drainage of high density in wide alluvial plains and with various levels of terraces.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/andino.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-57.332250969989744, -37.607852996086244]
-                                },
-                                'properties': {
-                                    'message': 'Mar Chiquito<br><h5>This Biosphere Reserve consists of the Parque Atlántico Mar Chiquita, situated in the Chaco savanna region just north of Mar de Plata. It contains a large permanent, hyper-saline lake, up to 4 metres deep, with some small islands and brackish marshes at the mouth of the rivers which flow into the lake.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/mar.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-57.2638535066454, -35.33967314388254]
-                                },
-                                'properties': {
-                                    'message': 'Bahía de Samborombón<br><h5>The Bahía de Samborombón represents one of the last natural remnants of the pampas vegetation which once grew throughout central-eastern Argentina, before the Europeans introduced soft pastures for cattle grazing and started to drain the wet pampas. Hence it is one of the two areas in the country with significant populations of the threatened Pampas Deer <i>(Ozotoceros bezoarticus celer).<i/></h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/bay.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-58.55443296080529, -34.139298884789376]
-                                },
-                                'properties': {
-                                    'message': 'Delta del Paraná<br><h5>This Biosphere Reserve is a coastal freshwater delta of the Paraná River located just north of Buenos Aires. It is an area rich in biodiversity including species that find their southern most limit of distribution, which makes the area interesting for the conservation of genetic diversity.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/parana.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-58.233030186090055, -26.32356351826899]
-                                },
-                                'properties': {
-                                    'message': 'Laguna Oca del Río Paraguay<br><h5>The Laguna Oca del Río Paraguay Reserve is located in Formosa Province in northern Argentina. The natural vegetation of the reserve comprises gallery forests, wetlands and savannas along the meanders and oxbow lakes of the Paraguay River.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/oca.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-69.57972697405327, -29.15190868518151]
-                                },
-                                'properties': {
-                                    'message': 'San Guillermo<br><h5>San Guillermo Biosphere Reserve in the northwest of San Juan province represents the mixed mountain and highland systems in the foothills and mountains of the Andes occupying the west sector of Catamarca, La Rioja, San Juan and Mendoza Provinces. The Biosphere Reserve constitutes two phytogeographical regions: the Chaco and the Andean region.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/guillermo.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-66.87883918495218, -26.39776388647195]
-                                },
-                                'properties': {
-                                    'message': 'Laguna Blanca<br><h5>The Laguna Blanca Biosphere Reserve is a typical treeless Patagonian steppe with crystalline rocks, including some sedimentary rocks with fossils of the genera Ostrea and Trigonia. The Biosphere Reserve contains the Laguna Blanca a saline lake in a main depression, at 1,267 metres above sea level, surrounded by some forest and mountains culminating at over 5,000 m.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/blanca.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-67.77343616416113, -33.73269412746008]
-                                },
-                                'properties': {
-                                    'message': 'Ñacuñán<br><h5>Ñacuñán is located in the Province of Mendoza in the plains at the foot of the Andes. The area consists of semi-arid upland grasslands, shrubby steppe and matorral, and shrubby and herbaceous woodlands, and wetlands 540 metres above sea level with three distinct geomorphological units.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/nacunan.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-58.09947196715154, -34.81832940999505]
-                                },
-                                'properties': {
-                                    'message': 'Pereyra Iraola<br><h5>The Pereyra Iraola Provincial Park is one of the two natural areas that Unesco incorporated as biosphere reserve in 2007. its peculiarity is that it is situated in an urben area, between Buenos Aires and La Plata, and it is also a green area that must be preserved. The objective is to promote the pilot experiences of sustainable development in an area that preserves all the characteristics of the coastal Pampa environment.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/iraola.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-61.63437767069397, -24.25008180559061]
-                                },
-                                'properties': {
-                                    'message': 'Riacho Teuquito<br><h5>Riacho Teuquito is located in the Province of Formosa in the Chaqueña Region in the north of Argentina. The Biosphere Reserve belongs to the Chaco biogeographical region with tropical dry or deciduous forests, particularly quebrachal dominated by Aspidosperma quebracho-blanco and Schinopsis lorentzii in the valleys, matorral scrublands and forests with mattorral, flooded matorral, flodeed savannas, agricultural systems and grazing forests.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/riacho.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-64.39693742983697, -42.62491504444084]
-                                },
-                                'properties': {
-                                    'message': 'Valdés<br><h5>The Valdés Biosphere Reserve encompasses the Patagonian Steppe, Hill Plains and Plateaus, and Argentine Sea eco-regions. It is home to significant biodiversity including highly fragile terrestrial and marine ecosystems, the conservation of which is crucial to addressing the vulnerabilities of key species. Both the Patagonian steppe eco-region and the Argentine Sea have been recognized as important sites and are inscribed on WWF Global 200 list.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/valdez.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-53.957431028746804, -26.90876931390863]
-                                },
-                                'properties': {
-                                    'message': 'Yabotí<br><h5>Yabotí is located in the Brazilian rainforest biogeographical region. The biosphere reserve constitutes a rich subtropical forest ecosystem, with a high diversity of species in the herbaceous, underwood and tree layers.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/yaboti.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-64.79301330536715, -23.142771269489]
-                                },
-                                'properties': {
-                                    'message': 'Las Yungas<br><h5>Las Yungas Biosphere Reserve, located in northwestern Argentina mountainous Andean Range, encompasses a rich diveristy of landscapes from the high Andean mountain forest ecosystems to Chaco Serrano, cloud forests, montane forests, grasslands and agricultural land.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/yungas.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-65.76825789278057, -44.75989805933394]
-                                },
-                                'properties': {
-                                    'message': 'Patagonia Azul<br><h5>The Patagonia Azul Biosphere Reserve is located in the south of the country on the coast of the Chubut province. The reserve encompasses a coastal area with the greatest biodiversity on the Argentina coastline. It also includes important breeding, feeding and migration sites of different species of birds and mammals.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/azul.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-66.0496982513025, -22.36660656844193]
-                                },
-                                'properties': {
-                                    'message': 'Laguna de los Pozuelos-Zona de Amortiguamiento<br><h5>Pozuelos is a typical highland lagoon, with shallow brackish waters and scant vegetation. As its centre the depth is no more than 100 cm and it is located in the middle of a vast high plateau, sorrounded by high mountain chains, acting as a limit to the basin that covers some 380,000 ha at between 3,600 and 4,700 m above sea level.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/amortiguamiento.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-65.99830554046842, -22.34750177938921]
-                                },
-                                'properties': {
-                                    'message': 'Laguna de Pozuelos<br><h5>The Laguna de Pozuelos Biosphere Reserve is part of the highlands of the Southern Central Andes, included within Dinerstien Arid Puna ecosystem, identified as a conservation priority.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/pozuelos.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-67.35913089010181, -14.966705310072284]
-                                },
-                                'properties': {
-                                    'message': 'Pilón-Lajas<br><h5>The Pilón-Lajas Biosphere Reserve is located on the far eastern spur of the Andes. It comprises mixed mountain and highland systems, low hills and Amazonian plains, covered with tropical humid forests, sub-tropical and tropical forest, forests in ancient alluvial terraces, and mountain and valley forests. Some 70 mammal species have been reported including tapir <i>(Tapirus terrestris)<i/>, ring-tailed coati <i>(Nasua nasua)<i/>, spectacled bear <i>(Tremarctos ornatus)<i/>, and jaguar <i>(Panthera onca)<i/>, and 338 species of birds (from the genus Ara, Aratinga, Pyrrhura, Brotegris).</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/pilon.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-66.3060223314419, -14.64488840225704]
-                                },
-                                'properties': {
-                                    'message': 'Estación Biológica del Beni<br><h5>The Beni Biosphere Reserve is located in the Department of Beni, at the convergence of three biogeographical zones: the Amazon, the Chaco and the Cerrado. It comprises diverse forest formations: gallery forests, lowland dense forest and open middle-height forest with tajibo <i>(Tabebuia sp.)<i/> and matorral formations including tuzeque <i>(Machaerium sp.)<i/>, and seasonally flooded savannas.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/estacion.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-71.66612020946104, -30.673987007587687]
-                                },
-                                'properties': {
-                                    'message': 'Bosque Fray Jorge<br><h5>In the middle of the Coquimbo Region, the Fray Jorge Forest surprises for its unique ecosystem and a flora that could be from the south of Chile. The vegetation of this unity is formed by the typical trees and plants of this kind of forests. The fauna of the forest stands out by the presence of more than 80 bird species, and different types of mammals, such as the Andean fox, chingue, quiques and small marsupials.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/fray.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-71.4789486978377, -33.16538603253771]
-                                },
-                                'properties': {
-                                    'message': 'La Campana-Peñuelas<br><h5>This Biosphere Reserve includes the Campana National Park and the Lago Peñuelas National Reserve. The relief is gently undulating with some small hills and several gullies. The highest peaks are El Roble (2,222 metres above sea level), and La Campana (1,920 metres).</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/campana.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-73.09059538210924, -51.0331805138639]
-                                },
-                                'properties': {
-                                    'message': 'Torres del Paine<br><h5>Torres del Paine lies between the Andes Mountains and the Patagonian Steppe in southern Chile giving on to the Atlantic coast. It is an area of great scenic beauty, with many ridges, crags, glaciers, waterfalls, rives, lakes and lagoons.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/torres.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-73.93028612518835, -46.933959719477855]
-                                },
-                                'properties': {
-                                    'message': 'Laguna San Rafael<br><h5>Located in the Valdivian Forest/Chilean Nothofagus biogeographical region, Laguna San Rafael is an area of very varied topography and great scenic beauty. It includes the Continental Patagonian Range with rivers and lakes, the Insular Patagonian Range, the Central Plain and the Patagonian Glaciers.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/rafael.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-69.35419029659364, -18.24484399887003]
-                                },
-                                'properties': {
-                                    'message': 'Lauca<br><h5>The Lauca Biosphere Reserve is situated in the Puna biogeographic region, in the northern part of Chile in the Andean Chain. The area comprises three protected areas: Lauca National Park, Las Vicuñas National Reserve and Salar de Surire Natural Monument. The Biosphere Reserve has high floristic value, representing a large part of Andean biodiversity in Chile.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/lauca.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-69.16816644948418, -55.17147033156983]
-                                },
-                                'properties': {
-                                    'message': 'Cabo de Hornos<br><h5>This Biosphere Reserve is part of the Magallanes Sub-Polar (or Sub-Antartic) Evergreen Rainforest, with a mosaic of contrasting ecosystems and unique and singular characteristics on a world level.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/cabo.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-78.85362995438845, -33.631443890098645]
-                                },
-                                'properties': {
-                                    'message': 'Juan Fernández<br><h5>The Juan Fernandez Biosphere Reserve is situated 650 Km from the Chilean coast in the Pacific Ocean. It includes the whole Archipielago with the islands of Robinson Crusoe, Alexander Selkirk and Santa Clara and all the islets in the area. The Juan Fernandez Archipielago is volcanic in origin, with steep, rugged mountain ranges with deep ravines.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/juan.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-72.23935227321023, -40.522033815702855]
-                                },
-                                'properties': {
-                                    'message': 'Bosques Templados Lluviosos<br> de los Andes Australes<br><h5>The Biosphere Reserve corresponds to a section of the Valdivian eco-region, and is a rich mosaic of ecological systems due to its considerable latitud in a land altitudinal gradients compressed in a narrow belt, givingrise to varied climatic, hydrological and soil conditions and soil condition sand a great variety of species and processes.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/templados.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-71.58385800126015, -38.77200466106946]
-                                },
-                                'properties': {
-                                    'message': 'Araucarias<br><h5>Araucarias has continental characteristics, with great temperature oscillations in the summer, accompanied by rainfall that varies between 2,000 and 3,000 mm a year and in the winter snowfall can reach up to 2 m in some areas.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/araucarias.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-68.47230750638984, 5.255816027039414]
-                                },
-                                'properties': {
-                                    'message': 'El Tuparro<br><h5>El Tuparro could be describe in landscape terms as an extensive green savannah surrounded by large rivers with powerful torrents and golden beaches, small spots of crystalline waters, gallery forests, <i>Moriche Palm</i> swamps and mangrove, besides the large crystalline rock formations in shape of rounded hills. It is calculated the presence of more than 320 bird species; many of them are aquatic.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/tuparro.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-90.776337022008, -0.080710795512696]
-                                },
-                                'properties': {
-                                    'message': 'Galápagos Islands<br><h5>The Galápagos Islands are located 620 miles (1,000 kilometers) from the South American mainland but a world apart from anywhere else on Earth. The archipelago and its surrounding waters, located where three ocean currents converge, are famed for the unique animal species that piqued the interest of Charles Darwin in 1835.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/galapagos.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-79.8681103519422, -2.966936234686965]
-                                },
-                                'properties': {
-                                    'message': 'Macizo del Cajas<br><h5>The Macizo del Cajas Biosphere Reserve contains a large number of ecosystems, ranging from high mountains down to coastal and marine areas along the Pacific. It also includes the El Cajas National Park, which features a tundra vegetation on a spectacular jagged landscape of hills and valleys.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/cajas.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-79.00667753883191, -4.274199552730142]
-                                },
-                                'properties': {
-                                    'message': 'Podocarpus-El Condor<br><h5>The Podocarpus - El Condor Biosphere Reserve covers an area of over 2.6 million acres in southern Ecuador. This area, which includes the Podocarpus National Park, is considered to be one of the most important sites for biodiversity in the world. It containes 3,500 plant species, over 40% are which are endemic or restricted to this area, including an abundance of orchids, bromeliads, ferns and tree species.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/podocarpus.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-76.0551078657633, -1.122025276721751]
-                                },
-                                'properties': {
-                                    'message': 'Yasuni<br><h5>Considered part of the core amazon, Yasuni is located at the crossroads of the Andes, Amazon, and the equator, affording its unique biodiversity. Yasuni is an area of land comprised of Yasuni National Park, Waorani Ethnic Reserve, and an encompassing Untochable Zone, designated to protect indigenous peoples and wildlife from environmental and cultural exploitation. Many indigenous tribes, and over 4,000 plant species and 173 mammals call Yasuni home.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/yasuni.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-79.95622033741418, -4.28415944102404]
-                                },
-                                'properties': {
-                                    'message': 'Bosques de Paz<br><h5>Located in south-western Ecuador and northeast Peru, the site covers a total area of 1,616,988 ha. It includes areas of the western foothills of the Andes, with altitudes up to 3,080 meters, which has resulted in a unique biological diversity with a high degree of endemism. The biosphere reserve includes seasonaly dry forests of Ecuador and Peru that form the heart of the Endemic Region of Tumbes, one of the worlds biodiversity hotspots. This region is home to 59 endemic bird species and 14 of which are endangered.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/paz.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-77.55593661150782, -0.402193357844912]
-                                },
-                                'properties': {
-                                    'message': 'Sumaco-Napo<br><h5>The Sumaco-Napo National Park occupies a warm, humid area between the eastern side of the Sierras and the Amazon basin. Subtropical jungles are present and there are several rivers running through the park. The park lies adjacent to the Cayembe-Coca Ecological Reserve, and is smaller in size, measuring roughly 800 square miles (1287 sq Km). It is an extremely biodiverse area, however, and is home to dwarf deer, giant armadillos, ocelots, and jaguars.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/sumaco.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-55.357354294947015, -24.245735442504017]
-                                },
-                                'properties': {
-                                    'message': 'Mbaracayú<br><h5>Single out by the WWF as one of the 100 most important sites for biodiversity on the planet, the 700-sq-km hectare Mbaracayú Biosphere Reserve is one of Paraguays natural treasures. Consisting of pristine Atlantic Forest and cerrado (savanna) in approximately equal quantities, it is home to more than 400 bird species and a range of large mammals. Bird-watchers will be in search of the bare-throated bellbird (Paraguay national bird), the rare helmeted woodpecker and the endangered black-fronted piping-guan.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/mbaracayu.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-60.40549783358635, -20.06380007125203]
-                                },
-                                'properties': {
-                                    'message': 'El Chaco<br><h5>This 7.5 million-hectare Biosphere Reserve covers a large area in the northern part of the boreal El Chaco system in Paraguay, with ecologically diverse dry forest ecosystems, which are under great pressure to be converted into grazing lands. The Biosphere Reserve covers a series of ecosystems ranging from forest areas, matorral, savannahs and lacustrine and riparian ecosystems, both of permanent and temporary character.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/chaco.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-53.84549886482568, -33.75515177030806]
-                                },
-                                'properties': {
-                                    'message': 'Bañados del Este y Franja Costera<br><h5>The Bañados del Este Biosphere Reserve includes protected areas such as Monumento Histórico y Parque Nacional Fortaleza de Santa Teresa. This Eastern Wetlands region comprises a remarkable complex of ecosystems of high biological diversity and very rich wildlife.</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/banados.png'+'&previewImage=true' />",
-                                }
-                            }, {
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-55.843712946847965, -31.144101639267454]
-                                },
-                                'properties': {
-
-                                    'message': 'Bioma Pampa-Quebradas del Norte<br><h5>The region function as a biological corridor for tropical species entering into Uruguayan territory. Rare species of amphibians and reptiles in the area include <i>Hyla uruguaya</i> (the Uruguayan frog), <i>Melanophryniscus devinceszii</i> (the Toad of Devincenzi) and <i>Crotalus durissus terrificus</i> (the South American rattlesnake).</h5><br>',
-                                    'images':
-                                        "<a href='" + "' target=\"_blank\">" + "<img src='pics/bioma_pampa.png' class='center' +'&previewImage=true' />",
-                                },
-
-                            }]
+                    map.addLayer({
+                        'id': 'centroid',
+                        'type': 'symbol',
+                        'source': {
+                            'type': 'geojson',
+                            'data': {
+                                'type': 'FeatureCollection',
+                                'features': [{
+                                    'type': 'Feature',
+                                    'properties': {
+                                        'message': 'San Guillermo<br><h5>San Guillermo Biosphere Reserve in the northwest of San Juan province represents the mixed mountain and highland systems in the foothills and mountains of the Andes occupying the west sector of Catamarca, La Rioja, San Juan and Mendoza Provinces. The Biosphere Reserve constitutes two phytogeographical regions: the Chaco and the Andean region.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/guillermo.png'+'&previewImage=true' />",
+                                    },
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-69.26649821726008, -29.23805445056377]
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-71.52821572725932, -41.42980870291554]
+                                    },
+                                    'properties': {
+                                        'message': 'Andino Norpatagonica<br><h5>The landscape is typically mountainous with important influences from the last glaciations, dominated by the Andes Mountains in the western areas and Sub-Andean plains and plateaus eastward. In the mountain area the presence of large bodies of water is highlighted such as the lakes: Nahuel Huapi, Lácar, Traful, Mascardi, Gutierrez, Rivadavia, Puelo, Futalaufquen, among others, and a network of drainage of high density in wide alluvial plains and with various levels of terraces.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/andino.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-57.332250969989744, -37.607852996086244]
+                                    },
+                                    'properties': {
+                                        'message': 'Mar Chiquito<br><h5>This Biosphere Reserve consists of the Parque Atlántico Mar Chiquita, situated in the Chaco savanna region just north of Mar de Plata. It contains a large permanent, hyper-saline lake, up to 4 metres deep, with some small islands and brackish marshes at the mouth of the rivers which flow into the lake.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/mar.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-57.2638535066454, -35.33967314388254]
+                                    },
+                                    'properties': {
+                                        'message': 'Bahía de Samborombón<br><h5>The Bahía de Samborombón represents one of the last natural remnants of the pampas vegetation which once grew throughout central-eastern Argentina, before the Europeans introduced soft pastures for cattle grazing and started to drain the wet pampas. Hence it is one of the two areas in the country with significant populations of the threatened Pampas Deer <i>(Ozotoceros bezoarticus celer).<i/></h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/bay.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-58.55443296080529, -34.139298884789376]
+                                    },
+                                    'properties': {
+                                        'message': 'Delta del Paraná<br><h5>This Biosphere Reserve is a coastal freshwater delta of the Paraná River located just north of Buenos Aires. It is an area rich in biodiversity including species that find their southern most limit of distribution, which makes the area interesting for the conservation of genetic diversity.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/parana.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-58.233030186090055, -26.32356351826899]
+                                    },
+                                    'properties': {
+                                        'message': 'Laguna Oca del Río Paraguay<br><h5>The Laguna Oca del Río Paraguay Reserve is located in Formosa Province in northern Argentina. The natural vegetation of the reserve comprises gallery forests, wetlands and savannas along the meanders and oxbow lakes of the Paraguay River.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/oca.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-69.57972697405327, -29.15190868518151]
+                                    },
+                                    'properties': {
+                                        'message': 'San Guillermo<br><h5>San Guillermo Biosphere Reserve in the northwest of San Juan province represents the mixed mountain and highland systems in the foothills and mountains of the Andes occupying the west sector of Catamarca, La Rioja, San Juan and Mendoza Provinces. The Biosphere Reserve constitutes two phytogeographical regions: the Chaco and the Andean region.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/guillermo.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-66.87883918495218, -26.39776388647195]
+                                    },
+                                    'properties': {
+                                        'message': 'Laguna Blanca<br><h5>The Laguna Blanca Biosphere Reserve is a typical treeless Patagonian steppe with crystalline rocks, including some sedimentary rocks with fossils of the genera Ostrea and Trigonia. The Biosphere Reserve contains the Laguna Blanca a saline lake in a main depression, at 1,267 metres above sea level, surrounded by some forest and mountains culminating at over 5,000 m.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/blanca.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-67.77343616416113, -33.73269412746008]
+                                    },
+                                    'properties': {
+                                        'message': 'Ñacuñán<br><h5>Ñacuñán is located in the Province of Mendoza in the plains at the foot of the Andes. The area consists of semi-arid upland grasslands, shrubby steppe and matorral, and shrubby and herbaceous woodlands, and wetlands 540 metres above sea level with three distinct geomorphological units.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/nacunan.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-58.09947196715154, -34.81832940999505]
+                                    },
+                                    'properties': {
+                                        'message': 'Pereyra Iraola<br><h5>The Pereyra Iraola Provincial Park is one of the two natural areas that Unesco incorporated as biosphere reserve in 2007. its peculiarity is that it is situated in an urben area, between Buenos Aires and La Plata, and it is also a green area that must be preserved. The objective is to promote the pilot experiences of sustainable development in an area that preserves all the characteristics of the coastal Pampa environment.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/iraola.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-61.63437767069397, -24.25008180559061]
+                                    },
+                                    'properties': {
+                                        'message': 'Riacho Teuquito<br><h5>Riacho Teuquito is located in the Province of Formosa in the Chaqueña Region in the north of Argentina. The Biosphere Reserve belongs to the Chaco biogeographical region with tropical dry or deciduous forests, particularly quebrachal dominated by Aspidosperma quebracho-blanco and Schinopsis lorentzii in the valleys, matorral scrublands and forests with mattorral, flooded matorral, flodeed savannas, agricultural systems and grazing forests.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/riacho.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-64.39693742983697, -42.62491504444084]
+                                    },
+                                    'properties': {
+                                        'message': 'Valdés<br><h5>The Valdés Biosphere Reserve encompasses the Patagonian Steppe, Hill Plains and Plateaus, and Argentine Sea eco-regions. It is home to significant biodiversity including highly fragile terrestrial and marine ecosystems, the conservation of which is crucial to addressing the vulnerabilities of key species. Both the Patagonian steppe eco-region and the Argentine Sea have been recognized as important sites and are inscribed on WWF Global 200 list.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/valdez.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-53.957431028746804, -26.90876931390863]
+                                    },
+                                    'properties': {
+                                        'message': 'Yabotí<br><h5>Yabotí is located in the Brazilian rainforest biogeographical region. The biosphere reserve constitutes a rich subtropical forest ecosystem, with a high diversity of species in the herbaceous, underwood and tree layers.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/yaboti.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-64.79301330536715, -23.142771269489]
+                                    },
+                                    'properties': {
+                                        'message': 'Las Yungas<br><h5>Las Yungas Biosphere Reserve, located in northwestern Argentina mountainous Andean Range, encompasses a rich diveristy of landscapes from the high Andean mountain forest ecosystems to Chaco Serrano, cloud forests, montane forests, grasslands and agricultural land.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/yungas.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-65.76825789278057, -44.75989805933394]
+                                    },
+                                    'properties': {
+                                        'message': 'Patagonia Azul<br><h5>The Patagonia Azul Biosphere Reserve is located in the south of the country on the coast of the Chubut province. The reserve encompasses a coastal area with the greatest biodiversity on the Argentina coastline. It also includes important breeding, feeding and migration sites of different species of birds and mammals.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/azul.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-66.0496982513025, -22.36660656844193]
+                                    },
+                                    'properties': {
+                                        'message': 'Laguna de los Pozuelos-Zona de Amortiguamiento<br><h5>Pozuelos is a typical highland lagoon, with shallow brackish waters and scant vegetation. As its centre the depth is no more than 100 cm and it is located in the middle of a vast high plateau, sorrounded by high mountain chains, acting as a limit to the basin that covers some 380,000 ha at between 3,600 and 4,700 m above sea level.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/amortiguamiento.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-65.99830554046842, -22.34750177938921]
+                                    },
+                                    'properties': {
+                                        'message': 'Laguna de Pozuelos<br><h5>The Laguna de Pozuelos Biosphere Reserve is part of the highlands of the Southern Central Andes, included within Dinerstien Arid Puna ecosystem, identified as a conservation priority.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/pozuelos.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-67.35913089010181, -14.966705310072284]
+                                    },
+                                    'properties': {
+                                        'message': 'Pilón-Lajas<br><h5>The Pilón-Lajas Biosphere Reserve is located on the far eastern spur of the Andes. It comprises mixed mountain and highland systems, low hills and Amazonian plains, covered with tropical humid forests, sub-tropical and tropical forest, forests in ancient alluvial terraces, and mountain and valley forests. Some 70 mammal species have been reported including tapir <i>(Tapirus terrestris)<i/>, ring-tailed coati <i>(Nasua nasua)<i/>, spectacled bear <i>(Tremarctos ornatus)<i/>, and jaguar <i>(Panthera onca)<i/>, and 338 species of birds (from the genus Ara, Aratinga, Pyrrhura, Brotegris).</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/pilon.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-66.3060223314419, -14.64488840225704]
+                                    },
+                                    'properties': {
+                                        'message': 'Estación Biológica del Beni<br><h5>The Beni Biosphere Reserve is located in the Department of Beni, at the convergence of three biogeographical zones: the Amazon, the Chaco and the Cerrado. It comprises diverse forest formations: gallery forests, lowland dense forest and open middle-height forest with tajibo <i>(Tabebuia sp.)<i/> and matorral formations including tuzeque <i>(Machaerium sp.)<i/>, and seasonally flooded savannas.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/estacion.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-71.66612020946104, -30.673987007587687]
+                                    },
+                                    'properties': {
+                                        'message': 'Bosque Fray Jorge<br><h5>In the middle of the Coquimbo Region, the Fray Jorge Forest surprises for its unique ecosystem and a flora that could be from the south of Chile. The vegetation of this unity is formed by the typical trees and plants of this kind of forests. The fauna of the forest stands out by the presence of more than 80 bird species, and different types of mammals, such as the Andean fox, chingue, quiques and small marsupials.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/fray.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-71.4789486978377, -33.16538603253771]
+                                    },
+                                    'properties': {
+                                        'message': 'La Campana-Peñuelas<br><h5>This Biosphere Reserve includes the Campana National Park and the Lago Peñuelas National Reserve. The relief is gently undulating with some small hills and several gullies. The highest peaks are El Roble (2,222 metres above sea level), and La Campana (1,920 metres).</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/campana.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-73.09059538210924, -51.0331805138639]
+                                    },
+                                    'properties': {
+                                        'message': 'Torres del Paine<br><h5>Torres del Paine lies between the Andes Mountains and the Patagonian Steppe in southern Chile giving on to the Atlantic coast. It is an area of great scenic beauty, with many ridges, crags, glaciers, waterfalls, rives, lakes and lagoons.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/torres.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-73.93028612518835, -46.933959719477855]
+                                    },
+                                    'properties': {
+                                        'message': 'Laguna San Rafael<br><h5>Located in the Valdivian Forest/Chilean Nothofagus biogeographical region, Laguna San Rafael is an area of very varied topography and great scenic beauty. It includes the Continental Patagonian Range with rivers and lakes, the Insular Patagonian Range, the Central Plain and the Patagonian Glaciers.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/rafael.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-69.35419029659364, -18.24484399887003]
+                                    },
+                                    'properties': {
+                                        'message': 'Lauca<br><h5>The Lauca Biosphere Reserve is situated in the Puna biogeographic region, in the northern part of Chile in the Andean Chain. The area comprises three protected areas: Lauca National Park, Las Vicuñas National Reserve and Salar de Surire Natural Monument. The Biosphere Reserve has high floristic value, representing a large part of Andean biodiversity in Chile.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/lauca.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-69.16816644948418, -55.17147033156983]
+                                    },
+                                    'properties': {
+                                        'message': 'Cabo de Hornos<br><h5>This Biosphere Reserve is part of the Magallanes Sub-Polar (or Sub-Antartic) Evergreen Rainforest, with a mosaic of contrasting ecosystems and unique and singular characteristics on a world level.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/cabo.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-78.85362995438845, -33.631443890098645]
+                                    },
+                                    'properties': {
+                                        'message': 'Juan Fernández<br><h5>The Juan Fernandez Biosphere Reserve is situated 650 Km from the Chilean coast in the Pacific Ocean. It includes the whole Archipielago with the islands of Robinson Crusoe, Alexander Selkirk and Santa Clara and all the islets in the area. The Juan Fernandez Archipielago is volcanic in origin, with steep, rugged mountain ranges with deep ravines.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/juan.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-72.23935227321023, -40.522033815702855]
+                                    },
+                                    'properties': {
+                                        'message': 'Bosques Templados Lluviosos<br> de los Andes Australes<br><h5>The Biosphere Reserve corresponds to a section of the Valdivian eco-region, and is a rich mosaic of ecological systems due to its considerable latitud in a land altitudinal gradients compressed in a narrow belt, givingrise to varied climatic, hydrological and soil conditions and soil condition sand a great variety of species and processes.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/templados.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-71.58385800126015, -38.77200466106946]
+                                    },
+                                    'properties': {
+                                        'message': 'Araucarias<br><h5>Araucarias has continental characteristics, with great temperature oscillations in the summer, accompanied by rainfall that varies between 2,000 and 3,000 mm a year and in the winter snowfall can reach up to 2 m in some areas.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/araucarias.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-68.47230750638984, 5.255816027039414]
+                                    },
+                                    'properties': {
+                                        'message': 'El Tuparro<br><h5>El Tuparro could be describe in landscape terms as an extensive green savannah surrounded by large rivers with powerful torrents and golden beaches, small spots of crystalline waters, gallery forests, <i>Moriche Palm</i> swamps and mangrove, besides the large crystalline rock formations in shape of rounded hills. It is calculated the presence of more than 320 bird species; many of them are aquatic.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/tuparro.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-90.776337022008, -0.080710795512696]
+                                    },
+                                    'properties': {
+                                        'message': 'Galápagos Islands<br><h5>The Galápagos Islands are located 620 miles (1,000 kilometers) from the South American mainland but a world apart from anywhere else on Earth. The archipelago and its surrounding waters, located where three ocean currents converge, are famed for the unique animal species that piqued the interest of Charles Darwin in 1835.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/galapagos.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-79.8681103519422, -2.966936234686965]
+                                    },
+                                    'properties': {
+                                        'message': 'Macizo del Cajas<br><h5>The Macizo del Cajas Biosphere Reserve contains a large number of ecosystems, ranging from high mountains down to coastal and marine areas along the Pacific. It also includes the El Cajas National Park, which features a tundra vegetation on a spectacular jagged landscape of hills and valleys.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/cajas.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-79.00667753883191, -4.274199552730142]
+                                    },
+                                    'properties': {
+                                        'message': 'Podocarpus-El Condor<br><h5>The Podocarpus - El Condor Biosphere Reserve covers an area of over 2.6 million acres in southern Ecuador. This area, which includes the Podocarpus National Park, is considered to be one of the most important sites for biodiversity in the world. It containes 3,500 plant species, over 40% are which are endemic or restricted to this area, including an abundance of orchids, bromeliads, ferns and tree species.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/podocarpus.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-76.0551078657633, -1.122025276721751]
+                                    },
+                                    'properties': {
+                                        'message': 'Yasuni<br><h5>Considered part of the core amazon, Yasuni is located at the crossroads of the Andes, Amazon, and the equator, affording its unique biodiversity. Yasuni is an area of land comprised of Yasuni National Park, Waorani Ethnic Reserve, and an encompassing Untochable Zone, designated to protect indigenous peoples and wildlife from environmental and cultural exploitation. Many indigenous tribes, and over 4,000 plant species and 173 mammals call Yasuni home.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/yasuni.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-79.95622033741418, -4.28415944102404]
+                                    },
+                                    'properties': {
+                                        'message': 'Bosques de Paz<br><h5>Located in south-western Ecuador and northeast Peru, the site covers a total area of 1,616,988 ha. It includes areas of the western foothills of the Andes, with altitudes up to 3,080 meters, which has resulted in a unique biological diversity with a high degree of endemism. The biosphere reserve includes seasonaly dry forests of Ecuador and Peru that form the heart of the Endemic Region of Tumbes, one of the worlds biodiversity hotspots. This region is home to 59 endemic bird species and 14 of which are endangered.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/paz.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-77.55593661150782, -0.402193357844912]
+                                    },
+                                    'properties': {
+                                        'message': 'Sumaco-Napo<br><h5>The Sumaco-Napo National Park occupies a warm, humid area between the eastern side of the Sierras and the Amazon basin. Subtropical jungles are present and there are several rivers running through the park. The park lies adjacent to the Cayembe-Coca Ecological Reserve, and is smaller in size, measuring roughly 800 square miles (1287 sq Km). It is an extremely biodiverse area, however, and is home to dwarf deer, giant armadillos, ocelots, and jaguars.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/sumaco.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-55.357354294947015, -24.245735442504017]
+                                    },
+                                    'properties': {
+                                        'message': 'Mbaracayú<br><h5>Single out by the WWF as one of the 100 most important sites for biodiversity on the planet, the 700-sq-km hectare Mbaracayú Biosphere Reserve is one of Paraguays natural treasures. Consisting of pristine Atlantic Forest and cerrado (savanna) in approximately equal quantities, it is home to more than 400 bird species and a range of large mammals. Bird-watchers will be in search of the bare-throated bellbird (Paraguay national bird), the rare helmeted woodpecker and the endangered black-fronted piping-guan.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/mbaracayu.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-60.40549783358635, -20.06380007125203]
+                                    },
+                                    'properties': {
+                                        'message': 'El Chaco<br><h5>This 7.5 million-hectare Biosphere Reserve covers a large area in the northern part of the boreal El Chaco system in Paraguay, with ecologically diverse dry forest ecosystems, which are under great pressure to be converted into grazing lands. The Biosphere Reserve covers a series of ecosystems ranging from forest areas, matorral, savannahs and lacustrine and riparian ecosystems, both of permanent and temporary character.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/chaco.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-53.84549886482568, -33.75515177030806]
+                                    },
+                                    'properties': {
+                                        'message': 'Bañados del Este y Franja Costera<br><h5>The Bañados del Este Biosphere Reserve includes protected areas such as Monumento Histórico y Parque Nacional Fortaleza de Santa Teresa. This Eastern Wetlands region comprises a remarkable complex of ecosystems of high biological diversity and very rich wildlife.</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/banados.png'+'&previewImage=true' />",
+                                    }
+                                }, {
+                                    'type': 'Feature',
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [-55.843712946847965, -31.144101639267454]
+                                    },
+                                    'properties': {
+                                        'message': 'Bioma Pampa-Quebradas del Norte<br><h5>The region function as a biological corridor for tropical species entering into Uruguayan territory. Rare species of amphibians and reptiles in the area include <i>Hyla uruguaya</i> (the Uruguayan frog), <i>Melanophryniscus devinceszii</i> (the Toad of Devincenzi) and <i>Crotalus durissus terrificus</i> (the South American rattlesnake).</h5><br>',
+                                        'images':
+                                            "<a href='" + "' target=\"_blank\">" + "<img src='pics/bioma_pampa.png' class='center' +'&previewImage=true' />",
+                                    },
+                                }]
+                            }
+                        },
+                        "layout": {
+                            "icon-image": 'unesco',
+                            'icon-size': 0.25,
                         }
-                    }
+                    });
                 });
 
-                map.on('click', 'centroids', function (e) {
+                map.on('click', 'centroid', function (e) {
                     var coordinates = e.features[0].geometry.coordinates.slice();
-                    console.log(coordinates);
                     map.flyTo({ center: e.lngLat, zoom: 6 });
                     var images = e.features[0].properties.images;
                     var message = e.features[0].properties.message;
@@ -1361,6 +1338,12 @@ console.log(data);
                         .setHTML('<h2>' + message + '</h2>' + images)
                         .addTo(map)
                 });
+                map.off('click', 'centroid', function () {
+                    map.getCanvas().style.cursor = '';
+                    map.flyTo({center: [-80, -20]});
+                    popup.remove();
+                });
+
             } // end of galleryMap 
 
         }); //end of map.on('load')
@@ -1632,7 +1615,8 @@ console.log(data);
             }
         );
 
-        var toggleableLayerIds = ['marker'];
+
+        var toggleableLayerIds = ['centroid'];
         for (var i = 0; i < toggleableLayerIds.length; i++) {
             var id = toggleableLayerIds[i];
             var img = document.createElement('img');
@@ -1681,4 +1665,4 @@ console.log(data);
 
 </body>
 
-</html
+</html>
