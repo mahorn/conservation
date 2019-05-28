@@ -880,7 +880,6 @@
                 map.loadImage('pics/unesco.png', function (error, image) {
                     if (error) throw error;
                     map.addImage('unesco', image);
-
                     map.addLayer({
                         'id': 'centroid',
                         'type': 'symbol',
@@ -1323,7 +1322,8 @@
                         "layout": {
                             "icon-image": 'unesco',
                             'icon-size': 0.25,
-                        }
+                            'visibility': 'none',
+                        },
                     });
                 });
 
@@ -1337,16 +1337,37 @@
                         .setLngLat(coordinates)
                         .setHTML('<h2>' + message + '</h2>' + images)
                         .addTo(map)
+                        .on('close', function () {
+                            map.flyTo({ center: [-80, -15], zoom: 2.6 });
+                        });
+                    $('#gallery').hide();
                 });
-                map.off('click', 'centroid', function () {
-                    map.getCanvas().style.cursor = '';
-                    map.flyTo({center: [-80, -20]});
-                    popup.remove();
-                });
-
             } // end of galleryMap 
 
+            d3.json('data/polygon_unesco.json')
+                .then(function (data) {
+                    polygon_unescoMap(data);
+                });
+
+            function polygon_unescoMap(data) {
+                map.addLayer({
+                    'id': 'polygon_unesco',
+                    'type': 'fill',
+                    'source': {
+                        'type': 'geojson',
+                        'data': data,
+                    },
+                    'paint': {
+                        'fill-color': '#505160'
+                    },
+                    "layout": {
+                        'visibility': 'none',
+                    },
+                });
+            }
+
         }); //end of map.on('load')
+
 
         // STORY CHAPTER //
         var currentSelected = $('#icon-story').click(function () {
@@ -1362,6 +1383,8 @@
                     return t;
                 }
             });
+            map.setLayoutProperty('centroid', 'visibility', 'none'),
+            map.setLayoutProperty('polygon_unesco', 'visibility', 'none')
         });
 
         var chapters = {
@@ -1463,6 +1486,10 @@
                     return t;
                 }
             });
+            map.setLayoutProperty('centroid', 'visibility', 'visible'),
+            map.setLayoutProperty('polygon_unesco', 'visibility', 'visible'),
+            map.setLayoutProperty('polygon', 'visibility', 'none'),
+            map.setLayoutProperty('points', 'visibility', 'none')
         });
 
         d3.selectAll('#gallery input').on('change', function () {
@@ -1476,6 +1503,10 @@
                     zoom: 2.6
                 })
             );
+            map.setLayoutProperty('centroid', 'visibility', 'none'),
+            map.setLayoutProperty('polygon_unesco', 'visibility', 'none'),
+            map.setLayoutProperty('polygon', 'visibility', 'visible'),
+            map.setLayoutProperty('points', 'visibility', 'visible')
         });
         $('#icon-explore').off('click', endClicked);
 
