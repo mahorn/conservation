@@ -531,7 +531,7 @@
         <div class='row'>
             <div class='col-md-12 mt30'>
                 <p class='title-explore h5 font-weight-bold text-center mr24'>EXPLORE</p>
-                <p class='subtitle-explore my-4 text-center mr6'>Click on radio buttons to
+                <p class='subtitle-explore my-3 text-center mr6'>Click on radio buttons to
                     select on/off categories:</p>
                 <div class='ml24'>
                     <overlay id='first' class='section'>
@@ -585,9 +585,14 @@
                             <label for="Assigned"><span class="category">Not Assigned</span></span>
                             </label>
                         </div>
+                        <div class="container">
+                            <input type="radio" name='heritage' value="IUCN_CAT" id='IUCN_CAT'>
+                            <label for="IUCN_CAT"><span class="category">All IUCN categories</span></span>
+                            </label>
+                        </div>
                     </overlay>
                 </div>
-                <p class='subtitle-explore my-4 text-center mr6'>Click on icons to select on/off layers:</p>
+                <p class='subtitle-explore my-3 text-center mr6'>Click on icons to select on/off layers:</p>
                 <div class='ml36 mt30'>
                     <div id='polygon'></div>
                     <div id='point'></div>
@@ -688,16 +693,6 @@
             'Not Assigned': '#68aabc',
         }
 
-        var unesco = {
-            'ARG': '#505160',
-            'BOL': '#68829e',
-            'CHL': '#aebd38',
-            'COL': '#598234',
-            'ECU': '#7da3a1',
-            'PRY': '#34675c',
-            'URY': '#86ac41',
-        }
-
         map.on('load', function () {
             d3.json('data/polygons.json')
                 .then(function (data) {
@@ -712,7 +707,7 @@
             function polygonsMap(data) {
                 var geojson = topojson.feature(data, data.objects.merge_files_sim);
                 geojson.features.forEach(function (feature) {
-                    // var designation = feature.properties.DESIG_ENG;
+
                 });
 
                 map.addLayer({
@@ -748,7 +743,6 @@
                 map.on('mousemove', 'polygon', function (e) {
                     var features = map.queryRenderedFeatures(e.lngLat);
                     map.getCanvas().style.cursor = 'pointer';
-                    // map.flyTo({center: e.lngLat, zoom: 6});
                     popup.setLngLat(e.lngLat)
                         .setHTML(String('Name: ' + e.features[0].properties.NAME + '<br>' + 'IUCN Category: ' + e.features[0].properties.IUCN_CAT + '<br>' + 'Designation: ' + e.features[0].properties.DESIG_ENG).toLocaleString())
                         .addTo(map)
@@ -816,8 +810,8 @@
                         'type': 'geojson',
                         'data': data,
                         'cluster': true,
-                        'clusterMaxZoom': 3, // Max zoom to cluster points on
-                        'clusterRadius': 30 // Radius of each cluster when clustering points (defaults to 50)
+                        'clusterMaxZoom': 3,
+                        'clusterRadius': 30
                     },
                     'paint': {
                         'circle-color': [
@@ -1321,7 +1315,7 @@
                         },
                         "layout": {
                             "icon-image": 'unesco',
-                            'icon-size': 0.25,
+                            'icon-size': 0.28,
                             'visibility': 'none',
                         },
                     });
@@ -1333,12 +1327,18 @@
                     var images = e.features[0].properties.images;
                     var message = e.features[0].properties.message;
                     //  window.alert('Biosphere Reserves in South America')
-                    new mapboxgl.Popup()
+                    new mapboxgl.Popup({
+                        anchor: 'center'
+                    })
                         .setLngLat(coordinates)
                         .setHTML('<h2>' + message + '</h2>' + images)
                         .addTo(map)
                         .on('close', function () {
-                            map.flyTo({ center: [-80, -15], zoom: 2.6 });
+                            map.flyTo({
+                                center: [-60, -20], zoom: 2.8, speed: 0.8, curve: 2, easing: function (t) {
+                                    return t;
+                                }
+                            });
                         });
                     $('#gallery').hide();
                 });
@@ -1358,7 +1358,8 @@
                         'data': data,
                     },
                     'paint': {
-                        'fill-color': '#505160'
+                        'fill-color': '#86ac41',
+                        'fill-opacity': .6,
                     },
                     "layout": {
                         'visibility': 'none',
@@ -1367,7 +1368,6 @@
             }
 
         }); //end of map.on('load')
-
 
         // STORY CHAPTER //
         var currentSelected = $('#icon-story').click(function () {
@@ -1384,7 +1384,7 @@
                 }
             });
             map.setLayoutProperty('centroid', 'visibility', 'none'),
-            map.setLayoutProperty('polygon_unesco', 'visibility', 'none')
+                map.setLayoutProperty('polygon_unesco', 'visibility', 'none')
         });
 
         var chapters = {
@@ -1487,9 +1487,9 @@
                 }
             });
             map.setLayoutProperty('centroid', 'visibility', 'visible'),
-            map.setLayoutProperty('polygon_unesco', 'visibility', 'visible'),
-            map.setLayoutProperty('polygon', 'visibility', 'none'),
-            map.setLayoutProperty('points', 'visibility', 'none')
+                map.setLayoutProperty('polygon_unesco', 'visibility', 'visible'),
+                map.setLayoutProperty('polygon', 'visibility', 'none'),
+                map.setLayoutProperty('points', 'visibility', 'none')
         });
 
         d3.selectAll('#gallery input').on('change', function () {
@@ -1499,14 +1499,14 @@
         // EXPLORE CHAPTER //
         var endClicked = $('#icon-explore').on('click', function () {
             $('#explore').toggle(
-                map.fitBounds([-75, -10, -25, -15], {
+                map.fitBounds([-60, -20, -25, -15], {
                     zoom: 2.6
                 })
             );
             map.setLayoutProperty('centroid', 'visibility', 'none'),
-            map.setLayoutProperty('polygon_unesco', 'visibility', 'none'),
-            map.setLayoutProperty('polygon', 'visibility', 'visible'),
-            map.setLayoutProperty('points', 'visibility', 'visible')
+                map.setLayoutProperty('polygon_unesco', 'visibility', 'none'),
+                map.setLayoutProperty('polygon', 'visibility', 'visible'),
+                map.setLayoutProperty('points', 'visibility', 'visible')
         });
         $('#icon-explore').off('click', endClicked);
 
@@ -1573,6 +1573,22 @@
                         map.setPaintProperty('polygon', 'fill-opacity', [
                             'match', ['get', 'IUCN_CAT'],
                             'Not Assigned', .8,
+                            0
+                        ]);
+                    } else if (this.value === 'IUCN_CAT') {
+                        map.setPaintProperty('polygon', 'fill-opacity', [
+                            'match', ['get', 'IUCN_CAT'],
+                            'Ia', .8,
+                            'Ib', .8,
+                            'II', .8,
+                            'III', .8,
+                            'IV', .8,
+                            'V', .8,
+                            'VI', .8,
+                            'Not Reported', .8,
+                            'Not Applicable', .8,
+                            'Not Assigned', .8,
+                            'ccc', .8,
                             0
                         ]);
                     }
