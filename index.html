@@ -727,9 +727,7 @@
 
             function polygonsMap(data) {
                 var geojson = topojson.feature(data, data.objects.merge_files_sim);
-                geojson.features.forEach(function(feature) {
-
-                });
+                geojson.features.forEach(function(feature) {});
 
                 map.addLayer({
                     'id': 'polygon',
@@ -759,7 +757,7 @@
                 var popup = new mapboxgl.Popup({
                     closeButton: false,
                     closeOnClick: false
-                })
+                });
 
                 map.on('mousemove', 'polygon', function(e) {
                     var features = map.queryRenderedFeatures(e.lngLat);
@@ -895,7 +893,8 @@
             function galleryMap(data) {
                 data.features.forEach(function(feature) {
                     var unesco = feature.properties.ISO3;
-                })
+                });
+
                 map.loadImage('pics/unesco.png', function(error, image) {
                     if (error) throw error;
                     map.addImage('unesco', image);
@@ -1484,6 +1483,7 @@
                     return t;
                 }
             });
+
             map.setLayoutProperty('centroid', 'visibility', 'visible'),
                 map.setLayoutProperty('polygon_unesco', 'visibility', 'visible'),
                 map.setLayoutProperty('polygon', 'visibility', 'none'),
@@ -1537,7 +1537,7 @@
                     }
                 })
             })
-        }
+        } // end function
 
         // EXPLORE CHAPTER //
         var endClicked = $('#icon-explore').on('click', function() {
@@ -1747,6 +1747,11 @@
                 currentSelected.classList.remove('selected');
             }
         });
+
+        // document.getElementbyId('language').addEventListener('click', function (event) {
+        //     var language = event.target.id.substr('language-'.length);
+        //     map.setLayoutProperty('polygon', 'IUCN_CAT', ['get', 'name_' + language]);
+        // });
     </script>
 
 </body>
