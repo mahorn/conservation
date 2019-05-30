@@ -347,7 +347,7 @@
                     are not isolates entities, their ability to deliver positive outcomes is affected by their surroundings, and they can only work if they are governed and managed as part of the wider landscape, integrated into development strategies
                     and considered across all sectors of society.<br><br>The World Database on Protected Areas (WDPA), a joint effort between the International Union for Conservation of Nature (IUCN) and the United Nations Environment
                     Programme (UNEP), is the only globally authoritative database on marine and terrestrial protected areas of the world. It is compiled and managed by UNEP-WCMC in collaboration with IUCN.<br><br>
-                    <p class='text-right color-green-faint'>Map Author:Maria Renee Horn</a><br>Data:
+                    <p class='text-right color-green-faint'>Map Author: Maria Renee Horn</a><br>Data:
                         <a target="_blank" href="https://www.protectedplanet.net">World Database on Protected Areas</a>-
                         <a target="_blank" href="https://www.iucn.org/theme/protected-areas/about/protected-area-categories">IUCN
                             Protected Area Categories</a>
@@ -520,37 +520,37 @@
                         <div class="container">
                             <input type="radio" name="country" value="ARG" id="ARG">
                             <label for="ARG"><span class="category">Argentina</span></span>
-                        </label>
+                            </label>
                         </div>
                         <div class="container">
                             <input type="radio" name="country" value="BOL" id="BOL">
                             <label for="BOL"><span class="category">Bolivia</span></span>
-                        </label>
+                            </label>
                         </div>
                         <div class="container">
                             <input type="radio" name="country" value="CHL" id="CHL">
                             <label for="CHL"><span class="category">Chile</span></span>
-                        </label>
+                            </label>
                         </div>
                         <div class="container">
                             <input type="radio" name="country" value="COL" id="COL">
                             <label for="COL"><span class="category">Colombia</span></span>
-                        </label>
+                            </label>
                         </div>
                         <div class="container">
                             <input type="radio" name="country" value="ECU" id="ECU">
                             <label for="ECU"><span class="category">Ecuador</span></span>
-                        </label>
+                            </label>
                         </div>
                         <div class="container">
                             <input type="radio" name="country" value="PRY" id="PRY">
                             <label for="PRY"><span class="category">Paraguay</span></span>
-                        </label>
+                            </label>
                         </div>
                         <div class="container">
                             <input type="radio" name="country" value="URY" id="URY">
                             <label for="URY"><span class="category">Uruguay</span></span>
-                        </label>
+                            </label>
                         </div>
                     </overlay>
                 </div>
@@ -679,7 +679,8 @@
                     <strong> management objectives:</strong><br><br><strong>Ia</strong> - Strict Nature Reserve
                     <br><strong>Ib</strong> - Wilderness Area<br><strong>II</strong> - National Park
                     <br><strong>III</strong> - National Monument or Feature<br><strong>IV</strong> - Habitat/Species Management Area<br><strong>V</strong> - Protected Landscape/Seascape
-                    <br><strong>VI</strong> - Protected Area With Sustainable Use Of Natural Resources<br><strong>Not Reported<br><strong>Not
+                    <br><strong>VI</strong> - Protected Area With Sustainable Use Of Natural Resources<br><strong>Not
+                        Reported<br><strong>Not
                             Applicable</strong><br>Not Assigned
                     <p class='text-right color-green-faint'>Data:</a>
                         <a target="_blank" href="https://www.iucn.org/theme/protected-areas/about/protected-area-categories">IUCN
@@ -1142,7 +1143,7 @@
                                         'coordinates': [-78.85362995438845, -33.631443890098645]
                                     },
                                     'properties': {
-                                        'message': 'Juan Fernández<h5><center>CHILE</center></h5><br><h5>The Juan Fernandez Biosphere Reserve is situated 650 Km from the Chilean coast in the Pacific Ocean. It includes the whole Archipelago with the islands of Robinson Crusoe, Alexander Selkirk and Santa Clara and all the islets in the area. The Juan Fernandez Archipelago is volcanic in origin, with steep, rugged mountain ranges with deep ravines.</h5><br>',
+                                        'message': 'Juan Fernández<h5><center>CHILE</center></h5><br><h5>The Juan Fernandez Biosphere Reserve is situated 650 Km from the Chilean coast in the Pacific Ocean. It includes the whole Archipelago with the islands of Robinson Crusoe, Alexander Selkirk, Santa Clara and, all the islets in the area. The Juan Fernandez Archipelago is volcanic in origin, with steep, rugged mountain ranges with deep ravines.</h5><br>',
                                         'images': "<a href='" + "' target=\"_blank\">" + "<img src='pics/juan.png'+'&previewImage=true' />",
                                     }
                                 }, {
@@ -1288,6 +1289,8 @@
 
                 map.on('click', 'centroid', function(e) {
                     var coordinates = e.features[0].geometry.coordinates.slice();
+                    var name = e.features[0].properties;
+                    console.log(name);
                     map.flyTo({
                         center: e.lngLat,
                         zoom: 4
