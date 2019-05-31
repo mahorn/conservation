@@ -554,7 +554,7 @@
                         </div>
                     </overlay>
                 </div>
-                <p class='text-gallery-footer lead my-3 text-center mr24'>Click on the map markers to view photographs
+                <p class='text-gallery-footer lead my-3 text-center mr24'>Click on the map markers to view photographs.
                 </p>
                 <div class='ml36 mt25'>
                     <div id='centroid'></div>
@@ -679,9 +679,7 @@
                     <strong> management objectives:</strong><br><br><strong>Ia</strong> - Strict Nature Reserve
                     <br><strong>Ib</strong> - Wilderness Area<br><strong>II</strong> - National Park
                     <br><strong>III</strong> - National Monument or Feature<br><strong>IV</strong> - Habitat/Species Management Area<br><strong>V</strong> - Protected Landscape/Seascape
-                    <br><strong>VI</strong> - Protected Area With Sustainable Use Of Natural Resources<br><strong>Not
-                        Reported<br><strong>Not
-                            Applicable</strong><br>Not Assigned
+                    <br><strong>VI</strong> - Protected Area With Sustainable Use Of Natural Resources<br><strong>Not Reported<br><strong>Not Applicable</strong><br>Not Assigned
                     <p class='text-right color-green-faint'>Data:</a>
                         <a target="_blank" href="https://www.iucn.org/theme/protected-areas/about/protected-area-categories">IUCN
                                 Protected Area Categories</a>
@@ -690,7 +688,6 @@
             </div>
         </div>
     </div>
-
 
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
@@ -814,6 +811,7 @@
                 }
                 d3.select("#legend ul").html(listItems);
                 d3.select('#legend').classed('none', false);
+
             } //end of addLegend function
 
             d3.json('data/points.json')
@@ -883,6 +881,7 @@
                 close.addEventListener('click', function() {
                     modal.classList.add('none');
                 });
+
             } //end of function addWdpaModalUI
 
             d3.json('data/unesco.json')
@@ -1316,6 +1315,7 @@
                         });
                     $('#gallery').hide();
                 });
+
             } // end of galleryMap 
 
             d3.json('data/polygon_unesco.json')
@@ -1518,7 +1518,8 @@
                     }
                 })
             })
-        } // end function
+
+        } // end function updateUnescoMap
 
         // EXPLORE CHAPTER //
         var endClicked = $('#icon-explore').on('click', function() {
@@ -1616,6 +1617,7 @@
                     }
                 });
             });
+
         } //end function updateMap
 
         var toggleableLayerIds = ['polygon'];
