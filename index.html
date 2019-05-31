@@ -1305,17 +1305,13 @@
                         .on('close', function(e) {
                             map.flyTo({
                                 center: e.lngLat,
-                                zoom: 3
+                                zoom: 3,
+                                speed: 0.8,
+                                curve: 2,
+                                easing: function(t) {
+                                    return t;
+                                }
                             });
-                            // map.flyTo({
-                            //     center: [-50, -20],
-                            //     zoom: 2.8,
-                            //     speed: 0.8,
-                            //     curve: 2,
-                            //     easing: function(t) {
-                            //         return t;
-                            //     }
-                            // });
                             $('#gallery').show();
                         });
                     $('#gallery').hide();
@@ -1458,7 +1454,7 @@
         var currentSelected = $('#icon-gallery').click(function() {
             $('#gallery').toggle();
             map.flyTo({
-                center: [-40, -15],
+                center: [-40, -20],
                 zoom: 2.6,
                 bearing: 0,
                 pitch: 0,
