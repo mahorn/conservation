@@ -1289,11 +1289,9 @@
 
                 map.on('click', 'centroid', function(e) {
                     var coordinates = e.features[0].geometry.coordinates.slice();
-                    var name = e.features[0].properties;
-                    console.log(name);
                     map.flyTo({
                         center: e.lngLat,
-                        zoom: 4
+                        zoom: 5
                     });
                     var images = e.features[0].properties.images;
                     var message = e.features[0].properties.message;
@@ -1304,16 +1302,20 @@
                         .setLngLat(coordinates)
                         .setHTML('<h2>' + message + '</h2>' + images)
                         .addTo(map)
-                        .on('close', function() {
+                        .on('close', function(e) {
                             map.flyTo({
-                                center: [-50, -20],
-                                zoom: 2.8,
-                                speed: 0.8,
-                                curve: 2,
-                                easing: function(t) {
-                                    return t;
-                                }
+                                center: e.lngLat,
+                                zoom: 3
                             });
+                            // map.flyTo({
+                            //     center: [-50, -20],
+                            //     zoom: 2.8,
+                            //     speed: 0.8,
+                            //     curve: 2,
+                            //     easing: function(t) {
+                            //         return t;
+                            //     }
+                            // });
                             $('#gallery').show();
                         });
                     $('#gallery').hide();
