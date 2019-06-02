@@ -12,7 +12,7 @@ The data for this project will be obtained from the [World Database on Protected
 
 The data will be obtained from the [World Database on Protected Areas](https://www.protectedplanet.net) (WDPA). The data processing and visualization for this project will included some JavaScript libraries like [D3js](https://d3js.org), [CartoDB](https://carto.com), [QGIS](https://qgis.org) as well the use of [Phython/Jupyter Notebooks](https://pypi.org) and [Pandas](https://pandas.pydata.org). 
 
-The data for this project will be transformed into GeoJSON or Topojson files as the raw format currently are shapefiles and CSV format. The structure of this project is a story map with information relevant to the conservation areas of each country. The map will also contain some pictures of its most representative species of wildlife, plants and/or landscapes.
+The data for this project will be transformed into GeoJSON and/or Topojson files as the raw format currently are shapefiles and CSV format. The structure of this project is a story map with information relevant to the conservation areas of each country. The map will also contain photographs of The United Nations Educational, Scientific and Cultural Organization - Man and the Biosphere Programme [UNESCO-MAB] (http://www.unesco.org/new/en/natural-sciences/environment/ecological-sciences/).
 
 ![mockup1](pics/pandas_data.png)
 *Example of Data*
@@ -23,9 +23,17 @@ The data for this project will be transformed into GeoJSON or Topojson files as 
 
 #### A.1 Data Processing 
 
-South America contains 13 countries in its territory. The data contain in each country can be found in shapefiles of both polygons and points or just polygons. In order to combine multiple shapefiles into a single shapefile I used the QGIS 3 tool merge vector layers. This method produced one single shapefile containing polygons of 13 countries and one single shapefile containing points of 10 countries. 
+South America contains 13 countries in its territory. The WDPA stores shapefiles by country for both polygons and points. Using the merge vector layers in QGIS a single shapefile of data was created. This method produced one single shapefile containing polygons of 13 countries and one single shapefile containing points of 10 countries. 
 
-After merging the data I used mapshaper commands to simplify, convert the file into a json file, and filter-fields. Finally, in order to reduce the file sizes I used mapshaper.org to convert GeoJson files to Topojson files. 
+After merging the data mapshaper was used for commands to simplify, convert the file into a json file, and filter-fields. Finally, in order to reduce the file sizes mapshaper was used to convert GeoJson files to Topojson files. 
+
+The following commands using mapshaper and ogr2ogr was used in order to created centroids of UNESCO-MAB Biosphere Reserve:
+
+*mapshaper polygons.json -o format=shapefile polygons.shp*
+
+*ogr2ogr -f GeoJSON polygon_designation.json polygons.shp -sql "select * from polygons where DESIG_ENG in ('UNESCO-MAB Biosphere Reserve')"*
+
+The basemap was created using Mapbox studio choosing a dark themed map with only country labels. 
 
 ![QGIS merge vector layers](pics/1.png)
 *QGIS Merge Vector Layers*
