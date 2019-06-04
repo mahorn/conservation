@@ -29,11 +29,11 @@ After merging the data mapshaper was used for commands to simplify, convert the 
 
 The following commands using mapshaper and ogr2ogr was used in order to created centroids of UNESCO-MAB Biosphere Reserve:
 
-*mapshaper polygons.json -o format=shapefile polygons.shp*
+```mapshaper polygons.json -o format=shapefile polygons.shp```
 
-*ogr2ogr -f GeoJSON polygon_designation.json polygons.shp -sql "select * from polygons where DESIG_ENG in ('UNESCO-MAB Biosphere Reserve')"*
+```ogr2ogr -f GeoJSON polygon_designation.json polygons.shp -sql "select * from polygons where DESIG_ENG in ('UNESCO-MAB Biosphere Reserve')"```
 
-The basemap was created using Mapbox studio choosing a dark themed map with only country labels. 
+The basemap was created using ```Mapbox studio``` and the icons display in the map were created with ```Adobe Illustrator.``` 
 
 ![QGIS merge vector layers](pics/1.png)
 *QGIS Merge Vector Layers*
@@ -82,12 +82,5 @@ Protected areas are the single most important conservation strategy in the world
 3. 5 Major Reasons for Conserving Nature. 2017. Jacob, S.
 4. Are Latin America's Protected Areas Effective at Conserving Nature? 2013. Leisher, C. 
 
-###  Bathymetry
 
-```
-(base) maria-renee-horns-macbook-pro:ne_10m_bathymetry_all mane$ mapshaper -i *.shp combine-files -merge-layers -simplify dp .25 -dissolve2 field=depth -o precision=.001 bathymetry.json
-[simplify] Repaired 0 intersections; 10,700 intersections could not be repaired
-[dissolve2] Dissolved 5,779 features into 12 features
-[o] Wrote bathymetry.json
-```
 

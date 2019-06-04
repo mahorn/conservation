@@ -679,7 +679,8 @@
                     <strong> management objectives:</strong><br><br><strong>Ia</strong> - Strict Nature Reserve
                     <br><strong>Ib</strong> - Wilderness Area<br><strong>II</strong> - National Park
                     <br><strong>III</strong> - National Monument or Feature<br><strong>IV</strong> - Habitat/Species Management Area<br><strong>V</strong> - Protected Landscape/Seascape
-                    <br><strong>VI</strong> - Protected Area With Sustainable Use Of Natural Resources<br><strong>Not Reported<br><strong>Not Applicable</strong><br>Not Assigned
+                    <br><strong>VI</strong> - Protected Area With Sustainable Use Of Natural Resources<br><strong>Not
+                        Reported<br><strong>Not Applicable</strong><br>Not Assigned
                     <p class='text-right color-green-faint'>Data:</a>
                         <a target="_blank" href="https://www.iucn.org/theme/protected-areas/about/protected-area-categories">IUCN
                                 Protected Area Categories</a>
@@ -1301,10 +1302,20 @@
                         .setLngLat(coordinates)
                         .setHTML('<h2>' + message + '</h2>' + images)
                         .addTo(map)
-                        .on('close', function(e) {
+                        // .on('close', function(e) {
+                        //     map.flyTo({
+                        //         center: e.lngLat,
+                        //         zoom: 3,
+                        //         speed: 0.8,
+                        //         curve: 2,
+                        //         easing: function(t) {
+                        //             return t;
+                        //         }
+                        //     });
+                        .on('close', function() {
                             map.flyTo({
-                                center: e.lngLat,
-                                zoom: 3,
+                                center: [-40, -18],
+                                zoom: 2.8,
                                 speed: 0.8,
                                 curve: 2,
                                 easing: function(t) {
