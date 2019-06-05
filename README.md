@@ -36,15 +36,19 @@ The following commands using mapshaper and ogr2ogr was used in order to created 
 The basemap was created using ```Mapbox studio``` and the icons display in the map were created with ```Adobe Illustrator.``` 
 
 ![QGIS merge vector layers](pics/1.png)
+
 *QGIS Merge Vector Layers*
 
 ![mapshaper tool -info](pics/2.png)
+
 *Mapshaper tool -info*
 
 ![mapshaper tool -filter-fields](pics/3.png)
+
 *Mapshaper tool -filter-fields*
 
 ![mapshaper.org geojson to topojson](pics/4.png)
+
 *Mapshaper.org to convert file to topojson*
 
 #### B. Medium for delivery
