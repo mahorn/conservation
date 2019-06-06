@@ -225,7 +225,11 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
-            /* width: 100%; */
+        }
+        
+        .text {
+            padding-left: 75px;
+            padding-top: 18px;
         }
         /* EXPLORE CHAPTER */
         
@@ -560,6 +564,7 @@
                 <p class='text-gallery-footer lead my-3 text-center mr24'>Haz click en el mapa para ver fotografías.
                 </p>
                 <div class='ml36 mt25'>
+                    <p class='text text-right absolute'>Reservas de Biósfera</p>
                     <div id='centroid'></div>
                 </div>
             </div>
@@ -597,7 +602,8 @@
                         </div>
                         <div class="container">
                             <input type="radio" name="heritage" value="IV" id="IV">
-                            <label for="IV"><span class="category">IV - Área de Manejo de Hábitats/Especies</span></span>
+                            <label for="IV"><span class="category">IV - Área de Manejo de
+                                    Hábitats/Especies</span></span>
                             </label>
                         </div>
                         <div class="container">
@@ -661,7 +667,8 @@
                     mandatorio cuando los países submiten los datos. Por que los objectivos de manejo de la UICN no se relacionan con una designación como por ejemplo (e.g. Parques Nacionales), sinó con los objectivos de su manejo, las categorías que
                     no han sido reportadas quizás solo signifique que el país no ha conducido el proceso formal para asignar las categorías a su sistema de áreas protegidas y no a que estas áreas no están bien manejadas o que no tienen objetivos de manejo.
                     <p class='text-right color-green-faint'>Datos:</a>
-                        <a target="_blank" href="http://pp-import-production.s3.amazonaws.com/WDPA_Manual_1_5_ES.pdf">Manual de Áreas Protegidas del Mundo</a>
+                        <a target="_blank" href="http://pp-import-production.s3.amazonaws.com/WDPA_Manual_1_5_ES.pdf">Manual de Áreas
+                            Protegidas del Mundo</a>
                     </p>
                 </div>
             </div>
@@ -679,11 +686,15 @@
             <div class='px24 py24'>
                 <div class='txt-m mb12 align-center'>CATEGORÍAS DE LAS ÁREAS PROTEGIDAS</div>
                 <div class='txt-s text-justify'>
-                    Las áreas protegidas de la UICN clasifica las áreas protegidas de acuerdo a sus <strong>objetivos de manejo:</strong><br><br><strong>Ia</strong> - Reserva de Naturaleza Estricta<br><strong>Ib</strong> - Área Natural Silvestre<br><strong>II</strong>                    - Parque Nacional<br><strong>III</strong> - Monumento Nacional<br><strong>IV</strong> - Área de Manejo de Hábitats/Especies<br><strong>V</strong> - Paisaje Terrestre y Marino Protegido<br><strong>VI</strong> - Áreas Protegidas con
-                    Recursos Naturales Sostenibles<br><strong>No Reportada<br><strong>No Aplicable</strong><br>No Asignada
+                    Las áreas protegidas de la UICN clasifica las áreas protegidas de acuerdo a sus <strong>objetivos de
+                        manejo:</strong><br><br><strong>Ia</strong> - Reserva de Naturaleza Estricta
+                    <br><strong>Ib</strong> - Área Natural Silvestre<br><strong>II</strong> - Parque Nacional
+                    <br><strong>III</strong> - Monumento Nacional<br><strong>IV</strong> - Área de Manejo de Hábitats/Especies
+                    <br><strong>V</strong> - Paisaje Terrestre y Marino Protegido
+                    <br><strong>VI</strong> - Áreas Protegidas con Recursos Naturales Sostenibles<br><strong>No Reportada<br><strong>No Aplicable</strong><br>No Asignada
                     <p class='text-right color-green-faint'>Datos:</a>
                         <a target="_blank" href="https://www.iucn.org/es/regiones/américa-del-sur/nuestro-trabajo/áreas-protegidas/categor%C3%ADas-de-manejo-de-áreas-protegidas-de-uicn">
-                            Categoría de Áreas Protegidas de la UICN</a>
+                                Categoría de Áreas Protegidas de la UICN</a>
                     </p>
                 </div>
             </div>
@@ -693,11 +704,17 @@
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
 
+        var bounds = [
+            [-180.140625, -64.175928],
+            [56.609375, 25.005973],
+        ];
+
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mahorn/cjvhdsr2b0ga81cmke0w0ef0p',
             center: [-65, -20],
             zoom: 2.6,
+            maxBounds: bounds
         });
 
         var colorAreas = {
@@ -1715,14 +1732,6 @@
             var layers = document.getElementById('centroid');
             layers.appendChild(img)
         }
-        $(centroid).hover(
-            function() {
-                $(this).append($("<span>Reservas de Biósfera</span>"));
-            },
-            function() {
-                $(this).find("span:last").remove();
-            }
-        );
 
         // resets map to initial latlng when click on CONSERVATION //
         document.getElementById('about-icon').addEventListener('click', function() {
