@@ -228,7 +228,7 @@
             /* width: 100%; */
         }
         
-        .text {
+        .biosphere {
             padding-left: 75px;
             padding-top: 18px;
         }
@@ -562,7 +562,7 @@
                 <p class='text-gallery-footer lead my-3 text-center mr24'>Click on the map markers to view photographs.
                 </p>
                 <div class='ml36 mt25'>
-                    <p class='text text-right absolute'>Biosphere Reserves</p>
+                    <p class='biosphere text-right absolute'>Biosphere Reserves</p>
                     <div id='centroid'></div>
                 </div>
             </div>
@@ -1667,14 +1667,6 @@
             var layers = document.getElementById('polygon');
             layers.appendChild(img)
         }
-        $(polygon).hover(
-            function() {
-                $(this).append($("<span>Polygons Layer</span>"));
-            },
-            function() {
-                $(this).find("span:last").remove();
-            }
-        );
 
         var toggleableLayerIds = ['points'];
         for (var i = 0; i < toggleableLayerIds.length; i++) {
@@ -1700,14 +1692,6 @@
             var layers = document.getElementById('point');
             layers.appendChild(img)
         }
-        $(point).hover(
-            function() {
-                $(this).append($("<span>Points Layer</span>"));
-            },
-            function() {
-                $(this).find("span:last").remove();
-            }
-        );
 
         var toggleableLayerIds = ['centroid'];
         for (var i = 0; i < toggleableLayerIds.length; i++) {
