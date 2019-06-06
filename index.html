@@ -693,11 +693,17 @@
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
 
+        var bounds = [
+            [-180.140625, -64.175928],
+            [56.609375, 25.005973],
+        ];
+
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mahorn/cjvhdsr2b0ga81cmke0w0ef0p',
-            center: [-65, -20],
+            center: [-65, -18],
             zoom: 2.6,
+            maxBounds: bounds
         });
 
         var colorAreas = {
