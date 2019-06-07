@@ -1372,11 +1372,24 @@
         }); //end of map.on('load')
 
         // STORY CHAPTER //
+        $('#features').toggle();
+        map.flyTo({
+            center: [-82, -26],
+            zoom: 2.4,
+            bearing: 0,
+            pitch: 0,
+            speed: 0.4,
+            curve: 2,
+            easing: function(t) {
+                return t;
+            }
+        });
+
         var currentSelected = $('#icon-story').click(function() {
             $('#features').toggle();
             map.flyTo({
-                center: [-80, -20],
-                zoom: 2.8,
+                center: [-82, -26],
+                zoom: 2.4,
                 bearing: 0,
                 pitch: 0,
                 speed: 0.4,
@@ -1385,6 +1398,8 @@
                     return t;
                 }
             });
+            $('#gallery').hide();
+            $('#explore').hide();
 
             map.setLayoutProperty('centroid', 'visibility', 'none'),
                 map.setLayoutProperty('polygon_unesco', 'visibility', 'none'),
@@ -1481,6 +1496,8 @@
         // GALLERY CHAPTER //
         var currentSelected = $('#icon-gallery').click(function() {
             $('#gallery').toggle();
+            $('#features').hide();
+            $('#explore').hide();
             map.flyTo({
                 center: [-40, -20],
                 zoom: 2.6,
@@ -1551,12 +1568,20 @@
 
         // EXPLORE CHAPTER //
         var endClicked = $('#icon-explore').on('click', function() {
-            $('#explore').toggle(
-                map.fitBounds([-60, -20, -25, -15], {
-                    zoom: 2.6
-                })
-            );
-
+            $('#explore').toggle();
+            map.flyTo({
+                center: [-43, -18],
+                zoom: 2.6,
+                bearing: 0,
+                pitch: 0,
+                speed: 0.4,
+                curve: 2,
+                easing: function(t) {
+                    return t;
+                }
+            });
+            $('#features').hide();
+            $('#gallery').hide();
             map.setLayoutProperty('centroid', 'visibility', 'none'),
                 map.setLayoutProperty('polygon_unesco', 'visibility', 'none'),
                 map.setLayoutProperty('polygon', 'visibility', 'visible'),
