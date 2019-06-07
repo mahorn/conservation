@@ -644,7 +644,7 @@
                         <p class='biosphere text-right absolute'>Protected Areas</p>
                     </div>
                     <div id='point'>
-                        <p class='biosphere text-right absolute'>Protected Points</p>
+                        <p class='biosphere text-right absolute'>Points</p>
                     </div>
                 </div>
             </div>
@@ -1376,10 +1376,23 @@
         }); //end of map.on('load')
 
         // STORY CHAPTER //
+
+        $('#features').toggle();
+        map.flyTo({
+            center: [-80, -20],
+            zoom: 2.6,
+            bearing: 0,
+            pitch: 0,
+            speed: 0.4,
+            curve: 2,
+            easing: function(t) {
+                return t;
+            }
+        });
         var currentSelected = $('#icon-story').click(function() {
             $('#features').toggle();
             map.flyTo({
-                center: [-80, -20],
+                center: [-65, -18],
                 zoom: 2.6,
                 bearing: 0,
                 pitch: 0,
