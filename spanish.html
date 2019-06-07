@@ -830,11 +830,18 @@
                     }
                 });
                 var listItems = '';
+                code;
                 for (var code in colorAreas) {
                     listItems += "<li class='li h-full txt-m'><span class='w24 h18 fl mr12' style='background:" +
                         colorAreas[code] + "'></span>" + labelCodes[code] + "</li>"
                 }
                 d3.select("#legend ul").html(listItems);
+
+                // d3.select("#legend ul").html(listItems).on('mouseover', function() {
+                //     var tooltip = labelCodes;
+                //     popup.setHTML(String('Categoria Estricta' + tooltip.Ia)).addTo(map);
+                // });
+
                 d3.select('#legend').classed('none', false);
 
             } //end of addLegend function
@@ -1343,7 +1350,6 @@
                         });
                     $('#gallery').hide();
                 });
-
             } // end of galleryMap 
 
             d3.json('data/polygon_unesco.json')
