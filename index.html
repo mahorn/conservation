@@ -1378,8 +1378,8 @@
         // STORY CHAPTER //
         $('#features').toggle();
         map.flyTo({
-            center: [-80, -20],
-            zoom: 2.6,
+            center: [-82, -28],
+            zoom: 2.4,
             bearing: 0,
             pitch: 0,
             speed: 0.4,
@@ -1392,7 +1392,7 @@
         var currentSelected = $('#icon-story').click(function() {
             $('#features').toggle();
             map.flyTo({
-                center: [-65, -18],
+                center: [-65, -20],
                 zoom: 2.6,
                 bearing: 0,
                 pitch: 0,
@@ -1402,6 +1402,8 @@
                     return t;
                 }
             });
+            $('#gallery').hide();
+            $('#explore').hide();
 
             map.setLayoutProperty('centroid', 'visibility', 'none'),
                 map.setLayoutProperty('polygon_unesco', 'visibility', 'none'),
@@ -1498,6 +1500,8 @@
         // GALLERY CHAPTER //
         var currentSelected = $('#icon-gallery').click(function() {
             $('#gallery').toggle();
+            $('#features').hide();
+            $('#explore').hide();
             map.flyTo({
                 center: [-40, -20],
                 zoom: 2.6,
@@ -1573,6 +1577,8 @@
                     zoom: 2.6
                 })
             );
+            $('#features').hide();
+            $('#gallery').hide();
             map.setLayoutProperty('centroid', 'visibility', 'none'),
                 map.setLayoutProperty('polygon_unesco', 'visibility', 'none'),
                 map.setLayoutProperty('polygon', 'visibility', 'visible'),
