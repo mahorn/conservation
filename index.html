@@ -582,59 +582,59 @@
                         <div class="container">
                             <input type="radio" name="heritage" value="Ia" id="Ia">
                             <label for="Ia"><span class="category">Ia - Strict Nature Reserve</span></span>
-                                </label>
+                            </label>
                         </div>
                         <div class="container">
                             <input type="radio" name="heritage" value="Ib" id="Ib">
                             <label for="Ib"><span class="category">Ib - Wilderness Area</span></span>
-                                </label>
+                            </label>
                         </div>
                         <div class="container">
                             <input type="radio" name='heritage' value="II" id='II'>
                             <label for="II"><span class="category">II - National Park</span></span>
-                                </label>
+                            </label>
                         </div>
                         <div class="container">
                             <input type="radio" name='heritage' value="III" id='III'>
                             <label for="III"><span class="category">III - National Monument or Feature</span></span>
-                                </label>
+                            </label>
                         </div>
                         <div class="container">
                             <input type="radio" name="heritage" value="IV" id="IV">
                             <label for="IV"><span class="category">IV - Habitat/Species Management
-                                        Area</span></span>
-                                </label>
+                                    Area</span></span>
+                            </label>
                         </div>
                         <div class="container">
                             <input type="radio" name="heritage" value="V" id="V">
                             <label for="V"><span class="category">V - Protected Landscape/Seascape</span></span>
-                                </label>
+                            </label>
                         </div>
                         <div class="container">
                             <input type="radio" name='heritage' value="VI" id='VI'>
                             <label for="VI"><span class="category">VI - Protected Area w/ Sustainable
-                                        Use</span></span>
-                                </label>
+                                    Use</span></span>
+                            </label>
                         </div>
                         <div class="container">
                             <input type="radio" name="heritage" value="Not Reported" id="Reported">
                             <label for="Reported"><span class="category">Not Reported</span></span>
-                                </label>
+                            </label>
                         </div>
                         <div class="container">
                             <input type="radio" name="heritage" value="Not Applicable" id="Applicable">
                             <label for="Applicable"><span class="category">Not Applicable</span></span>
-                                </label>
+                            </label>
                         </div>
                         <div class="container">
                             <input type="radio" name='heritage' value="Not Assigned" id='Assigned'>
                             <label for="Assigned"><span class="category">Not Assigned</span></span>
-                                </label>
+                            </label>
                         </div>
                         <div class="container">
                             <input type="radio" name='heritage' value="IUCN_CAT" id='IUCN_CAT'>
                             <label for="IUCN_CAT"><span class="category">All IUCN categories</span></span>
-                                </label>
+                            </label>
                         </div>
                     </overlay>
                 </div>
@@ -655,10 +655,10 @@
     <div id='wdpa-modal' class='absolute top right bottom left scroll-auto z2 none animation--speed-1'>
         <div class='flex-child border border-gray-dark bg-gray-dark color-green-faint round relative w600 mx-auto mt120'>
             <button id='modal-clos' class='btn btn-gray-dark absolute top right mr6 mt6 px0 py0'>
-                    <svg class='icon btn-info link color-lighten50 txt-xl'>
-                        <use xlink:href='#icon-close'></use>
-                    </svg>
-                </button>
+                <svg class='icon btn-info link color-lighten50 txt-xl'>
+                    <use xlink:href='#icon-close'></use>
+                </svg>
+            </button>
             <div class='px24 py24'>
                 <div class='txt-m mb12 align-center'>World Database on Protected Areas</div>
                 <div class='txt-s text-justify'>
@@ -671,7 +671,7 @@
                     the categories to their protected area network, not that these protected areas are not well managed or don’t have management objectives in place.
                     <p class='text-right color-green-faint'>Data:</a>
                         <a target="_blank" href="http://pp-import-production.s3.amazonaws.com/WDPA_Manual_1_5.pdf">World
-                                Database on Protected Areas User Manual</a>
+                            Database on Protected Areas User Manual</a>
                     </p>
                 </div>
             </div>
@@ -682,10 +682,10 @@
     <div id='iucn-modal' class='absolute top right bottom left scroll-auto z2 none animation--speed-1'>
         <div class='flex-child border border-gray-dark bg-gray-dark color-green-faint round relative w600 mx-auto mt120'>
             <button id='modal-closed' class='btn btn-gray-dark absolute top right mr6 mt6 px0 py0'>
-                    <svg class='icon btn-info link color-lighten50 txt-xl'>
-                        <use xlink:href='#icon-close'></use>
-                    </svg>
-                </button>
+                <svg class='icon btn-info link color-lighten50 txt-xl'>
+                    <use xlink:href='#icon-close'></use>
+                </svg>
+            </button>
             <div class='px24 py24'>
                 <div class='txt-m mb12 align-center'>PROTECTED AREA CATEGORIES</div>
                 <div class='txt-s text-justify'>
@@ -695,10 +695,10 @@
                     <br><strong>III</strong> - National Monument or Feature<br><strong>IV</strong> - Habitat/Species Management Area<br><strong>V</strong> - Protected Landscape/Seascape
                     <br><strong>VI</strong> - Protected Area With Sustainable Use Of Natural Resources
                     <br><strong>Not
-                            Reported<br><strong>Not Applicable</strong><br>Not Assigned
+                        Reported<br><strong>Not Applicable</strong><br>Not Assigned
                     <p class='text-right color-green-faint'>Data:</a>
                         <a target="_blank" href="https://www.iucn.org/theme/protected-areas/about/protected-area-categories">IUCN
-                                    Protected Area Categories</a>
+                                Protected Area Categories</a>
                     </p>
                 </div>
             </div>
@@ -1376,7 +1376,6 @@
         }); //end of map.on('load')
 
         // STORY CHAPTER //
-
         $('#features').toggle();
         map.flyTo({
             center: [-80, -20],
@@ -1389,6 +1388,7 @@
                 return t;
             }
         });
+
         var currentSelected = $('#icon-story').click(function() {
             $('#features').toggle();
             map.flyTo({
