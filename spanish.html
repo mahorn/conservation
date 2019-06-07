@@ -642,11 +642,16 @@
                 <p class='subtitle-explore my-3 text-center mr6'>Haz click en los íconos para<br> seleccionar categorías:
                 </p>
                 <div class='ml36 mt25'>
-                    <div id='polygon'></div>
-                    <div id='point'></div>
+                    <div id='polygon'>
+                        <p class='biosphere text-right absolute'>Áreas Protegidas</p>
+                    </div>
+                    <div id='point'>
+                        <p class='biosphere text-right absolute'>Puntos</p>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- WDPA-modal -->
@@ -1668,14 +1673,6 @@
             var layers = document.getElementById('polygon');
             layers.appendChild(img)
         }
-        $(polygon).hover(
-            function() {
-                $(this).append($("<span>Polígonos</span>"));
-            },
-            function() {
-                $(this).find("span:last").remove();
-            }
-        );
 
         var toggleableLayerIds = ['points'];
         for (var i = 0; i < toggleableLayerIds.length; i++) {
@@ -1701,14 +1698,6 @@
             var layers = document.getElementById('point');
             layers.appendChild(img)
         }
-        $(point).hover(
-            function() {
-                $(this).append($("<span>Puntos</span>"));
-            },
-            function() {
-                $(this).find("span:last").remove();
-            }
-        );
 
         var toggleableLayerIds = ['centroid'];
         for (var i = 0; i < toggleableLayerIds.length; i++) {
