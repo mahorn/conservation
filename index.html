@@ -321,7 +321,7 @@
     <div class='navbar h6 z1'>
         <nav class='navbar navbar-expand-lg fixed-top'>
             <button id='about-icon' class='icon-hover'>
-                <a class='navbar-brand color-green-faint' href='#'>CONSERVATION</a></button>
+                <a class='navbar-brand color-green-faint' href='https://github.com/mahorn/conservation'>CONSERVATION</a></button>
             <ul class='navbar-nav mr-auto'>
                 <div id='about-trigger'>
                     <li class='nav-item'><a class='nav-link color-green-faint' href="#">About</a></li>
@@ -823,7 +823,7 @@
                 geojson.features.forEach(function(feature) {
                     code = feature.properties.IUCN_CAT;
                     if (!labelCodes[code]) {
-                        labelCodes[code] = feature.properties.IUCN_CAT;
+                        var legend = labelCodes[code] = feature.properties.IUCN_CAT;
                     }
                 })
                 var listItems = '';
@@ -831,7 +831,9 @@
                     listItems += "<li class='li h-full txt-m'><span class='w24 h18 fl mr12' style='background:" +
                         colorAreas[code] + "'></span>" + labelCodes[code] + "</li>"
                 }
+
                 d3.select("#legend ul").html(listItems);
+
                 d3.select('#legend').classed('none', false);
 
             } //end of addLegend function
