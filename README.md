@@ -25,6 +25,8 @@ The data for this project will be transformed into GeoJSON and/or Topojson files
 
 ![The Behind the Scenes](pics/data.png)
 
+*Behind the Scenes*
+
 South America contains 13 countries in its territory. The WDPA stores shapefiles by country for both polygons and points. Using the merge vector layers in QGIS a single shapefile of data was created. This method produced one single shapefile containing polygons of 13 countries and one single shapefile containing points of 10 countries. 
 
 After merging the data mapshaper was used for commands to simplify, convert the file into a json file, and filter-fields. Finally, in order to reduce the file sizes mapshaper was used to convert GeoJson files to Topojson files. 
