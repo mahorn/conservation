@@ -1588,6 +1588,7 @@
             });
             $('#features').hide();
             $('#gallery').hide();
+            d3.selectAll('#gallery input').property('checked', false);
             map.setLayoutProperty('centroid', 'visibility', 'none'),
                 map.setLayoutProperty('polygon_unesco', 'visibility', 'none'),
                 map.setLayoutProperty('polygon', 'visibility', 'visible'),

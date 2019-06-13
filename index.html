@@ -321,7 +321,8 @@
     <div class='navbar h6 z1'>
         <nav class='navbar navbar-expand-lg fixed-top'>
             <button id='about-icon' class='icon-hover'>
-                <a class='navbar-brand color-green-faint' href='https://github.com/mahorn/conservation'>CONSERVATION</a></button>
+                <a class='navbar-brand color-green-faint'
+                    href='https://github.com/mahorn/conservation'>CONSERVATION</a></button>
             <ul class='navbar-nav mr-auto'>
                 <div id='about-trigger'>
                     <li class='nav-item'><a class='nav-link color-green-faint' href="#">About</a></li>
@@ -632,7 +633,7 @@
                             </label>
                         </div>
                         <div class="container">
-                            <input type="radio" name='heritage' value="IUCN_CAT" id='IUCN_CAT'>
+                            <input type="radio" name='heritage' value="IUCN_CAT" id='IUCN_CAT' checked='checked'>
                             <label for="IUCN_CAT"><span class="category">All IUCN categories</span></span>
                             </label>
                         </div>
@@ -1325,16 +1326,6 @@
                         .setLngLat(coordinates)
                         .setHTML('<h2>' + message + '</h2>' + images)
                         .addTo(map)
-                        // .on('close', function(e) {
-                        //     map.flyTo({
-                        //         center: e.lngLat,
-                        //         zoom: 3,
-                        //         speed: 0.8,
-                        //         curve: 2,
-                        //         easing: function(t) {
-                        //             return t;
-                        //         }
-                        //     });
                         .on('close', function() {
                             map.flyTo({
                                 center: [-40, -18],
@@ -1391,7 +1382,7 @@
             }
         });
 
-        var currentSelected = $('#icon-story').click(function() {
+        $('#icon-story').click(function() {
             $('#features').toggle();
             map.flyTo({
                 center: [-82, -26],
@@ -1500,10 +1491,14 @@
         }
 
         // GALLERY CHAPTER //
-        var currentSelected = $('#icon-gallery').click(function() {
+        $('#icon-gallery').click(function() {
+
             $('#gallery').toggle();
             $('#features').hide();
             $('#explore').hide();
+
+
+
             map.flyTo({
                 center: [-40, -20],
                 zoom: 2.6,
@@ -1516,10 +1511,12 @@
                 }
             });
 
+
             map.setLayoutProperty('centroid', 'visibility', 'visible'),
                 map.setLayoutProperty('polygon_unesco', 'visibility', 'visible'),
                 map.setLayoutProperty('polygon', 'visibility', 'none'),
                 map.setLayoutProperty('points', 'visibility', 'none')
+
         });
 
         function updateUnescoMap(unesco) {
@@ -1567,13 +1564,19 @@
                             zoom: 6,
                         });
                     }
-                })
-            })
+
+                });
+
+
+            });
+
 
         } // end function updateUnescoMap
 
+
         // EXPLORE CHAPTER //
         var endClicked = $('#icon-explore').on('click', function() {
+
             $('#explore').toggle();
             map.flyTo({
                 center: [-43, -18],
@@ -1588,6 +1591,9 @@
             });
             $('#features').hide();
             $('#gallery').hide();
+
+            d3.selectAll('#gallery input').property('checked', false);
+
             map.setLayoutProperty('centroid', 'visibility', 'none'),
                 map.setLayoutProperty('polygon_unesco', 'visibility', 'none'),
                 map.setLayoutProperty('polygon', 'visibility', 'visible'),
@@ -1675,6 +1681,7 @@
                             0
                         ]);
                     }
+
                 });
             });
 
