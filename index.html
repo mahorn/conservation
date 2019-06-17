@@ -633,10 +633,11 @@
                             </label>
                         </div>
                         <div class="container">
-                            <input type="radio" name='heritage' value="IUCN_CAT" id='IUCN_CAT' checked='checked'>
+                            <input type="radio" name='heritage' value="IUCN_CAT" id='IUCN_CAT' checked="checked">
                             <label for="IUCN_CAT"><span class="category">All IUCN categories</span></span>
                             </label>
                         </div>
+
                     </overlay>
                 </div>
                 <p class='subtitle-explore my-3 text-center mr6'>Click on icons to select on/off layers:</p>
@@ -706,6 +707,7 @@
         </div>
     </div>
 
+
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
 
@@ -743,7 +745,6 @@
                     addIucnModalUI();
                     addLegend(data);
                     updateMap(data);
-
                 });
 
             function polygonsMap(data) {
@@ -821,21 +822,28 @@
                 var geojson = topojson.feature(data, data.objects.merge_files_sim);
                 var labelCodes = {},
                     code;
+
                 geojson.features.forEach(function(feature) {
                     code = feature.properties.IUCN_CAT;
                     if (!labelCodes[code]) {
                         var legend = labelCodes[code] = feature.properties.IUCN_CAT;
                     }
-                })
+                });
                 var listItems = '';
+                var tooltip = '';
+
                 for (var code in colorAreas) {
                     listItems += "<li class='li h-full txt-m'><span class='w24 h18 fl mr12' style='background:" +
                         colorAreas[code] + "'></span>" + labelCodes[code] + "</li>"
+                    tooltip += "<li class='li h-full txt-m'><span class='w24 h18 fl mr12' style='background:" +
+                        labelCodes[code] + "'></span>" + "</li>"
                 }
 
                 d3.select("#legend ul").html(listItems);
-
-                d3.select('#legend').classed('none', false);
+                d3.select('#legend ul').classed('none', false)
+                    .on("mouseover", function() {
+                        console.log(this.innerText)
+                    });
 
             } //end of addLegend function
 
@@ -1383,6 +1391,7 @@
         });
 
         $('#icon-story').click(function() {
+
             $('#features').toggle();
             map.flyTo({
                 center: [-82, -26],
@@ -1397,6 +1406,7 @@
             });
             $('#gallery').hide();
             $('#explore').hide();
+            d3.selectAll('#gallery input').property('checked', false);
 
             map.setLayoutProperty('centroid', 'visibility', 'none'),
                 map.setLayoutProperty('polygon_unesco', 'visibility', 'none'),
@@ -1422,11 +1432,11 @@
                 zoom: 3.5,
             },
             'chile': {
-                center: [-76.5430, -38.4161],
+                center: [-96.5430, -39.4161],
                 zoom: 3.2,
             },
             'colombia': {
-                center: [-75.2973, 4.2709],
+                center: [-78.2973, 4.2709],
                 zoom: 4.7,
             },
             'ecuador': {
@@ -1497,8 +1507,6 @@
             $('#features').hide();
             $('#explore').hide();
 
-
-
             map.flyTo({
                 center: [-40, -20],
                 zoom: 2.6,
@@ -1510,12 +1518,11 @@
                     return t;
                 }
             });
-
-
             map.setLayoutProperty('centroid', 'visibility', 'visible'),
                 map.setLayoutProperty('polygon_unesco', 'visibility', 'visible'),
                 map.setLayoutProperty('polygon', 'visibility', 'none'),
                 map.setLayoutProperty('points', 'visibility', 'none')
+
 
         });
 
@@ -1564,15 +1571,9 @@
                             zoom: 6,
                         });
                     }
-
                 });
-
-
             });
-
-
         } // end function updateUnescoMap
-
 
         // EXPLORE CHAPTER //
         var endClicked = $('#icon-explore').on('click', function() {
@@ -1592,18 +1593,24 @@
             $('#features').hide();
             $('#gallery').hide();
 
+
             d3.selectAll('#gallery input').property('checked', false);
 
             map.setLayoutProperty('centroid', 'visibility', 'none'),
                 map.setLayoutProperty('polygon_unesco', 'visibility', 'none'),
                 map.setLayoutProperty('polygon', 'visibility', 'visible'),
                 map.setLayoutProperty('points', 'visibility', 'visible')
+
+
+
         });
+
 
         function updateMap(code) {
             var geojson = topojson.feature(code, code.objects.merge_files_sim);
             geojson.features.forEach(function(feature) {
                 d3.selectAll('#explore input').on('change', function() {
+
                     if (this.value === 'Ia') {
                         map.setPaintProperty('polygon', 'fill-opacity', [
                             'match', ['get', 'IUCN_CAT'],
@@ -1681,7 +1688,6 @@
                             0
                         ]);
                     }
-
                 });
             });
 

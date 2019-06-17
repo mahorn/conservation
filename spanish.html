@@ -1406,6 +1406,7 @@
             });
             $('#gallery').hide();
             $('#explore').hide();
+            d3.selectAll('#gallery input').property('checked', false);
 
             map.setLayoutProperty('centroid', 'visibility', 'none'),
                 map.setLayoutProperty('polygon_unesco', 'visibility', 'none'),
@@ -1431,11 +1432,11 @@
                 zoom: 3.5,
             },
             'chile': {
-                center: [-76.5430, -38.4161],
+                center: [-96.5430, -39.4161],
                 zoom: 3.2,
             },
             'colombia': {
-                center: [-75.2973, 4.2709],
+                center: [-78.2973, 4.2709],
                 zoom: 4.7,
             },
             'ecuador': {
