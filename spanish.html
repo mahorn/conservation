@@ -624,7 +624,7 @@
                         </div>
                         <div class="container">
                             <input type="radio" name="heritage" value="Not Applicable" id="Applicable">
-                            <label for="Applicable"><span class="category">No Aplica</span></span>
+                            <label for="Applicable"><span class="category">No Aplicable</span></span>
                             </label>
                         </div>
                         <div class="container">
@@ -697,7 +697,7 @@
                     <br><strong>Ib</strong> - Área Natural Silvestre<br><strong>II</strong> - Parque Nacional
                     <br><strong>III</strong> - Monumento Nacional<br><strong>IV</strong> - Área de Manejo de Hábitats/Especies
                     <br><strong>V</strong> - Paisaje Terrestre y Marino Protegido
-                    <br><strong>VI</strong> - Áreas Protegidas con Recursos Naturales Sostenibles<br><strong>No
+                    <br><strong>VI</strong> - Área Protegida con Recursos Naturales Sostenibles<br><strong>No
                         Reportada<br><strong>No Aplicable</strong><br>No Asignada
                     <p class='text-right color-green-faint'>Datos:</a>
                         <a target="_blank" href="https://www.iucn.org/es/regiones/américa-del-sur/nuestro-trabajo/áreas-protegidas/categor%C3%ADas-de-manejo-de-áreas-protegidas-de-uicn">
@@ -836,13 +836,34 @@
                         colorAreas[code] + "'></span>" + labelCodes[code] + "</li>"
                 }
                 d3.select("#legend ul").html(listItems);
-
-                // d3.select("#legend ul").html(listItems).on('mouseover', function() {
-                //     var tooltip = labelCodes;
-                //     popup.setHTML(String('Categoria Estricta' + tooltip.Ia)).addTo(map);
-                // });
-
                 d3.select('#legend').classed('none', false);
+                d3.select('#legend ul').on('mouseover', function() {
+                    $("#legend ul li").hover(function() {
+                        if ($(this).text() === 'Ia') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'Ia - Reserva de Naturaleza Estricta')
+                        } else if ($(this).text() === 'Ib') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'Ib - Área Natural Silvestre')
+                        } else if ($(this).text() === 'II') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'II - Parque Nacional')
+                        } else if ($(this).text() === 'III') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'III - Monumento Nacional')
+                        } else if ($(this).text() === 'IV') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'IV - Área de Manejo de Hábitats/Especies')
+                        } else if ($(this).text() === 'V') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'V - Paisaje Terrestre y Marino Protegido')
+                        } else if ($(this).text() === 'VI') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'VI - Área Protegida con Recursos Naturales Sostenibles')
+                        } else if ($(this).text() === 'Not Reported') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'No Reportada')
+                        } else if ($(this).text() === 'Not Applicable') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'No Aplicable')
+                        } else if ($(this).text() === 'Not Assigned') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'No Asignada')
+                        }
+                    }, function() {
+                        $(this).css('cursor', 'auto');
+                    });
+                });
 
             } //end of addLegend function
 

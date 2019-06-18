@@ -301,18 +301,6 @@
         .category {
             font-size: 10px;
         }
-        
-        .tooltip {
-            display: none;
-            position: absolute;
-            border: 1px solid #333;
-            background-color: #161616;
-            border-radius: 5px;
-            padding: 10px;
-            color: #fff;
-            font-size: 12px Arial;
-            z-index: 1000;
-        }
     </style>
 </head>
 
@@ -367,7 +355,8 @@
                     are not isolates entities, their ability to deliver positive outcomes is affected by their surroundings, and they can only work if they are governed and managed as part of the wider landscape, integrated into development strategies
                     and considered across all sectors of society.<br><br>The World Database on Protected Areas (WDPA), a joint effort between the International Union for Conservation of Nature (IUCN) and the United Nations Environment
                     Programme (UNEP), is the only globally authoritative database on marine and terrestrial protected areas of the world. It is compiled and managed by UNEP-WCMC in collaboration with IUCN.<br><br>
-                    <p class='text-right color-green-faint'>Map Author: Maria Renee Horn<br>Publication Date: June 2019</a><br>Data:
+                    <p class='text-right color-green-faint'>Map Author: Maria Renee Horn<br>Publication Date: June 2019
+                        </a><br>Data:
                         <a target="_blank" href="https://www.protectedplanet.net">World Database on Protected Areas</a> &
                         <a target="_blank" href="https://www.iucn.org/theme/protected-areas/about/protected-area-categories">IUCN
                             Protected Area Categories</a>
@@ -393,10 +382,7 @@
         <div id='legend' class='absolute mt8 color-green-faint z4'>
             <div class='inline-block mb12 txt-m align-center mx12'>IUCN Protected Area Categories</div>
             <ul class='color-green-faint txt-xxs mx18 align-l py2'></ul>
-
         </div>
-
-
     </aside>
 
     <!-- chapter story -->
@@ -837,32 +823,22 @@
 
             function addLegend(data) {
                 var geojson = topojson.feature(data, data.objects.merge_files_sim);
-
                 var labelCodes = {},
                     code;
-                legend;
-
                 geojson.features.forEach(function(feature) {
                     code = feature.properties.IUCN_CAT;
                     if (!labelCodes[code]) {
-                        var legend = labelCodes[code] = feature.properties.IUCN_CAT;
+                        labelCodes[code] = feature.properties.IUCN_CAT;
                     }
                 });
-
                 var listItems = '';
-
                 for (var code in colorAreas) {
                     listItems += "<li class='li h-full txt-m'><span class='w24 h18 fl mr12' style='background:" +
                         colorAreas[code] + "'></span>" + labelCodes[code] + "</li>"
                 }
-
                 d3.select("#legend ul").html(listItems);
-
                 d3.select('#legend').classed('none', false);
-
                 d3.select('#legend ul').on('mouseover', function() {
-                    // console.log($(this).text())
-
                     $("#legend ul li").hover(function() {
                         if ($(this).text() === 'Ia') {
                             return $(this).css('cursor', 'pointer').attr('title', 'Ia - Strict Nature Reserve')
@@ -879,12 +855,10 @@
                         } else if ($(this).text() === 'VI') {
                             return $(this).css('cursor', 'pointer').attr('title', 'VI - Protected Area With Sustainable Use Of Natural Resources')
                         }
-
                     }, function() {
                         $(this).css('cursor', 'auto');
                     });
                 });
-
 
             } //end of addLegend function
 
