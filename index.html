@@ -301,12 +301,25 @@
         .category {
             font-size: 10px;
         }
+        
+        .tooltip {
+            display: none;
+            position: absolute;
+            border: 1px solid #333;
+            background-color: #161616;
+            border-radius: 5px;
+            padding: 10px;
+            color: #fff;
+            font-size: 12px Arial;
+            z-index: 1000;
+        }
     </style>
 </head>
 
 <body>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
@@ -335,6 +348,7 @@
                 </div>
                 <li class='nav-item'><a class='nav-link color-green-faint' href='spanish.html'>Spanish</a></li>
             </ul>
+
         </nav>
     </div>
 
@@ -379,7 +393,10 @@
         <div id='legend' class='absolute mt8 color-green-faint z4'>
             <div class='inline-block mb12 txt-m align-center mx12'>IUCN Protected Area Categories</div>
             <ul class='color-green-faint txt-xxs mx18 align-l py2'></ul>
+
         </div>
+
+
     </aside>
 
     <!-- chapter story -->
@@ -820,8 +837,10 @@
 
             function addLegend(data) {
                 var geojson = topojson.feature(data, data.objects.merge_files_sim);
+
                 var labelCodes = {},
                     code;
+                legend;
 
                 geojson.features.forEach(function(feature) {
                     code = feature.properties.IUCN_CAT;
@@ -829,21 +848,28 @@
                         var legend = labelCodes[code] = feature.properties.IUCN_CAT;
                     }
                 });
+
                 var listItems = '';
-                var tooltip = '';
 
                 for (var code in colorAreas) {
                     listItems += "<li class='li h-full txt-m'><span class='w24 h18 fl mr12' style='background:" +
                         colorAreas[code] + "'></span>" + labelCodes[code] + "</li>"
-                    tooltip += "<li class='li h-full txt-m'><span class='w24 h18 fl mr12' style='background:" +
-                        labelCodes[code] + "'></span>" + "</li>"
                 }
 
                 d3.select("#legend ul").html(listItems);
-                d3.select('#legend ul').classed('none', false)
-                    .on("mouseover", function() {
-                        console.log(this.innerText)
+
+                d3.select('#legend').classed('none', false);
+
+                d3.select('#legend ul').on('mouseover', function() {
+                    // console.log($(this).text())
+
+                    $("#legend").hover(function() {
+                        $(this).css('cursor', 'pointer').attr('title', 'Ia - Strict Nature Reserve');
+                    }, function() {
+                        $(this).css('cursor', 'auto');
                     });
+                });
+
 
             } //end of addLegend function
 
