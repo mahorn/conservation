@@ -863,8 +863,23 @@
                 d3.select('#legend ul').on('mouseover', function() {
                     // console.log($(this).text())
 
-                    $("#legend").hover(function() {
-                        $(this).css('cursor', 'pointer').attr('title', 'Ia - Strict Nature Reserve');
+                    $("#legend ul li").hover(function() {
+                        if ($(this).text() === 'Ia') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'Ia - Strict Nature Reserve')
+                        } else if ($(this).text() === 'Ib') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'Ib - Wilderness Area')
+                        } else if ($(this).text() === 'II') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'II - National Park')
+                        } else if ($(this).text() === 'III') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'III - National Monument of Feature')
+                        } else if ($(this).text() === 'IV') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'IV - Habitat/Species Management Area')
+                        } else if ($(this).text() === 'V') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'V - Protected Landscape/Seascape')
+                        } else if ($(this).text() === 'VI') {
+                            return $(this).css('cursor', 'pointer').attr('title', 'VI - Protected Area With Sustainable Use Of Natural Resources')
+                        }
+
                     }, function() {
                         $(this).css('cursor', 'auto');
                     });
