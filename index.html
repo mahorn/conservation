@@ -301,17 +301,6 @@
         .category {
             font-size: 10px;
         }
-        
-        .tooltip {
-            display: none;
-            position: absolute;
-            border: 1px solid #333;
-            background-color: #161616;
-            border-radius: 5px;
-            padding: 10px;
-            color: #fff;
-            font-size: 12px Arial;
-        }
     </style>
 </head>
 
@@ -347,7 +336,6 @@
                 </div>
                 <li class='nav-item'><a class='nav-link color-green-faint' href='spanish.html'>Spanish</a></li>
             </ul>
-
         </nav>
     </div>
 
@@ -720,7 +708,6 @@
             </div>
         </div>
     </div>
-
 
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoibWFob3JuIiwiYSI6ImNpbnV0enJ4ZTEyNG91YW0zNGF6bTlva2wifQ.7jRtxQoaV2PHlRD7fu6U-g';
@@ -1822,11 +1809,6 @@
                 currentSelected.classList.remove('selected');
             }
         });
-
-        // document.getElementbyId('language').addEventListener('click', function (event) {
-        //     var language = event.target.id.substr('language-'.length);
-        //     map.setLayoutProperty('polygon', 'IUCN_CAT', ['get', 'name_' + language]);
-        // });
     </script>
 
 </body>
