@@ -301,6 +301,17 @@
         .category {
             font-size: 10px;
         }
+        
+        .tooltip {
+            display: none;
+            position: absolute;
+            border: 1px solid #333;
+            background-color: #161616;
+            border-radius: 5px;
+            padding: 10px;
+            color: #fff;
+            font-size: 12px Arial;
+        }
     </style>
 </head>
 
@@ -1342,8 +1353,7 @@
                     });
                     var images = e.features[0].properties.images;
                     var message = e.features[0].properties.message;
-                    //  window.alert('Biosphere Reserves in South America')
-                    new mapboxgl.Popup({
+                    var popup = new mapboxgl.Popup({
                             anchor: 'center'
                         })
                         .setLngLat(coordinates)
@@ -1361,6 +1371,36 @@
                             });
                             $('#gallery').show();
                         });
+                    $('#icon-story').click(function() {
+                        popup.remove();
+                        $('#gallery').hide();
+                        map.flyTo({
+                            center: [-82, -26],
+                            zoom: 2.4,
+                            bearing: 0,
+                            pitch: 0,
+                            speed: 0.4,
+                            curve: 2,
+                            easing: function(t) {
+                                return t;
+                            }
+                        });
+                    });
+                    $('#icon-explore').click(function() {
+                        popup.remove();
+                        $('#gallery').hide();
+                        map.flyTo({
+                            center: [-43, -18],
+                            zoom: 2.6,
+                            bearing: 0,
+                            pitch: 0,
+                            speed: 0.4,
+                            curve: 2,
+                            easing: function(t) {
+                                return t;
+                            }
+                        });
+                    });
                     $('#gallery').hide();
                 });
 
@@ -1406,7 +1446,6 @@
         });
 
         $('#icon-story').click(function() {
-
             $('#features').toggle();
             map.flyTo({
                 center: [-82, -26],
@@ -1517,7 +1556,6 @@
 
         // GALLERY CHAPTER //
         $('#icon-gallery').click(function() {
-
             $('#gallery').toggle();
             $('#features').hide();
             $('#explore').hide();
@@ -1537,8 +1575,6 @@
                 map.setLayoutProperty('polygon_unesco', 'visibility', 'visible'),
                 map.setLayoutProperty('polygon', 'visibility', 'none'),
                 map.setLayoutProperty('points', 'visibility', 'none')
-
-
         });
 
         function updateUnescoMap(unesco) {
@@ -1591,8 +1627,7 @@
         } // end function updateUnescoMap
 
         // EXPLORE CHAPTER //
-        var endClicked = $('#icon-explore').on('click', function() {
-
+        $('#icon-explore').on('click', function() {
             $('#explore').toggle();
             map.flyTo({
                 center: [-43, -18],
@@ -1607,25 +1642,18 @@
             });
             $('#features').hide();
             $('#gallery').hide();
-
-
             d3.selectAll('#gallery input').property('checked', false);
 
             map.setLayoutProperty('centroid', 'visibility', 'none'),
                 map.setLayoutProperty('polygon_unesco', 'visibility', 'none'),
                 map.setLayoutProperty('polygon', 'visibility', 'visible'),
                 map.setLayoutProperty('points', 'visibility', 'visible')
-
-
-
         });
-
 
         function updateMap(code) {
             var geojson = topojson.feature(code, code.objects.merge_files_sim);
             geojson.features.forEach(function(feature) {
                 d3.selectAll('#explore input').on('change', function() {
-
                     if (this.value === 'Ia') {
                         map.setPaintProperty('polygon', 'fill-opacity', [
                             'match', ['get', 'IUCN_CAT'],

@@ -633,7 +633,7 @@
                             </label>
                         </div>
                         <div class="container">
-                            <input type="radio" name='heritage' value="IUCN_CAT" id='IUCN_CAT'>
+                            <input type="radio" name='heritage' value="IUCN_CAT" id='IUCN_CAT' checked="checked">
                             <label for="IUCN_CAT"><span class="category">Todas las categorías</span></span>
                             </label>
                         </div>
@@ -1344,14 +1344,11 @@
                     var coordinates = e.features[0].geometry.coordinates.slice();
                     map.flyTo({
                         center: e.lngLat,
-                        zoom: 4
+                        zoom: 5
                     });
-
                     var images = e.features[0].properties.images;
                     var message = e.features[0].properties.message;
-                    //  window.alert('Biosphere Reserves in South America')
-
-                    new mapboxgl.Popup({
+                    var popup = new mapboxgl.Popup({
                             anchor: 'center'
                         })
                         .setLngLat(coordinates)
@@ -1369,8 +1366,39 @@
                             });
                             $('#gallery').show();
                         });
+                    $('#icon-story').click(function() {
+                        popup.remove();
+                        $('#gallery').hide();
+                        map.flyTo({
+                            center: [-82, -26],
+                            zoom: 2.4,
+                            bearing: 0,
+                            pitch: 0,
+                            speed: 0.4,
+                            curve: 2,
+                            easing: function(t) {
+                                return t;
+                            }
+                        });
+                    });
+                    $('#icon-explore').click(function() {
+                        popup.remove();
+                        $('#gallery').hide();
+                        map.flyTo({
+                            center: [-43, -18],
+                            zoom: 2.6,
+                            bearing: 0,
+                            pitch: 0,
+                            speed: 0.4,
+                            curve: 2,
+                            easing: function(t) {
+                                return t;
+                            }
+                        });
+                    });
                     $('#gallery').hide();
                 });
+
             } // end of galleryMap 
 
             d3.json('data/polygon_unesco.json')
